@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Continue"
 
 Write-Host "================================================" -ForegroundColor Cyan
-Write-Host "       LegalAId Development Environment         " -ForegroundColor Gold
+Write-Host "       LegalAId Development Environment         " -ForegroundColor Yellow
 Write-Host "  AI Legal Rights Assistant for Litigants in India " -ForegroundColor Green
 Write-Host "================================================" -ForegroundColor Cyan
 
@@ -16,10 +16,10 @@ $env:PYTHONPATH = "$PSScriptRoot\backend"
 & $pythonExe "$PSScriptRoot\scripts\doctor.py"
 
 Write-Host "`nLaunching Backend Server (Terminal 1)..." -ForegroundColor Yellow
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "& '$PSScriptRoot\start-backend.ps1'"
+Start-Process powershell -ArgumentList "-ExecutionPolicy", "Bypass", "-NoExit", "-Command", "& '$PSScriptRoot\start-backend.ps1'"
 
 Write-Host "Launching Frontend Dev Server (Terminal 2)..." -ForegroundColor Yellow
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "& '$PSScriptRoot\start-frontend.ps1'"
+Start-Process powershell -ArgumentList "-ExecutionPolicy", "Bypass", "-NoExit", "-Command", "& '$PSScriptRoot\start-frontend.ps1'"
 
 Write-Host "`n================================================" -ForegroundColor Cyan
 Write-Host "Both servers launched in new windows!" -ForegroundColor Green

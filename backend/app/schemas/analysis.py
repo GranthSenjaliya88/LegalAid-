@@ -99,3 +99,16 @@ class VerifyResponseData(BaseModel):
     verified_count: int
     unsupported_count: int
     items: List[VerificationItem]
+
+
+class AnalyzeResponseData(BaseModel):
+    status: str  # "complete", "needs_clarification", "insufficient_information", "error"
+    case_id: str
+    domain: Optional[str] = None
+    subdomain: Optional[str] = None
+    facts: Optional[CaseFactsData] = None
+    clarification: Optional[ClarifyResponseData] = None
+    explain: Optional[ExplainResponseData] = None
+    evidence: Optional[EvidenceResponseData] = None
+    roadmap: Optional[ActionRoadmapResponseData] = None
+    message: Optional[str] = None

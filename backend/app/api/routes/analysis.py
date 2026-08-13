@@ -1,6 +1,6 @@
 """
-Analysis Pipeline Routes (Phases 5, 6, 7, 8, 9).
-Handles Classification, Database Retrieval, Clarification, Rights Explanation, and Citation Verification.
+Analysis Pipeline Routes (Phases 5, 6, 7, 8, 9, 11).
+Handles Classification, Database Retrieval, Clarification, Rights Explanation, Citation Verification, and Backend Orchestration.
 """
 
 from typing import Dict, Any, Optional
@@ -167,8 +167,13 @@ def clarify_respond_route(case_id: str, body: ClarifyRequestData, db: Session = 
     updated_facts = update_facts_from_answers(current_facts, body.answers)
     CaseRepository.update_case_facts(db, case_id, updated_facts)
 
-    if updated_facts.get("state"):
-        CaseRepository.update_case_domain_and_status(db, case_id, case.domain or "general", case.status, state=updated_facts["state"])
+    CaseRepository.update_case_domain_and_status(
+        db,
+        case_id,
+        case.domain or "general",
+        "clarified",
+        state=updated_facts.get("state") or case.state
+    )
 
     # Re-retrieve with updated facts
     retrieval_res = retrieve_legal_sections(domain=case.domain, facts=updated_facts)
@@ -379,3 +384,108 @@ def case_compare_route(case_id: str, db: Session = Depends(get_db)):
         }
     }
 
+
+@router.post("/{case_id}/analyze", summary="Phase 11 - Unified Case Orchestration")
+def analyze_case_orchestration_route(case_id: str, db: Session = Depends(get_db)):
+    """
+    Unified end-to-end backend orchestration pipeline (Phase 11).
+    Orchestrates Classification -> Fact Extraction -> Clarification -> Retrieval -> Explanation -> Evidence -> Action Roadmap.
+    Returns deterministic status: complete | needs_clarification | insufficient_information | error.
+    """
+    case = CaseRepository.get_case(db, case_id)
+    if not case:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"code": "CASE_NOT_FOUND", "message": f"Case '{case_id}' not found."}
+        )
+
+    # 1. Classification & Fact Extraction (if not yet performed)
+    if not case.facts or case.status == "received":
+        classify_res = classify_case_service(case.original_text)
+        CaseRepository.update_case_domain_and_status(
+            db=db,
+            case_id=case_id,
+            domain=classify_res.domain,
+            status="classified",
+            subdomain=classify_res.subdomain,
+            state=classify_res.facts.state,
+            urgency=classify_res.urgency
+        )
+        CaseRepository.update_case_facts(db, case_id, classify_res.facts.model_dump())
+        # Refresh case instance
+        case = CaseRepository.get_case(db, case_id)
+
+    facts_dict = _facts_to_dict(case)
+    if not facts_dict.get("domain") and case.domain:
+        facts_dict["domain"] = case.domain
+
+    # 2. Clarification Evaluation
+    clarify_res = evaluate_clarification(facts_dict, domain=case.domain)
+
+    # If critical information is missing and case hasn't been clarified yet, pause for clarification
+    if clarify_res.needs_clarification and clarify_res.questions and case.status not in ("clarified", "explained"):
+        return {
+            "success": True,
+            "data": {
+                "status": "needs_clarification",
+                "case_id": case.id,
+                "domain": case.domain,
+                "subdomain": case.subdomain,
+                "facts": facts_dict,
+                "clarification": clarify_res.model_dump(),
+                "explain": None,
+                "evidence": None,
+                "roadmap": None,
+                "message": "Clarification required to refine legal applicability."
+            }
+        }
+
+    # 3. Database Legal Retrieval
+    retrieval_res = retrieve_legal_sections(domain=case.domain, facts=facts_dict)
+    CaseRepository.update_case_domain_and_status(db, case_id, case.domain or "general", "retrieved")
+
+    # 4. Rights Explanation
+    explain_res = explain_rights_service(
+        matches=retrieval_res.matches,
+        facts=facts_dict,
+        language=case.language
+    )
+
+    # 5. Evidence Suggestions
+    evidence_res = generate_evidence_checklist(
+        domain=case.domain or "general",
+        subdomain=case.subdomain,
+        facts=facts_dict
+    )
+
+    # 6. Action Roadmap
+    roadmap_res = generate_action_roadmap(
+        domain=case.domain or "general",
+        subdomain=case.subdomain,
+        urgency=case.urgency or "low",
+        facts=facts_dict
+    )
+
+    # 7. Final Status Determination
+    if not retrieval_res.matches or explain_res.confidence == "INSUFFICIENT INFORMATION":
+        status_str = "insufficient_information"
+    else:
+        status_str = "complete"
+
+    CaseRepository.update_case_domain_and_status(db, case_id, case.domain or "general", "explained")
+
+    return {
+        "success": True,
+        "data": {
+            "status": status_str,
+            "case_id": case.id,
+            "domain": case.domain,
+            "subdomain": case.subdomain,
+            "facts": facts_dict,
+            "clarification": clarify_res.model_dump(),
+            "explain": explain_res.model_dump(),
+            "evidence": evidence_res.model_dump(),
+            "roadmap": roadmap_res.model_dump(),
+            "message": "Case analysis completed successfully." if status_str == "complete" else "No matching statutory provisions found with sufficient confidence."
+        }
+    }

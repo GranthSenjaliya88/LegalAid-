@@ -79,7 +79,7 @@ def health_ready():
 
         # 3. Probe vector index health
         v_health = vector_retriever.get_index_health(db_section_count=sec_cnt if 'sec_cnt' in locals() else 0)
-        checks["vector_index"] = "ok" if v_health["in_sync"] else "out_of_sync"
+        checks["vector_index"] = v_health["vector_state"]
 
         # 4. Probe AI configuration status
         if settings.api_key.strip():

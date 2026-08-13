@@ -132,11 +132,21 @@ class AIClient:
         subdomain = "general_dispute"
         urgency = "low"
 
-        if any(w in lower for w in ["bank", "transfer", "unauthorized", "phishing", "cyber", "hacked", "stolen money", "account debit", "サイバー", "ओटीपी", "खाता", "otp", "online scam", "1930"]):
+        def _has_kw(keywords: List[str]) -> bool:
+            for kw in keywords:
+                if len(kw) <= 3:
+                    if re.search(r"\b" + re.escape(kw) + r"\b", lower):
+                        return True
+                else:
+                    if kw in lower:
+                        return True
+            return False
+
+        if _has_kw(["bank", "transfer", "unauthorized", "phishing", "cyber", "hacked", "stolen money", "account debit", "サイバー", "ओटीपी", "खाता", "otp", "online scam", "1930"]):
             domain = "cyber"
             subdomain = "unauthorized_bank_transfer"
             urgency = "urgent"
-        elif any(w in lower for w in ["landlord", "tenant", "rent", "deposit", "evict", "मकान", "किराया", "जमानत", "lease", "drca", "mrca", "kra", "mta"]):
+        elif _has_kw(["landlord", "tenant", "rent", "deposit", "evict", "मकान", "किराया", "जमानत", "lease", "drca", "mrca", "kra", "mta"]):
             domain = "tenant"
             if any(w in lower for w in ["evict", "water", "electricity", "cut off", "force", "lock"]):
                 subdomain = "illegal_eviction"
@@ -144,63 +154,63 @@ class AIClient:
             else:
                 subdomain = "security_deposit"
                 urgency = "medium"
-        elif any(w in lower for w in ["salary", "wage", "employer", "employee", "fired", "gratuity", "pf", "maternity", "retrenchment", "severance", "vesan", "ветан", "वेतन", "नौकरी", "fnf", "settlement"]):
+        elif _has_kw(["salary", "wage", "employer", "employee", "fired", "gratuity", "pf", "maternity", "retrenchment", "severance", "vesan", "ветан", "वेतन", "नौकरी", "fnf", "settlement"]):
             domain = "labor"
             subdomain = "unpaid_wages"
             urgency = "medium"
-        elif any(w in lower for w in ["refund", "warranty", "defective", "flipkart", "amazon", "product", "mrp", "e-commerce", "defect", "deficiency", "cpa", "रिफंड", "वारंटी"]):
+        elif _has_kw(["refund", "warranty", "defective", "flipkart", "amazon", "product", "mrp", "e-commerce", "defect", "deficiency", "cpa", "रिफंड", "वारंटी", "seller", "replacement"]):
             domain = "consumer"
             subdomain = "product_defect"
             urgency = "medium"
-        elif any(w in lower for w in ["fir", "zero fir", "police", "bnss", "thana", "investigation", "magistrate complaint"]):
+        elif _has_kw(["fir", "zero fir", "police", "bnss", "thana", "investigation", "magistrate complaint"]):
             domain = "procedural"
             subdomain = "police_complaint"
             urgency = "high"
-        elif any(w in lower for w in ["evidence", "whatsapp chat", "65b", "bsa", "digital proof", "admissible"]):
+        elif _has_kw(["evidence", "whatsapp chat", "65b", "bsa", "digital proof", "admissible"]):
             domain = "evidence"
             subdomain = "digital_evidence"
             urgency = "low"
-        elif any(w in lower for w in ["bns", "theft", "stolen", "extortion", "cheating", "fraud", "intimidation", "threat", "dhamki", "chori", "dhokhadhadi", "blackmail", "mischief", "property damage"]):
+        elif _has_kw(["bns", "theft", "stolen", "extortion", "cheating", "fraud", "intimidation", "threat", "dhamki", "chori", "dhokhadhadi", "blackmail", "mischief", "property damage"]):
             domain = "criminal"
             subdomain = "general_crime"
             urgency = "high"
-        elif any(w in lower for w in ["cheque", "bounce", "138", "ni act", "rbi", "ombudsman"]):
+        elif _has_kw(["cheque", "bounce", "138", "ni act", "rbi", "ombudsman"]):
             domain = "banking"
             subdomain = "cheque_bounce"
             urgency = "high"
-        elif any(w in lower for w in ["posh", "sexual harassment", "domestic violence", "husband", "in laws", "abuse", "woman", "women", "ncw"]):
+        elif _has_kw(["posh", "sexual harassment", "domestic violence", "husband", "in laws", "abuse", "woman", "women", "ncw"]):
             domain = "women_rights"
             subdomain = "women_safety"
             urgency = "high"
-        elif any(w in lower for w in ["senior citizen", "parent", "maintenance tribunal", "elder"]):
+        elif _has_kw(["senior citizen", "parent", "maintenance tribunal", "elder"]):
             domain = "senior_citizens"
             subdomain = "maintenance_rights"
             urgency = "medium"
-        elif any(w in lower for w in ["sc", "st", "caste", "atrocities", "slur"]):
+        elif _has_kw(["sc", "st", "caste", "atrocities", "slur"]):
             domain = "sc_st_protection"
             subdomain = "atrocities_prevention"
             urgency = "high"
-        elif any(w in lower for w in ["disability", "disabled", "rpwd", "handicap"]):
+        elif _has_kw(["disability", "disabled", "rpwd", "handicap"]):
             domain = "disability_rights"
             subdomain = "non_discrimination"
             urgency = "medium"
-        elif any(w in lower for w in ["contract", "agreement", "breach", "damages"]):
+        elif _has_kw(["contract", "agreement", "breach", "damages"]):
             domain = "contract"
             subdomain = "breach_of_contract"
             urgency = "medium"
-        elif any(w in lower for w in ["lessor", "lessee", "property defect", "tpa"]):
+        elif _has_kw(["lessor", "lessee", "property defect", "tpa"]):
             domain = "property"
             subdomain = "lease_rights"
             urgency = "medium"
-        elif any(w in lower for w in ["dpdp", "data privacy", "privacy leak"]):
+        elif _has_kw(["dpdp", "data privacy", "privacy leak"]):
             domain = "digital_online"
             subdomain = "data_privacy"
             urgency = "medium"
-        elif any(w in lower for w in ["good samaritan", "traffic", "road accident"]):
+        elif _has_kw(["good samaritan", "traffic", "road accident"]):
             domain = "traffic"
             subdomain = "accident_help"
             urgency = "low"
-        elif any(w in lower for w in ["article 21", "fundamental right", "liberty"]):
+        elif _has_kw(["article 21", "fundamental right", "liberty"]):
             domain = "constitutional"
             subdomain = "fundamental_rights"
             urgency = "medium"
@@ -248,17 +258,27 @@ class AIClient:
         }
 
     def _heuristic_clarify(self, facts: Dict[str, Any]) -> Dict[str, Any]:
+        domain = facts.get("domain") or facts.get("subdomain") or ""
+        incident_text = str(facts.get("incident") or "")
+        
+        # Cyber / Banking / Consumer disputes with detailed incident text do not need agreement clarification
+        if domain in ("cyber", "unauthorized_bank_transfer", "consumer", "digital_online") or len(incident_text) > 80:
+            return {
+                "needs_clarification": False,
+                "questions": [],
+                "missing_facts": []
+            }
+
         questions = []
         missing = []
-        if facts.get("agreement_exists") is None:
-            questions.append("Was there a written agreement or rental/employment contract?")
-            missing.append("agreement_exists")
-        if not facts.get("amount"):
-            questions.append("What is the exact financial amount or security deposit involved?")
+        
+        if not facts.get("amount") and "amount" not in incident_text.lower():
+            questions.append("What is the exact financial amount or transaction value involved?")
             missing.append("amount")
-        if facts.get("notice_given") is None:
-            questions.append("Did you or the counterparty issue any written notice before this incident?")
-            missing.append("notice_given")
+            
+        if domain in ("tenant", "labor") and facts.get("agreement_exists") is None:
+            questions.append("Was there a written rental agreement or employment contract?")
+            missing.append("agreement_exists")
 
         return {
             "needs_clarification": len(questions) > 0,

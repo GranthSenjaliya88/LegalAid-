@@ -23,6 +23,7 @@ CONCEPTS: Dict[str, List[str]] = {
         "तनख्वाह नहीं मिली",
         "salary nahi mili",
         "pagaar nahi mili",
+        "tanrkha nahi mili",
     ],
 
     "defective_product": [
@@ -34,6 +35,52 @@ CONCEPTS: Dict[str, List[str]] = {
         "खराब प्रोडक्ट",
         "phone kharab",
         "product kharab hai",
+        "replacement refused",
+        "refund refused",
+    ],
+
+    "unauthorized_banking": [
+        "unauthorized transaction",
+        "money transferred without permission",
+        "cyber fraud",
+        "bank account debited",
+        "unauthorized transfer",
+        "khate se paise kat gaye",
+        "paise nikal gaye",
+        "bank fraud",
+        "otp shared",
+        "upi fraud",
+        "खाते से पैसे कट गए",
+    ],
+
+    "illegal_eviction": [
+        "illegal eviction",
+        "forced to vacate",
+        "evicted without notice",
+        "landlord forcing out",
+        "जबरन मकान खाली",
+        "makān khālī",
+        "without notice vacate",
+    ],
+
+    "domestic_violence": [
+        "domestic violence",
+        "husband harassment",
+        "in-laws abuse",
+        "workplace sexual harassment",
+        "posh complaint",
+        "ঘরেलू हिंसा",
+        "घरेलू हिंसा",
+        "ghar me harassment",
+    ],
+
+    "wrongful_termination": [
+        "wrongful termination",
+        "retrenchment",
+        "fired without notice",
+        "laid off without severance",
+        "job se nikal diya",
+        "fired without pay",
     ],
 }
 

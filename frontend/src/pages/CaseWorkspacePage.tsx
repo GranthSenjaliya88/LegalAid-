@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -37,17 +37,16 @@ export function CaseWorkspacePage() {
   const caseQuery = useCase(id);
   const { state, start, applyAnswers, skipClarification, retry, runVerify } = useCaseAnalysis(id);
 
-  // Kick off analysis once per case id.
-  const startedFor = useRef<string | null>(null);
+  // Kick off analysis whenever id is present.
   useEffect(() => {
-    if (id && startedFor.current !== id) {
-      startedFor.current = id;
+    if (id) {
       void start();
     }
   }, [id, start]);
 
   const caseData = caseQuery.data;
-  const domainMeta = caseData?.domain ? DOMAINS[caseData.domain] : null;
+  const activeDomain = caseData?.domain ?? state.classify?.domain ?? undefined;
+  const domainMeta = activeDomain ? DOMAINS[activeDomain] : null;
   const running = state.status === "running";
   const { explain } = state;
 
@@ -59,7 +58,7 @@ export function CaseWorkspacePage() {
   if (state.roadmap) completed.push("action");
 
   let current: PipelineStepId | null = "situation";
-  if (state.status === "done") current = "document";
+  if (state.status === "done" || state.status === "insufficient_information") current = "document";
   else if (state.phase === "explain") current = "law";
   else if (state.phase === "enrich") current = "evidence";
   else if (state.phase === "classify" || state.phase === "clarify" || state.status === "awaiting_clarification")
@@ -128,8 +127,9 @@ export function CaseWorkspacePage() {
                 </Reveal>
               )}
 
-              {running && !state.facts && <PipelineLoader phase={state.phase} />}
-              {running && state.phase === "explain" && !explain && <PipelineLoader phase="explain" />}
+              {running && !explain && state.status !== "awaiting_clarification" && (
+                <PipelineLoader phase={state.phase} />
+              )}
 
               {state.status === "error" && (
                 <ErrorState
@@ -187,7 +187,7 @@ export function CaseWorkspacePage() {
 
                   {id && (
                     <Reveal as="section" delay={0.2}>
-                      <DocumentGenerator caseId={id} domain={caseData.domain} />
+                      <DocumentGenerator caseId={id} domain={activeDomain} />
                     </Reveal>
                   )}
                 </div>

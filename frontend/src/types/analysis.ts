@@ -203,3 +203,19 @@ export interface CompareResponse {
   case_id: string;
   rows: LawComparisonRow[];
 }
+
+/* ----- Orchestrated Analysis (POST /api/cases/{id}/analyze) ----- */
+export type AnalysisStatus = "complete" | "needs_clarification" | "insufficient_information" | "error";
+
+export interface AnalyzeResponse {
+  status: AnalysisStatus;
+  case_id: string;
+  domain?: Domain | null;
+  subdomain?: string | null;
+  facts?: CaseFacts | null;
+  clarification?: ClarifyResponse | null;
+  explain?: ExplainResponse | null;
+  evidence?: EvidenceResponse | null;
+  roadmap?: ActionRoadmapResponse | null;
+  message?: string | null;
+}

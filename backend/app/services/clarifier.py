@@ -13,6 +13,8 @@ from app.schemas.case import CaseFactsData
 def evaluate_clarification(facts: CaseFactsData, domain: str | None = None) -> ClarifyResponseData:
     """Evaluate whether clarification questions are needed based on missing facts."""
     facts_dict = facts.model_dump() if hasattr(facts, "model_dump") else (facts if isinstance(facts, dict) else {})
+    if domain:
+        facts_dict["domain"] = domain
 
     ai_result = ai_client.generate_clarifying_questions(facts_dict)
 

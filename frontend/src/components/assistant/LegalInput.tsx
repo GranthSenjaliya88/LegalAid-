@@ -93,8 +93,13 @@ export function LegalInput({ value, onChange, onSubmit, pending = false }: Legal
 
         <div className="flex flex-col-reverse items-stretch gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
           <PrivacyNote />
-          <Button size="lg" onClick={handleSubmit} disabled={pending} className="sm:min-w-[13rem]">
-            <Sparkles className="size-4" />
+          <Button
+            size="lg"
+            onClick={handleSubmit}
+            disabled={pending}
+            className="sm:min-w-[13rem] bg-teal hover:bg-teal-dark text-white font-semibold shadow-soft hover:shadow-lift transition-all"
+          >
+            <Sparkles className="size-4 text-gold" />
             {pending ? t("input.analyzing") : t("input.analyze")}
           </Button>
         </div>

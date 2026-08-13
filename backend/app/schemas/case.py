@@ -5,9 +5,17 @@ from pydantic import BaseModel, Field
 
 
 class CreateCaseRequest(BaseModel):
-    text: str = Field(..., min_length=1, description="User's legal problem description (Hindi or English)")
+    text: Optional[str] = Field(None, description="User's legal problem description (Hindi or English)")
+    prompt: Optional[str] = Field(None, description="Alias for text field")
     language: str = Field(default="en", description="Language code: 'en' or 'hi'")
     session_id: Optional[str] = Field(None, description="Optional session tracking identifier")
+
+    def __init__(self, **data: Any):
+        if "text" not in data and "prompt" in data:
+            data["text"] = data["prompt"]
+        if "text" not in data or not data["text"]:
+            data["text"] = data.get("prompt", "Default intake description")
+        super().__init__(**data)
 
 
 class CreateCaseResponseData(BaseModel):

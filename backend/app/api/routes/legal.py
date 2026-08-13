@@ -44,14 +44,15 @@ def list_acts(db: Session = Depends(get_db)):
     for a in acts:
         result.append({
             "id": a.id,
-            "name": a.name,
-            "short_name": a.short_name,
-            "year": a.year,
-            "jurisdiction": a.jurisdiction,
-            "domain": a.domain,
-            "description": a.description,
-            "source_url": a.source_url,
-            "section_count": len(a.sections)
+            "name": getattr(a, "short_name", "") or getattr(a, "long_name", ""),
+            "short_name": getattr(a, "short_name", ""),
+            "long_name": getattr(a, "long_name", ""),
+            "year": getattr(a, "year", None),
+            "jurisdiction": getattr(a, "jurisdiction", "INDIA"),
+            "domain": getattr(a, "domain", "general"),
+            "description": getattr(a, "long_name", ""),
+            "source_url": getattr(a, "official_source_url", None),
+            "section_count": len(a.sections) if getattr(a, "sections", None) else 0
         })
     return {"success": True, "data": result}
 

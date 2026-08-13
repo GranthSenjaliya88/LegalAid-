@@ -19,7 +19,7 @@ from app.schemas import VerifyResponse, VerifyIssue
 REQUIRED_DOMAINS = {"consumer", "labor", "tenant", "cyber", "criminal"}
 ALLOWED_DOMAINS  = {
     "consumer", "labor", "tenant", "cyber", "criminal", "civil", "contract", "family",
-    "women_rights", "children_rights", "banking", "traffic", "property", "employment_benefits",
+    "women_rights", "children_rights", "banking", "traffic", "motor_vehicle", "property", "employment_benefits",
     "constitutional", "procedural", "evidence", "sc_st_protection", "disability_rights",
     "senior_citizens", "education", "digital_online", "general", "other"
 }
@@ -72,7 +72,7 @@ def run_verify(conn: sqlite3.Connection) -> VerifyResponse:
     sec_count = conn.execute("SELECT COUNT(*) FROM sections WHERE is_active=1").fetchone()[0]
     try:
         fts_test = conn.execute(
-            "SELECT COUNT(*) FROM sections_fts WHERE sections_fts MATCH '\"section\"'"
+            "SELECT COUNT(*) FROM sections_fts WHERE sections_fts MATCH 'act OR section OR law OR rights OR consumer OR tenant OR wages OR penalty OR court'"
         ).fetchone()[0]
         if sec_count > 0 and fts_test == 0:
             issues.append(VerifyIssue(

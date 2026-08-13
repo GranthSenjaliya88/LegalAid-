@@ -4,6 +4,7 @@ import { casesService } from "@/services/cases";
 import { ApiError } from "@/types";
 import type {
   ActionRoadmapResponse,
+  AnalyzeResponse,
   AnswerValue,
   CaseFacts,
   ClarifyResponse,
@@ -13,7 +14,7 @@ import type {
   VerifyResponse,
 } from "@/types";
 
-export type FlowStatus = "idle" | "running" | "awaiting_clarification" | "done" | "error";
+export type FlowStatus = "idle" | "running" | "awaiting_clarification" | "insufficient_information" | "done" | "error";
 export type FlowPhase = "classify" | "clarify" | "explain" | "enrich" | null;
 export type VerifyStatus = "idle" | "loading" | "done" | "error";
 
@@ -49,48 +50,140 @@ function isAbort(err: unknown): boolean {
 
 /**
  * Orchestrates the source-grounded analysis pipeline for a single case.
- * The LLM never invents provisions — each phase calls the backend, which
- * retrieves from the verified corpus before generating explanations.
+ * Integrates unified backend orchestration with graceful step fallback and
+ * robust React 18 async lifecycle management.
  */
 export function useCaseAnalysis(caseId: string | undefined) {
   const [state, setState] = useState<AnalysisState>(initialState);
-  const mounted = useRef(true);
-  const abortRef = useRef<AbortController | null>(null);
+  const activeControllerRef = useRef<AbortController | null>(null);
+  const activeCaseIdRef = useRef<string | undefined>(caseId);
+  activeCaseIdRef.current = caseId;
 
+  // Cleanup on unmount
   useEffect(() => {
-    mounted.current = true;
     return () => {
-      mounted.current = false;
-      abortRef.current?.abort();
+      activeControllerRef.current?.abort();
+      activeControllerRef.current = null;
     };
   }, []);
 
   const patch = useCallback((partial: Partial<AnalysisState>) => {
-    if (mounted.current) setState((prev) => ({ ...prev, ...partial }));
+    setState((prev) => ({ ...prev, ...partial }));
   }, []);
 
-  const newSignal = useCallback(() => {
-    abortRef.current?.abort();
+  const getSignal = useCallback(() => {
+    if (activeControllerRef.current) {
+      activeControllerRef.current.abort();
+    }
     const ac = new AbortController();
-    abortRef.current = ac;
+    activeControllerRef.current = ac;
     return ac.signal;
   }, []);
 
-  const analyze = useCallback(
+  const analyzeOrchestration = useCallback(
     async (id: string, signal: AbortSignal) => {
       try {
-        patch({ status: "running", phase: "explain", error: undefined });
-        const explain = await analysisService.explain(id, signal);
-        patch({ explain, phase: "enrich" });
+        if (import.meta.env.DEV) {
+          console.log(`[LegalAId Pipeline] Starting orchestration for case: ${id}`);
+        }
+        patch({ status: "running", phase: "classify", error: undefined });
 
-        const [evidence, roadmap] = await Promise.all([
-          analysisService.evidence(id, signal),
-          analysisService.roadmap(id, signal),
-        ]);
-        patch({ evidence, roadmap, phase: null, status: "done" });
+        // Call unified backend orchestration
+        let res: AnalyzeResponse;
+        try {
+          res = await analysisService.analyze(id, signal);
+        } catch (backendErr) {
+          if (isAbort(backendErr) || signal.aborted) return;
+          // Fallback to step-by-step calls if analyze endpoint is unavailable
+          if (import.meta.env.DEV) {
+            console.warn("[LegalAId Pipeline] Backend analyze endpoint failed, falling back to sequential calls:", backendErr);
+          }
+          const classify = await analysisService.classify(id, signal);
+          patch({ classify, facts: classify.facts, phase: "clarify" });
+
+          let clarify: ClarifyResponse | undefined;
+          try {
+            clarify = await analysisService.clarify(id, signal);
+          } catch {
+            clarify = undefined;
+          }
+          if (clarify) patch({ clarify });
+
+          if (clarify?.needs_clarification && clarify.questions.length > 0) {
+            patch({ status: "awaiting_clarification", phase: null });
+            return;
+          }
+
+          patch({ phase: "explain" });
+          const explain = await analysisService.explain(id, signal);
+          patch({ explain, phase: "enrich" });
+
+          const [evidence, roadmap] = await Promise.all([
+            analysisService.evidence(id, signal),
+            analysisService.roadmap(id, signal),
+          ]);
+          patch({ evidence, roadmap, phase: null, status: "done" });
+          return;
+        }
+
+        if (signal.aborted || activeCaseIdRef.current !== id) return;
+
+        // Apply facts from backend
+        if (res.facts) {
+          patch({ facts: res.facts });
+        }
+
+        if (res.status === "needs_clarification" && res.clarification && res.clarification.questions?.length > 0) {
+          if (import.meta.env.DEV) {
+            console.log(`[LegalAId Pipeline] Clarification REQUIRED (${res.clarification.questions.length} questions)`);
+          }
+          patch({
+            status: "awaiting_clarification",
+            phase: null,
+            clarify: res.clarification,
+            facts: res.facts ?? undefined,
+          });
+          return;
+        }
+
+        if (res.status === "insufficient_information") {
+          if (import.meta.env.DEV) {
+            console.log("[LegalAId Pipeline] INSUFFICIENT_INFORMATION returned");
+          }
+          patch({
+            status: "insufficient_information",
+            phase: null,
+            explain: res.explain ?? undefined,
+            evidence: res.evidence ?? undefined,
+            roadmap: res.roadmap ?? undefined,
+            facts: res.facts ?? undefined,
+          });
+          return;
+        }
+
+        if (import.meta.env.DEV) {
+          console.log("[LegalAId Pipeline] Case analysis completed: PASS");
+          console.log(`[LegalAId Pipeline] Sources: ${res.explain?.relevant_law?.length ?? 0}, Rights: ${res.explain?.rights?.length ?? 0}`);
+        }
+
+        patch({
+          status: "done",
+          phase: null,
+          explain: res.explain ?? undefined,
+          evidence: res.evidence ?? undefined,
+          roadmap: res.roadmap ?? undefined,
+          facts: res.facts ?? undefined,
+        });
       } catch (err) {
         if (isAbort(err) || signal.aborted) return;
-        patch({ status: "error", phase: null, error: { phase: "explain", message: messageOf(err) } });
+        if (import.meta.env.DEV) {
+          console.error("[LegalAId Pipeline ERROR]", err);
+        }
+        patch({
+          status: "error",
+          phase: null,
+          error: { phase: "analyze", message: messageOf(err) },
+        });
       }
     },
     [patch],
@@ -98,72 +191,60 @@ export function useCaseAnalysis(caseId: string | undefined) {
 
   const start = useCallback(async () => {
     if (!caseId) return;
-    const signal = newSignal();
-    try {
-      patch({
-        status: "running",
-        phase: "classify",
-        error: undefined,
-        explain: undefined,
-        evidence: undefined,
-        roadmap: undefined,
-        verify: undefined,
-        verifyStatus: "idle",
-      });
-
-      const classify = await analysisService.classify(caseId, signal);
-      patch({ classify, facts: classify.facts, phase: "clarify" });
-
-      let clarify: ClarifyResponse | undefined;
-      try {
-        clarify = await analysisService.clarify(caseId, signal);
-      } catch (err) {
-        if (isAbort(err) || signal.aborted) return;
-        // Clarification is best-effort; never block the pipeline on it.
-        clarify = undefined;
-      }
-      if (clarify) patch({ clarify });
-
-      if (clarify?.needs_clarification && clarify.questions.length > 0) {
-        patch({ status: "awaiting_clarification", phase: null });
-        return;
-      }
-
-      await analyze(caseId, signal);
-    } catch (err) {
-      if (isAbort(err) || signal.aborted) return;
-      patch({ status: "error", phase: null, error: { phase: "classify", message: messageOf(err) } });
-    }
-  }, [caseId, analyze, newSignal, patch]);
+    const signal = getSignal();
+    await analyzeOrchestration(caseId, signal);
+  }, [caseId, getSignal, analyzeOrchestration]);
 
   /** Submit clarification answers (also used to correct AI-extracted facts). */
   const applyAnswers = useCallback(
     async (answers: Record<string, AnswerValue>) => {
       if (!caseId) return;
-      const signal = newSignal();
+      const signal = getSignal();
       try {
         patch({ status: "running", phase: "explain", error: undefined });
         await analysisService.clarifyRespond(caseId, { answers }, signal);
         try {
           const refreshed = await casesService.get(caseId, signal);
-          patch({ facts: refreshed.facts ?? undefined });
+          if (refreshed.facts) {
+            patch({ facts: refreshed.facts });
+          }
         } catch {
           /* keep existing facts if refresh fails */
         }
-        await analyze(caseId, signal);
+        await analyzeOrchestration(caseId, signal);
       } catch (err) {
         if (isAbort(err) || signal.aborted) return;
-        patch({ status: "error", phase: null, error: { phase: "clarify", message: messageOf(err) } });
+        patch({
+          status: "error",
+          phase: null,
+          error: { phase: "clarify", message: messageOf(err) },
+        });
       }
     },
-    [caseId, analyze, newSignal, patch],
+    [caseId, getSignal, patch, analyzeOrchestration],
   );
 
   const skipClarification = useCallback(async () => {
     if (!caseId) return;
-    const signal = newSignal();
-    await analyze(caseId, signal);
-  }, [caseId, analyze, newSignal]);
+    const signal = getSignal();
+    patch({ status: "running", phase: "explain", error: undefined });
+    try {
+      const explain = await analysisService.explain(caseId, signal);
+      patch({ explain, phase: "enrich" });
+      const [evidence, roadmap] = await Promise.all([
+        analysisService.evidence(caseId, signal),
+        analysisService.roadmap(caseId, signal),
+      ]);
+      patch({ evidence, roadmap, phase: null, status: "done" });
+    } catch (err) {
+      if (isAbort(err) || signal.aborted) return;
+      patch({
+        status: "error",
+        phase: null,
+        error: { phase: "explain", message: messageOf(err) },
+      });
+    }
+  }, [caseId, getSignal, patch]);
 
   const retry = useCallback(() => {
     void start();

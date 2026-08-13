@@ -8,13 +8,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-teal text-ivory-soft shadow-soft hover:bg-teal-dark active:bg-teal-900",
-        gold: "bg-gold text-teal-dark shadow-gold hover:bg-gold-deep hover:text-ivory-soft",
+        primary: "bg-teal text-white shadow-soft hover:bg-teal-dark active:bg-teal-900",
+        gold: "bg-gold text-teal-dark shadow-gold hover:bg-gold-deep hover:text-white",
         secondary: "bg-teal/[0.06] text-teal hover:bg-teal/10",
         outline: "border border-hairline bg-surface text-ink hover:border-teal/40 hover:bg-teal/[0.04]",
         ghost: "text-ink hover:bg-teal/[0.06]",
         subtle: "bg-ivory text-muted hover:text-ink hover:bg-teal/[0.05]",
-        danger: "bg-danger text-ivory-soft shadow-soft hover:brightness-[0.96]",
+        danger: "bg-danger text-white shadow-soft hover:brightness-[0.96]",
         link: "text-teal underline-offset-4 hover:underline",
       },
       size: {

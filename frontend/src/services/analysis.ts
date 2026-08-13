@@ -1,6 +1,7 @@
 import { apiClient } from "./apiClient";
 import type {
   ActionRoadmapResponse,
+  AnalyzeResponse,
   ApplicabilityResponse,
   ClarifyRequest,
   ClarifyResponse,
@@ -15,6 +16,9 @@ import type {
 const base = (caseId: string) => `/api/cases/${encodeURIComponent(caseId)}`;
 
 export const analysisService = {
+  analyze: (caseId: string, signal?: AbortSignal) =>
+    apiClient.post<AnalyzeResponse>(`${base(caseId)}/analyze`, undefined, undefined, signal),
+
   classify: (caseId: string, signal?: AbortSignal) =>
     apiClient.post<ClassifyResponse>(`${base(caseId)}/classify`, undefined, undefined, signal),
 

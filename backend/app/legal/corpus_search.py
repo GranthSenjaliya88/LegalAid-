@@ -53,23 +53,6 @@ def _normalize_hindi_hinglish(query: str, conn: sqlite3.Connection) -> List[str]
     return list(set(normalized_terms))
 
 
-def search_corpus(
-    domain: Optional[str],
-    facts: Dict[str, Any],
-    limit: int = 10
-) -> RetrievalResponseData:
-    """
-    Execute hybrid retrieval on database corpus based on extracted facts, domain, state, and currency status.
-    Uses FTS5 BM25 search + TF-IDF Vector cosine similarity fusion + concept dictionary expansion.
-    """
-    query_parts = []
-    if facts.get("incident"):
-        query_parts.append(str(facts["incident"]))
-    if facts.get("desired_outcome"):
-        query_parts.append(str(facts["desired_outcome"]))
-    if facts.get("subdomain"):
-        query_parts.append(str(facts["subdomain"]))
-
 def sanitize_fts_query(query: str) -> str:
     """
     Sanitize raw user input for safe SQLite FTS5 MATCH expressions.
@@ -131,7 +114,6 @@ def search_corpus(
 
         matches = _query_fts(conn, fts_query=fts_query, query_words=clean_words, domain=domain, state=user_state, facts=facts, limit=limit)
 
-        
         if not matches and domain and domain != "general":
             # Broaden search without strict domain filter if 0 results
             matches = _query_fts(conn, fts_query=fts_query, query_words=clean_words, domain=None, state=user_state, facts=facts, limit=limit)
@@ -165,8 +147,8 @@ def search_corpus(
             city_match = 1 if user_city and m.state and user_city.lower() in m.state.lower() else 0
             state_match = 1 if user_state and m.state and (m.state.lower() == user_state.lower() or m.state == "All") else 0
             
-            # Combine BM25 base confidence + Vector sim + Jurisdiction rank
-            fused_score = min(1.0, max(0.1, round(m.confidence * 0.65 + vec_sim * 0.25 + city_match * 0.10, 2)))
+            # Combine BM25 base confidence + Vector sim + Jurisdiction rank (preserves BM25 baseline)
+            fused_score = min(1.0, max(m.confidence, round(m.confidence * 0.70 + vec_sim * 0.25 + city_match * 0.10, 2)))
             m.confidence = fused_score
 
         # Sort matches by city match, state match, current law status, then fused confidence
@@ -567,4 +549,3 @@ def reciprocal_rank_fusion(
         }
         for record_id, score in ranked
     ]
-

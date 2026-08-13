@@ -109,14 +109,26 @@ class FaissRetriever:
         return results
 
     def get_index_health(self, db_section_count: int) -> Dict[str, Any]:
-        vector_count = len(self.record_ids) if (self.index or self.stored_embeddings) else 0
-        in_sync = (vector_count == db_section_count)
-        status_msg = "SYNCHRONIZED" if in_sync else f"WARNING: Vector index out of sync ({vector_count} vectors vs {db_section_count} db records)"
+        vector_count = len(self.record_ids)
+        
+        if vector_count == 0:
+            vector_state = "uninitialized"
+            in_sync = False
+            status_msg = "UNINITIALIZED: Vector index not yet built (BM25 fallback active)"
+        elif vector_count == db_section_count:
+            vector_state = "ready"
+            in_sync = True
+            status_msg = f"SYNCHRONIZED ({vector_count} vectors)"
+        else:
+            vector_state = "out_of_sync"
+            in_sync = False
+            status_msg = f"WARNING: Vector index out of sync ({vector_count} vectors vs {db_section_count} db records)"
         
         return {
             "vector_count": vector_count,
             "db_section_count": db_section_count,
             "in_sync": in_sync,
+            "vector_state": vector_state,
             "status": status_msg,
             "corpus_version": self.corpus_version,
             "embedding_model_version": self.embedding_model_version,
