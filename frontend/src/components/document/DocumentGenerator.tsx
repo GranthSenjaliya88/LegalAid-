@@ -90,7 +90,11 @@ export function DocumentGenerator({ caseId, domain }: DocumentGeneratorProps) {
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={handleGenerate} disabled={create.isPending} className="sm:w-auto">
+          <Button
+            onClick={handleGenerate}
+            disabled={create.isPending}
+            className="sm:w-auto bg-teal hover:bg-teal-dark text-white font-semibold shadow-soft hover:shadow-lift transition-all"
+          >
             {create.isPending ? (
               <>
                 <Loader2 className="size-4 animate-spin" />
@@ -98,7 +102,7 @@ export function DocumentGenerator({ caseId, domain }: DocumentGeneratorProps) {
               </>
             ) : (
               <>
-                <FileText className="size-4" />
+                <FileText className="size-4 text-gold" />
                 Generate draft
               </>
             )}

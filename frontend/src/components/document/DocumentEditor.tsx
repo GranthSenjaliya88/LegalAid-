@@ -82,8 +82,12 @@ export function DocumentEditor({ document, onSave, saving = false }: DocumentEdi
       <PrivacyNote />
 
       <div className="flex flex-wrap items-center gap-3">
-        <Button type="submit" disabled={saving || !formState.isDirty}>
-          <Save className="size-4" />
+        <Button
+          type="submit"
+          disabled={saving || !formState.isDirty}
+          className="bg-teal hover:bg-teal-dark text-white font-semibold shadow-soft hover:shadow-lift transition-all disabled:bg-hairline disabled:text-muted disabled:shadow-none"
+        >
+          <Save className="size-4 text-gold" />
           {saving ? "Saving…" : "Save changes"}
         </Button>
         <Button
