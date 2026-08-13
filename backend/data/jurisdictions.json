@@ -1,0 +1,13 @@
+[
+  { "name": "India", "level": "CENTRAL", "state": null, "district": null },
+  { "name": "Delhi", "level": "STATE", "state": "Delhi", "district": null },
+  { "name": "Gujarat", "level": "STATE", "state": "Gujarat", "district": null },
+  { "name": "Maharashtra", "level": "STATE", "state": "Maharashtra", "district": null },
+  { "name": "Karnataka", "level": "STATE", "state": "Karnataka", "district": null },
+  { "name": "Tamil Nadu", "level": "STATE", "state": "Tamil Nadu", "district": null },
+  { "name": "Uttar Pradesh", "level": "STATE", "state": "Uttar Pradesh", "district": null },
+  { "name": "West Bengal", "level": "STATE", "state": "West Bengal", "district": null },
+  { "name": "Ahmedabad", "level": "CITY", "state": "Gujarat", "district": "Ahmedabad" },
+  { "name": "Mumbai", "level": "CITY", "state": "Maharashtra", "district": "Mumbai City" },
+  { "name": "Bengaluru", "level": "CITY", "state": "Karnataka", "district": "Bengaluru Urban" }
+]

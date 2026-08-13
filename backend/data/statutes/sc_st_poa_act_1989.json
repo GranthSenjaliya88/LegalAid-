@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989",
+    "short_name": "SC/ST PoA Act 1989",
+    "year": 1989,
+    "domain": "sc_st_protection",
+    "jurisdiction": "India",
+    "source_name": "Ministry of Social Justice and Empowerment / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1921",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1921",
+    "source_authority": "Ministry of Social Justice and Empowerment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1990-01-30",
+    "status": "CURRENT",
+    "description": "An Act to prevent the commission of offences of atrocities against the members of the Scheduled Castes and the Scheduled Tribes.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "3",
+      "title": "Punishment for Offences of Atrocities",
+      "chapter": "Chapter II - Offences of Atrocities",
+      "text": "(1) Whoever, not being a member of a Scheduled Caste or a Scheduled Tribe,— (r) intentionally insults or intimidates with intent to humiliate a member of a Scheduled Caste or a Scheduled Tribe in any place within public view; (s) abuses any member of a Scheduled Caste or a Scheduled Tribe by caste name in any place within public view, shall be punishable with imprisonment for a term which shall not be less than six months but which may extend to five years and with fine.",
+      "plain_language_summary": "Intentionally insulting, abusing, or intimidating a member of SC/ST in public view by caste name is a non-bailable offence punishable by up to 5 years imprisonment.",
+      "domain": "sc_st_protection",
+      "subdomain": "atrocities_prevention",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "1990-01-30",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1921",
+      "source_authority": "Ministry of Social Justice and Empowerment",
+      "keywords": ["SC ST Act", "atrocities prevention", "caste abuse", "public view insult", "5 years imprisonment"],
+      "synonyms": ["caste slur", "sc st case", "caste discrimination"]
+    }
+  ]
+}

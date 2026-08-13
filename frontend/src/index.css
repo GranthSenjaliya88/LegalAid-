@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ *
+ * LegalAId — minimal global stylesheet.
+ * Only browser reset, base typography, accessibility and reduced-motion
+ * live here. All component styling is done with Tailwind utilities.
+ * ------------------------------------------------------------------ */
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --ring: 18 63 63; /* teal, for focus rings */
+  }
+
+  * {
+    border-color: theme("colors.hairline");
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, calm keyboard focus everywhere. */
+  :focus-visible {
+    outline: 2px solid theme("colors.teal.DEFAULT");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Devanagari content gets the Noto stack for correct shaping. */
+  [lang="hi"],
+  .font-deva {
+    font-family: theme("fontFamily.deva");
+  }
+
+  /* Nicer selection colour. */
+  ::selection {
+    background: theme("colors.gold.soft");
+    color: theme("colors.ink");
+  }
+}
+
+@layer utilities {
+  /* Text gradient reserved for the single hero highlight word. */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+}
+
+/* Respect the user's motion preference across the whole app. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Thin, calm scrollbars. */
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.hairline") transparent;
+  }
+}

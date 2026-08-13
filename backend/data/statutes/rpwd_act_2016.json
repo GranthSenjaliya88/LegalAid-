@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Rights of Persons with Disabilities Act, 2016",
+    "short_name": "RPwD Act 2016",
+    "year": 2016,
+    "domain": "disability_rights",
+    "jurisdiction": "India",
+    "source_name": "Ministry of Social Justice and Empowerment / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/15931",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15931",
+    "source_authority": "Ministry of Social Justice and Empowerment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2017-04-19",
+    "status": "CURRENT",
+    "description": "An Act to give effect to the United Nations Convention on the Rights of Persons with Disabilities and for matters connected therewith or incidental thereto.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "3",
+      "title": "Equality and Non-discrimination for Persons with Disabilities",
+      "chapter": "Chapter II - Rights and Entitlements",
+      "text": "(1) The appropriate Government shall ensure that the persons with disabilities enjoy the right to equality, life with dignity and respect for his or her integrity equally with others.\n(2) The appropriate Government shall take steps to utilise the capacity of persons with disabilities by providing appropriate environment.\n(3) No person with disability shall be discriminated on the ground of disability, unless it is shown that the impugned act or omission is a proportionate means of achieving a legitimate aim.",
+      "plain_language_summary": "Persons with disabilities are entitled to equal rights, non-discrimination in employment and education, and reasonable accommodations.",
+      "domain": "disability_rights",
+      "subdomain": "non_discrimination",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2017-04-19",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15931",
+      "source_authority": "Ministry of Social Justice and Empowerment",
+      "keywords": ["disability rights", "RPwD Act", "non-discrimination", "reasonable accommodation", "equal opportunity"],
+      "synonyms": ["handicap rights", "disability discrimination", "pwd rights"]
+    }
+  ]
+}

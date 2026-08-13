@@ -1,0 +1,65 @@
+[
+  {
+    "historical_act": "Indian Penal Code, 1860",
+    "historical_section": "Section 420",
+    "current_act": "Bharatiya Nyaya Sanhita, 2023",
+    "current_section": "Section 318(4)",
+    "mapping_type": "REPLACED",
+    "effective_date": "2024-07-01",
+    "notes": "Cheating and dishonestly inducing delivery of property"
+  },
+  {
+    "historical_act": "Indian Penal Code, 1860",
+    "historical_section": "Section 302",
+    "current_act": "Bharatiya Nyaya Sanhita, 2023",
+    "current_section": "Section 103",
+    "mapping_type": "REPLACED",
+    "effective_date": "2024-07-01",
+    "notes": "Punishment for murder"
+  },
+  {
+    "historical_act": "Indian Penal Code, 1860",
+    "historical_section": "Section 376",
+    "current_act": "Bharatiya Nyaya Sanhita, 2023",
+    "current_section": "Section 64",
+    "mapping_type": "REPLACED",
+    "effective_date": "2024-07-01",
+    "notes": "Punishment for rape"
+  },
+  {
+    "historical_act": "Code of Criminal Procedure, 1973",
+    "historical_section": "Section 154",
+    "current_act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "current_section": "Section 173",
+    "mapping_type": "REPLACED",
+    "effective_date": "2024-07-01",
+    "notes": "Information in cognizable cases (First Information Report / FIR)"
+  },
+  {
+    "historical_act": "Indian Evidence Act, 1872",
+    "historical_section": "Section 65B",
+    "current_act": "Bharatiya Sakshya Adhiniyam, 2023",
+    "current_section": "Section 63",
+    "mapping_type": "REPLACED",
+    "effective_date": "2024-07-01",
+    "notes": "Admissibility of electronic records"
+  },
+  {
+    "historical_act": "Consumer Protection Act, 1986",
+    "historical_section": "Section 14",
+    "current_act": "Consumer Protection Act, 2019",
+    "current_section": "Section 39",
+    "mapping_type": "REPLACED",
+    "effective_date": "2020-07-20",
+    "notes": "Findings and remedies by Consumer Commission"
+  },
+  {
+    "historical_act": "Payment of Wages Act, 1936",
+    "historical_section": "Section 15",
+    "current_act": "Code on Wages, 2019",
+    "current_section": "Section 45",
+    "mapping_type": "SUBSUMED",
+    "effective_date": "2020-08-08",
+    "notes": "Claims arising out of deductions from wages or delay in payment"
+  }
+]

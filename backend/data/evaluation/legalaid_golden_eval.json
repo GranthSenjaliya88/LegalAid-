@@ -1,0 +1,97 @@
+[
+  {
+    "case_id": "GOLD-001",
+    "query": "My landlord in Delhi is withholding my security deposit after tenancy expiry",
+    "language": "en",
+    "domain": "tenant",
+    "subdomain": "security_deposit",
+    "state": "Delhi",
+    "city": "Delhi",
+    "incident_date": "2026-01-15",
+    "expected_sources": [
+      {
+        "source_authority": "India Code / Ministry of Housing and Urban Affairs",
+        "act_short_name": "Model Tenancy Act, 2021",
+        "section_number": "13",
+        "expected_status": "CURRENT"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "case_id": "GOLD-002",
+    "query": "Employer has not paid salary for 2 months in Bangalore",
+    "language": "en",
+    "domain": "labor",
+    "subdomain": "unpaid_wages",
+    "state": "Karnataka",
+    "city": "Bengaluru",
+    "incident_date": "2026-02-01",
+    "expected_sources": [
+      {
+        "source_authority": "Ministry of Labour and Employment",
+        "act_short_name": "Code on Wages, 2019",
+        "section_number": "17",
+        "expected_status": "CURRENT"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "case_id": "GOLD-003",
+    "query": "Phone kharab hai aur seller replacement nahi de raha hai",
+    "language": "hinglish",
+    "domain": "consumer",
+    "subdomain": "defective_product",
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "incident_date": "2026-03-10",
+    "expected_sources": [
+      {
+        "source_authority": "Ministry of Consumer Affairs",
+        "act_short_name": "Consumer Protection Act, 2019",
+        "section_number": "2(7)",
+        "expected_status": "CURRENT"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "case_id": "GOLD-004",
+    "query": "Unauthorized bank transaction of 50000 rupees reported within 24 hours",
+    "language": "en",
+    "domain": "banking",
+    "subdomain": "unauthorized_transaction",
+    "state": "Delhi",
+    "city": "Delhi",
+    "incident_date": "2026-04-05",
+    "expected_sources": [
+      {
+        "source_authority": "Reserve Bank of India",
+        "act_short_name": "RBI Customer Liability Guidelines",
+        "section_number": "6",
+        "expected_status": "CURRENT"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "case_id": "GOLD-005",
+    "query": "Domestic violence protection order in Delhi court",
+    "language": "en",
+    "domain": "women",
+    "subdomain": "domestic_violence",
+    "state": "Delhi",
+    "city": "Delhi",
+    "incident_date": "2026-05-12",
+    "expected_sources": [
+      {
+        "source_authority": "India Code",
+        "act_short_name": "Protection of Women from Domestic Violence Act, 2005",
+        "section_number": "18",
+        "expected_status": "CURRENT"
+      }
+    ],
+    "expected_refusal": false
+  }
+]

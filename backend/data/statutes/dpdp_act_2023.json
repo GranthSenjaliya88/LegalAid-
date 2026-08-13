@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Digital Personal Data Protection Act, 2023",
+    "short_name": "DPDP Act 2023",
+    "year": 2023,
+    "domain": "digital_online",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / MeitY",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/19934",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/19934",
+    "source_authority": "Ministry of Electronics and Information Technology (MeitY)",
+    "version": "1.0",
+    "enforcement_date": "2023-08-11",
+    "status": "CURRENT",
+    "description": "An Act to provide for the processing of digital personal data in a manner that recognises both the right of individuals to protect their personal data and the need to process such personal data for lawful purposes.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "6",
+      "title": "Consent for processing personal data",
+      "chapter": "Chapter II - Obligations of Data Fiduciary",
+      "text": "(1) The consent given by the Data Principal shall be free, specific, informed, unconditional and unambiguous with a clear affirmative action, and shall signify an agreement to the processing of her personal data for the specified purpose.\n(2) Any part of consent which constitutes an infringement of the provisions of this Act or any rules made thereunder shall be invalid.",
+      "plain_language_summary": "Companies and apps must get clear, free, and specific consent before processing personal data.",
+      "domain": "digital_online",
+      "subdomain": "data_privacy",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2023-08-11",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/19934",
+      "source_authority": "Ministry of Electronics and IT",
+      "keywords": ["data protection", "personal data", "consent", "privacy", "data fiduciary"],
+      "synonyms": ["privacy leak", "data leak", "unauthorized data collection"]
+    }
+  ]
+}

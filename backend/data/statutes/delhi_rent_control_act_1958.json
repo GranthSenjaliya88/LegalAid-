@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Delhi Rent Control Act, 1958",
+    "short_name": "DRCA 1958",
+    "year": 1958,
+    "domain": "tenant",
+    "jurisdiction": "State",
+    "source_name": "Delhi Legislative Assembly / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/13898",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/13898",
+    "source_authority": "Government of NCT of Delhi",
+    "version": "1.0",
+    "enforcement_date": "1959-02-09",
+    "status": "CURRENT",
+    "description": "State Act governing rent control, eviction protection, and tenancy in National Capital Territory of Delhi.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "14",
+      "title": "Protection of Tenant Against Eviction in Delhi",
+      "chapter": "Chapter III - Control of Eviction of Tenants",
+      "text": "(1) Notwithstanding anything to the contrary contained in any other law or contract, no order or decree for the recovery of possession of any premises shall be made by any court or Controller in favour of the landlord against a tenant:\nProvided that the Controller may, on an application made to him in the prescribed manner, make an order for the recovery of the possession of the premises on one or more specified grounds, such as non-payment of rent despite notice.",
+      "plain_language_summary": "In Delhi, landlords cannot evict tenants without obtaining an order from the Rent Controller after serving written notice.",
+      "domain": "tenant",
+      "subdomain": "eviction",
+      "jurisdiction": "State",
+      "state": "Delhi",
+      "effective_from": "1959-02-09",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/13898",
+      "source_authority": "Government of NCT of Delhi",
+      "keywords": ["Delhi tenancy", "Delhi Rent Controller", "eviction protection", "Delhi landlord tenant", "notice pay"],
+      "synonyms": ["delhi landlord dispute", "delhi rent case", "delhi tenant rights", "delhi deposit"]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "act": {
+    "name": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "short_name": "BNSS 2023",
+    "year": 2023,
+    "domain": "procedural",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2024-07-01",
+    "status": "CURRENT",
+    "supersedes": "Code of Criminal Procedure, 1973 (CrPC)",
+    "description": "The primary criminal procedure code of India. Replaced the Code of Criminal Procedure, 1973 on 1 July 2024.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "173",
+      "title": "Information in cognizable cases (Zero FIR and FIR Filing)",
+      "chapter": "Chapter XIV - Information to the Police and Their Powers to Investigate",
+      "text": "(1) Every information relating to the commission of a cognizable offence, if given orally to an officer in charge of a police station, shall be reduced to writing by him or under his direction... Provided that information relating to the commission of a cognizable offence may be given irrespective of the area where the offence was committed (Zero FIR), and such information shall be recorded and transferred to the police station having jurisdiction.\n(2) A copy of the information as recorded under sub-section (1) shall be given forthwith, free of cost, to the informant or the victim.\n(4) Any person aggrieved by a refusal on the part of an officer in charge of a police station to record the information may send the substance of such information in writing and by post to the Superintendent of Police concerned.",
+      "plain_language_summary": "Police must record information regarding cognizable offences (FIR), provide a free copy to the complainant, and accept Zero FIR regardless of territorial jurisdiction.",
+      "domain": "procedural",
+      "subdomain": "police_complaint",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2024-07-01",
+      "status": "CURRENT",
+      "historical_reference": "CrPC Section 154",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["FIR", "Zero FIR", "cognizable offence", "police report", "free copy", "superintendent of police"],
+      "synonyms": ["first information report", "police complaint", "thana report", "fir copy"]
+    },
+    {
+      "section_number": "175",
+      "title": "Police officer's power to investigate cognizable case",
+      "chapter": "Chapter XIV - Information to the Police and Their Powers to Investigate",
+      "text": "(1) Any officer in charge of a police station may, without the order of a Magistrate, investigate any cognizable case which a Court having jurisdiction over the local area within the limits of such station would have power to inquire into or try under the provisions of Chapter XIV.\n(3) Any person aggrieved by non-registration of FIR under Section 173 may apply to the Magistrate for direction to investigate.",
+      "plain_language_summary": "Police have authority to investigate cognizable offences without a Magistrate order, and citizens can approach a Magistrate if police refuse to investigate.",
+      "domain": "procedural",
+      "subdomain": "investigation",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2024-07-01",
+      "status": "CURRENT",
+      "historical_reference": "CrPC Section 156",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["investigation", "magistrate direction", "police power", "cognizable case"],
+      "synonyms": ["police investigation", "magistrate complaint", "156(3) application"]
+    }
+  ]
+}

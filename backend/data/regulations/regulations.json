@@ -1,0 +1,24 @@
+[
+  {
+    "rule_number": "Rule 4",
+    "title": "Consumer Protection (E-Commerce) Rules, 2020 - Mandatory Grievance Officer Appointment",
+    "text": "Every e-commerce entity shall appoint a Grievance Officer for consumer grievance redressal and display his name, designation and contact details prominently on its platform.",
+    "domain": "consumer",
+    "jurisdiction": "India",
+    "source_url": "https://consumeraffairs.nic.in",
+    "source_authority": "Ministry of Consumer Affairs",
+    "effective_from": "2020-07-23",
+    "status": "CURRENT"
+  },
+  {
+    "rule_number": "Rule 13",
+    "title": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
+    "text": "Intermediaries shall acknowledge consumer complaints within 24 hours and resolve them within 15 days of receipt.",
+    "domain": "cyber",
+    "jurisdiction": "India",
+    "source_url": "https://meity.gov.in",
+    "source_authority": "Ministry of Electronics and Information Technology",
+    "effective_from": "2021-02-25",
+    "status": "CURRENT"
+  }
+]

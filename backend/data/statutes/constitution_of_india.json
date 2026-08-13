@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Constitution of India",
+    "short_name": "Constitution of India",
+    "year": 1950,
+    "domain": "constitutional",
+    "jurisdiction": "India",
+    "source_name": "Legislative Department, Ministry of Law and Justice",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2258",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2258",
+    "source_authority": "Government of India",
+    "version": "1.0",
+    "enforcement_date": "1950-01-26",
+    "status": "CURRENT",
+    "description": "The supreme law of India establishing fundamental rights, directive principles, and government structure.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "21",
+      "title": "Protection of life and personal liberty",
+      "chapter": "Part III - Fundamental Rights",
+      "text": "No person shall be deprived of his life or personal liberty except according to procedure established by law.",
+      "plain_language_summary": "Guarantees the fundamental right to life, personal liberty, privacy, dignity, and livelihood to every person in India.",
+      "domain": "constitutional",
+      "subdomain": "fundamental_rights",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "1950-01-26",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2258",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["Article 21", "fundamental right", "personal liberty", "right to life", "privacy", "dignity"],
+      "synonyms": ["moulik adhikar", "fundamental rights", "article 21 liberty"]
+    }
+  ]
+}

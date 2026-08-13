@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Reserve Bank - Integrated Ombudsman Scheme, 2021",
+    "short_name": "RBI Ombudsman 2021",
+    "year": 2021,
+    "domain": "banking",
+    "jurisdiction": "India",
+    "source_name": "Reserve Bank of India Official Portal",
+    "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasCirculardetails.aspx?id=12192",
+    "official_source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasCirculardetails.aspx?id=12192",
+    "source_authority": "Reserve Bank of India (RBI)",
+    "version": "1.0",
+    "enforcement_date": "2021-11-12",
+    "status": "CURRENT",
+    "description": "Integrated scheme by Reserve Bank of India providing free, single-window redressal for grievances against RBI regulated entities including banks, NBFCs, and payment system providers.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "10",
+      "title": "Grounds of Complaint for Banking and Cyber Transaction Disputes",
+      "chapter": "Chapter III - Procedure for Redressal of Grievance",
+      "text": "Any customer aggrieved by an act or omission of a Regulated Entity (bank, NBFC, payment gateway) resulting in deficiency in service, including unauthorized electronic funds transfer, non-reversal of failed ATM/UPI transactions within specified turnaround time, or unauthorized charges, may file a complaint before the RBI Ombudsman.",
+      "plain_language_summary": "Bank customers can file free complaints with the RBI Ombudsman at cms.rbi.org.in for unauthorized account deductions, failed UPI transactions, or bank negligence.",
+      "domain": "banking",
+      "subdomain": "unauthorized_transaction",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2021-11-12",
+      "status": "CURRENT",
+      "official_source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasCirculardetails.aspx?id=12192",
+      "source_authority": "Reserve Bank of India",
+      "keywords": ["RBI Ombudsman", "unauthorized transaction", "bank complaint", "UPI failed refund", "banking grievance", "zero liability"],
+      "synonyms": ["bank ne paise kaat liye", "unauthorized bank transfer", "rbi complaint portal", "cms.rbi.org.in"]
+    }
+  ]
+}

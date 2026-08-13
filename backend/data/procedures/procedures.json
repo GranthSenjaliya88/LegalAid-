@@ -1,0 +1,90 @@
+[
+  {
+    "domain": "tenant",
+    "subdomain": "security_deposit",
+    "problem_title": "Landlord withholding security deposit after tenancy expiry",
+    "right_summary": "Tenant has statutory right to complete refund of security deposit within 30 days of vacating after reasonable deduction for verified actual damages under Tenancy Act.",
+    "authority_name": "State Rent Authority & District Civil Court",
+    "procedure_steps_json": [
+      "1. Issue formal written Legal Notice via Registered Post AD / Email demanding deposit refund within 15 days.",
+      "2. Preserve rent agreement, rent payment UPI receipts, move-out photos, and handover acknowledgement.",
+      "3. If unpaid after notice expiry, file an online grievance with the local Rent Authority or file a Summary Suit before the Civil Court."
+    ],
+    "required_documents_json": [
+      "Original Rent Agreement",
+      "Rent Payment Receipts / UPI Bank Transfer Statement",
+      "Notice sent to Landlord & Postal Tracking Receipt",
+      "Move-out inspection photos/videos"
+    ],
+    "official_portal_url": "https://mohua.gov.in",
+    "follow_up_timeline": "15-30 days for legal notice response",
+    "source_url": "https://indiacode.nic.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "domain": "labor",
+    "subdomain": "unpaid_wages",
+    "problem_title": "Employer non-payment or delayed payment of monthly salary",
+    "right_summary": "Under Code on Wages 2019 / Payment of Wages Act, wages must be paid before 7th/10th day of the succeeding month. Non-payment attracts recovery proceedings plus compensation.",
+    "authority_name": "Labour Conciliation Officer & SAMADHAN Portal",
+    "procedure_steps_json": [
+      "1. Send a formal demand letter via email to HR / Employer requesting immediate disbursement of pending wages within 7 days.",
+      "2. Register an online grievance on the SAMADHAN portal (samadhan.labour.gov.in).",
+      "3. Attend conciliation meeting convened by the Labour Officer for recovery order."
+    ],
+    "required_documents_json": [
+      "Offer Letter / Employment Contract",
+      "Pay Slips / Bank Statement showing salary credits stopping",
+      "Attendance records / email threads regarding salary demand",
+      "ID Proof (Aadhaar/PAN)"
+    ],
+    "official_portal_url": "https://samadhan.labour.gov.in",
+    "follow_up_timeline": "7-14 days for conciliation notice",
+    "source_url": "https://labour.gov.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "domain": "cyber",
+    "subdomain": "financial_fraud",
+    "problem_title": "Unauthorized bank account or credit card debit transaction",
+    "right_summary": "Under RBI Customer Liability Guidelines, reporting unauthorized transactions within 3 days ensures zero liability for the account holder.",
+    "authority_name": "National Cyber Crime Reporting Portal & Bank Nodal Officer",
+    "procedure_steps_json": [
+      "1. Call 1930 immediately (golden hour) to alert Cyber Financial Fraud unit and freeze fraudulent recipient account.",
+      "2. Block debit/credit card immediately via bank banking app or toll-free hotline.",
+      "3. Lodge formal complaint on cybercrime.gov.in and submit copy to home bank branch within 72 hours."
+    ],
+    "required_documents_json": [
+      "Bank Account Statement showing unauthorized debit",
+      "SMS Alert timestamp screenshots",
+      "Cyber Crime Complaint Acknowledgement Copy",
+      "ID Proof"
+    ],
+    "official_portal_url": "https://cybercrime.gov.in",
+    "follow_up_timeline": "72 hours for zero liability protection; 30 days for RBI Ombudsman escalation",
+    "source_url": "https://rbi.org.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "domain": "consumer",
+    "subdomain": "defective_product",
+    "problem_title": "Seller refusing refund/replacement for defective product or service",
+    "right_summary": "Consumer Protection Act 2019 guarantees rights against unfair trade practices and product liability claims.",
+    "authority_name": "National Consumer Helpline & e-Daakhil Commission",
+    "procedure_steps_json": [
+      "1. File a complaint on National Consumer Helpline (NCH) app / site (consumerhelpline.gov.in) or call 1915.",
+      "2. Send written notice to manufacturer/seller requesting replacement or full refund within 15 days.",
+      "3. If unresolved, file an e-complaint on e-Daakhil (edaakhil.nic.in) before District Consumer Commission."
+    ],
+    "required_documents_json": [
+      "Purchase Invoice / Tax Bill",
+      "Warranty Card",
+      "Photos/videos of defect",
+      "Email communication with seller"
+    ],
+    "official_portal_url": "https://edaakhil.nic.in",
+    "follow_up_timeline": "15 days for merchant reply; 21 days for Consumer Court admission",
+    "source_url": "https://consumeraffairs.nic.in",
+    "verification_status": "VERIFIED"
+  }
+]

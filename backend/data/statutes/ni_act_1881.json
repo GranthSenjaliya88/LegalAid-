@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Negotiable Instruments Act, 1881",
+    "short_name": "NI Act 1881",
+    "year": 1881,
+    "domain": "banking",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2193",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2193",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1882-03-01",
+    "status": "CURRENT",
+    "description": "An Act to define and amend the law relating to Promissory Notes, Bills of Exchange and Cheques.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "138",
+      "title": "Dishonour of cheque for insufficiency, etc., of funds in the account",
+      "chapter": "Chapter XVII - Of Penalties in Case of Dishonour of Certain Cheques for Insufficiency of Funds",
+      "text": "Where any cheque drawn by a person on an account maintained by him with a banker for payment of any amount of money to another person from out of that account for the discharge, in whole or in part, of any debt or other liability, is returned by the bank unpaid, either because of the amount of money standing to the credit of that account is insufficient... such person shall be deemed to have committed an offence and shall be punished with imprisonment for a term which may extend to two years, or with fine which may extend to twice the amount of the cheque, or with both:\nProvided that the payee makes a demand for payment by giving a notice in writing to the drawer within thirty days of the receipt of information from the bank regarding the return of the cheque.",
+      "plain_language_summary": "Cheque bounce for insufficient funds is an offence punishable by up to 2 years imprisonment or fine up to twice the cheque amount. Written notice must be sent within 30 days of bounce.",
+      "domain": "banking",
+      "subdomain": "cheque_bounce",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "1882-03-01",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2193",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["cheque bounce", "dishonour of cheque", "30 days notice", "insufficient funds", "twice the amount fine", "138 notice"],
+      "synonyms": ["cheque dishonour", "bounced cheque", "138 NI Act notice", "cheque bounce case"]
+    }
+  ]
+}

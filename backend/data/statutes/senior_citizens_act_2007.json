@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Maintenance and Welfare of Parents and Senior Citizens Act, 2007",
+    "short_name": "Senior Citizens Act 2007",
+    "year": 2007,
+    "domain": "senior_citizens",
+    "jurisdiction": "India",
+    "source_name": "Ministry of Social Justice and Empowerment / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2034",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2034",
+    "source_authority": "Ministry of Social Justice and Empowerment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2007-12-31",
+    "status": "CURRENT",
+    "description": "An Act to provide for more effective provisions for the maintenance and welfare of parents and senior citizens guaranteed and recognised under the Constitution.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "4",
+      "title": "Maintenance of Parents and Senior Citizens",
+      "chapter": "Chapter II - Maintenance of Parents and Senior Citizens",
+      "text": "(1) A senior citizen including parent who is unable to maintain himself from his own earning or out of the property owned by him, shall be entitled to make an application under section 5 against one or more of his children or relatives.\n(2) The obligation of the children or relative, who has sufficient means, to maintain a senior citizen extends to the needs of such citizen so that senior citizen may lead a normal life.",
+      "plain_language_summary": "Senior citizens and parents who cannot maintain themselves have a legal right to claim maintenance allowance from adult children or relatives before a Maintenance Tribunal.",
+      "domain": "senior_citizens",
+      "subdomain": "maintenance_rights",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2007-12-31",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2034",
+      "source_authority": "Ministry of Social Justice and Empowerment",
+      "keywords": ["senior citizen maintenance", "parent maintenance", "Maintenance Tribunal", "welfare of parents"],
+      "synonyms": ["bujurg kharcha", "parents maintenance", "elder abuse help"]
+    }
+  ]
+}

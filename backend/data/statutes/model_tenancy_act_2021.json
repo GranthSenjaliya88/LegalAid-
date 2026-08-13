@@ -1,0 +1,55 @@
+{
+  "act": {
+    "name": "Model Tenancy Act, 2021",
+    "short_name": "MTA 2021",
+    "year": 2021,
+    "domain": "tenant",
+    "jurisdiction": "India",
+    "source_name": "Ministry of Housing and Urban Affairs / India Code",
+    "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model_Tenancy_Act_English.pdf",
+    "official_source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model_Tenancy_Act_English.pdf",
+    "source_authority": "Ministry of Housing and Urban Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2021-06-02",
+    "status": "CURRENT",
+    "description": "Model framework proposed by Central Govt for States/UTs to regulate rental housing, security deposit limits, and tenant/landlord rights.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "13",
+      "title": "Security Deposit Limits and Refund",
+      "chapter": "Chapter IV - Rights and Obligations of Landlord and Tenant",
+      "text": "(1) The security deposit to be paid by the tenant in advance shall be such as may be agreed upon in the tenancy agreement, but shall not exceed—\n(a) two months' rent, in case of residential premises; and\n(b) six months' rent, in case of non-residential premises.\n(2) The security deposit shall be refunded to the tenant, on the date of taking over vacant possession of the premises from the tenant, after making lawful deductions, if any, of any liability accrued.",
+      "plain_language_summary": "Security deposit for residential premises cannot exceed 2 months rent and must be refunded immediately upon taking possession, minus valid agreed deductions.",
+      "domain": "tenant",
+      "subdomain": "security_deposit",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2021-06-02",
+      "status": "CURRENT",
+      "official_source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model_Tenancy_Act_English.pdf",
+      "source_authority": "Ministry of Housing and Urban Affairs",
+      "keywords": ["security deposit", "2 months rent", "deposit refund", "vacant possession", "lawful deduction", "rental deposit"],
+      "synonyms": ["deposit wapas", "landlord kept deposit", "deposit return", "deposit deduction"]
+    },
+    {
+      "section_number": "21",
+      "title": "Protection Against Arbitrary Eviction",
+      "chapter": "Chapter V - Repossession of Premises by Landlord",
+      "text": "No landlord shall evict any tenant during the period of tenancy except by applying to the Rent Authority in the prescribed manner and on specified grounds such as non-payment of rent for consecutive months or misuse of premises.",
+      "plain_language_summary": "Landlord cannot forcibly evict a tenant without obtaining an official order from the Rent Authority on valid statutory grounds.",
+      "domain": "tenant",
+      "subdomain": "eviction",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2021-06-02",
+      "status": "CURRENT",
+      "official_source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model_Tenancy_Act_English.pdf",
+      "source_authority": "Ministry of Housing and Urban Affairs",
+      "keywords": ["eviction", "forced eviction", "rent authority", "unlawful eviction", "tenant protection"],
+      "synonyms": ["ghar se nikalna", "illegal eviction", "forced out of house", "immediate eviction"]
+    }
+  ]
+}

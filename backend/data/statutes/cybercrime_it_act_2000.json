@@ -1,0 +1,55 @@
+{
+  "act": {
+    "name": "Information Technology Act, 2000",
+    "short_name": "IT Act 2000",
+    "year": 2000,
+    "domain": "cyber",
+    "jurisdiction": "India",
+    "source_name": "Ministry of Electronics and Information Technology / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1999",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1999",
+    "source_authority": "Ministry of Electronics and IT (MeitY), Government of India",
+    "version": "1.0",
+    "enforcement_date": "2000-10-17",
+    "status": "CURRENT",
+    "description": "Primary law in India dealing with cybercrime, e-commerce, digital signatures, and unauthorized access to computer systems.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "66C",
+      "title": "Punishment for identity theft",
+      "chapter": "Chapter XI - Offences",
+      "text": "Whoever, fraudulently or dishonestly make use of the electronic signature, password or any other unique identification feature of any other person, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to one lakh rupees.",
+      "plain_language_summary": "Fraudulent use of another person's password, OTP, signature, or online identity is identity theft, punishable by up to 3 years imprisonment.",
+      "domain": "cyber",
+      "subdomain": "identity_theft",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2009-10-27",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1999",
+      "source_authority": "Ministry of Electronics and IT",
+      "keywords": ["identity theft", "password theft", "OTP fraud", "electronic signature", "3 years imprisonment"],
+      "synonyms": ["otp fraud", "fake profile", "stolen password", "hacked account"]
+    },
+    {
+      "section_number": "66D",
+      "title": "Punishment for cheating by personation by using computer resource",
+      "chapter": "Chapter XI - Offences",
+      "text": "Whoever, by means of any communication device or computer resource cheats by personation, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to one lakh rupees.",
+      "plain_language_summary": "Online financial scams, phishing, fake website fraud, and unauthorized digital fund transfers are punishable by up to 3 years imprisonment.",
+      "domain": "cyber",
+      "subdomain": "cyber_fraud",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2009-10-27",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1999",
+      "source_authority": "Ministry of Electronics and IT",
+      "keywords": ["cyber fraud", "online scam", "phishing", "unauthorized transfer", "computer resource", "bank fraud"],
+      "synonyms": ["online paise kat gaye", "unauthorized transaction", "cyber crime complaint", "1930 portal"]
+    }
+  ]
+}

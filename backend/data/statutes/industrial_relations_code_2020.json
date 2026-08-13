@@ -1,0 +1,40 @@
+{
+  "act": {
+    "name": "Industrial Relations Code, 2020",
+    "short_name": "IR Code 2020",
+    "year": 2020,
+    "domain": "labor",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/15562",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15562",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2020-09-29",
+    "status": "CURRENT",
+    "supersedes": "Industrial Disputes Act, 1947 / Trade Unions Act, 1926",
+    "description": "An Act to consolidate and amend the laws relating to Trade Unions, conditions of employment in industrial establishment or undertaking, investigation and settlement of industrial disputes.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "70",
+      "title": "Conditions precedent to retrenchment of worker",
+      "chapter": "Chapter IX - Special Provisions Relating to Lay-off, Retrenchment and Closure",
+      "text": "(1) No worker employed in any industrial establishment who has been in continuous service for not less than one year under an employer shall be retrenched by that employer until—\n(a) the worker has been given one month's notice in writing indicating the reasons for retrenchment and the period of notice has expired, or the worker has been paid in lieu of such notice, wages for the period of the notice;\n(b) the worker has been paid at the time of retrenchment, compensation which shall be equivalent to fifteen days' average pay for every completed year of continuous service.",
+      "plain_language_summary": "Retrenching a worker requires 1 month written notice (or 1 month salary in lieu of notice) plus retrenchment compensation equal to 15 days salary per completed year of service.",
+      "domain": "labor",
+      "subdomain": "retrenchment",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2020-09-29",
+      "status": "CURRENT",
+      "historical_reference": "Industrial Disputes Act 1947 Section 25F",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15562",
+      "source_authority": "Ministry of Labour and Employment",
+      "keywords": ["retrenchment", "severance pay", "1 month notice", "notice pay", "15 days average pay", "wrongful termination"],
+      "synonyms": ["n नौकरी से निकाला", "layoff pay", "job termination compensation", "fired without notice"]
+    }
+  ]
+}

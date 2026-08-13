@@ -1,0 +1,40 @@
+{
+  "act": {
+    "name": "Bharatiya Sakshya Adhiniyam, 2023",
+    "short_name": "BSA 2023",
+    "year": 2023,
+    "domain": "evidence",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/20064",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20064",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2024-07-01",
+    "status": "CURRENT",
+    "supersedes": "Indian Evidence Act, 1872",
+    "description": "The law of evidence in India. Replaced the Indian Evidence Act, 1872 on 1 July 2024.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "63",
+      "title": "Admissibility of electronic records",
+      "chapter": "Chapter V - Of Oral and Documented Evidence",
+      "text": "(1) Notwithstanding anything contained in this Adhiniyam, any information contained in an electronic record which is printed on a paper, stored, recorded or copied in optical or magnetic media or produced by a computer... shall be deemed to be also a document... and shall be admissible in any proceedings, without further proof or production of the original.\n(4) In any proceedings where it is desired to give a statement in evidence by virtue of this section, a certificate doing any of the following things shall be produced, namely: identifying the electronic record containing the statement... signed by a person occupying a responsible official position.",
+      "plain_language_summary": "Electronic records, emails, WhatsApp chats, and digital receipts are admissible as evidence in court when accompanied by an electronic certificate.",
+      "domain": "evidence",
+      "subdomain": "digital_evidence",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2024-07-01",
+      "status": "CURRENT",
+      "historical_reference": "Indian Evidence Act Section 65B",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20064",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["electronic record", "digital evidence", "WhatsApp chat", "65B certificate", "admissibility", "computer output"],
+      "synonyms": ["chat proof", "digital proof", "electronic certificate", "screenshot evidence"]
+    }
+  ]
+}

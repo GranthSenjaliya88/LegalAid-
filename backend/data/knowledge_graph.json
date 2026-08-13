@@ -1,0 +1,56 @@
+[
+  {
+    "source_type": "SECTION",
+    "source_id": "bns_2023_318",
+    "target_type": "SECTION",
+    "target_id": "ipc_1860_420",
+    "relation_type": "SUPERSEDES",
+    "description": "BNS Section 318 supersedes IPC Section 420 for cheating offenses committed post July 1, 2024.",
+    "source_url": "https://indiacode.nic.in"
+  },
+  {
+    "source_type": "SECTION",
+    "source_id": "bns_2023_303",
+    "target_type": "SECTION",
+    "target_id": "ipc_1860_379",
+    "relation_type": "SUPERSEDES",
+    "description": "BNS Section 303 supersedes IPC Section 379 for theft offenses committed post July 1, 2024.",
+    "source_url": "https://indiacode.nic.in"
+  },
+  {
+    "source_type": "SECTION",
+    "source_id": "bnss_2023_173",
+    "target_type": "SECTION",
+    "target_id": "crpc_1973_154",
+    "relation_type": "CORRESPONDS_TO",
+    "description": "BNSS Section 173 corresponds to CrPC Section 154 for FIR registration and Zero FIR.",
+    "source_url": "https://indiacode.nic.in"
+  },
+  {
+    "source_type": "SECTION",
+    "source_id": "bsa_2023_63",
+    "target_type": "SECTION",
+    "target_id": "iea_1872_65b",
+    "relation_type": "CORRESPONDS_TO",
+    "description": "BSA Section 63 corresponds to Indian Evidence Act Section 65B for electronic record certificate.",
+    "source_url": "https://indiacode.nic.in"
+  },
+  {
+    "source_type": "SECTION",
+    "source_id": "cpa_2019_35",
+    "target_type": "SECTION",
+    "target_id": "cpa_2019_39",
+    "relation_type": "REMEDY",
+    "description": "Section 39 defines relief and remedies awarded upon filing a consumer complaint under Section 35.",
+    "source_url": "https://consumeraffairs.nic.in"
+  },
+  {
+    "source_type": "SECTION",
+    "source_id": "code_on_wages_2019_17",
+    "target_type": "SECTION",
+    "target_id": "payment_of_wages_1836_5",
+    "relation_type": "SUPERSEDES",
+    "description": "Code on Wages Section 17 supersedes Payment of Wages Act Section 5 regarding wage payment deadlines.",
+    "source_url": "https://labour.gov.in"
+  }
+]

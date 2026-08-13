@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Karnataka Rent Act, 1999",
+    "short_name": "KRA 1999",
+    "year": 1999,
+    "domain": "tenant",
+    "jurisdiction": "State",
+    "source_name": "Karnataka Parliamentary Affairs & Legislation Department",
+    "source_url": "https://dpal.karnataka.gov.in/storage/pdf-files/34%20of%202001(E).pdf",
+    "official_source_url": "https://dpal.karnataka.gov.in/storage/pdf-files/34%20of%202001(E).pdf",
+    "source_authority": "Government of Karnataka",
+    "version": "1.0",
+    "enforcement_date": "2001-12-31",
+    "status": "CURRENT",
+    "description": "State Act regulating rent and eviction of tenants in urban areas of Karnataka (Bengaluru, Mysuru, Mangaluru, etc.).",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "27",
+      "title": "Protection of tenant against eviction in Karnataka",
+      "chapter": "Chapter V - Control of Eviction of Tenants",
+      "text": "(1) Protection of tenant against eviction.— No order or decree for the recovery of possession of any premises shall be made by any court or Rent Controller in favour of the landlord against a tenant except on an application made to the Court on specific statutory grounds.",
+      "plain_language_summary": "In Karnataka (Bengaluru), landlords must follow Rent Court procedures and cannot forcefully evict tenants or withhold deposit unlawfully.",
+      "domain": "tenant",
+      "subdomain": "eviction",
+      "jurisdiction": "State",
+      "state": "Karnataka",
+      "effective_from": "2001-12-31",
+      "status": "CURRENT",
+      "official_source_url": "https://dpal.karnataka.gov.in/storage/pdf-files/34%20of%202001(E).pdf",
+      "source_authority": "Government of Karnataka",
+      "keywords": ["Karnataka rent act", "Bengaluru tenant", "Rent Controller", "security deposit refund", "eviction"],
+      "synonyms": ["bangalore rent dispute", "bengaluru landlord deposit", "karnataka tenant rights"]
+    }
+  ]
+}

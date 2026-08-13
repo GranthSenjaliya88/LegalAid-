@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Indian Contract Act, 1872",
+    "short_name": "ICA 1872",
+    "year": 1872,
+    "domain": "contract",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2187",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2187",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1872-09-01",
+    "status": "CURRENT",
+    "description": "The foundational law governing contracts, agreements, breach, damages, and contractual obligations in India.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "73",
+      "title": "Compensation for loss or damage caused by breach of contract",
+      "chapter": "Chapter VI - Of the Consequences of Breach of Contract",
+      "text": "When a contract has been broken, the party who suffers by such breach is entitled to receive, from the party who has broken the contract, compensation for any loss or damage caused to him thereby, which naturally arose in the usual course of things from such breach, or which the parties knew, when they made the contract, to be likely to result from the breach of it.",
+      "plain_language_summary": "If one party breaks an agreement (like failing to return a security deposit or failing to deliver services), the suffering party can claim financial compensation.",
+      "domain": "contract",
+      "subdomain": "breach_of_contract",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "1872-09-01",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2187",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["breach of contract", "compensation", "damages", "agreement broken", "contractual loss"],
+      "synonyms": ["agreement meharbani", "agreement toda", "contract breach", "money recovery"]
+    }
+  ]
+}

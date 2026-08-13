@@ -1,0 +1,55 @@
+{
+  "act": {
+    "name": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+    "short_name": "POSH Act 2013",
+    "year": 2013,
+    "domain": "women_rights",
+    "jurisdiction": "India",
+    "source_name": "Ministry of Women and Child Development / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2104",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2104",
+    "source_authority": "Ministry of Women and Child Development, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2013-12-09",
+    "status": "CURRENT",
+    "description": "An Act to provide protection against sexual harassment of women at workplace and for the prevention and redressal of complaints of sexual harassment.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "4",
+      "title": "Constitution of Internal Complaints Committee (ICC)",
+      "chapter": "Chapter II - Internal Complaints Committee",
+      "text": "(1) Every employer of a workplace shall, by an order in writing, constitute a Committee to be known as the 'Internal Complaints Committee': Provided that where the offices or administrative units of the workplace are located at different places, the Internal Committee shall be constituted at all administrative units or offices.",
+      "plain_language_summary": "Every organization with 10 or more employees must set up an Internal Complaints Committee (ICC) to investigate complaints of sexual harassment.",
+      "domain": "women_rights",
+      "subdomain": "workplace_harassment",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2013-12-09",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2104",
+      "source_authority": "Ministry of Women and Child Development",
+      "keywords": ["POSH", "sexual harassment", "Internal Complaints Committee", "ICC", "workplace safety", "women rights"],
+      "synonyms": ["office harassment", "workplace harassment complaint", "posh committee"]
+    },
+    {
+      "section_number": "9",
+      "title": "Complaint of sexual harassment",
+      "chapter": "Chapter IV - Complaint",
+      "text": "(1) Any aggrieved woman may make, in writing, a complaint of sexual harassment at workplace to the Internal Committee if so constituted, or the Local Committee, in case it is not so constituted, within a period of three months from the date of incident.",
+      "plain_language_summary": "An aggrieved woman can file a written harassment complaint with the ICC or Local Committee within 3 months of the incident.",
+      "domain": "women_rights",
+      "subdomain": "workplace_harassment",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2013-12-09",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2104",
+      "source_authority": "Ministry of Women and Child Development",
+      "keywords": ["posh complaint", "3 months limitation", "sexual harassment report", "Local Committee"],
+      "synonyms": ["posh complaint procedure", "office sexual harassment"]
+    }
+  ]
+}

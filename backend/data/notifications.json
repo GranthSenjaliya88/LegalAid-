@@ -1,0 +1,22 @@
+[
+  {
+    "notification_number": "RBI/2017-18/15 DBR.No.Leg.BC.78/09.07.005/2017-18",
+    "title": "Customer Protection – Limiting Liability of Customers in Unauthorized Electronic Banking Transactions",
+    "text": "A customer has zero liability in an unauthorized transaction where the deficiency lies neither with the bank nor with the customer but lies elsewhere in the system and the customer notifies the bank within 3 working days of receiving the communication from the bank.",
+    "issuing_authority": "Reserve Bank of India",
+    "date_issued": "2017-07-06",
+    "domain": "banking",
+    "source_url": "https://rbi.org.in",
+    "status": "CURRENT"
+  },
+  {
+    "notification_number": "SO 2341(E)",
+    "title": "Commencement Notification for Bharatiya Nyaya Sanhita, 2023",
+    "text": "The Central Government appoints 1st day of July 2024 as the date on which provisions of the Bharatiya Nyaya Sanhita 2023 come into force across India.",
+    "issuing_authority": "Ministry of Home Affairs",
+    "date_issued": "2024-02-23",
+    "domain": "criminal",
+    "source_url": "https://mha.gov.in",
+    "status": "CURRENT"
+  }
+]

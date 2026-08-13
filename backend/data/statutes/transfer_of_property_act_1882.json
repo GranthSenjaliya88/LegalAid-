@@ -1,0 +1,38 @@
+{
+  "act": {
+    "name": "Transfer of Property Act, 1882",
+    "short_name": "TPA 1882",
+    "year": 1882,
+    "domain": "property",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2338",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2338",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1882-07-01",
+    "status": "CURRENT",
+    "description": "An Act regulating the transfer of property by act of parties, leases, mortgages, and property transactions.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "108",
+      "title": "Rights and Liabilities of Lessor and Lessee",
+      "chapter": "Chapter V - Of Leases of Immovable Property",
+      "text": "In the absence of a contract or local usage to the contrary, the lessor and lessee of immovable property respectively possess the rights and are subject to the liabilities mentioned... The lessor is bound to disclose to the lessee any material defect in the property... and the lessee is entitled to peaceful enjoyment of the property during the lease period.",
+      "plain_language_summary": "Landlord must disclose material property defects and grant peaceful possession to the tenant. Tenant must pay rent and maintain property.",
+      "domain": "property",
+      "subdomain": "lease_rights",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "1882-07-01",
+      "status": "CURRENT",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2338",
+      "source_authority": "Ministry of Law and Justice",
+      "keywords": ["lease rights", "lessor lessee", "peaceful enjoyment", "property defect", "tenant rights"],
+      "synonyms": ["property lease", "rental property defect", "landlord interference"]
+    }
+  ]
+}

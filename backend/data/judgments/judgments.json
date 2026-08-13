@@ -1,0 +1,35 @@
+[
+  {
+    "case_title": "P. Rathinam v. Union of India",
+    "citation": "(1994) 3 SCC 394",
+    "court": "Supreme Court of India",
+    "year": 1994,
+    "act_short_name": "Constitution of India",
+    "section_number": "21",
+    "ratio_decidendi": "Right to life under Article 21 includes right to live with human dignity and personal liberty.",
+    "domain": "constitutional",
+    "source_url": "https://main.sci.gov.in"
+  },
+  {
+    "case_title": "Arnesh Kumar v. State of Bihar",
+    "citation": "(2014) 8 SCC 273",
+    "court": "Supreme Court of India",
+    "year": 2014,
+    "act_short_name": "BNSS 2023 / CrPC 1973",
+    "section_number": "35 / 41",
+    "ratio_decidendi": "Arrest should not be automatic upon filing of complaint for offenses punishable with imprisonment up to 7 years without satisfying notice requirements.",
+    "domain": "criminal",
+    "source_url": "https://main.sci.gov.in"
+  },
+  {
+    "case_title": "Lucknow Development Authority v. M.K. Gupta",
+    "citation": "1994 AIR 787",
+    "court": "Supreme Court of India",
+    "year": 1994,
+    "act_short_name": "Consumer Protection Act",
+    "section_number": "2",
+    "ratio_decidendi": "Housing construction and statutory body services fall within the definition of service under consumer protection law.",
+    "domain": "consumer",
+    "source_url": "https://main.sci.gov.in"
+  }
+]

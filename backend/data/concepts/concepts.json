@@ -1,0 +1,42 @@
+[
+  {
+    "concept_key": "security_deposit",
+    "domain": "tenant",
+    "english_synonyms": ["security deposit", "rental deposit", "advance deposit", "tenant refund", "deposit refund"],
+    "hindi_synonyms": ["सिक्योरिटी डिपॉजिट", "जमानत राशि", "अग्रिम जमा राशि", "किराया डिपॉजिट", "डिपॉजिट वापसी"],
+    "hinglish_synonyms": ["deposit wapas", "security jama", "deposit nahi diya", "makan malik deposit", "advance wapas", "advance deposit"],
+    "related_acts": ["Model Tenancy Act, 2021", "State Rent Control Acts"]
+  },
+  {
+    "concept_key": "unpaid_salary",
+    "domain": "labor",
+    "english_synonyms": ["unpaid salary", "unpaid wages", "pending salary", "salary non payment", "delayed wages", "gratuity dues"],
+    "hindi_synonyms": ["बकाया वेतन", "तनख्वाह नहीं मिली", "मजदूरी भुगतान", "वेतन बकाया", "सैलरी नहीं दी"],
+    "hinglish_synonyms": ["salary nahi mili", "vetan wapas", "kamai nahi mili", "tankhwah baki", "salary withheld", "boss not paying"],
+    "related_acts": ["Code on Wages, 2019", "Industrial Relations Code, 2020", "Payment of Wages Act, 1936"]
+  },
+  {
+    "concept_key": "cyber_fraud",
+    "domain": "cyber",
+    "english_synonyms": ["cyber fraud", "online fraud", "unauthorized transaction", "bank fraud", "phishing", "otp scam"],
+    "hindi_synonyms": ["साइबर धोखाधड़ी", "ऑनलाइन ठगी", "बैंक फ्रॉड", "ओटीपी स्कैम", "खाते से पैसे कटे"],
+    "hinglish_synonyms": ["bank se paise kat gaye", "online fraud ho gaya", "otp puch kar paise nikale", "cyber fraud", "fake call fraud"],
+    "related_acts": ["Information Technology Act, 2000", "Bharatiya Nyaya Sanhita, 2023", "RBI Ombudsman Scheme"]
+  },
+  {
+    "concept_key": "defective_goods",
+    "domain": "consumer",
+    "english_synonyms": ["defective product", "faulty goods", "e-commerce fraud", "warranty denied", "seller replacement refusal"],
+    "hindi_synonyms": ["खराब सामान", "खराब प्रोडक्ट", "वारंटी इनकार", "सामान वापस नहीं लिया"],
+    "hinglish_synonyms": ["kharab saman", "faulty product refund", "duplicate item", "warranty card not accepted"],
+    "related_acts": ["Consumer Protection Act, 2019"]
+  },
+  {
+    "concept_key": "illegal_eviction",
+    "domain": "tenant",
+    "english_synonyms": ["illegal eviction", "forced eviction", "lockout", "utility disconnection", "harassment by landlord"],
+    "hindi_synonyms": ["अवैध बेदखली", "जबरन मकान खाली कराना", "ताला लगाना", "बिजली पानी काटना"],
+    "hinglish_synonyms": ["makan se nikal diya", "taala laga diya", "bijli pani kaat diya", "landlord forced out"],
+    "related_acts": ["Model Tenancy Act, 2021", "Bharatiya Nyaya Sanhita, 2023"]
+  }
+]

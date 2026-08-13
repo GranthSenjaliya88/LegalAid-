@@ -1,0 +1,58 @@
+{
+  "act": {
+    "name": "Code on Social Security, 2020",
+    "short_name": "Social Security Code 2020",
+    "year": 2020,
+    "domain": "labor",
+    "jurisdiction": "India",
+    "source_name": "Official Gazette of India / India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/15563",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15563",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2020-09-29",
+    "status": "CURRENT",
+    "supersedes": "Payment of Gratuity Act, 1972 / Maternity Benefit Act, 1961 / Employees Provident Funds Act, 1952",
+    "description": "An Act to amend and consolidate the laws relating to social security with the goal to extend social security to all employees and workers.",
+    "last_verified_at": "2026-08-12",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "53",
+      "title": "Payment of Gratuity",
+      "chapter": "Chapter V - Gratuity",
+      "text": "(1) Gratuity shall be payable to an employee on the termination of his employment after he has rendered continuous service for not less than five years— (a) on his superannuation; or (b) on his retirement or resignation; or (c) on his death or disablement.\n(2) For every completed year of service or part thereof in excess of six months, the employer shall pay gratuity to an employee at the rate of fifteen days' wages based on the rate of wages last drawn by the employee.",
+      "plain_language_summary": "Employees completing 5 years of continuous service are entitled to gratuity calculated at 15 days salary per year of service upon resignation or retirement.",
+      "domain": "labor",
+      "subdomain": "gratuity",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2020-09-29",
+      "status": "CURRENT",
+      "historical_reference": "Payment of Gratuity Act 1972 Section 4",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15563",
+      "source_authority": "Ministry of Labour and Employment",
+      "keywords": ["gratuity", "5 years service", "15 days wages", "resignation gratuity", "social security"],
+      "synonyms": ["gratuity money", "5 sal job", "gratuity entitlement"]
+    },
+    {
+      "section_number": "60",
+      "title": "Right to payment of maternity benefit",
+      "chapter": "Chapter VI - Maternity Benefit",
+      "text": "(1) Subject to the provisions of this Code, every woman shall be entitled to, and her employer shall be liable for, the payment of maternity benefit at the rate of the average daily wage for the period of her actual absence.\n(2) The maximum period for which any woman shall be entitled to maternity benefit shall be twenty-six weeks of which not more than eight weeks shall precede the date of her expected delivery.",
+      "plain_language_summary": "Women employees who worked for at least 80 days are entitled to 26 weeks of fully paid maternity leave.",
+      "domain": "labor",
+      "subdomain": "maternity_benefit",
+      "jurisdiction": "India",
+      "state": "All",
+      "effective_from": "2020-09-29",
+      "status": "CURRENT",
+      "historical_reference": "Maternity Benefit Act 1961 Section 5",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15563",
+      "source_authority": "Ministry of Labour and Employment",
+      "keywords": ["maternity leave", "26 weeks paid leave", "maternity benefit", "pregnancy leave", "female employee"],
+      "synonyms": ["maternity pay", "pregnancy benefit", "mother leave"]
+    }
+  ]
+}

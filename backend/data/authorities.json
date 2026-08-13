@@ -1,0 +1,74 @@
+[
+  {
+    "name": "National Consumer Helpline (NCH) & District Consumer Disputes Redressal Commission",
+    "domain": "consumer",
+    "jurisdiction": "India",
+    "purpose": "Adjudication of consumer grievances regarding defective goods, deficient services, and e-commerce unfair trade practices under Consumer Protection Act 2019.",
+    "who_can_use": "Any consumer who buys goods or hires services for personal use.",
+    "helpline": "1915 or 1800-11-4000",
+    "official_portal": "https://consumerhelpline.gov.in",
+    "online_filing_url": "https://edaakhil.nic.in",
+    "source_url": "https://consumeraffairs.nic.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "name": "National Cyber Crime Reporting Portal & Cyber Crime Cell",
+    "domain": "cyber",
+    "jurisdiction": "India",
+    "purpose": "Immediate financial fraud freeze, cyber crime incident reporting, and digital identity theft investigation.",
+    "who_can_use": "Victims of cyber crime, unauthorized online transaction, phishing, or harassment.",
+    "helpline": "1930 (National Cyber Financial Helpline)",
+    "official_portal": "https://cybercrime.gov.in",
+    "online_filing_url": "https://cybercrime.gov.in",
+    "source_url": "https://mha.gov.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "name": "Reserve Bank of India (RBI) Integrated Ombudsman",
+    "domain": "banking",
+    "jurisdiction": "India",
+    "purpose": "Statutory redressal of bank service deficiencies, unauthorized electronic transactions, and credit card disputes under RBI Ombudsman Scheme 2021.",
+    "who_can_use": "Bank account holders, wallet users, and credit card customers.",
+    "helpline": "14448 (Toll Free)",
+    "official_portal": "https://cms.rbi.org.in",
+    "online_filing_url": "https://cms.rbi.org.in",
+    "source_url": "https://rbi.org.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "name": "Office of the Labour Commissioner & SAMADHAN Portal",
+    "domain": "labor",
+    "jurisdiction": "India",
+    "purpose": "Conciliation and recovery of unpaid wages, illegal termination, gratuity denial, and severance disputes under Industrial Disputes Act & Labour Codes.",
+    "who_can_use": "Employees, workmen, contract staff, and commercial establishment workers.",
+    "helpline": "14434 (Ministry of Labour)",
+    "official_portal": "https://samadhan.labour.gov.in",
+    "online_filing_url": "https://samadhan.labour.gov.in",
+    "source_url": "https://labour.gov.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "name": "State Rent Authority & Rent Tribunal",
+    "domain": "tenant",
+    "jurisdiction": "State Level (Gujarat, Maharashtra, Karnataka, Delhi, etc.)",
+    "purpose": "Enforcement of tenancy agreements, security deposit refund orders, and protection against illegal landlord lockout.",
+    "who_can_use": "Tenants and landlords governed by State Rent Control Legislation or Model Tenancy Act.",
+    "helpline": "1800-11-6163",
+    "official_portal": "https://mohua.gov.in",
+    "online_filing_url": "https://mohua.gov.in",
+    "source_url": "https://mohua.gov.in",
+    "verification_status": "VERIFIED"
+  },
+  {
+    "name": "National Commission for Women (NCW) & Local Protection Officer",
+    "domain": "women_rights",
+    "jurisdiction": "India",
+    "purpose": "Emergency safety, domestic violence protection orders, and POSH workplace harassment grievance handling.",
+    "who_can_use": "Women facing domestic abuse, violence, or workplace harassment.",
+    "helpline": "7827170170 (NCW 24x7 Helpline) / 112 (Emergency)",
+    "official_portal": "https://ncw.nic.in",
+    "online_filing_url": "https://ncwapps.nic.in/onlinecomplaintsubmission/",
+    "source_url": "https://wcd.nic.in",
+    "verification_status": "VERIFIED"
+  }
+]
