@@ -338,11 +338,11 @@ def _get_or_create_source(conn: sqlite3.Connection, authority: str, source_type:
     today_str = "2026-08-12"
     cur = conn.execute(
         """
-        INSERT INTO sources (authority, source_type, title, official_url, publication_date, retrieved_at, last_verified_at, content_hash, verification_status, version, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO sources (authority, source_type, title, official_url, jurisdiction, publication_date, retrieved_at, last_verified_at, content_hash, verification_status, version, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
-            authority, source_type, title, url or "", today_str, today_str, today_str,
+            authority, source_type, title, url or "", "INDIA", today_str, today_str, today_str,
             compute_hash(f"{authority}:{title}:{url}"), "VERIFIED", "1.0", "Official Ingestion"
         )
     )

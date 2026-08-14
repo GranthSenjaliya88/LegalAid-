@@ -68,35 +68,37 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
     last_verified_at = act_data.get("last_verified_at", "2026-08-12")
     verification_status = act_data.get("verification_status", "VERIFIED")
 
+    commencement_status = act_data.get("commencement_status", "FULLY_COMMENCED")
+
     if existing_act:
         act_id = existing_act[0]
         if force:
             conn.execute(
                 """
-                UPDATE acts SET name=?, long_title=?, year=?, jurisdiction=?, domain=?, source_name=?, source_url=?,
+                UPDATE acts SET name=?, long_name=?, long_title=?, year=?, jurisdiction=?, domain=?, source_name=?, source_url=?,
                                 official_source_url=?, source_authority=?, version=?, description=?, enforcement_date=?,
-                                status=?, repealed_by=?, supersedes=?, superseded_by=?, last_verified_at=?, verification_status=?
+                                status=?, commencement_status=?, repealed_by=?, supersedes=?, superseded_by=?, last_verified_at=?, verification_status=?
                 WHERE id=?
                 """,
                 (
-                    act_data["name"], long_title, act_data["year"], jurisdiction, act_data["domain"],
+                    act_data["name"], long_title, long_title, act_data["year"], jurisdiction, act_data["domain"],
                     source_name, source_url, official_source_url, source_authority, version, act_data.get("description"),
-                    enforcement_date, act_status, repealed_by, supersedes, superseded_by, last_verified_at, verification_status,
+                    enforcement_date, act_status, commencement_status, repealed_by, supersedes, superseded_by, last_verified_at, verification_status,
                     act_id,
                 ),
             )
     else:
         cur = conn.execute(
             """
-            INSERT INTO acts(name, long_title, short_name, year, jurisdiction, domain, source_name, source_url,
+            INSERT INTO acts(name, long_name, long_title, short_name, year, jurisdiction, domain, source_name, source_url,
                              official_source_url, source_authority, version, description, enforcement_date, status,
-                             repealed_by, supersedes, superseded_by, last_verified_at, verification_status)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                             commencement_status, repealed_by, supersedes, superseded_by, last_verified_at, verification_status)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             """,
             (
-                act_data["name"], long_title, act_data["short_name"], act_data["year"], jurisdiction,
+                act_data["name"], long_title, long_title, act_data["short_name"], act_data["year"], jurisdiction,
                 act_data["domain"], source_name, source_url, official_source_url, source_authority, version,
-                act_data.get("description"), enforcement_date, act_status, repealed_by, supersedes, superseded_by,
+                act_data.get("description"), enforcement_date, act_status, commencement_status, repealed_by, supersedes, superseded_by,
                 last_verified_at, verification_status
             ),
         )
@@ -153,22 +155,24 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
             (act_id, sec_num),
         ).fetchone()
 
+        sec_commencement_status = sec.get("commencement_status", "FULLY_COMMENCED")
+
         if existing_sec:
             if force:
                 conn.execute(
                     """
                     UPDATE sections
                     SET title=?, chapter=?, subsection=?, clause=?, text=?, plain_language_summary=?, domain=?, subdomain=?, jurisdiction=?, state=?,
-                        effective_from=?, effective_until=?, effective_to=?, enforcement_date=?, status=?, repealed=?, repealed_by=?, supersedes=?,
+                        effective_from=?, effective_until=?, effective_to=?, enforcement_date=?, status=?, commencement_status=?, repealed=?, repealed_by=?, supersedes=?,
                         superseded_by=?, historical_reference=?, source_name=?, source_url=?, official_source_url=?, source_type=?, source_authority=?,
-                        last_verified=?, last_verified_at=?, verification_status=?, keywords=?, synonyms=?
+                        last_verified=?, last_verified_at=?, verification_status=?, keywords=?, synonyms=?, full_text=?
                     WHERE id=?
                     """,
                     (
                         sec.get("title"), chapter, subsection, clause, text, summary, domain, subdomain, sec_jurisdiction, sec_state,
-                        eff_from, eff_until, eff_to, sec_enforce_date, sec_status, sec_repealed, sec_repealed_by, sec_supersedes,
+                        eff_from, eff_until, eff_to, sec_enforce_date, sec_status, sec_commencement_status, sec_repealed, sec_repealed_by, sec_supersedes,
                         sec_superseded_by, hist_ref, sec_src_name, sec_src_url, sec_off_src_url, sec_src_type, sec_src_authority,
-                        last_verified, last_verified_at_str, sec_ver_status, keywords_json, synonyms_json,
+                        last_verified, last_verified_at_str, sec_ver_status, keywords_json, synonyms_json, text,
                         existing_sec[0]
                     ),
                 )
@@ -178,12 +182,12 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
         else:
             conn.execute(
                 """
-                INSERT INTO sections(act_id, section_number, title, chapter, subsection, clause, text, plain_language_summary, domain, subdomain, jurisdiction, state, effective_from, effective_until, effective_to, enforcement_date, status, repealed, repealed_by, supersedes, superseded_by, historical_reference, source_name, source_url, official_source_url, source_type, source_authority, last_verified, last_verified_at, verification_status, keywords, synonyms)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                INSERT INTO sections(act_id, section_number, title, chapter, subsection, clause, text, full_text, plain_language_summary, domain, subdomain, jurisdiction, state, effective_from, effective_until, effective_to, enforcement_date, status, commencement_status, repealed, repealed_by, supersedes, superseded_by, historical_reference, source_name, source_url, official_source_url, source_type, source_authority, last_verified, last_verified_at, verification_status, keywords, synonyms)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """,
                 (
-                    act_id, sec_num, sec.get("title"), chapter, subsection, clause, text, summary, domain, subdomain, sec_jurisdiction, sec_state,
-                    eff_from, eff_until, eff_to, sec_enforce_date, sec_status, sec_repealed, sec_repealed_by, sec_supersedes, sec_superseded_by,
+                    act_id, sec_num, sec.get("title"), chapter, subsection, clause, text, text, summary, domain, subdomain, sec_jurisdiction, sec_state,
+                    eff_from, eff_until, eff_to, sec_enforce_date, sec_status, sec_commencement_status, sec_repealed, sec_repealed_by, sec_supersedes, sec_superseded_by,
                     hist_ref, sec_src_name, sec_src_url, sec_off_src_url, sec_src_type, sec_src_authority, last_verified, last_verified_at_str,
                     sec_ver_status, keywords_json, synonyms_json
                 ),

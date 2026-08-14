@@ -155,11 +155,19 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
     sources_cols = get_cols("sources")
 
     acts_new = [
+        ("name", "VARCHAR(255)"),
+        ("short_name", "VARCHAR(255)"),
         ("long_name", "TEXT"),
         ("long_title", "TEXT"),
+        ("year", "INTEGER"),
+        ("domain", "VARCHAR(100)"),
         ("jurisdiction", "VARCHAR(100) DEFAULT 'INDIA'"),
         ("state", "VARCHAR(100)"),
         ("city", "VARCHAR(100)"),
+        ("source_name", "VARCHAR(255)"),
+        ("source_url", "VARCHAR(500)"),
+        ("version", "VARCHAR(20)"),
+        ("description", "TEXT"),
         ("effective_from", "VARCHAR(20)"),
         ("effective_to", "VARCHAR(20)"),
         ("commencement_status", "VARCHAR(30) DEFAULT 'UNKNOWN'"),
@@ -173,42 +181,58 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
         ("last_verified_at", "VARCHAR(20)"),
         ("verification_status", "VARCHAR(30) DEFAULT 'VERIFIED'"),
         ("source_id", "INTEGER"),
+        ("is_active", "INTEGER DEFAULT 1"),
     ]
     for col_name, col_type in acts_new:
         if col_name not in acts_cols:
             raw_conn.execute(f"ALTER TABLE acts ADD COLUMN {col_name} {col_type};")
 
     sections_new = [
+        ("text", "TEXT"),
         ("full_text", "TEXT"),
-        ("chapter", "VARCHAR(100)"),
-        ("subsection", "VARCHAR(50)"),
-        ("clause", "VARCHAR(50)"),
+        ("keywords", "TEXT DEFAULT '[]'"),
         ("synonyms", "TEXT DEFAULT '[]'"),
         ("hindi_synonyms", "TEXT DEFAULT '[]'"),
         ("hinglish_synonyms", "TEXT DEFAULT '[]'"),
+        ("plain_language_summary", "TEXT"),
+        ("chapter", "VARCHAR(100)"),
+        ("subsection", "VARCHAR(50)"),
+        ("clause", "VARCHAR(50)"),
+        ("jurisdiction", "VARCHAR(100) DEFAULT 'India'"),
+        ("state", "VARCHAR(100) DEFAULT 'All'"),
         ("city", "VARCHAR(100)"),
+        ("effective_from", "VARCHAR(20)"),
+        ("effective_until", "VARCHAR(20)"),
         ("effective_to", "VARCHAR(20)"),
         ("enforcement_date", "VARCHAR(20)"),
+        ("status", "VARCHAR(30) DEFAULT 'CURRENT'"),
         ("commencement_status", "VARCHAR(30) DEFAULT 'FULLY_COMMENCED'"),
         ("repealed", "BOOLEAN DEFAULT 0"),
         ("repealed_by", "VARCHAR(255)"),
         ("supersedes", "VARCHAR(255)"),
         ("superseded_by", "VARCHAR(255)"),
         ("historical_reference", "VARCHAR(255)"),
+        ("source_name", "VARCHAR(255)"),
+        ("source_url", "VARCHAR(500)"),
         ("official_source_url", "VARCHAR(500)"),
         ("source_type", "VARCHAR(100)"),
         ("source_authority", "VARCHAR(255)"),
-        ("last_verified_at", "VARCHAR(20)"),
+        ("last_verified", "VARCHAR(50)"),
+        ("last_verified_at", "VARCHAR(50)"),
         ("verification_status", "VARCHAR(30) DEFAULT 'VERIFIED'"),
         ("source_id", "INTEGER"),
         ("dataset_name", "VARCHAR(100)"),
         ("dataset_record_id", "VARCHAR(100)"),
         ("license", "VARCHAR(100)"),
         ("usage_type", "VARCHAR(50)"),
+        ("is_active", "INTEGER DEFAULT 1"),
     ]
     for col_name, col_type in sections_new:
         if col_name not in sections_cols:
             raw_conn.execute(f"ALTER TABLE sections ADD COLUMN {col_name} {col_type};")
+
+    raw_conn.execute("UPDATE acts SET is_active = 1 WHERE is_active IS NULL;")
+    raw_conn.execute("UPDATE sections SET is_active = 1 WHERE is_active IS NULL;")
 
     if "text" in sections_cols and "full_text" in sections_cols:
         raw_conn.execute("UPDATE sections SET full_text = text WHERE (full_text IS NULL OR full_text = '') AND text IS NOT NULL;")
@@ -231,7 +255,7 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
         ("judgments", judgments_cols, [("source_id", "INTEGER"), ("binding_level", "VARCHAR(50) DEFAULT 'PERSUASIVE'"), ("facts", "TEXT"), ("issues", "TEXT"), ("decision", "TEXT"), ("legal_principles", "TEXT"), ("legal_provisions", "TEXT")]),
         ("authorities", authorities_cols, [("source_id", "INTEGER")]),
         ("procedures", procedures_cols, [("source_id", "INTEGER")]),
-        ("sources", sources_cols, [("official_url", "VARCHAR(500)"), ("version", "VARCHAR(20) DEFAULT '1.0'"), ("last_verified_at", "VARCHAR(50)")]),
+        ("sources", sources_cols, [("official_url", "VARCHAR(500)"), ("version", "VARCHAR(20) DEFAULT '1.0'"), ("last_verified_at", "VARCHAR(50)"), ("notes", "TEXT")]),
     ]:
         if cols_set:
             for col_name, col_type in new_cols:

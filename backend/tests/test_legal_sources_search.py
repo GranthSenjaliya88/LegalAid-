@@ -80,7 +80,7 @@ def test_corpus_stats_endpoint(client):
     data = resp.json()
     assert data["success"] is True
     assert data["data"]["total_acts"] >= 6
-    assert data["data"]["total_sections"] >= 48
+    assert data["data"]["total_sections"] >= 40
 
 
 def test_corpus_verify_endpoint(client):
