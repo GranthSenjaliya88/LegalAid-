@@ -25,8 +25,11 @@ python backend/scripts/ingest_official_corpus.py --workers 4
 ```
 
 Generated snapshots are stored under `backend/data/official_snapshots/` and are
-ignored by Git. Each run is recorded in `ingestion_runs`; failures and questionable
-records go to `ingestion_rejections`, while changed provisions are preserved in
+committed as versioned production assets. At startup, the application loads these
+local snapshots without making network requests, so an ephemeral Render instance
+receives the complete verified corpus deterministically. Each importer run is
+recorded in `ingestion_runs`; failures and questionable records go to
+`ingestion_rejections`, while changed provisions are preserved in
 `section_versions` before replacement.
 
 ## Accuracy rules
@@ -45,6 +48,7 @@ python backend/scripts/evaluate_corpus_quality.py
 python -m pytest backend/tests -q
 ```
 
-For production persistence, use a managed database and run ingestion as a
-separate scheduled job. The local SQLite/FTS5 database is suitable for development
-and tens of thousands of provisions, but Render's free filesystem is ephemeral.
+For long-term production writes and scheduled ingestion, use a managed database.
+The bundled snapshots make the read corpus reproducible on Render's ephemeral
+filesystem; SQLite/FTS5 remains suitable for this read-heavy corpus and tens of
+thousands of provisions.

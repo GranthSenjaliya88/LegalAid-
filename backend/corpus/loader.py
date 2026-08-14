@@ -21,6 +21,7 @@ ALLOWED_DOMAINS = {
 }
 
 STATUTES_DIR = Path(__file__).parent.parent / "data" / "statutes"
+OFFICIAL_SNAPSHOTS_DIR = STATUTES_DIR.parent / "official_snapshots"
 
 OFFICIAL_SOURCE_SUFFIXES = (
     "gov.in",
@@ -400,5 +401,46 @@ def load_all(
             print(f"  [WARN] {err}")
 
     load_extended_corpus(conn)
+    return results
+
+
+def load_official_snapshots(
+    conn: sqlite3.Connection,
+    snapshots_dir: Path = OFFICIAL_SNAPSHOTS_DIR,
+) -> list[LoadResult]:
+    """Upsert the bundled, verified official-source snapshots.
+
+    Snapshots are local deployment assets produced by ``official_importer``.
+    Loading them never performs a network request, which makes application
+    startup deterministic even when the runtime filesystem is ephemeral.
+    """
+    snapshot_files = sorted(snapshots_dir.glob("*.official.json"))
+    if not snapshot_files:
+        print(f"[loader] WARNING: No official snapshots found in {snapshots_dir}")
+        return []
+
+    results = []
+    for snapshot in snapshot_files:
+        print(f"[loader] Loading official snapshot {snapshot.name} ...", end=" ")
+        result = load_file(conn, snapshot, force=True)
+        results.append(result)
+        print(
+            f"inserted={result.sections_inserted} "
+            f"skipped={result.sections_skipped} "
+            f"updated={result.sections_updated}"
+        )
+        for err in result.errors:
+            print(f"  [WARN] {err}")
+    return results
+
+
+def load_production_corpus(
+    conn: sqlite3.Connection,
+    statutes_dir: Path = STATUTES_DIR,
+    snapshots_dir: Path = OFFICIAL_SNAPSHOTS_DIR,
+) -> list[LoadResult]:
+    """Synchronize curated metadata and the full verified corpus at startup."""
+    results = load_all(conn, statutes_dir=statutes_dir)
+    results.extend(load_official_snapshots(conn, snapshots_dir=snapshots_dir))
     return results
 

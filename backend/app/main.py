@@ -26,20 +26,27 @@ from app.api.routes.legal import router as legal_router
 from app.api.routes.documents import router as documents_router
 from app.api.routes.analysis import router as analysis_router
 from app.api.routes.admin import router as admin_router
-from corpus.loader import load_all, STATUTES_DIR
+from corpus.loader import load_production_corpus, STATUTES_DIR
 
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Initialize database tables and triggers, and auto-seed statutes if database is empty."""
+    """Initialize the database and synchronize the bundled verified corpus."""
     init_db()
     conn = get_connection()
     try:
-        count = conn.execute("SELECT COUNT(*) FROM acts").fetchone()[0]
-        if count == 0 and STATUTES_DIR.exists():
-            print("[startup] Auto-seeding statute database...")
-            load_all(conn, statutes_dir=STATUTES_DIR)
+        if STATUTES_DIR.exists():
+            print("[startup] Synchronizing bundled legal corpus...")
+            results = load_production_corpus(conn)
+            inserted = sum(result.sections_inserted for result in results)
+            updated = sum(result.sections_updated for result in results)
+            errors = sum(len(result.errors) for result in results)
+            section_count = conn.execute("SELECT COUNT(*) FROM sections").fetchone()[0]
+            print(
+                f"[startup] Corpus ready: sections={section_count} "
+                f"inserted={inserted} updated={updated} warnings={errors}"
+            )
     finally:
         conn.close()
     yield

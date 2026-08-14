@@ -37,24 +37,35 @@ def get_corpus_stats(db: Session = Depends(get_db)):
 
 
 @router.get("/acts", summary="List Statute Acts")
-def list_acts(db: Session = Depends(get_db)):
-    """Retrieve all indexed Legal Acts."""
-    acts = LegalRepository.get_acts(db)
-    result = []
-    for a in acts:
-        result.append({
-            "id": a.id,
-            "name": getattr(a, "short_name", "") or getattr(a, "long_name", ""),
-            "short_name": getattr(a, "short_name", ""),
-            "long_name": getattr(a, "long_name", ""),
-            "year": getattr(a, "year", None),
-            "jurisdiction": getattr(a, "jurisdiction", "INDIA"),
-            "domain": getattr(a, "domain", "general"),
-            "description": getattr(a, "long_name", ""),
-            "source_url": getattr(a, "official_source_url", None),
-            "section_count": len(a.sections) if getattr(a, "sections", None) else 0
-        })
-    return {"success": True, "data": result}
+def list_acts():
+    """Retrieve all indexed Legal Acts without ORM date coercion."""
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            """
+            SELECT a.id,
+                   COALESCE(NULLIF(a.name, ''), NULLIF(a.short_name, ''), a.long_name) AS name,
+                   a.short_name,
+                   a.long_name,
+                   a.year,
+                   COALESCE(NULLIF(a.jurisdiction, ''), 'INDIA') AS jurisdiction,
+                   COALESCE(NULLIF(a.domain, ''), 'general') AS domain,
+                   COALESCE(NULLIF(a.description, ''), a.long_name, '') AS description,
+                   COALESCE(NULLIF(a.official_source_url, ''), a.source_url) AS source_url,
+                   COUNT(s.id) AS section_count
+            FROM acts a
+            LEFT JOIN sections s
+              ON s.act_id = a.id
+             AND s.is_active = 1
+             AND UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
+            WHERE a.is_active = 1
+            GROUP BY a.id
+            ORDER BY a.year, a.short_name
+            """
+        ).fetchall()
+        return {"success": True, "data": [dict(row) for row in rows]}
+    finally:
+        conn.close()
 
 
 @router.get("/sections", summary="List Statute Sections")
@@ -62,23 +73,39 @@ def list_sections(
     act_id: Optional[int] = Query(None),
     domain: Optional[str] = Query(None),
     limit: int = Query(100, ge=1, le=500),
-    db: Session = Depends(get_db)
 ):
-    """Retrieve indexed sections filtered by act_id or domain."""
-    sections = LegalRepository.get_sections(db, act_id=act_id, domain=domain, limit=limit)
-    result = []
-    for s in sections:
-        result.append({
-            "id": s.id,
-            "act_id": s.act_id,
-            "act_short_name": s.act.short_name if s.act else "",
-            "section_number": s.section_number,
-            "title": s.title,
-            "text": s.text,
-            "domain": s.domain,
-            "language": s.language
-        })
-    return {"success": True, "data": result}
+    """Retrieve verified indexed sections filtered by act or domain."""
+    conditions = [
+        "s.is_active = 1",
+        "UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'",
+    ]
+    params: list[object] = []
+    if act_id is not None:
+        conditions.append("s.act_id = ?")
+        params.append(act_id)
+    if domain:
+        conditions.append("s.domain = ?")
+        params.append(domain)
+    params.append(limit)
+
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            f"""
+            SELECT s.id, s.act_id, a.short_name AS act_short_name,
+                   s.section_number, s.title, s.text, s.domain,
+                   'en' AS language
+            FROM sections s
+            JOIN acts a ON a.id = s.act_id
+            WHERE {' AND '.join(conditions)}
+            ORDER BY s.act_id, s.id
+            LIMIT ?
+            """,
+            params,
+        ).fetchall()
+        return {"success": True, "data": [dict(row) for row in rows]}
+    finally:
+        conn.close()
 
 
 from app.legal.query_normalizer import normalize_query
