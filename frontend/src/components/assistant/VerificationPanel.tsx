@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { VerifiedSeal } from "@/components/common/VerifiedSeal";
 import { ConfidenceBadge } from "./ConfidenceBadge";
+import { useAppStore } from "@/store/appStore";
 
 interface VerificationPanelProps {
   card?: VerificationCard | null;
@@ -39,6 +40,7 @@ function Stat({ label, value, tone }: { label: string; value: number; tone: "ok"
  * demand. Gold accents are reserved for this "verified" surface.
  */
 export function VerificationPanel({ card, verify, verifyStatus, onVerify }: VerificationPanelProps) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const hasCard = Boolean(card);
   if (!hasCard && !verify) {
     // Still offer the manual check even when the explainer didn't attach a card.
@@ -48,12 +50,14 @@ export function VerificationPanel({ card, verify, verifyStatus, onVerify }: Veri
           <div className="flex items-center gap-3">
             <VerifiedSeal />
             <div>
-              <p className="text-body font-medium text-ink">Check the citations</p>
-              <p className="text-small text-muted">Verify every legal reference against the source corpus.</p>
+              <p className="text-body font-medium text-ink">{hi ? "उद्धरण जाँचें" : "Check the citations"}</p>
+              <p className="text-small text-muted">
+                {hi ? "हर कानूनी संदर्भ को सत्यापित स्रोत-संग्रह से जाँचें।" : "Verify every legal reference against the source corpus."}
+              </p>
             </div>
           </div>
           <Button variant="outline" onClick={onVerify} disabled={verifyStatus === "loading"}>
-            {verifyStatus === "loading" ? "Checking…" : "Run citation check"}
+            {verifyStatus === "loading" ? (hi ? "जाँच हो रही है…" : "Checking…") : hi ? "उद्धरण जाँच चलाएँ" : "Run citation check"}
           </Button>
         </CardContent>
       </Card>
@@ -64,17 +68,17 @@ export function VerificationPanel({ card, verify, verifyStatus, onVerify }: Veri
     <Card className="border-gold/30">
       <CardHeader className="flex-row items-center justify-between gap-3 space-y-0">
         <CardTitle className="flex items-center gap-2">
-          <VerifiedSeal label="Source-checked" />
+          <VerifiedSeal label={hi ? "स्रोत से जाँचा गया" : "Source-checked"} />
         </CardTitle>
         {card?.confidence_badge && <ConfidenceBadge confidence={card.confidence_badge} />}
       </CardHeader>
       <CardContent className="space-y-4">
         {card && (
           <div className="flex gap-3">
-            <Stat label="Claims checked" value={card.claims_checked ?? 0} tone="neutral" />
-            <Stat label="Sources verified" value={card.sources_verified ?? 0} tone="ok" />
+            <Stat label={hi ? "दावे जाँचे" : "Claims checked"} value={card.claims_checked ?? 0} tone="neutral" />
+            <Stat label={hi ? "स्रोत सत्यापित" : "Sources verified"} value={card.sources_verified ?? 0} tone="ok" />
             <Stat
-              label="Unsupported"
+              label={hi ? "असमर्थित" : "Unsupported"}
               value={card.unsupported_claims ?? 0}
               tone={card.unsupported_claims > 0 ? "warn" : "ok"}
             />
@@ -85,7 +89,9 @@ export function VerificationPanel({ card, verify, verifyStatus, onVerify }: Veri
 
         <div className="flex items-center justify-between gap-3">
           <p className="text-tiny text-muted">
-            Every statutory reference is checked against the verified corpus, never invented.
+            {hi
+              ? "हर वैधानिक संदर्भ सत्यापित स्रोत-संग्रह से जाँचा जाता है, कभी गढ़ा नहीं जाता।"
+              : "Every statutory reference is checked against the verified corpus, never invented."}
           </p>
           <Button
             variant="outline"
@@ -94,12 +100,18 @@ export function VerificationPanel({ card, verify, verifyStatus, onVerify }: Veri
             disabled={verifyStatus === "loading"}
             className="shrink-0"
           >
-            {verifyStatus === "loading" ? "Checking…" : verify ? "Re-check" : "Run citation check"}
+            {verifyStatus === "loading"
+              ? hi ? "जाँच हो रही है…" : "Checking…"
+              : verify
+                ? hi ? "दोबारा जाँचें" : "Re-check"
+                : hi ? "उद्धरण जाँच चलाएँ" : "Run citation check"}
           </Button>
         </div>
 
         {verifyStatus === "error" && (
-          <p className="text-small text-danger">Couldn't complete the citation check. Please try again.</p>
+          <p className="text-small text-danger">
+            {hi ? "उद्धरण जाँच पूरी नहीं हो सकी। कृपया फिर कोशिश करें।" : "Couldn't complete the citation check. Please try again."}
+          </p>
         )}
 
         {verify && (
@@ -108,12 +120,15 @@ export function VerificationPanel({ card, verify, verifyStatus, onVerify }: Veri
             <div className="flex flex-wrap items-center gap-2 pt-1 text-small">
               {verify.all_verified ? (
                 <span className="inline-flex items-center gap-1.5 font-medium text-success">
-                  <CheckCircle2 className="size-4" /> All {verify.total_citations} citations verified
+                  <CheckCircle2 className="size-4" />
+                  {hi ? `सभी ${verify.total_citations} उद्धरण सत्यापित` : `All ${verify.total_citations} citations verified`}
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-1.5 font-medium text-[#8a6416]">
                   <ShieldQuestion className="size-4" />
-                  {verify.verified_count} of {verify.total_citations} verified
+                  {hi
+                    ? `${verify.total_citations} में से ${verify.verified_count} सत्यापित`
+                    : `${verify.verified_count} of ${verify.total_citations} verified`}
                 </span>
               )}
             </div>

@@ -2,6 +2,7 @@ import { type ReactNode } from "react";
 import { AlertTriangle, RefreshCw, WifiOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAppStore } from "@/store/appStore";
 
 interface ErrorStateProps {
   title?: string;
@@ -21,18 +22,27 @@ export function ErrorState({
   title,
   description,
   onRetry,
-  retryLabel = "Try again",
+  retryLabel,
   variant = "error",
   className,
 }: ErrorStateProps) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const Icon = variant === "offline" ? WifiOff : AlertTriangle;
   const resolvedTitle =
-    title ?? (variant === "offline" ? "Can't reach the assistant" : "Something went wrong");
+    title ??
+    (variant === "offline"
+      ? hi ? "सहायक से संपर्क नहीं हो पा रहा" : "Can't reach the assistant"
+      : hi ? "कुछ गलत हो गया" : "Something went wrong");
   const resolvedDescription =
     description ??
     (variant === "offline"
-      ? "The LegalAId service isn't responding right now. Please check your connection and try again."
-      : "We hit a snag processing this. You can try again in a moment.");
+      ? hi
+        ? "LegalAId सेवा अभी जवाब नहीं दे रही है। अपना कनेक्शन जाँचें और फिर कोशिश करें।"
+        : "The LegalAId service isn't responding right now. Please check your connection and try again."
+      : hi
+        ? "इसे संसाधित करते समय समस्या आई। थोड़ी देर में फिर कोशिश करें।"
+        : "We hit a snag processing this. You can try again in a moment.");
+  const resolvedRetryLabel = retryLabel ?? (hi ? "फिर कोशिश करें" : "Try again");
 
   return (
     <div
@@ -52,7 +62,7 @@ export function ErrorState({
       {onRetry && (
         <Button variant="outline" size="sm" onClick={onRetry}>
           <RefreshCw className="size-4" />
-          {retryLabel}
+          {resolvedRetryLabel}
         </Button>
       )}
     </div>

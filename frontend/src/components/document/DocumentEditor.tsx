@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PrivacyNote } from "@/components/common/PrivacyNote";
+import { useAppStore } from "@/store/appStore";
 
 interface DocumentEditorProps {
   document: DocumentData;
@@ -24,6 +25,7 @@ interface FormValues {
  * user's control; nothing is sent until they choose to save.
  */
 export function DocumentEditor({ document, onSave, saving = false }: DocumentEditorProps) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const { register, control, handleSubmit, reset, formState } = useForm<FormValues>({
     defaultValues: { title: document.title, sections: document.sections },
   });
@@ -48,7 +50,7 @@ export function DocumentEditor({ document, onSave, saving = false }: DocumentEdi
   return (
     <form onSubmit={submit} className="space-y-5">
       <div className="space-y-1.5">
-        <Label htmlFor="doc-title">Document title</Label>
+        <Label htmlFor="doc-title">{hi ? "दस्तावेज का शीर्षक" : "Document title"}</Label>
         <Input id="doc-title" {...register("title")} />
       </div>
 
@@ -57,7 +59,7 @@ export function DocumentEditor({ document, onSave, saving = false }: DocumentEdi
           <div key={field.id} className="space-y-2 rounded-xl border border-hairline bg-surface p-4">
             <div className="space-y-1.5">
               <Label htmlFor={`section-title-${index}`} className="text-tiny uppercase tracking-wide text-muted">
-                Section heading
+                {hi ? "खंड का शीर्षक" : "Section heading"}
               </Label>
               <Input
                 id={`section-title-${index}`}
@@ -67,7 +69,7 @@ export function DocumentEditor({ document, onSave, saving = false }: DocumentEdi
             </div>
             <div className="space-y-1.5">
               <Label htmlFor={`section-content-${index}`} className="sr-only">
-                Section content
+                {hi ? "खंड की सामग्री" : "Section content"}
               </Label>
               <Textarea
                 id={`section-content-${index}`}
@@ -88,7 +90,7 @@ export function DocumentEditor({ document, onSave, saving = false }: DocumentEdi
           className="bg-teal hover:bg-teal-dark text-white font-semibold shadow-soft hover:shadow-lift transition-all disabled:bg-hairline disabled:text-muted disabled:shadow-none"
         >
           <Save className="size-4 text-gold" />
-          {saving ? "Saving…" : "Save changes"}
+          {saving ? (hi ? "सहेजा जा रहा है…" : "Saving…") : hi ? "बदलाव सहेजें" : "Save changes"}
         </Button>
         <Button
           type="button"
@@ -97,7 +99,7 @@ export function DocumentEditor({ document, onSave, saving = false }: DocumentEdi
           disabled={saving || !formState.isDirty}
         >
           <RotateCcw className="size-4" />
-          Reset
+          {hi ? "रीसेट करें" : "Reset"}
         </Button>
       </div>
     </form>

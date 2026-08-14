@@ -1,5 +1,6 @@
 import { Badge, type BadgeProps } from "@/components/ui/badge";
 import type { Confidence } from "@/types";
+import { useAppStore } from "@/store/appStore";
 
 function normalize(value: string): "high" | "medium" | "low" | "insufficient" {
   const v = value.toString().trim().toUpperCase();
@@ -25,5 +26,12 @@ const MAP: Record<
  */
 export function ConfidenceBadge({ confidence }: { confidence: Confidence | string }) {
   const { variant, label } = MAP[normalize(String(confidence))];
-  return <Badge variant={variant}>{label}</Badge>;
+  const hi = useAppStore((s) => s.language) === "hi";
+  const hindiLabel: Record<ReturnType<typeof normalize>, string> = {
+    high: "उच्च विश्वसनीयता",
+    medium: "मध्यम विश्वसनीयता",
+    low: "कम विश्वसनीयता",
+    insufficient: "और जानकारी चाहिए",
+  };
+  return <Badge variant={variant}>{hi ? hindiLabel[normalize(String(confidence))] : label}</Badge>;
 }

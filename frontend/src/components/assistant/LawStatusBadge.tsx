@@ -1,4 +1,5 @@
 import { Badge, type BadgeProps } from "@/components/ui/badge";
+import { useAppStore } from "@/store/appStore";
 
 function classify(status: string): { variant: BadgeProps["variant"]; label: string } {
   const v = status.toString().trim().toLowerCase();
@@ -19,5 +20,13 @@ function classify(status: string): { variant: BadgeProps["variant"]; label: stri
  */
 export function LawStatusBadge({ status }: { status: string }) {
   const { variant, label } = classify(status);
-  return <Badge variant={variant}>{label}</Badge>;
+  const hi = useAppStore((s) => s.language) === "hi";
+  const labelHi: Record<string, string> = {
+    Repealed: "निरस्त",
+    "Historical reference": "ऐतिहासिक संदर्भ",
+    Amended: "संशोधित",
+    "In force": "लागू",
+    "Status unknown": "स्थिति अज्ञात",
+  };
+  return <Badge variant={variant}>{hi ? (labelHi[label] ?? label) : label}</Badge>;
 }

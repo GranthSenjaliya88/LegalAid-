@@ -6,6 +6,7 @@ import type { Domain } from "@/types";
 import { DOCUMENT_TYPES } from "@/lib/constants";
 import { useCreateDocument } from "@/hooks/useDocument";
 import { useLibraryStore } from "@/store/libraryStore";
+import { useAppStore } from "@/store/appStore";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PrivacyNote } from "@/components/common/PrivacyNote";
@@ -28,6 +29,7 @@ interface DocumentGeneratorProps {
  * verified case record — nothing is fabricated here.
  */
 export function DocumentGenerator({ caseId, domain }: DocumentGeneratorProps) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const navigate = useNavigate();
   const upsertDocument = useLibraryStore((s) => s.upsertDocument);
   const create = useCreateDocument();
@@ -51,10 +53,11 @@ export function DocumentGenerator({ caseId, domain }: DocumentGeneratorProps) {
             createdAt: doc.created_at ?? new Date().toISOString(),
             qualityScore: doc.quality_score,
           });
-          toast.success("Draft ready to review");
+          toast.success(hi ? "ड्राफ्ट समीक्षा के लिए तैयार है" : "Draft ready to review");
           navigate(`/documents/${doc.document_id}`);
         },
-        onError: () => toast.error("Couldn't generate the draft. Please try again."),
+        onError: () =>
+          toast.error(hi ? "ड्राफ्ट नहीं बन सका। कृपया फिर कोशिश करें।" : "Couldn't generate the draft. Please try again."),
       },
     );
   };
@@ -64,27 +67,28 @@ export function DocumentGenerator({ caseId, domain }: DocumentGeneratorProps) {
       <CardHeader className="space-y-1.5">
         <CardTitle className="flex items-center gap-2">
           <PenLine className="size-5 text-teal" />
-          Prepare a document
+          {hi ? "दस्तावेज तैयार करें" : "Prepare a document"}
         </CardTitle>
         <CardDescription>
-          Turn this case into a formal draft you can review, edit, and download. You always have the
-          final say over the wording.
+          {hi
+            ? "इस मामले को एक औपचारिक ड्राफ्ट में बदलें, जिसे आप जाँच, संपादित और डाउनलोड कर सकते हैं। अंतिम शब्द हमेशा आपके नियंत्रण में हैं।"
+            : "Turn this case into a formal draft you can review, edit, and download. You always have the final say over the wording."}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end">
           <div className="space-y-1.5">
             <label htmlFor="doc-type" className="text-small font-medium text-ink">
-              Document type
+              {hi ? "दस्तावेज का प्रकार" : "Document type"}
             </label>
             <Select value={docType} onValueChange={setDocType}>
               <SelectTrigger id="doc-type" className="w-full">
-                <SelectValue placeholder="Choose a document" />
+                <SelectValue placeholder={hi ? "दस्तावेज चुनें" : "Choose a document"} />
               </SelectTrigger>
               <SelectContent>
                 {options.map((d) => (
                   <SelectItem key={d.type} value={d.type}>
-                    {d.label}
+                    {hi ? d.labelHi : d.label}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -98,18 +102,22 @@ export function DocumentGenerator({ caseId, domain }: DocumentGeneratorProps) {
             {create.isPending ? (
               <>
                 <Loader2 className="size-4 animate-spin" />
-                Drafting…
+                {hi ? "ड्राफ्ट बन रहा है…" : "Drafting…"}
               </>
             ) : (
               <>
                 <FileText className="size-4 text-gold" />
-                Generate draft
+                {hi ? "ड्राफ्ट बनाएँ" : "Generate draft"}
               </>
             )}
           </Button>
         </div>
 
-        {selected && <p className="text-small leading-relaxed text-muted">{selected.description}</p>}
+        {selected && (
+          <p className="text-small leading-relaxed text-muted">
+            {hi ? selected.descriptionHi : selected.description}
+          </p>
+        )}
 
         <PrivacyNote />
       </CardContent>

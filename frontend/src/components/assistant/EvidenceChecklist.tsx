@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * Evidence checklist (Part 15). A personal, tickable list of documents that
@@ -12,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
  * sent anywhere.
  */
 export function EvidenceChecklist({ evidence }: { evidence: EvidenceResponse }) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const { claim_summary, checklist } = evidence;
   const [checked, setChecked] = useState<Record<number, boolean>>(() =>
     Object.fromEntries(checklist.map((item, i) => [i, item.available])),
@@ -26,11 +28,11 @@ export function EvidenceChecklist({ evidence }: { evidence: EvidenceResponse }) 
       <CardHeader className="space-y-1">
         <CardTitle className="flex items-center gap-2">
           <ClipboardList className="size-5 text-teal" />
-          Evidence to gather
+          {hi ? "इकट्ठा करने योग्य सबूत" : "Evidence to gather"}
         </CardTitle>
         {claim_summary && <p className="text-small text-muted">{claim_summary}</p>}
         <p className="text-tiny text-muted">
-          {doneCount} of {checklist.length} ready
+          {checklist.length} में से {doneCount} {hi ? "तैयार" : "ready"}
         </p>
       </CardHeader>
       <CardContent>
@@ -64,7 +66,7 @@ export function EvidenceChecklist({ evidence }: { evidence: EvidenceResponse }) 
                       {item.document_name}
                     </span>
                     <Badge variant={essential ? "verified" : "neutral"}>
-                      {essential ? "Essential" : "Supporting"}
+                      {essential ? (hi ? "आवश्यक" : "Essential") : hi ? "सहायक" : "Supporting"}
                     </Badge>
                   </span>
                   <span className="mt-1 block text-tiny leading-relaxed text-muted">

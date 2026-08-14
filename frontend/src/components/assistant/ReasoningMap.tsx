@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
+import { useAppStore } from "@/store/appStore";
 
 function dotClass(status: string): string {
   const s = status.toLowerCase();
@@ -24,6 +25,7 @@ function dotClass(status: string): string {
  * black box. Collapsed by default.
  */
 export function ReasoningMap({ steps }: { steps: ReasoningStep[] }) {
+  const hi = useAppStore((s) => s.language) === "hi";
   if (!steps || steps.length === 0) return null;
 
   return (
@@ -34,7 +36,7 @@ export function ReasoningMap({ steps }: { steps: ReasoningStep[] }) {
             <AccordionTrigger className="px-6">
               <span className="flex items-center gap-2">
                 <GitBranch className="size-4 text-teal" />
-                How we reached this ({steps.length} steps)
+                {hi ? `हम इस नतीजे तक कैसे पहुँचे (${steps.length} चरण)` : `How we reached this (${steps.length} steps)`}
               </span>
             </AccordionTrigger>
             <AccordionContent className="px-6">

@@ -175,7 +175,9 @@ export const INDIAN_STATES: string[] = [
 export interface DocTypeMeta {
   type: string;
   label: string;
+  labelHi: string;
   description: string;
+  descriptionHi: string;
   domains: Domain[];
 }
 
@@ -183,31 +185,41 @@ export const DOCUMENT_TYPES: DocTypeMeta[] = [
   {
     type: "legal_notice",
     label: "Legal Notice",
+    labelHi: "कानूनी नोटिस",
     description: "A formal written notice to the other party stating your grievance and demand.",
+    descriptionHi: "आपकी शिकायत और माँग बताने वाला दूसरे पक्ष को भेजा जाने वाला औपचारिक लिखित नोटिस।",
     domains: ["consumer", "labor", "tenant", "general"],
   },
   {
     type: "consumer_complaint",
     label: "Consumer Complaint",
+    labelHi: "उपभोक्ता शिकायत",
     description: "A structured complaint for a consumer dispute forum.",
+    descriptionHi: "उपभोक्ता विवाद मंच के लिए व्यवस्थित शिकायत।",
     domains: ["consumer"],
   },
   {
     type: "labor_complaint",
     label: "Labour Complaint",
+    labelHi: "श्रम शिकायत",
     description: "A complaint regarding unpaid wages or workplace grievances.",
+    descriptionHi: "बकाया वेतन या कार्यस्थल की समस्या से जुड़ी शिकायत।",
     domains: ["labor"],
   },
   {
     type: "tenant_notice",
     label: "Tenant Notice",
+    labelHi: "किरायेदार नोटिस",
     description: "A notice to a landlord regarding deposit, repairs, or tenancy terms.",
+    descriptionHi: "जमा राशि, मरम्मत या किरायेदारी की शर्तों के बारे में मकान मालिक को नोटिस।",
     domains: ["tenant"],
   },
   {
     type: "complaint",
     label: "General Complaint",
+    labelHi: "सामान्य शिकायत",
     description: "A general-purpose complaint draft grounded in your case.",
+    descriptionHi: "आपके मामले पर आधारित सामान्य उपयोग की शिकायत का ड्राफ्ट।",
     domains: ["cyber", "criminal", "general"],
   },
 ];

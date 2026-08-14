@@ -2,12 +2,14 @@ import { ShieldCheck } from "lucide-react";
 import type { ExplainResponse } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * "Your rights" panel. Lists the plain-language rights the user may have and,
  * for each detailed right, the exact statutory citations it rests on.
  */
 export function RightsList({ explain }: { explain: ExplainResponse }) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const { possible_rights, rights } = explain;
   if ((!possible_rights || possible_rights.length === 0) && (!rights || rights.length === 0)) {
     return null;
@@ -18,7 +20,7 @@ export function RightsList({ explain }: { explain: ExplainResponse }) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <ShieldCheck className="size-5 text-teal" />
-          Your rights
+          {hi ? "आपके अधिकार" : "Your rights"}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-5">

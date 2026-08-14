@@ -3,12 +3,15 @@ import { ArrowUpRight, FileText } from "lucide-react";
 import type { DocSummary } from "@/store/libraryStore";
 import { titleCase, relativeDay } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * Compact document row shown in the "My Documents" library (Part 18).
  * Content lives on the backend; this card only references it by id.
  */
 export function DocumentCard({ doc }: { doc: DocSummary }) {
+  const lang = useAppStore((s) => s.language);
+  const hi = lang === "hi";
   return (
     <Link
       to={`/documents/${doc.documentId}`}
@@ -24,10 +27,10 @@ export function DocumentCard({ doc }: { doc: DocSummary }) {
         </span>
         <span className="mt-1 flex flex-wrap items-center gap-2 text-tiny text-muted">
           <Badge variant="neutral">{titleCase(doc.type)}</Badge>
-          <span>Created {relativeDay(doc.createdAt)}</span>
+          <span>{hi ? "बनाया गया" : "Created"} {relativeDay(doc.createdAt, lang)}</span>
           {typeof doc.qualityScore === "number" && (
-            <span aria-label={`Quality score ${doc.qualityScore} out of 100`}>
-              · Quality {doc.qualityScore}/100
+            <span aria-label={hi ? `गुणवत्ता स्कोर 100 में से ${doc.qualityScore}` : `Quality score ${doc.qualityScore} out of 100`}>
+              · {hi ? "गुणवत्ता" : "Quality"} {doc.qualityScore}/100
             </span>
           )}
         </span>

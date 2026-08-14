@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * Explainability panel (Parts 12 & 14): "other laws considered and excluded"
@@ -14,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
  * supporting detail for users who want to understand the reasoning.
  */
 export function ExplainabilityPanel({ explain }: { explain: ExplainResponse }) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const hasWhyNot = explain.why_not_this_law && explain.why_not_this_law.length > 0;
   const hasComparison = explain.law_comparison_table && explain.law_comparison_table.length > 0;
   if (!hasWhyNot && !hasComparison) return null;
@@ -21,21 +23,23 @@ export function ExplainabilityPanel({ explain }: { explain: ExplainResponse }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-h4">Why these laws — and not others</CardTitle>
+        <CardTitle className="text-h4">
+          {hi ? "ये कानून क्यों—और दूसरे क्यों नहीं" : "Why these laws—and not others"}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible className="border-t border-hairline">
           {hasComparison && (
             <AccordionItem value="comparison">
-              <AccordionTrigger>Law comparison</AccordionTrigger>
+              <AccordionTrigger>{hi ? "कानूनों की तुलना" : "Law comparison"}</AccordionTrigger>
               <AccordionContent>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-small">
                     <thead>
                       <tr className="border-b border-hairline text-left text-tiny uppercase tracking-wide text-muted">
-                        <th className="py-2 pr-4 font-medium">Law</th>
-                        <th className="py-2 pr-4 font-medium">Applies?</th>
-                        <th className="py-2 font-medium">Reason</th>
+                        <th className="py-2 pr-4 font-medium">{hi ? "कानून" : "Law"}</th>
+                        <th className="py-2 pr-4 font-medium">{hi ? "लागू है?" : "Applies?"}</th>
+                        <th className="py-2 font-medium">{hi ? "कारण" : "Reason"}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -64,7 +68,9 @@ export function ExplainabilityPanel({ explain }: { explain: ExplainResponse }) {
 
           {hasWhyNot && (
             <AccordionItem value="excluded">
-              <AccordionTrigger>Other laws considered and set aside</AccordionTrigger>
+              <AccordionTrigger>
+                {hi ? "अन्य कानून जिन पर विचार करके अलग रखा गया" : "Other laws considered and set aside"}
+              </AccordionTrigger>
               <AccordionContent>
                 <ul className="space-y-3">
                   {explain.why_not_this_law.map((entry, i) => (

@@ -15,25 +15,31 @@ export function formatINR(amount?: string | number | null): string | null {
 }
 
 /** Human friendly absolute date, e.g. "12 Aug 2026". */
-export function formatDate(iso?: string | null): string {
+export function formatDate(iso?: string | null, language: "en" | "hi" = "en"): string {
   if (!iso) return "—";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "—";
-  return d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+  return d.toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 }
 
 /** "Today" / "Yesterday" / absolute date. */
-export function relativeDay(iso?: string | null): string {
+export function relativeDay(iso?: string | null, language: "en" | "hi" = "en"): string {
   if (!iso) return "—";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "—";
   const now = new Date();
   const startOf = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
   const diffDays = Math.round((startOf(now) - startOf(d)) / 86_400_000);
-  if (diffDays === 0) return "Today";
-  if (diffDays === 1) return "Yesterday";
-  if (diffDays > 1 && diffDays < 7) return `${diffDays} days ago`;
-  return formatDate(iso);
+  if (diffDays === 0) return language === "hi" ? "आज" : "Today";
+  if (diffDays === 1) return language === "hi" ? "कल" : "Yesterday";
+  if (diffDays > 1 && diffDays < 7) {
+    return language === "hi" ? `${diffDays} दिन पहले` : `${diffDays} days ago`;
+  }
+  return formatDate(iso, language);
 }
 
 /** Turn "consumer_court" / "NOT_APPLICABLE" into "Consumer Court" / "Not Applicable". */

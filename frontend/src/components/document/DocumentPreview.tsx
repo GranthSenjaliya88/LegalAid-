@@ -1,19 +1,22 @@
 import { AlertTriangle, ShieldCheck } from "lucide-react";
 import type { DocumentData } from "@/types";
 import { formatDate } from "@/lib/format";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * Read-only, print-like preview of a generated document (Part 17).
  * Renders the structured sections as a calm, letter-style page.
  */
 export function DocumentPreview({ document }: { document: DocumentData }) {
+  const language = useAppStore((s) => s.language);
+  const hi = language === "hi";
   return (
     <div className="space-y-4">
       {document.quality_warnings && document.quality_warnings.length > 0 && (
         <div className="rounded-lg border border-warning/35 bg-warning/[0.07] px-4 py-3">
           <p className="flex items-center gap-2 text-small font-medium text-[#7a5a12]">
             <AlertTriangle className="size-4" />
-            Please review before sending
+            {hi ? "भेजने से पहले कृपया समीक्षा करें" : "Please review before sending"}
           </p>
           <ul className="mt-2 space-y-1 pl-6 text-small leading-relaxed text-[#7a5a12]">
             {document.quality_warnings.map((w, i) => (
@@ -29,7 +32,7 @@ export function DocumentPreview({ document }: { document: DocumentData }) {
         <header className="mb-6 border-b border-hairline pb-5">
           <h1 className="font-display text-h2 leading-tight text-ink">{document.title}</h1>
           <p className="mt-2 text-tiny uppercase tracking-wide text-muted">
-            Drafted {formatDate(document.created_at)}
+            {hi ? "ड्राफ्ट बनाया गया" : "Drafted"} {formatDate(document.created_at, language)}
           </p>
         </header>
 

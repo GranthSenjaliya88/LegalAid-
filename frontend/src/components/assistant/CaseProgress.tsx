@@ -13,15 +13,10 @@ interface CaseProgressProps {
   className?: string;
 }
 
-const defaultSteps = [
-  "Situation",
-  "Facts",
-  "Law",
-  "Rights",
-  "Evidence",
-  "Action",
-  "Document",
-];
+const defaultSteps = {
+  en: ["Situation", "Facts", "Law", "Rights", "Evidence", "Action", "Document"],
+  hi: ["स्थिति", "तथ्य", "कानून", "अधिकार", "सबूत", "कार्रवाई", "दस्तावेज"],
+};
 
 function stateFor(id: PipelineStepId, current: PipelineStepId | null, completed: PipelineStepId[]): StepState {
   if (completed.includes(id)) return "done";
@@ -39,9 +34,10 @@ export function CaseProgress({ current, completed = [], currentStep, orientation
   const lang = useAppStore((s) => s.language);
 
   if (currentStep !== undefined) {
+    const steps = defaultSteps[lang];
     return (
       <div className="flex items-center gap-2 overflow-x-auto py-3">
-        {defaultSteps.map((step, index) => {
+        {steps.map((step, index) => {
           const number = index + 1;
           const isCompleted = number < currentStep;
           const active = number === currentStep;
@@ -65,7 +61,7 @@ export function CaseProgress({ current, completed = [], currentStep, orientation
                 {step}
               </span>
 
-              {number !== defaultSteps.length && (
+              {number !== steps.length && (
                 <div className="h-px w-8 bg-slate-200" />
               )}
             </div>
@@ -83,7 +79,9 @@ export function CaseProgress({ current, completed = [], currentStep, orientation
         {currentStepObj && (
           <p className="text-tiny font-medium text-muted">
             <span className="text-teal">
-              Step {currentIndex + 1} of {PIPELINE_STEPS.length}
+              {lang === "hi"
+                ? `${PIPELINE_STEPS.length} में से चरण ${currentIndex + 1}`
+                : `Step ${currentIndex + 1} of ${PIPELINE_STEPS.length}`}
             </span>
             {" · "}
             <span className={cn("font-semibold text-ink", lang === "hi" && "font-deva")}>
@@ -91,7 +89,7 @@ export function CaseProgress({ current, completed = [], currentStep, orientation
             </span>
           </p>
         )}
-        <ol className="flex items-center" aria-label="Case progress">
+        <ol className="flex items-center" aria-label={lang === "hi" ? "मामले की प्रगति" : "Case progress"}>
           {PIPELINE_STEPS.map((step, i) => {
             const state = stateFor(step.id, current || null, completed);
             const last = i === PIPELINE_STEPS.length - 1;
@@ -121,7 +119,7 @@ export function CaseProgress({ current, completed = [], currentStep, orientation
   }
 
   return (
-    <ol className={cn("flex flex-col", className)} aria-label="Case progress">
+    <ol className={cn("flex flex-col", className)} aria-label={lang === "hi" ? "मामले की प्रगति" : "Case progress"}>
       {PIPELINE_STEPS.map((step, i) => {
         const state = stateFor(step.id, current || null, completed);
         const last = i === PIPELINE_STEPS.length - 1;

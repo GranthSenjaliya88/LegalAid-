@@ -19,12 +19,12 @@ export function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden w-sidebar flex-col border-r border-hairline bg-surface md:flex">
       <div className="px-6 py-6">
-        <NavLink to="/" aria-label="LegalAId home" className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+        <NavLink to="/" aria-label={language === "hi" ? "LegalAId होम" : "LegalAId home"} className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
           <BrandMark />
         </NavLink>
       </div>
 
-      <nav className="flex-1 space-y-1 px-3" aria-label="Primary">
+      <nav className="flex-1 space-y-1 px-3" aria-label={language === "hi" ? "मुख्य" : "Primary"}>
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon;
           const label = language === "hi" ? item.labelHi : item.label;

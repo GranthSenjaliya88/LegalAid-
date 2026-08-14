@@ -2,12 +2,14 @@ import { ArrowRight, FileText, Route } from "lucide-react";
 import type { ActionRoadmapResponse } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * Action roadmap (Part 16). A calm, numbered sequence of concrete next steps,
  * with any document each step needs and an optional urgency banner.
  */
 export function ActionRoadmap({ roadmap }: { roadmap: ActionRoadmapResponse }) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const { steps, urgent_warning } = roadmap;
   if (!steps || steps.length === 0) return null;
 
@@ -16,7 +18,7 @@ export function ActionRoadmap({ roadmap }: { roadmap: ActionRoadmapResponse }) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Route className="size-5 text-teal" />
-          Your next steps
+          {hi ? "आपके अगले कदम" : "Your next steps"}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">

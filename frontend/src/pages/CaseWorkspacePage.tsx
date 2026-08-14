@@ -34,6 +34,7 @@ import type { PipelineStepId } from "@/lib/constants";
 export function CaseWorkspacePage() {
   const { id } = useParams<{ id: string }>();
   const lang = useAppStore((s) => s.language);
+  const hi = lang === "hi";
   const caseQuery = useCase(id);
   const { state, start, applyAnswers, skipClarification, retry, runVerify } = useCaseAnalysis(id);
 
@@ -73,7 +74,7 @@ export function CaseWorkspacePage() {
         className="inline-flex items-center gap-1.5 text-small font-medium text-muted transition-colors hover:text-teal"
       >
         <ArrowLeft className="size-4" />
-        New question
+        {hi ? "नया प्रश्न" : "New question"}
       </Link>
 
       <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]">
@@ -83,8 +84,8 @@ export function CaseWorkspacePage() {
 
           {caseQuery.isError && (
             <ErrorState
-              title="We couldn't load this case"
-              description="The case may have expired or the connection dropped."
+              title={hi ? "यह मामला खुल नहीं सका" : "We couldn't load this case"}
+              description={hi ? "मामला समाप्त हो गया हो सकता है या कनेक्शन टूट गया है।" : "The case may have expired or the connection dropped."}
               onRetry={() => caseQuery.refetch()}
             />
           )}
@@ -95,7 +96,7 @@ export function CaseWorkspacePage() {
                 <div className="rounded-xl border border-hairline bg-surface p-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <h1 id="situation-heading" className="text-small font-semibold uppercase tracking-wide text-teal">
-                      Your situation
+                      {hi ? "आपकी स्थिति" : "Your situation"}
                     </h1>
                     {domainMeta && (
                       <Badge variant="neutral">
@@ -133,7 +134,7 @@ export function CaseWorkspacePage() {
 
               {state.status === "error" && (
                 <ErrorState
-                  title="Analysis didn't finish"
+                  title={hi ? "विश्लेषण पूरा नहीं हुआ" : "Analysis didn't finish"}
                   description={state.error?.message}
                   onRetry={retry}
                 />
@@ -205,7 +206,7 @@ export function CaseWorkspacePage() {
             <div className={cn("hidden rounded-xl border border-hairline bg-surface p-5 lg:block")}>
               <p className="mb-4 flex items-center gap-1.5 text-small font-semibold text-teal">
                 <Sparkles className="size-4 text-gold-deep" />
-                Case progress
+                {hi ? "मामले की प्रगति" : "Case progress"}
               </p>
               <CaseProgress current={current} completed={completed} orientation="vertical" />
             </div>

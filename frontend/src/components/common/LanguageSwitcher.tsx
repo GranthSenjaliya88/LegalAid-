@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAppStore } from "@/store/appStore";
 import type { Language } from "@/types";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,10 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   const language = useAppStore((s) => s.language);
   const setLanguage = useAppStore((s) => s.setLanguage);
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   return (
     <div
       className={cn(
@@ -22,7 +27,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         className,
       )}
       role="radiogroup"
-      aria-label="Language"
+      aria-label={language === "hi" ? "भाषा" : "Language"}
     >
       {OPTIONS.map((opt) => {
         const active = language === opt.value;

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { LawStatusBadge } from "./LawStatusBadge";
 import { VerifiedSeal } from "@/components/common/VerifiedSeal";
+import { useAppStore } from "@/store/appStore";
 
 /**
  * A single statutory provision as returned by the backend corpus. All fields —
@@ -11,8 +12,11 @@ import { VerifiedSeal } from "@/components/common/VerifiedSeal";
  * nothing is hardcoded or inferred client-side (Part 37).
  */
 export function LawCard({ law, className }: { law: WhyThisLaw; className?: string }) {
+  const hi = useAppStore((s) => s.language) === "hi";
   const heading = law.title?.trim() || [law.act, law.section].filter(Boolean).join(" · ");
-  const subline = [law.act, law.section ? `Section ${law.section}` : null].filter(Boolean).join(" · ");
+  const subline = [law.act, law.section ? `${hi ? "धारा" : "Section"} ${law.section}` : null]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <article
@@ -55,11 +59,11 @@ export function LawCard({ law, className }: { law: WhyThisLaw; className?: strin
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 font-medium text-teal underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-1 focus-visible:ring-offset-surface rounded-sm"
             >
-              {law.source_authority || "Official source"}
+              {law.source_authority || (hi ? "आधिकारिक स्रोत" : "Official source")}
               <ExternalLink className="size-3" />
             </a>
           ) : (
-            <span className="text-muted">Source: {law.source_authority}</span>
+            <span className="text-muted">{hi ? "स्रोत" : "Source"}: {law.source_authority}</span>
           )}
         </div>
       )}

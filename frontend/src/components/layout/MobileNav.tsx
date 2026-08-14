@@ -27,7 +27,7 @@ export function MobileNav() {
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-hairline bg-surface/95 px-4 backdrop-blur md:hidden">
-      <NavLink to="/" aria-label="LegalAId home" className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
+      <NavLink to="/" aria-label={language === "hi" ? "LegalAId होम" : "LegalAId home"} className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
         <BrandMark size="sm" />
       </NavLink>
 
@@ -37,7 +37,7 @@ export function MobileNav() {
           <Dialog.Trigger asChild>
             <button
               type="button"
-              aria-label="Open menu"
+              aria-label={language === "hi" ? "मेन्यू खोलें" : "Open menu"}
               className="flex size-11 items-center justify-center rounded-lg text-ink transition-colors hover:bg-teal/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
             >
               <Menu className="size-5" />
@@ -57,14 +57,14 @@ export function MobileNav() {
                   <BrandMark size="sm" />
                 </Dialog.Title>
                 <Dialog.Close
-                  aria-label="Close menu"
+                  aria-label={language === "hi" ? "मेन्यू बंद करें" : "Close menu"}
                   className="flex size-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-teal/[0.06] hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
                 >
                   <X className="size-5" />
                 </Dialog.Close>
               </div>
 
-              <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4" aria-label="Primary">
+              <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4" aria-label={language === "hi" ? "मुख्य" : "Primary"}>
                 {NAV_ITEMS.map((item) => {
                   const Icon = item.icon;
                   const label = language === "hi" ? item.labelHi : item.label;

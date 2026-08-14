@@ -30,7 +30,11 @@ export function HomePage() {
       {
         onSuccess: (res) => navigate(`/case/${res.case_id}`),
         onError: () =>
-          toast.error("Couldn't start your case. Please check your connection and try again."),
+          toast.error(
+            lang === "hi"
+              ? "मामला शुरू नहीं हो सका। अपना कनेक्शन जाँचें और फिर कोशिश करें।"
+              : "Couldn't start your case. Please check your connection and try again.",
+          ),
       },
     );
   };

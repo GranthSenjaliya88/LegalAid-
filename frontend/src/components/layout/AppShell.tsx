@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import { useAppStore } from "@/store/appStore";
 import { Sidebar } from "./Sidebar";
 import { MobileNav } from "./MobileNav";
 import { Footer } from "./Footer";
@@ -9,13 +10,15 @@ import { Footer } from "./Footer";
  * reading and always leaves room for the fixed sidebar on md+.
  */
 export function AppShell({ children }: { children: ReactNode }) {
+  const language = useAppStore((s) => s.language);
+
   return (
     <div className="min-h-screen bg-ivory">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-teal focus:px-4 focus:py-2 focus:text-small focus:font-medium focus:text-ivory-soft focus:shadow-lift"
       >
-        Skip to content
+        {language === "hi" ? "मुख्य सामग्री पर जाएँ" : "Skip to content"}
       </a>
       <Sidebar />
       <MobileNav />
