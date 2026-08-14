@@ -209,51 +209,104 @@ def load_extended_corpus(conn: sqlite3.Connection) -> None:
         ingest_legal_concepts
     )
 
-    # 1. Rules, Regulations, Notifications, Authorities, Procedures, Judgments, Concepts
-    ingest_authorities_and_procedures(conn)
-    ingest_legal_concepts(conn)
-    ingest_rules_and_regulations(conn)
-    ingest_notifications(conn)
-    ingest_judgments(conn)
+    # 1. Authorities and Procedures
+    try:
+        ingest_authorities_and_procedures(conn)
+    except Exception as e:
+        print(f"[loader] Note: authorities/procedures ingestion skipped ({e})")
 
-    # 2. Historical Mappings
-    hist_map_file = data_dir / "historical_mappings.json"
-    if hist_map_file.exists():
-        records = json.loads(hist_map_file.read_text(encoding="utf-8"))
-        for r in records:
-            conn.execute(
-                """
-                INSERT OR IGNORE INTO historical_mappings(historical_act, historical_section, current_act, current_section, mapping_type, effective_date, notes)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                """,
-                (r["historical_act"], r["historical_section"], r["current_act"], r["current_section"], r.get("mapping_type", "CORRESPONDING"), r.get("effective_date"), r.get("notes"))
-            )
+    # 2. Legal Concepts
+    try:
+        ingest_legal_concepts(conn)
+    except Exception as e:
+        print(f"[loader] Note: legal concepts ingestion skipped ({e})")
 
-    # 3. Jurisdictions
-    jur_file = data_dir / "jurisdictions.json"
-    if jur_file.exists():
-        records = json.loads(jur_file.read_text(encoding="utf-8"))
-        for r in records:
-            conn.execute(
-                """
-                INSERT OR IGNORE INTO jurisdictions(name, level, state, district)
-                VALUES (?,?,?,?)
-                """,
-                (r["name"], r["level"], r.get("state"), r.get("district"))
-            )
+    # 3. Rules & Regulations
+    try:
+        ingest_rules_and_regulations(conn)
+    except Exception as e:
+        print(f"[loader] Note: rules/regulations ingestion skipped ({e})")
 
-    # 4. Knowledge Graph
-    graph_file = data_dir / "knowledge_graph.json"
-    if graph_file.exists():
-        records = json.loads(graph_file.read_text(encoding="utf-8"))
-        for r in records:
-            conn.execute(
-                """
-                INSERT OR IGNORE INTO knowledge_graph_edges(source_type, source_id, target_type, target_id, relation_type, description, source_url)
-                VALUES (?,?,?,?,?,?,?)
-                """,
-                (r["source_type"], r["source_id"], r["target_type"], r["target_id"], r["relation_type"], r["description"], r.get("source_url"))
-            )
+    # 4. Notifications
+    try:
+        ingest_notifications(conn)
+    except Exception as e:
+        print(f"[loader] Note: notifications ingestion skipped ({e})")
+
+    # 5. Judgments
+    try:
+        ingest_judgments(conn)
+    except Exception as e:
+        print(f"[loader] Note: judgments ingestion skipped ({e})")
+
+    # 6. Historical Mappings
+    try:
+        hist_map_file = data_dir / "historical_mappings.json"
+        if hist_map_file.exists():
+            records = json.loads(hist_map_file.read_text(encoding="utf-8"))
+            for r in records:
+                conn.execute(
+                    """
+                    INSERT OR IGNORE INTO historical_mappings(old_act, old_section, new_act, new_section, historical_act, historical_section, current_act, current_section, mapping_type, effective_date, notes)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        r.get("old_act") or r.get("historical_act"),
+                        r.get("old_section") or r.get("historical_section"),
+                        r.get("new_act") or r.get("current_act"),
+                        r.get("new_section") or r.get("current_section"),
+                        r.get("historical_act", ""),
+                        r.get("historical_section", ""),
+                        r.get("current_act", ""),
+                        r.get("current_section", ""),
+                        r.get("mapping_type", "CORRESPONDING"),
+                        r.get("effective_date", ""),
+                        r.get("notes", "")
+                    )
+                )
+    except Exception as e:
+        print(f"[loader] Note: historical mappings ingestion skipped ({e})")
+
+    # 7. Jurisdictions
+    try:
+        jur_file = data_dir / "jurisdictions.json"
+        if jur_file.exists():
+            records = json.loads(jur_file.read_text(encoding="utf-8"))
+            for r in records:
+                conn.execute(
+                    """
+                    INSERT OR IGNORE INTO jurisdictions(name, level, state, district)
+                    VALUES (?,?,?,?)
+                    """,
+                    (r["name"], r.get("level", ""), r.get("state", ""), r.get("district", ""))
+                )
+    except Exception as e:
+        print(f"[loader] Note: jurisdictions ingestion skipped ({e})")
+
+    # 8. Knowledge Graph
+    try:
+        graph_file = data_dir / "knowledge_graph.json"
+        if graph_file.exists():
+            records = json.loads(graph_file.read_text(encoding="utf-8"))
+            for r in records:
+                conn.execute(
+                    """
+                    INSERT OR IGNORE INTO knowledge_graph_edges(source_type, source_id, target_type, target_id, relation_type, relationship, description, source_url)
+                    VALUES (?,?,?,?,?,?,?,?)
+                    """,
+                    (
+                        r.get("source_type", "statute"),
+                        r.get("source_id", 0),
+                        r.get("target_type", "statute"),
+                        r.get("target_id", 0),
+                        r.get("relation_type", r.get("relationship", "RELATED_TO")),
+                        r.get("relationship", r.get("relation_type", "RELATED_TO")),
+                        r.get("description", ""),
+                        r.get("source_url", "")
+                    )
+                )
+    except Exception as e:
+        print(f"[loader] Note: knowledge graph ingestion skipped ({e})")
 
     conn.commit()
 

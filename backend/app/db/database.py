@@ -253,9 +253,9 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
         ("regulations", regulations_cols, [("source_id", "INTEGER"), ("relevant_act", "VARCHAR(255)")]),
         ("notifications", notifications_cols, [("source_id", "INTEGER"), ("subject", "VARCHAR(500)"), ("summary", "TEXT"), ("applicable_to", "TEXT")]),
         ("judgments", judgments_cols, [("source_id", "INTEGER"), ("binding_level", "VARCHAR(50) DEFAULT 'PERSUASIVE'"), ("facts", "TEXT"), ("issues", "TEXT"), ("decision", "TEXT"), ("legal_principles", "TEXT"), ("legal_provisions", "TEXT")]),
-        ("authorities", authorities_cols, [("source_id", "INTEGER")]),
-        ("procedures", procedures_cols, [("source_id", "INTEGER")]),
-        ("sources", sources_cols, [("official_url", "VARCHAR(500)"), ("version", "VARCHAR(20) DEFAULT '1.0'"), ("last_verified_at", "VARCHAR(50)"), ("notes", "TEXT")]),
+        ("authorities", authorities_cols, [("source_id", "INTEGER"), ("who_can_use", "TEXT"), ("helpline", "VARCHAR(255)"), ("official_portal", "TEXT"), ("online_filing_url", "TEXT"), ("source_url", "TEXT"), ("verification_status", "VARCHAR(50) DEFAULT 'VERIFIED'"), ("purpose", "TEXT"), ("official_url", "TEXT")]),
+        ("procedures", procedures_cols, [("source_id", "INTEGER"), ("authority_id", "INTEGER"), ("domain", "VARCHAR(100)"), ("subdomain", "VARCHAR(100)"), ("problem_title", "VARCHAR(500)"), ("right_summary", "TEXT"), ("authority_name", "VARCHAR(255)"), ("procedure_steps_json", "TEXT"), ("required_documents_json", "TEXT"), ("official_portal_url", "TEXT"), ("follow_up_timeline", "VARCHAR(255)"), ("title", "VARCHAR(500)"), ("steps", "TEXT"), ("required_documents", "TEXT"), ("source_url", "TEXT"), ("official_url", "TEXT"), ("verification_status", "VARCHAR(50) DEFAULT 'VERIFIED'")]),
+        ("sources", sources_cols, [("official_url", "VARCHAR(500)"), ("priority_level", "INTEGER DEFAULT 1"), ("version", "VARCHAR(20) DEFAULT '1.0'"), ("last_verified_at", "VARCHAR(50)"), ("notes", "TEXT")]),
     ]:
         if cols_set:
             for col_name, col_type in new_cols:

@@ -108,11 +108,11 @@ def ingest_rules_and_regulations(conn: sqlite3.Connection, json_file: Optional[P
             if not existing:
                 conn.execute(
                     """
-                    INSERT INTO rules (rule_number, title, text, domain, jurisdiction, source_url, source_authority, effective_from, status, verification_status, source_id, relevant_act)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    INSERT INTO rules (rule_number, title, text, full_text, domain, jurisdiction, source_url, source_authority, effective_from, status, verification_status, source_id, relevant_act)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
-                        rule_num, r["title"], r["text"], r.get("domain", "general"),
+                        rule_num, r["title"], r["text"], r["text"], r.get("domain", "general"),
                         r.get("jurisdiction", "India"), r.get("source_url", ""),
                         r.get("source_authority", "Govt"), r.get("effective_from", ""),
                         r.get("status", "CURRENT"), q_status, src_id, r.get("relevant_act", "")
@@ -124,11 +124,11 @@ def ingest_rules_and_regulations(conn: sqlite3.Connection, json_file: Optional[P
             if not existing:
                 conn.execute(
                     """
-                    INSERT INTO regulations (regulation_number, title, authority, text, domain, source_url, effective_from, status, verification_status, source_id, relevant_act)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    INSERT INTO regulations (regulation_number, title, authority, text, full_text, domain, source_url, effective_from, status, verification_status, source_id, relevant_act)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
-                        reg_num, r["title"], r.get("authority", "Regulator"), r["text"],
+                        reg_num, r["title"], r.get("authority", "Regulator"), r["text"], r["text"],
                         r.get("domain", "general"), r.get("source_url", ""),
                         r.get("effective_from", ""), r.get("status", "CURRENT"),
                         q_status, src_id, r.get("relevant_act", "")
@@ -169,14 +169,15 @@ def ingest_notifications(conn: sqlite3.Connection, json_file: Optional[Path] = N
         if not existing:
             conn.execute(
                 """
-                INSERT INTO notifications (notification_number, title, issuing_authority, date_issued, text, domain, source_url, status, verification_status, source_id, subject, summary, applicable_to)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO notifications (notification_number, title, issuing_authority, date_issued, text, full_text, domain, jurisdiction, source_url, status, verification_status, source_id, subject, summary, applicable_to)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     notif_num, r["title"], r.get("issuing_authority", "MHA/RBI"),
-                    r.get("date_issued", ""), r["text"], r.get("domain", "general"),
-                    r.get("source_url", ""), r.get("status", "CURRENT"), q_status,
-                    src_id, r.get("subject", r["title"]), r.get("summary", r["text"][:200]),
+                    r.get("date_issued", ""), r["text"], r["text"], r.get("domain", "general"),
+                    r.get("jurisdiction", "India"), r.get("source_url", ""),
+                    r.get("status", "CURRENT"), q_status, src_id,
+                    r.get("subject", r["title"]), r.get("summary", r["text"][:200]),
                     r.get("applicable_to", "All Citizens")
                 )
             )
@@ -229,14 +230,14 @@ def ingest_authorities_and_procedures(conn: sqlite3.Connection) -> Tuple[int, in
                 docs_json = json.dumps(p.get("required_documents_json", p.get("required_documents", [])))
                 conn.execute(
                     """
-                    INSERT INTO procedures (domain, subdomain, problem_title, right_summary, authority_name, procedure_steps_json, required_documents_json, official_portal_url, follow_up_timeline, source_url, verification_status, source_id)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    INSERT INTO procedures (domain, subdomain, problem_title, right_summary, authority_name, procedure_steps_json, required_documents_json, official_portal_url, follow_up_timeline, source_url, verification_status, jurisdiction, source_id)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         p.get("domain", "general"), p.get("subdomain", ""), p["problem_title"],
                         p.get("right_summary", ""), p["authority_name"], steps_json, docs_json,
                         p.get("official_portal_url", ""), p.get("follow_up_timeline", ""),
-                        p.get("source_url", ""), "VERIFIED", src_id
+                        p.get("source_url", ""), "VERIFIED", p.get("jurisdiction", "India"), src_id
                     )
                 )
                 proc_inserted += 1
@@ -275,17 +276,18 @@ def ingest_judgments(conn: sqlite3.Connection, json_file: Optional[Path] = None)
             binding = "SUPREME_COURT_BINDING" if "Supreme Court" in court_name else ("HIGH_COURT_BINDING" if "High Court" in court_name else "PERSUASIVE")
             conn.execute(
                 """
-                INSERT INTO judgments (case_title, citation, court, year, act_short_name, section_number, ratio_decidendi, domain, source_url, verification_status, source_id, binding_level, facts, issues, decision, legal_principles, legal_provisions)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO judgments (case_title, case_name, citation, court, year, act_short_name, section_number, ratio_decidendi, domain, source_url, verification_status, source_id, binding_level, facts, issues, decision, legal_principles, legal_provisions, jurisdiction)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
-                    case_title, citation, court_name, j.get("year", 2020),
+                    case_title, case_title, citation, court_name, j.get("year", 2020),
                     j.get("act_short_name", ""), j.get("section_number", ""),
                     j.get("ratio_decidendi", ""), j.get("domain", "general"),
                     j.get("source_url", ""), q_status, src_id,
                     j.get("binding_level", binding), j.get("facts", ""),
                     j.get("issues", ""), j.get("decision", j.get("ratio_decidendi", "")),
-                    j.get("legal_principles", ""), j.get("legal_provisions", "")
+                    j.get("legal_principles", ""), j.get("legal_provisions", ""),
+                    j.get("jurisdiction", "India")
                 )
             )
             inserted += 1
@@ -338,12 +340,12 @@ def _get_or_create_source(conn: sqlite3.Connection, authority: str, source_type:
     today_str = "2026-08-12"
     cur = conn.execute(
         """
-        INSERT INTO sources (authority, source_type, title, official_url, jurisdiction, publication_date, retrieved_at, last_verified_at, content_hash, verification_status, version, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO sources (authority, source_type, title, official_url, jurisdiction, publication_date, retrieved_at, last_verified_at, content_hash, verification_status, priority_level, version, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             authority, source_type, title, url or "", "INDIA", today_str, today_str, today_str,
-            compute_hash(f"{authority}:{title}:{url}"), "VERIFIED", "1.0", "Official Ingestion"
+            compute_hash(f"{authority}:{title}:{url}"), "VERIFIED", 1, "1.0", "Official Ingestion"
         )
     )
     return cur.lastrowid

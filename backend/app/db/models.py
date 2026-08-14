@@ -177,13 +177,17 @@ class Rule(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     rule_number: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
     title: Mapped[str] = mapped_column(String(500), nullable=False)
-    full_text: Mapped[str] = mapped_column(Text, nullable=False)
+    full_text: Mapped[str] = mapped_column(Text, default="", nullable=False)
+    text: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     act_id: Mapped[Optional[int]] = mapped_column(ForeignKey("acts.id"), nullable=True)
     relevant_act: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     domain: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
     jurisdiction: Mapped[str] = mapped_column(String(100), default="INDIA", nullable=False)
     effective_from: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
     status: Mapped[LegalStatus] = mapped_column(SAEnum(LegalStatus), default=LegalStatus.CURRENT, nullable=False)
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    source_authority: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    verification_status: Mapped[Optional[str]] = mapped_column(String(50), default="VERIFIED", nullable=True)
     source_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sources.id"), nullable=True)
     source: Mapped[Optional[LegalSource]] = relationship()
 
@@ -194,12 +198,15 @@ class Regulation(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     regulation_number: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
     title: Mapped[str] = mapped_column(String(500), nullable=False)
-    full_text: Mapped[str] = mapped_column(Text, nullable=False)
+    full_text: Mapped[str] = mapped_column(Text, default="", nullable=False)
+    text: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     issuing_authority: Mapped[str] = mapped_column(String(255), nullable=False)
     domain: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
     jurisdiction: Mapped[str] = mapped_column(String(100), default="INDIA", nullable=False)
     effective_from: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
     status: Mapped[LegalStatus] = mapped_column(SAEnum(LegalStatus), default=LegalStatus.CURRENT, nullable=False)
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    verification_status: Mapped[Optional[str]] = mapped_column(String(50), default="VERIFIED", nullable=True)
     source_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sources.id"), nullable=True)
     source: Mapped[Optional[LegalSource]] = relationship()
 
@@ -210,13 +217,19 @@ class Notification(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     notification_number: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
     title: Mapped[str] = mapped_column(String(500), nullable=False)
-    full_text: Mapped[str] = mapped_column(Text, nullable=False)
+    full_text: Mapped[str] = mapped_column(Text, default="", nullable=False)
+    text: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     issuing_authority: Mapped[str] = mapped_column(String(255), nullable=False)
     date_issued: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
     effective_from: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
     domain: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
     jurisdiction: Mapped[str] = mapped_column(String(100), default="INDIA", nullable=False)
     status: Mapped[LegalStatus] = mapped_column(SAEnum(LegalStatus), default=LegalStatus.CURRENT, nullable=False)
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    verification_status: Mapped[Optional[str]] = mapped_column(String(50), default="VERIFIED", nullable=True)
+    subject: Mapped[Optional[str]] = mapped_column(String(500), nullable=True)
+    summary: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    applicable_to: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     source_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sources.id"), nullable=True)
     source: Mapped[Optional[LegalSource]] = relationship()
 
@@ -226,12 +239,18 @@ class LegalConcept(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
-    concept: Mapped[str] = mapped_column(String(255), index=True, nullable=False)
+    concept: Mapped[Optional[str]] = mapped_column(String(255), index=True, nullable=True)
+    concept_key: Mapped[Optional[str]] = mapped_column(String(255), index=True, nullable=True)
     domain: Mapped[str] = mapped_column(String(100), index=True, nullable=False)
 
     english_terms: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     hindi_terms: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     hinglish_terms: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+
+    english_synonyms_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    hindi_synonyms_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    hinglish_synonyms_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    related_acts_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
 
 
 class Authority(Base):
@@ -241,10 +260,16 @@ class Authority(Base):
 
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     domain: Mapped[str] = mapped_column(String(100), nullable=False)
-    jurisdiction: Mapped[str] = mapped_column(String(255), nullable=False)
+    jurisdiction: Mapped[str] = mapped_column(String(255), default="INDIA", nullable=False)
 
-    purpose: Mapped[str] = mapped_column(Text, nullable=False)
-    official_url: Mapped[str] = mapped_column(Text, nullable=False)
+    purpose: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    who_can_use: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    helpline: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    official_portal: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    online_filing_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    verification_status: Mapped[Optional[str]] = mapped_column(String(50), default="VERIFIED", nullable=True)
+    official_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     source_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sources.id"), nullable=True)
 
 
@@ -253,15 +278,27 @@ class Procedure(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
-    authority_id: Mapped[int] = mapped_column(
-        ForeignKey("authorities.id"), nullable=False
+    authority_id: Mapped[Optional[int]] = mapped_column(
+        ForeignKey("authorities.id"), nullable=True
     )
 
-    title: Mapped[str] = mapped_column(String(500), nullable=False)
-    steps: Mapped[str] = mapped_column(Text, nullable=False)
-    required_documents: Mapped[str] = mapped_column(Text, nullable=False)
+    domain: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    subdomain: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    problem_title: Mapped[Optional[str]] = mapped_column(String(500), nullable=True)
+    right_summary: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    authority_name: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    procedure_steps_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    required_documents_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    official_portal_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    follow_up_timeline: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
 
-    official_url: Mapped[str] = mapped_column(Text, nullable=False)
+    title: Mapped[Optional[str]] = mapped_column(String(500), nullable=True)
+    steps: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    required_documents: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    official_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    verification_status: Mapped[Optional[str]] = mapped_column(String(50), default="VERIFIED", nullable=True)
     jurisdiction: Mapped[str] = mapped_column(String(100), default="INDIA", nullable=False)
     source_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sources.id"), nullable=True)
 
@@ -272,21 +309,30 @@ class Judgment(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
     court: Mapped[str] = mapped_column(String(255), nullable=False)
-    case_name: Mapped[str] = mapped_column(Text, nullable=False)
+    case_name: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    case_title: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     citation: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
 
+    year: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     decision_date: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
 
-    facts: Mapped[str] = mapped_column(Text, nullable=False)
-    issues: Mapped[str] = mapped_column(Text, nullable=False)
-    decision: Mapped[str] = mapped_column(Text, nullable=False)
-    legal_principles: Mapped[str] = mapped_column(Text, nullable=False)
+    facts: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    issues: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    decision: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    legal_principles: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    legal_provisions: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    ratio_decidendi: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    act_short_name: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    section_number: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    domain: Mapped[Optional[str]] = mapped_column(String(100), default="general", nullable=True)
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    verification_status: Mapped[Optional[str]] = mapped_column(String(50), default="VERIFIED", nullable=True)
 
-    binding_level: Mapped[BindingLevel] = mapped_column(
-        SAEnum(BindingLevel), nullable=False
+    binding_level: Mapped[Optional[str]] = mapped_column(
+        String(50), default="PERSUASIVE", nullable=True
     )
 
-    jurisdiction: Mapped[str] = mapped_column(String(255), nullable=False)
+    jurisdiction: Mapped[str] = mapped_column(String(255), default="INDIA", nullable=False)
 
     source_id: Mapped[Optional[int]] = mapped_column(ForeignKey("sources.id"), nullable=True)
 
@@ -298,18 +344,18 @@ class HistoricalMapping(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
-    old_act: Mapped[str] = mapped_column(String(255), nullable=False)
-    old_section: Mapped[str] = mapped_column(String(100), nullable=False)
+    old_act: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    old_section: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    new_act: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    new_section: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
 
-    new_act: Mapped[Optional[str]] = mapped_column(
-        String(255), nullable=True
-    )
-    new_section: Mapped[Optional[str]] = mapped_column(
-        String(100), nullable=True
-    )
+    historical_act: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    historical_section: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    current_act: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+    current_section: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    effective_date: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
 
-    mapping_type: Mapped[str] = mapped_column(String(100), nullable=False)
-
+    mapping_type: Mapped[str] = mapped_column(String(100), default="CORRESPONDING", nullable=False)
     notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
 
 
@@ -319,12 +365,25 @@ class KnowledgeGraphEdge(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
 
     source_type: Mapped[str] = mapped_column(String(100), nullable=False)
-    source_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    source_id: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
 
-    relationship: Mapped[str] = mapped_column(String(100), nullable=False)
+    relationship: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    relation_type: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
 
     target_type: Mapped[str] = mapped_column(String(100), nullable=False)
-    target_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    target_id: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
+    description: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    source_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+
+
+class Jurisdiction(Base):
+    __tablename__ = "jurisdictions"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    level: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    state: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    district: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
 
 
 class ClaimAudit(Base):
