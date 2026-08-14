@@ -1,0 +1,57 @@
+{
+  "act": {
+    "name": "Maternity Benefit Act, 1961",
+    "short_name": "MBA 1961",
+    "year": 1961,
+    "domain": "employment_benefits",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/21986",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/21986",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1963-11-01",
+    "status": "CURRENT",
+    "description": "Central law governing maternity leave, payment, nursing breaks, creche facilities and protection from dismissal.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "5",
+      "title": "Right to payment of maternity benefit.",
+      "text": "Section 5 provides the statutory right to maternity benefit and governs the qualifying conditions and benefit period.",
+      "plain_language_summary": "Eligible women are entitled to paid maternity benefit for the period and on the conditions specified by the Act.",
+      "subdomain": "paid_maternity_leave",
+      "keywords": ["maternity leave", "paid leave", "pregnancy benefit", "26 weeks", "woman employee"],
+      "synonyms": ["pregnancy leave", "maternity salary", "delivery leave", "गर्भावस्था अवकाश", "मातृत्व लाभ"]
+    },
+    {
+      "section_number": "11",
+      "title": "Nursing breaks.",
+      "text": "Section 11 provides nursing breaks for a woman after returning to work following delivery.",
+      "plain_language_summary": "An eligible nursing mother is entitled to additional prescribed breaks during work.",
+      "subdomain": "nursing_breaks",
+      "keywords": ["nursing breaks", "breastfeeding break", "mother at work", "post maternity"],
+      "synonyms": ["feeding break", "office breastfeeding", "स्तनपान अवकाश", "दूध पिलाने का अवकाश"]
+    },
+    {
+      "section_number": "11A",
+      "title": "Creche facility.",
+      "text": "Section 11A provides for a creche facility in establishments covered by its conditions.",
+      "plain_language_summary": "Covered establishments must provide a creche and allow visits as specified by the Act.",
+      "subdomain": "workplace_creche",
+      "keywords": ["creche facility", "daycare", "workplace childcare", "fifty employees"],
+      "synonyms": ["office daycare", "workplace creche", "कार्यस्थल क्रेच", "बच्चों की देखभाल सुविधा"]
+    },
+    {
+      "section_number": "12",
+      "title": "Dismissal during absence of pregnancy.",
+      "text": "Section 12 protects against dismissal or disadvantage in the circumstances covered during maternity absence.",
+      "plain_language_summary": "An employer cannot dismiss or disadvantage a woman merely because of protected maternity absence.",
+      "subdomain": "maternity_dismissal_protection",
+      "keywords": ["fired during pregnancy", "maternity dismissal", "employment protection", "pregnant employee"],
+      "synonyms": ["pregnancy me job se nikala", "maternity termination", "गर्भावस्था में नौकरी से निकाला"]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "act": {
+    "name": "Legal Services Authorities Act, 1987",
+    "short_name": "LSA Act 1987",
+    "year": 1987,
+    "domain": "general",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1925",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1925",
+    "source_authority": "Department of Justice, Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1995-11-09",
+    "status": "CURRENT",
+    "description": "Central law providing free legal services and establishing Legal Services Authorities and Lok Adalats.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "12",
+      "title": "Criteria for giving legal services.",
+      "text": "Section 12 identifies categories of persons entitled to legal services under the Act.",
+      "plain_language_summary": "Lists who may qualify for free legal aid, including specified vulnerable groups and eligible low-income persons.",
+      "subdomain": "free_legal_aid_eligibility",
+      "keywords": ["free legal aid", "eligibility", "weaker section", "woman child SC ST disability custody income"],
+      "synonyms": ["free lawyer", "muft vakil", "legal aid eligibility", "मुफ्त वकील", "निःशुल्क कानूनी सहायता"]
+    },
+    {
+      "section_number": "13",
+      "title": "Entitlement of legal services.",
+      "text": "Section 13 governs entitlement to legal services for persons satisfying the Act's criteria and prima-facie requirements.",
+      "plain_language_summary": "A qualifying person may receive legal services when the statutory entitlement conditions are met.",
+      "subdomain": "free_legal_aid_entitlement",
+      "keywords": ["legal services entitlement", "free lawyer", "legal aid application", "prima facie case"],
+      "synonyms": ["legal aid kaise mile", "free advocate", "कानूनी सहायता कैसे मिले", "मुफ्त अधिवक्ता"]
+    },
+    {
+      "section_number": "19",
+      "title": "Organisation of Lok Adalats.",
+      "text": "Section 19 provides for organization of Lok Adalats by Legal Services Authorities and Committees.",
+      "plain_language_summary": "Legal Services bodies may organize Lok Adalats for settlement of suitable disputes.",
+      "subdomain": "lok_adalat",
+      "keywords": ["Lok Adalat", "settlement camp", "legal services authority", "compromise"],
+      "synonyms": ["lok adalat case", "samjhauta court", "लोक अदालत", "समझौता न्यायालय"]
+    },
+    {
+      "section_number": "20",
+      "title": "Cognizance of cases by Lok Adalats.",
+      "text": "Section 20 governs the kinds of pending and pre-litigation disputes that a Lok Adalat may take up and its settlement process.",
+      "plain_language_summary": "Suitable pending cases or pre-litigation disputes may be referred to Lok Adalat for an agreed settlement.",
+      "subdomain": "lok_adalat_referral",
+      "keywords": ["refer case Lok Adalat", "pre litigation", "pending case settlement", "compromise"],
+      "synonyms": ["case lok adalat bhejna", "pre litigation settlement", "लोक अदालत में मामला", "समझौता"]
+    },
+    {
+      "section_number": "21",
+      "title": "Award of Lok Adalat.",
+      "text": "Section 21 governs the legal effect of a Lok Adalat award.",
+      "plain_language_summary": "A Lok Adalat award is treated as a civil-court decree and has the finality stated by the Act.",
+      "subdomain": "lok_adalat_award",
+      "keywords": ["Lok Adalat award", "civil court decree", "final settlement", "court fee refund"],
+      "synonyms": ["lok adalat decision", "award final", "लोक अदालत निर्णय", "डिक्री"]
+    }
+  ]
+}

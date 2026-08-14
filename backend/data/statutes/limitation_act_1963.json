@@ -1,0 +1,66 @@
+{
+  "act": {
+    "name": "Limitation Act, 1963",
+    "short_name": "Limitation Act 1963",
+    "year": 1963,
+    "domain": "procedural",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1565",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1565",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1964-01-01",
+    "status": "CURRENT",
+    "description": "Central law governing time limits for suits, appeals and applications and exclusion or extension of time.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "5",
+      "title": "Extension of prescribed period in certain cases.",
+      "text": "Section 5 permits delayed appeals or applications to be admitted on sufficient cause in the cases it covers.",
+      "plain_language_summary": "A court may excuse delay for certain appeals or applications if sufficient cause is shown.",
+      "subdomain": "condonation_of_delay",
+      "keywords": ["delay condonation", "late appeal", "sufficient cause", "extension of limitation"],
+      "synonyms": ["appeal late ho gayi", "delay maaf", "देरी माफी", "समय सीमा बढ़ाना"]
+    },
+    {
+      "section_number": "14",
+      "title": "Exclusion of time of proceeding bona fide in court without jurisdiction.",
+      "text": "Section 14 provides for exclusion of qualifying time spent pursuing a matter in good faith before a court unable to entertain it.",
+      "plain_language_summary": "Time spent honestly pursuing the same matter in the wrong court may be excluded from limitation when conditions are met.",
+      "subdomain": "wrong_forum_time_exclusion",
+      "keywords": ["wrong court", "exclude time", "lack of jurisdiction", "good faith proceeding"],
+      "synonyms": ["galat court me case", "wrong forum", "गलत अदालत", "समय की गणना से बाहर"]
+    },
+    {
+      "section_number": "17",
+      "title": "Effect of fraud or mistake.",
+      "text": "Section 17 governs commencement of limitation where the claim involves fraud, concealment or mistake in covered circumstances.",
+      "plain_language_summary": "Limitation may begin later when fraud or mistake prevented discovery of the right or relevant facts.",
+      "subdomain": "fraud_limitation",
+      "keywords": ["fraud discovered later", "concealment", "mistake", "limitation start"],
+      "synonyms": ["fraud baad me pata chala", "छुपाया गया धोखा", "बाद में पता चला"]
+    },
+    {
+      "section_number": "18",
+      "title": "Effect of acknowledgment in writing.",
+      "text": "Section 18 governs a fresh limitation period following a qualifying written acknowledgment before expiry.",
+      "plain_language_summary": "A valid written acknowledgment made in time can start a fresh limitation period.",
+      "subdomain": "written_acknowledgment",
+      "keywords": ["written acknowledgment", "debt admitted", "fresh limitation", "signed admission"],
+      "synonyms": ["debt accept in writing", "likhit swikriti", "लिखित स्वीकारोक्ति", "कर्ज माना"]
+    },
+    {
+      "section_number": "27",
+      "title": "Extinguishment of right to property.",
+      "text": "Section 27 provides for extinguishment of a property right when the limitation period for possession proceedings expires.",
+      "plain_language_summary": "Expiry of the prescribed period for a possession suit can extinguish the underlying property right.",
+      "subdomain": "property_limitation",
+      "keywords": ["property limitation", "possession suit", "right extinguished", "adverse possession"],
+      "synonyms": ["property case time limit", "kabza limitation", "संपत्ति दावा समय सीमा", "प्रतिकूल कब्जा"]
+    }
+  ]
+}

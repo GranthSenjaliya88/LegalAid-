@@ -7,6 +7,7 @@ Does NOT generate or hallucinate new section numbers.
 """
 
 import re
+import unicodedata
 from typing import List, Dict
 
 SYNONYM_DICTIONARY: Dict[str, List[str]] = {
@@ -16,6 +17,43 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "termination": ["retrenchment", "severance pay", "notice pay", "fired", "dismissal", "notice period"],
     "gratuity": ["continuous service", "5 years service", "gratuity payment", "resignation gratuity"],
     "maternity": ["maternity leave", "26 weeks paid leave", "pregnancy benefit"],
+    "pregnancy": ["maternity benefit", "maternity leave", "nursing breaks", "creche facility"],
+
+    # Family / Marriage / Succession
+    "divorce": ["dissolution of marriage", "mutual consent divorce", "alimony", "maintenance"],
+    "alimony": ["maintenance", "permanent alimony", "interim maintenance", "litigation expenses"],
+    "custody": ["child custody", "minor child", "visitation", "child maintenance"],
+    "marriage": ["matrimonial relief", "divorce", "spouse", "family court"],
+    "inheritance": ["succession", "intestate", "legal heir", "coparcenary", "daughter property rights"],
+    "adoption": ["valid adoption", "adoptive parent", "Hindu adoption", "child adoption"],
+    "talaq": ["divorce", "dissolution of marriage", "maintenance", "family court"],
+    "bacche": ["child custody", "minor child", "visitation", "child maintenance"],
+    "virasat": ["inheritance", "succession", "legal heir", "intestate property"],
+
+    # Child Protection / Education
+    "pocso": ["child sexual offence", "mandatory reporting", "child statement", "special court"],
+    "minor": ["child in conflict with law", "Juvenile Justice Board", "child protection", "identity privacy"],
+    "juvenile": ["child in conflict with law", "Juvenile Justice Board", "Child Welfare Committee"],
+    "school": ["right to education", "free education", "RTE admission", "physical punishment"],
+    "education": ["right to education", "free and compulsory education", "RTE grievance"],
+    "admission": ["RTE admission", "school admission denied", "weaker section quota"],
+    "teacher": ["physical punishment", "mental harassment", "RTE grievance"],
+
+    # Real Estate / Civil Remedies / Procedure
+    "builder": ["promoter", "RERA", "delayed possession", "homebuyer refund"],
+    "possession": ["delayed possession", "RERA refund", "allottee rights", "promoter duties"],
+    "rera": ["real estate complaint", "promoter duties", "allottee rights", "homebuyer refund"],
+    "injunction": ["permanent injunction", "mandatory injunction", "specific relief", "prevent breach"],
+    "contract": ["specific performance", "contract enforcement", "specific relief", "agreement"],
+    "limitation": ["limitation period", "condonation of delay", "late appeal", "excluded time"],
+    "delay": ["condonation of delay", "limitation period", "late appeal", "sufficient cause"],
+    "mediation": ["alternative dispute resolution", "settlement", "CPC section 89", "conciliation"],
+    "government": ["government notice", "CPC section 80", "civil suit against government"],
+
+    # Access to Justice
+    "lawyer": ["free legal aid", "legal services eligibility", "legal representation"],
+    "advocate": ["free legal aid", "legal services authority", "legal representation"],
+    "lok": ["Lok Adalat", "pre litigation settlement", "compromise", "Lok Adalat award"],
 
     # Tenancy / Landlord / Rent
     "deposit": ["security deposit", "deposit refund", "2 months rent", "rent control", "rental deposit"],
@@ -56,15 +94,51 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "nikal": ["eviction", "unlawful eviction", "rent authority"],
     "electricity": ["essential supply", "withholding service", "cut off supply"],
     "comments": ["sexual harassment", "unwelcome remarks", "workplace harassment"],
+    "muft": ["free legal aid", "free lawyer", "legal services authority"],
+    "vakil": ["lawyer", "free legal aid", "legal representation"],
 }
+
+
+DOMAIN_ANCHORS: Dict[str, List[str]] = {
+    "labor": ["wages", "salary", "retrenchment", "final settlement"],
+    "tenant": ["security deposit", "eviction", "rent control", "tenancy"],
+    "consumer": ["defect", "deficiency", "unfair trade practice", "refund"],
+    "cyber": ["unauthorized transaction", "cyber fraud", "identity theft"],
+    "banking": ["unauthorized transaction", "bank complaint", "rbi ombudsman"],
+    "criminal": ["cheating", "theft", "criminal intimidation", "mischief"],
+    "family": ["marriage", "divorce", "maintenance", "child custody", "succession"],
+    "children_rights": ["child protection", "mandatory reporting", "juvenile justice", "child welfare"],
+    "education": ["right to education", "school admission", "free education", "RTE grievance"],
+    "property": ["RERA", "promoter", "allottee", "possession", "homebuyer refund"],
+    "employment_benefits": ["maternity benefit", "gratuity", "employment protection", "statutory benefit"],
+    "civil": ["specific relief", "injunction", "declaration", "contract enforcement"],
+    "contract": ["agreement", "specific performance", "contract enforcement", "breach"],
+    "procedural": ["civil procedure", "limitation", "jurisdiction", "appeal", "mediation"],
+    "general": ["legal services", "free legal aid", "Lok Adalat", "access to justice"],
+}
+
+
+def _unicode_tokens(value: str) -> List[str]:
+    """Tokenize Latin and Indic text without dropping combining vowel marks."""
+    tokens: List[str] = []
+    current: List[str] = []
+    for char in value.lower():
+        category = unicodedata.category(char)
+        if char == "_" or category[0] in {"L", "M", "N"}:
+            current.append(char)
+        elif current:
+            tokens.append("".join(current))
+            current = []
+    if current:
+        tokens.append("".join(current))
+    return tokens
 
 
 def expand_user_query(query_text: str, domain: str = "") -> List[str]:
     """
     Takes user prompt text and returns expanded legal keywords.
     """
-    clean_text = re.sub(r"[^\w\s]", " ", query_text.lower())
-    tokens = list(dict.fromkeys(clean_text.split()))
+    tokens = list(dict.fromkeys(_unicode_tokens(query_text)))
 
     expanded_terms: List[str] = []
 
@@ -79,27 +153,14 @@ def expand_user_query(query_text: str, domain: str = "") -> List[str]:
                 for syn in SYNONYM_DICTIONARY[token]:
                     add_term(syn)
 
-    # Domain specific anchor keywords
-    if domain == "labor":
-        domain_terms = ["wages", "salary", "retrenchment", "final settlement"]
-    elif domain == "tenant":
-        domain_terms = ["security deposit", "eviction", "rent control", "tenancy"]
-    elif domain == "consumer":
-        domain_terms = ["defect", "deficiency", "unfair trade practice", "refund"]
-    elif domain == "cyber" or domain == "banking":
-        domain_terms = ["unauthorized transaction", "cyber fraud", "rbi ombudsman"]
-    elif domain == "criminal":
-        domain_terms = ["cheating", "theft", "criminal intimidation", "mischief"]
-    else:
-        domain_terms = []
-    for term in domain_terms:
+    # Domain-specific anchors improve recall without inventing section numbers.
+    for term in DOMAIN_ANCHORS.get(domain, []):
         add_term(term)
 
     # Tokenize all expanded terms into clean single-word tokens for FTS5
     final_tokens: List[str] = []
     for term in expanded_terms:
-        for sub_w in term.split():
-            clean_sub = re.sub(r"[^\w]", "", sub_w.lower())
+        for clean_sub in _unicode_tokens(term):
             if len(clean_sub) > 2 and clean_sub not in final_tokens:
                 final_tokens.append(clean_sub)
 

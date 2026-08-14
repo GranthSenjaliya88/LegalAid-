@@ -312,10 +312,10 @@ def ingest_legal_concepts(conn: sqlite3.Connection, json_file: Optional[Path] = 
             continue
 
         existing = conn.execute("SELECT id FROM legal_concepts WHERE concept_key = ?", (concept_key,)).fetchone()
-        eng_json = json.dumps(c.get("english_synonyms", []))
-        hi_json = json.dumps(c.get("hindi_synonyms", []))
-        hing_json = json.dumps(c.get("hinglish_synonyms", []))
-        acts_json = json.dumps(c.get("related_acts", []))
+        eng_json = json.dumps(c.get("english_synonyms", []), ensure_ascii=False)
+        hi_json = json.dumps(c.get("hindi_synonyms", []), ensure_ascii=False)
+        hing_json = json.dumps(c.get("hinglish_synonyms", []), ensure_ascii=False)
+        acts_json = json.dumps(c.get("related_acts", []), ensure_ascii=False)
 
         if not existing:
             conn.execute(
@@ -326,6 +326,16 @@ def ingest_legal_concepts(conn: sqlite3.Connection, json_file: Optional[Path] = 
                 (concept_key, c.get("domain", "general"), eng_json, hi_json, hing_json, acts_json)
             )
             inserted += 1
+        else:
+            conn.execute(
+                """
+                UPDATE legal_concepts
+                SET domain=?, english_synonyms_json=?, hindi_synonyms_json=?,
+                    hinglish_synonyms_json=?, related_acts_json=?
+                WHERE concept_key=?
+                """,
+                (c.get("domain", "general"), eng_json, hi_json, hing_json, acts_json, concept_key),
+            )
 
     conn.commit()
     return inserted

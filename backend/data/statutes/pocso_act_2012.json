@@ -1,0 +1,57 @@
+{
+  "act": {
+    "name": "Protection of Children from Sexual Offences Act, 2012",
+    "short_name": "POCSO 2012",
+    "year": 2012,
+    "domain": "children_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2079",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2079",
+    "source_authority": "Ministry of Women and Child Development, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2012-11-14",
+    "status": "CURRENT",
+    "description": "Child-protection law covering sexual offences, mandatory reporting, child-friendly procedure and Special Courts.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "19",
+      "title": "Reporting of offences.",
+      "text": "Section 19 requires information about an offence under the Act to be reported to the appropriate authority.",
+      "plain_language_summary": "Anyone who apprehends or knows of a POCSO offence must report it as the section requires.",
+      "subdomain": "mandatory_reporting",
+      "keywords": ["report child sexual offence", "mandatory reporting", "police", "Special Juvenile Police Unit"],
+      "synonyms": ["POCSO complaint", "child abuse report", "bacche ke abuse ki report", "बाल यौन शोषण रिपोर्ट", "पॉक्सो शिकायत"]
+    },
+    {
+      "section_number": "24",
+      "title": "Recording of statement of a child.",
+      "text": "Section 24 provides child-friendly safeguards for recording a child's statement.",
+      "plain_language_summary": "A child's statement must be recorded using the child-sensitive safeguards specified by the Act.",
+      "subdomain": "child_statement",
+      "keywords": ["child statement", "child friendly procedure", "police statement", "POCSO investigation"],
+      "synonyms": ["bacche ka bayan", "child police interview", "बच्चे का बयान", "बाल अनुकूल प्रक्रिया"]
+    },
+    {
+      "section_number": "33",
+      "title": "Procedure and powers of Special Court.",
+      "text": "Section 33 provides the procedure and powers of the Special Court for offences under the Act.",
+      "plain_language_summary": "Sets child-protective procedures that a POCSO Special Court must follow.",
+      "subdomain": "special_court",
+      "keywords": ["POCSO Special Court", "child witness", "trial procedure", "sexual offence"],
+      "synonyms": ["POCSO court", "child court process", "पॉक्सो विशेष न्यायालय"]
+    },
+    {
+      "section_number": "40",
+      "title": "Right of child to take assistance of legal practitioner.",
+      "text": "Section 40 recognizes a child's right to assistance from a legal practitioner in proceedings under the Act.",
+      "plain_language_summary": "A child and family may take assistance from a lawyer during POCSO proceedings.",
+      "subdomain": "legal_assistance_child",
+      "keywords": ["child lawyer", "legal assistance", "POCSO advocate", "victim representation"],
+      "synonyms": ["bacche ke liye vakil", "child legal aid", "बच्चे के लिए वकील", "कानूनी सहायता"]
+    }
+  ]
+}

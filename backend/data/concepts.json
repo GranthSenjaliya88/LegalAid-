@@ -38,5 +38,165 @@
     "hindi_synonyms": ["अवैध बेदखली", "जबरन मकान खाली कराना", "ताला लगाना", "बिजली पानी काटना"],
     "hinglish_synonyms": ["makan se nikal diya", "taala laga diya", "bijli pani kaat diya", "landlord forced out"],
     "related_acts": ["Model Tenancy Act, 2021", "Bharatiya Nyaya Sanhita, 2023"]
+  },
+  {
+    "concept_key": "divorce_and_alimony",
+    "domain": "family",
+    "english_synonyms": ["divorce", "mutual consent divorce", "cruelty", "desertion", "alimony", "spousal maintenance"],
+    "hindi_synonyms": ["तलाक", "आपसी सहमति से तलाक", "क्रूरता", "गुजारा भत्ता", "भरण पोषण"],
+    "hinglish_synonyms": ["divorce chahiye", "dono divorce chahte", "shaadi khatam", "wife maintenance", "pati se kharcha"],
+    "related_acts": ["Hindu Marriage Act, 1955", "Special Marriage Act, 1954"]
+  },
+  {
+    "concept_key": "child_custody",
+    "domain": "family",
+    "english_synonyms": ["child custody", "visitation", "minor child support", "custody dispute"],
+    "hindi_synonyms": ["बच्चे की कस्टडी", "मुलाकात का अधिकार", "बच्चे का भरण पोषण"],
+    "hinglish_synonyms": ["bacche ki custody", "child milne nahi dete", "visitation rights", "child support"],
+    "related_acts": ["Hindu Marriage Act, 1955", "Family Courts Act, 1984"]
+  },
+  {
+    "concept_key": "inheritance_rights",
+    "domain": "property",
+    "english_synonyms": ["inheritance", "ancestral property", "daughter property rights", "legal heir", "died without will"],
+    "hindi_synonyms": ["विरासत", "पैतृक संपत्ति", "बेटी का संपत्ति अधिकार", "कानूनी वारिस", "बिना वसीयत"],
+    "hinglish_synonyms": ["beti ka property right", "property kaun lega", "father died without will", "ancestral property share"],
+    "related_acts": ["Hindu Succession Act, 1956"]
+  },
+  {
+    "concept_key": "adoption_and_family_maintenance",
+    "domain": "family",
+    "english_synonyms": ["adoption", "valid adoption", "wife maintenance", "child maintenance", "aged parent maintenance"],
+    "hindi_synonyms": ["गोद लेना", "वैध दत्तक", "पत्नी का भरण पोषण", "माता पिता का भरण पोषण"],
+    "hinglish_synonyms": ["baccha adopt karna", "patni ka kharcha", "parents ka kharcha", "adoption rules"],
+    "related_acts": ["Hindu Adoptions and Maintenance Act, 1956"]
+  },
+  {
+    "concept_key": "child_sexual_offence_reporting",
+    "domain": "children_rights",
+    "english_synonyms": ["child sexual abuse", "POCSO complaint", "mandatory reporting", "child statement", "Special Court"],
+    "hindi_synonyms": ["बाल यौन शोषण", "पॉक्सो शिकायत", "बच्चे का बयान", "विशेष न्यायालय"],
+    "hinglish_synonyms": ["child abuse report", "POCSO case", "bacche ke abuse ki report", "bacche ka bayan"],
+    "related_acts": ["Protection of Children from Sexual Offences Act, 2012"]
+  },
+  {
+    "concept_key": "juvenile_care_and_protection",
+    "domain": "children_rights",
+    "english_synonyms": ["juvenile accused", "child in conflict with law", "Child Welfare Committee", "child care and protection", "child identity privacy"],
+    "hindi_synonyms": ["नाबालिग आरोपी", "किशोर न्याय बोर्ड", "बाल कल्याण समिति", "बच्चे की पहचान"],
+    "hinglish_synonyms": ["minor accused", "juvenile case", "CWC help", "abandoned child help"],
+    "related_acts": ["Juvenile Justice (Care and Protection of Children) Act, 2015"]
+  },
+  {
+    "concept_key": "right_to_education",
+    "domain": "education",
+    "english_synonyms": ["free education", "RTE admission", "school admission denied", "physical punishment", "education grievance"],
+    "hindi_synonyms": ["निःशुल्क शिक्षा", "आरटीई प्रवेश", "स्कूल प्रवेश से इनकार", "शारीरिक दंड", "शिक्षा शिकायत"],
+    "hinglish_synonyms": ["free school", "RTE quota", "teacher ne maara", "school complaint", "admission nahi diya"],
+    "related_acts": ["Right of Children to Free and Compulsory Education Act, 2009"]
+  },
+  {
+    "concept_key": "homebuyer_rera",
+    "domain": "property",
+    "english_synonyms": ["builder delay", "delayed possession", "homebuyer refund", "RERA complaint", "promoter duties"],
+    "hindi_synonyms": ["बिल्डर की देरी", "कब्जा मिलने में देरी", "घर खरीदार रिफंड", "रेरा शिकायत"],
+    "hinglish_synonyms": ["flat possession late", "builder refund", "ghar nahi mila", "builder ke against complaint"],
+    "related_acts": ["Real Estate (Regulation and Development) Act, 2016"]
+  },
+  {
+    "concept_key": "maternity_employment_rights",
+    "domain": "employment_benefits",
+    "english_synonyms": ["maternity leave", "paid maternity benefit", "nursing breaks", "creche facility", "pregnancy dismissal"],
+    "hindi_synonyms": ["मातृत्व अवकाश", "मातृत्व लाभ", "स्तनपान अवकाश", "कार्यस्थल क्रेच", "गर्भावस्था में नौकरी से निकाला"],
+    "hinglish_synonyms": ["pregnancy leave", "maternity salary", "feeding break", "office daycare", "pregnancy me job se nikala"],
+    "related_acts": ["Maternity Benefit Act, 1961"]
+  },
+  {
+    "concept_key": "gratuity_claim",
+    "domain": "employment_benefits",
+    "english_synonyms": ["gratuity", "unpaid gratuity", "five years service", "gratuity recovery", "retirement benefit"],
+    "hindi_synonyms": ["ग्रेच्युटी", "ग्रेच्युटी नहीं मिली", "पांच साल सेवा", "ग्रेच्युटी वसूली"],
+    "hinglish_synonyms": ["gratuity nahi mili", "company gratuity nahi de rahi", "5 years job benefit", "gratuity kaise claim kare"],
+    "related_acts": ["Payment of Gratuity Act, 1972"]
+  },
+  {
+    "concept_key": "civil_injunction_and_specific_relief",
+    "domain": "civil",
+    "english_synonyms": ["specific performance", "permanent injunction", "mandatory injunction", "declaration of rights", "contract enforcement"],
+    "hindi_synonyms": ["विशिष्ट पालन", "स्थायी निषेधाज्ञा", "अनिवार्य निषेधाज्ञा", "अधिकार की घोषणा"],
+    "hinglish_synonyms": ["agreement pura nahi kiya", "contract enforce", "rok lagwana", "court declaration"],
+    "related_acts": ["Specific Relief Act, 1963"]
+  },
+  {
+    "concept_key": "limitation_and_delay",
+    "domain": "procedural",
+    "english_synonyms": ["limitation period", "condonation of delay", "late appeal", "wrong court", "fraud discovered later", "written acknowledgment"],
+    "hindi_synonyms": ["समय सीमा", "देरी माफी", "देर से अपील", "गलत अदालत", "लिखित स्वीकारोक्ति"],
+    "hinglish_synonyms": ["appeal late ho gayi", "delay maaf", "galat court me case", "fraud baad me pata chala"],
+    "related_acts": ["Limitation Act, 1963"]
+  },
+  {
+    "concept_key": "civil_court_procedure",
+    "domain": "procedural",
+    "english_synonyms": ["civil suit", "territorial jurisdiction", "res judicata", "government notice", "civil appeal", "mediation"],
+    "hindi_synonyms": ["सिविल मुकदमा", "क्षेत्रीय अधिकारिता", "पूर्व निर्णय", "सरकार को नोटिस", "दीवानी अपील", "मध्यस्थता"],
+    "hinglish_synonyms": ["case kahan file kare", "same case dobara", "sarkar ko legal notice", "civil judgment appeal"],
+    "related_acts": ["Code of Civil Procedure, 1908"]
+  },
+  {
+    "concept_key": "free_legal_aid",
+    "domain": "general",
+    "english_synonyms": ["free legal aid", "free lawyer", "legal services eligibility", "weaker section legal help"],
+    "hindi_synonyms": ["निःशुल्क कानूनी सहायता", "मुफ्त वकील", "कानूनी सहायता पात्रता"],
+    "hinglish_synonyms": ["muft vakil", "free advocate", "legal aid kaise mile", "lawyer afford nahi kar sakta"],
+    "related_acts": ["Legal Services Authorities Act, 1987"]
+  },
+  {
+    "concept_key": "lok_adalat_settlement",
+    "domain": "general",
+    "english_synonyms": ["Lok Adalat", "pre litigation settlement", "compromise court", "Lok Adalat award"],
+    "hindi_synonyms": ["लोक अदालत", "मुकदमे से पहले समझौता", "लोक अदालत निर्णय"],
+    "hinglish_synonyms": ["lok adalat case", "samjhauta court", "case lok adalat bhejna", "out of court settlement"],
+    "related_acts": ["Legal Services Authorities Act, 1987", "Code of Civil Procedure, 1908"]
+  },
+  {
+    "concept_key": "interim_spousal_maintenance",
+    "domain": "family",
+    "english_synonyms": ["interim maintenance", "maintenance pendente lite", "litigation expenses", "temporary alimony", "maintenance during proceedings"],
+    "hindi_synonyms": ["अंतरिम भरण पोषण", "मुकदमे के दौरान भरण पोषण", "मुकदमे का खर्च", "अस्थायी गुजारा भत्ता"],
+    "hinglish_synonyms": ["case ke dauran kharcha", "divorce case maintenance", "temporary maintenance", "interim alimony"],
+    "related_acts": ["Hindu Marriage Act, 1955", "Special Marriage Act, 1954"]
+  },
+  {
+    "concept_key": "family_court_settlement",
+    "domain": "family",
+    "english_synonyms": ["Family Court settlement", "reconciliation", "conciliation", "family mediation", "efforts for settlement"],
+    "hindi_synonyms": ["परिवार न्यायालय में समझौता", "समझौता कराने", "पारिवारिक सुलह", "परिवार न्यायालय"],
+    "hinglish_synonyms": ["family court samjhauta", "family court mediation", "pati patni sulah", "settlement effort"],
+    "related_acts": ["Family Courts Act, 1984"]
+  },
+  {
+    "concept_key": "juvenile_identity_privacy",
+    "domain": "children_rights",
+    "english_synonyms": ["child identity", "privacy", "publication prohibited", "juvenile name disclosure", "disclosure of identity", "child photograph"],
+    "hindi_synonyms": ["बच्चे की पहचान प्रकाशित", "बच्चे का नाम और फोटो", "किशोर की पहचान", "बाल पहचान की गोपनीयता"],
+    "hinglish_synonyms": ["juvenile ka naam aur photo publish", "naam aur photo publish", "minor name published", "child photo in news", "juvenile identity disclose"],
+    "related_acts": ["Juvenile Justice (Care and Protection of Children) Act, 2015"]
+  },
+  {
+    "concept_key": "lok_adalat_case_referral",
+    "domain": "general",
+    "english_synonyms": ["Lok Adalat case referral", "cognizance by Lok Adalat", "pending case settlement", "pre litigation dispute", "case suitable for compromise"],
+    "hindi_synonyms": ["लोक अदालत समझौते के लिए", "लोक अदालत में मामला भेजना", "मुकदमे से पहले विवाद", "समझौते योग्य मामला"],
+    "hinglish_synonyms": ["case lok adalat bhejna", "lok adalat me kaunsa case", "pending case settlement", "pre litigation samjhauta"],
+    "related_acts": ["Legal Services Authorities Act, 1987"]
+  },
+  {
+    "concept_key": "wife_maintenance_hindu_law",
+    "domain": "family",
+    "english_synonyms": ["maintenance of wife", "wife maintenance", "spousal support", "separate residence", "maintenance claim"],
+    "hindi_synonyms": ["पत्नी अपने पति से भरण पोषण", "पत्नी का भरण पोषण", "पत्नी का गुजारा भत्ता"],
+    "hinglish_synonyms": ["patni ka kharcha", "wife maintenance claim", "pati se maintenance", "wife support"],
+    "related_acts": ["Hindu Adoptions and Maintenance Act, 1956"]
   }
 ]

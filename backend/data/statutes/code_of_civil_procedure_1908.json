@@ -1,0 +1,93 @@
+{
+  "act": {
+    "name": "Code of Civil Procedure, 1908",
+    "short_name": "CPC 1908",
+    "year": 1908,
+    "domain": "procedural",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2191",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2191",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1909-01-01",
+    "status": "CURRENT",
+    "description": "Central code governing civil-court jurisdiction, suits, decrees, execution, appeals and settlement procedure.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "9",
+      "title": "Courts to try all civil suits unless barred.",
+      "text": "Section 9 recognizes civil-court jurisdiction over suits of a civil nature unless cognizance is barred.",
+      "plain_language_summary": "Civil courts can ordinarily hear civil disputes unless a law expressly or impliedly excludes them.",
+      "subdomain": "civil_court_jurisdiction",
+      "keywords": ["civil court jurisdiction", "civil suit", "jurisdiction barred", "right to sue"],
+      "synonyms": ["civil case file", "court jurisdiction", "सिविल मुकदमा", "दीवानी अदालत"]
+    },
+    {
+      "section_number": "10",
+      "title": "Stay of suit.",
+      "text": "Section 10 governs stay of a later suit where the matter in issue is directly and substantially in issue in a previously instituted suit.",
+      "plain_language_summary": "A later civil suit may be paused when the same substantial dispute is already pending between the relevant parties.",
+      "subdomain": "stay_of_suit",
+      "keywords": ["stay of suit", "previous suit pending", "same dispute", "parallel case"],
+      "synonyms": ["case rokna", "same case already pending", "मुकदमे पर रोक", "पहले से लंबित वाद"]
+    },
+    {
+      "section_number": "11",
+      "title": "Res judicata.",
+      "text": "Section 11 prevents re-litigation of a matter directly and substantially decided in a qualifying former suit.",
+      "plain_language_summary": "A dispute already finally decided between the relevant parties generally cannot be tried again.",
+      "subdomain": "res_judicata",
+      "keywords": ["res judicata", "matter already decided", "same dispute again", "former suit"],
+      "synonyms": ["same case dobara", "already decided case", "पूर्व निर्णय", "दोबारा मुकदमा"]
+    },
+    {
+      "section_number": "20",
+      "title": "Other suits to be instituted where defendants reside or cause of action arises.",
+      "text": "Section 20 provides territorial rules for instituting other suits based on the defendant's residence or the cause of action.",
+      "plain_language_summary": "Many civil suits are filed where the defendant resides or where the cause of action arose.",
+      "subdomain": "territorial_jurisdiction",
+      "keywords": ["where to file civil suit", "territorial jurisdiction", "defendant residence", "cause of action"],
+      "synonyms": ["case kahan file kare", "which court", "मुकदमा कहाँ दर्ज करें", "क्षेत्रीय अधिकारिता"]
+    },
+    {
+      "section_number": "80",
+      "title": "Notice.",
+      "text": "Section 80 governs notice before instituting specified suits against the Government or public officers.",
+      "plain_language_summary": "A statutory notice is generally required before certain civil suits against Government or a public officer.",
+      "subdomain": "government_suit_notice",
+      "keywords": ["notice to government", "public officer suit", "two month notice", "government department"],
+      "synonyms": ["sarkar ko legal notice", "government case notice", "सरकार को नोटिस", "लोक अधिकारी मुकदमा"]
+    },
+    {
+      "section_number": "89",
+      "title": "Settlement of disputes outside the Court.",
+      "text": "Section 89 provides for referral to specified methods of settlement outside court where appropriate.",
+      "plain_language_summary": "A civil court may refer suitable disputes to arbitration, conciliation, judicial settlement, Lok Adalat or mediation.",
+      "subdomain": "alternative_dispute_resolution",
+      "keywords": ["mediation", "conciliation", "arbitration", "Lok Adalat", "out of court settlement"],
+      "synonyms": ["court ke bahar samjhauta", "ADR", "मध्यस्थता", "अदालत के बाहर समझौता"]
+    },
+    {
+      "section_number": "96",
+      "title": "Appeal from original decree.",
+      "text": "Section 96 governs appeals from original decrees subject to the Code.",
+      "plain_language_summary": "A qualifying original civil decree may be appealed under the statutory rules.",
+      "subdomain": "first_appeal",
+      "keywords": ["civil appeal", "original decree", "first appeal", "appeal court"],
+      "synonyms": ["civil judgment appeal", "decree challenge", "दीवानी अपील", "डिक्री के खिलाफ अपील"]
+    },
+    {
+      "section_number": "151",
+      "title": "Saving of inherent powers of Court.",
+      "text": "Section 151 preserves the court's inherent powers to make orders necessary for the ends of justice or to prevent abuse of process.",
+      "plain_language_summary": "Civil courts retain inherent power to protect justice and prevent misuse of court procedure.",
+      "subdomain": "inherent_court_powers",
+      "keywords": ["inherent powers", "ends of justice", "abuse of process", "civil court order"],
+      "synonyms": ["court inherent power", "nyay ke liye order", "अंतर्निहित शक्ति", "न्याय के हित"]
+    }
+  ]
+}

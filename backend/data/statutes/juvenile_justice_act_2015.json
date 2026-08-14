@@ -1,0 +1,57 @@
+{
+  "act": {
+    "name": "Juvenile Justice (Care and Protection of Children) Act, 2015",
+    "short_name": "JJ Act 2015",
+    "year": 2015,
+    "domain": "children_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2148",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2148",
+    "source_authority": "Ministry of Women and Child Development, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2016-01-15",
+    "status": "CURRENT",
+    "description": "Central law for children in conflict with law, children needing care and protection, rehabilitation and adoption.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "3",
+      "title": "General principles to be followed in administration of Act.",
+      "text": "Section 3 states the child-centred principles that guide administration of the Juvenile Justice Act.",
+      "plain_language_summary": "Authorities must follow dignity, best-interest, participation, privacy and other child-protection principles.",
+      "subdomain": "juvenile_justice_principles",
+      "keywords": ["best interest of child", "child dignity", "juvenile justice principles", "privacy"],
+      "synonyms": ["child best interest", "bacche ka hit", "बच्चे का सर्वोत्तम हित", "बाल गरिमा"]
+    },
+    {
+      "section_number": "14",
+      "title": "Inquiry by Board regarding child in conflict with law.",
+      "text": "Section 14 governs inquiry by the Juvenile Justice Board concerning a child alleged to be in conflict with law.",
+      "plain_language_summary": "Explains how the Juvenile Justice Board conducts an inquiry involving a child accused of an offence.",
+      "subdomain": "child_in_conflict_with_law",
+      "keywords": ["juvenile accused", "Juvenile Justice Board", "child inquiry", "child in conflict with law"],
+      "synonyms": ["minor accused", "juvenile case", "नाबालिग आरोपी", "किशोर न्याय बोर्ड"]
+    },
+    {
+      "section_number": "27",
+      "title": "Child Welfare Committee.",
+      "text": "Section 27 provides for constitution of the Child Welfare Committee.",
+      "plain_language_summary": "Establishes the district Child Welfare Committee for children needing care and protection.",
+      "subdomain": "child_welfare_committee",
+      "keywords": ["Child Welfare Committee", "CWC", "child care and protection", "district committee"],
+      "synonyms": ["CWC help", "abandoned child help", "बाल कल्याण समिति", "देखरेख और संरक्षण"]
+    },
+    {
+      "section_number": "74",
+      "title": "Prohibition on disclosure of identity of children.",
+      "text": "Section 74 prohibits disclosure of identifying information about children covered by the Act, subject to its exceptions.",
+      "plain_language_summary": "Protects a child's identity from publication or disclosure in Juvenile Justice matters.",
+      "subdomain": "child_identity_privacy",
+      "keywords": ["child identity", "privacy", "publication prohibited", "juvenile name disclosure"],
+      "synonyms": ["minor name published", "child privacy", "बच्चे की पहचान", "नाम प्रकाशित"]
+    }
+  ]
+}

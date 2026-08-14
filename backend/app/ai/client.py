@@ -62,15 +62,83 @@ class AIClient:
 
         def _has_kw(keywords: List[str]) -> bool:
             for kw in keywords:
-                if len(kw) <= 3:
-                    if re.search(r"\b" + re.escape(kw) + r"\b", lower):
+                normalized = kw.lower()
+                # Latin single-word keywords must match a complete token. This
+                # prevents false positives such as "rent" in "different".
+                if re.fullmatch(r"[a-z0-9_]+", normalized):
+                    suffix = r"[a-z]*" if len(normalized) >= 4 else ""
+                    if re.search(r"(?<!\w)" + re.escape(normalized) + suffix + r"(?!\w)", lower):
                         return True
-                else:
-                    if kw in lower:
-                        return True
+                elif normalized in lower:
+                    return True
             return False
 
-        if _has_kw(["bank", "transfer", "unauthorized", "phishing", "cyber", "hacked", "stolen money", "account debit", "サイバー", "ओटीपी", "खाता", "otp", "online scam", "1930"]):
+        # Expanded-corpus domains are evaluated before broad legacy buckets.
+        if _has_kw([
+            "pocso", "child sexual", "sexual offence against a child", "juvenile",
+            "juvenile justice", "child welfare committee", "juvenile justice board",
+            "child in conflict with law", "minor accused", "child identity",
+            "बाल यौन", "बच्चे का बयान", "बाल कल्याण समिति", "किशोर न्याय",
+            "नाबालिग आरोपी", "बच्चे की पहचान",
+        ]):
+            domain = "children_rights"
+            subdomain = "child_protection"
+            urgency = "high"
+        elif _has_kw([
+            "right to education", "rte", "school admission", "free education",
+            "compulsory education", "elementary education", "physical punishment", "school complaint",
+            "आरटीई", "निःशुल्क शिक्षा", "स्कूल प्रवेश", "शारीरिक दंड", "शिक्षा शिकायत",
+        ]):
+            domain = "education"
+            subdomain = "right_to_education"
+            urgency = "medium"
+        elif _has_kw([
+            "maternity benefit", "maternity leave", "pregnancy", "creche", "gratuity",
+            "retirement benefit", "continuous service", "मातृत्व", "गर्भावस्था",
+            "क्रेच", "ग्रेच्युटी",
+        ]):
+            domain = "employment_benefits"
+            subdomain = "statutory_employment_benefit"
+            urgency = "medium"
+        elif _has_kw([
+            "rera", "homebuyer", "allottee", "promoter", "builder delay",
+            "delayed possession", "coparcenary", "ancestral property", "inheritance",
+            "intestate", "legal heir", "died without will", "bina will", "succession",
+            "बिना वसीयत", "विरासत",
+            "पैतृक संपत्ति", "कानूनी वारिस", "बिल्डर", "घर खरीदार", "रेरा",
+        ]):
+            domain = "property"
+            subdomain = "real_estate_or_inheritance"
+            urgency = "medium"
+        elif _has_kw([
+            "divorce", "mutual consent", "matrimonial", "alimony", "child custody",
+            "visitation", "family court", "civil marriage", "adoption", "wife maintenance",
+            "aged parents", "spousal maintenance", "तलाक", "आपसी सहमति", "विवाह",
+            "परिवार न्यायालय", "बच्चे की कस्टडी", "गोद", "पत्नी का भरण पोषण",
+            "भरण पोषण",
+        ]):
+            domain = "family"
+            subdomain = "family_dispute"
+            urgency = "medium"
+        elif _has_kw([
+            "specific performance", "specific relief", "permanent injunction",
+            "mandatory injunction", "declaration of rights", "contract enforcement",
+            "स्थायी निषेधाज्ञा", "अनिवार्य निषेधाज्ञा", "विशिष्ट पालन", "दखल रोकने",
+        ]):
+            domain = "civil"
+            subdomain = "civil_remedy"
+            urgency = "medium"
+        elif _has_kw([
+            "limitation period", "condonation of delay", "late appeal", "wrong court",
+            "filed late", "condone the delay", "sufficient cause",
+            "territorial jurisdiction", "civil suit", "cause of action", "government notice",
+            "res judicata", "court mediation", "समय सीमा", "देरी माफी", "गलत अदालत",
+            "दीवानी मुकदमा", "सरकार के खिलाफ", "मध्यस्थता",
+        ]):
+            domain = "procedural"
+            subdomain = "civil_procedure"
+            urgency = "medium"
+        elif _has_kw(["bank", "transfer", "unauthorized", "phishing", "cyber", "hacked", "stolen money", "account debit", "fake social media", "fake profile", "identity theft", "photo misuse", "online fraud", "fake website", "online website", "サイバー", "ओटीपी", "खाता", "otp", "online scam", "1930"]):
             domain = "cyber"
             subdomain = "unauthorized_bank_transfer"
             urgency = "urgent"
@@ -102,7 +170,7 @@ class AIClient:
             domain = "criminal"
             subdomain = "general_crime"
             urgency = "high"
-        elif _has_kw(["cheque", "bounce", "138", "ni act", "rbi", "ombudsman"]):
+        elif _has_kw(["cheque", "bounce", "138", "ni act", "rbi", "ombudsman", "payment gateway", "merchant", "failed transaction"]):
             domain = "banking"
             subdomain = "cheque_bounce"
             urgency = "high"

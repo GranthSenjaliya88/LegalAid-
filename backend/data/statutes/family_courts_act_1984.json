@@ -1,0 +1,48 @@
+{
+  "act": {
+    "name": "Family Courts Act, 1984",
+    "short_name": "FCA 1984",
+    "year": 1984,
+    "domain": "family",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1844",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1844",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1986-11-19",
+    "status": "CURRENT",
+    "description": "Central law establishing Family Courts and promoting conciliation and speedy settlement of family disputes.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "7",
+      "title": "Jurisdiction.",
+      "text": "Section 7 defines the jurisdiction of Family Courts over specified matrimonial and family proceedings.",
+      "plain_language_summary": "Identifies family disputes that may be heard by a Family Court.",
+      "subdomain": "family_court_jurisdiction",
+      "keywords": ["family court", "jurisdiction", "marriage dispute", "maintenance", "custody"],
+      "synonyms": ["family case kahan file kare", "parivar nyayalaya", "फैमिली कोर्ट", "पारिवारिक न्यायालय"]
+    },
+    {
+      "section_number": "9",
+      "title": "Duty of Family Court to make efforts for settlement.",
+      "text": "Section 9 requires Family Courts to make efforts toward settlement where appropriate.",
+      "plain_language_summary": "Family Courts should first try to help parties reach a settlement when possible.",
+      "subdomain": "family_settlement",
+      "keywords": ["family settlement", "conciliation", "mediation", "reconciliation"],
+      "synonyms": ["family mediation", "samjhauta", "पारिवारिक समझौता", "सुलह"]
+    },
+    {
+      "section_number": "13",
+      "title": "Right to legal representation.",
+      "text": "Section 13 regulates legal representation before a Family Court.",
+      "plain_language_summary": "Legal representation in Family Court is governed by the specific rule in this section.",
+      "subdomain": "family_court_representation",
+      "keywords": ["family court lawyer", "legal representation", "advocate"],
+      "synonyms": ["family court me vakil", "वकील", "कानूनी प्रतिनिधित्व"]
+    }
+  ]
+}

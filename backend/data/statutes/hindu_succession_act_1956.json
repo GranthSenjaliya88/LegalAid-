@@ -1,0 +1,48 @@
+{
+  "act": {
+    "name": "Hindu Succession Act, 1956",
+    "short_name": "HSA 1956",
+    "year": 1956,
+    "domain": "property",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1713",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1713",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1956-06-17",
+    "status": "CURRENT",
+    "description": "Central law governing intestate succession, coparcenary rights and inheritance among Hindus.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "6",
+      "title": "Devolution of interest in coparcenary property.",
+      "text": "Section 6 governs devolution of coparcenary interests and recognizes a daughter's coparcenary rights by birth.",
+      "plain_language_summary": "Daughters have coparcenary rights by birth in the same manner as sons, subject to the Act.",
+      "subdomain": "daughter_coparcenary_rights",
+      "keywords": ["daughter property rights", "coparcenary", "ancestral property", "equal inheritance"],
+      "synonyms": ["beti ka property right", "ancestral property daughter", "बेटी का संपत्ति अधिकार", "पैतृक संपत्ति"]
+    },
+    {
+      "section_number": "8",
+      "title": "General rules of succession in the case of males.",
+      "text": "Section 8 sets out the general order of intestate succession to the property of a male Hindu.",
+      "plain_language_summary": "Explains who inherits when a Hindu man dies without a will.",
+      "subdomain": "intestate_succession_male",
+      "keywords": ["inheritance", "intestate succession", "male Hindu", "legal heirs"],
+      "synonyms": ["father died without will", "property kaun lega", "बिना वसीयत विरासत", "कानूनी वारिस"]
+    },
+    {
+      "section_number": "15",
+      "title": "General rules of succession in the case of female Hindus.",
+      "text": "Section 15 sets out the general order of intestate succession to the property of a female Hindu.",
+      "plain_language_summary": "Explains who inherits when a Hindu woman dies without a will.",
+      "subdomain": "intestate_succession_female",
+      "keywords": ["woman inheritance", "female Hindu", "intestate succession", "legal heirs"],
+      "synonyms": ["mother died without will", "woman property heirs", "महिला की विरासत", "बिना वसीयत संपत्ति"]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "act": {
+    "name": "Payment of Gratuity Act, 1972",
+    "short_name": "PGA 1972",
+    "year": 1972,
+    "domain": "employment_benefits",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/18656",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/18656",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1972-09-16",
+    "status": "CURRENT",
+    "description": "Central law governing employee gratuity entitlement, determination, recovery and protection.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "4",
+      "title": "Payment of gratuity.",
+      "text": "Section 4 governs when gratuity becomes payable and how entitlement is calculated, subject to the Act.",
+      "plain_language_summary": "Eligible employees may receive gratuity on termination after qualifying service, with statutory exceptions and calculation rules.",
+      "subdomain": "gratuity_entitlement",
+      "keywords": ["gratuity", "five years service", "retirement", "resignation", "termination benefit"],
+      "synonyms": ["gratuity nahi mili", "5 years job benefit", "ग्रेच्युटी", "सेवानिवृत्ति लाभ"]
+    },
+    {
+      "section_number": "7",
+      "title": "Determination of the amount of gratuity.",
+      "text": "Section 7 governs notice, determination and payment of gratuity and the statutory process for disputes.",
+      "plain_language_summary": "Explains how gratuity is claimed, calculated, paid and determined when disputed.",
+      "subdomain": "gratuity_claim_process",
+      "keywords": ["claim gratuity", "gratuity calculation", "employer notice", "controlling authority"],
+      "synonyms": ["gratuity kaise claim kare", "gratuity amount dispute", "ग्रेच्युटी दावा", "नियंत्रण प्राधिकारी"]
+    },
+    {
+      "section_number": "8",
+      "title": "Recovery of gratuity.",
+      "text": "Section 8 provides for statutory recovery where payable gratuity is not paid.",
+      "plain_language_summary": "Unpaid gratuity can be recovered through the controlling authority using the Act's process.",
+      "subdomain": "unpaid_gratuity_recovery",
+      "keywords": ["unpaid gratuity", "recover gratuity", "employer refusal", "recovery certificate"],
+      "synonyms": ["company gratuity nahi de rahi", "gratuity recovery", "ग्रेच्युटी नहीं मिली", "वसूली"]
+    },
+    {
+      "section_number": "13",
+      "title": "Protection of gratuity.",
+      "text": "Section 13 protects gratuity payable under the Act from attachment in execution of specified decrees or orders.",
+      "plain_language_summary": "Statutory gratuity has protection from court attachment as provided by this section.",
+      "subdomain": "gratuity_protection",
+      "keywords": ["gratuity attachment", "protected gratuity", "court decree"],
+      "synonyms": ["gratuity seize", "ग्रेच्युटी कुर्की", "ग्रेच्युटी सुरक्षा"]
+    }
+  ]
+}

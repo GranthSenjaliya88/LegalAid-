@@ -1,0 +1,66 @@
+{
+  "act": {
+    "name": "Hindu Marriage Act, 1955",
+    "short_name": "HMA 1955",
+    "year": 1955,
+    "domain": "family",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/21605",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/21605",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1955-05-18",
+    "status": "CURRENT",
+    "description": "Central law governing Hindu marriage, judicial separation, divorce, maintenance, alimony and child custody.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "13",
+      "title": "Divorce.",
+      "text": "Section 13 sets out the statutory grounds on which a marriage may be dissolved by a decree of divorce.",
+      "plain_language_summary": "Lists legal grounds for divorce, including cruelty, desertion and other grounds specified by the Act.",
+      "subdomain": "divorce",
+      "keywords": ["divorce", "cruelty", "desertion", "dissolution of marriage", "matrimonial dispute"],
+      "synonyms": ["marriage end", "separation", "talaq nahi mil raha", "divorce chahiye", "तलाक", "विवाह समाप्त", "क्रूरता"]
+    },
+    {
+      "section_number": "13B",
+      "title": "Divorce by mutual consent.",
+      "text": "Section 13B provides for divorce by mutual consent where the statutory conditions are satisfied.",
+      "plain_language_summary": "Allows spouses who mutually agree and meet the statutory conditions to seek divorce together.",
+      "subdomain": "mutual_consent_divorce",
+      "keywords": ["mutual consent divorce", "joint divorce petition", "spouses living separately"],
+      "synonyms": ["amicable divorce", "dono divorce chahte hain", "आपसी सहमति से तलाक", "संयुक्त तलाक याचिका"]
+    },
+    {
+      "section_number": "24",
+      "title": "Maintenance pendente lite and expenses of proceedings.",
+      "text": "Section 24 provides for interim maintenance and litigation expenses during matrimonial proceedings.",
+      "plain_language_summary": "A spouse without sufficient independent income may seek interim maintenance and case expenses while proceedings are pending.",
+      "subdomain": "interim_maintenance",
+      "keywords": ["interim maintenance", "litigation expenses", "maintenance during divorce", "pendente lite"],
+      "synonyms": ["case ke dauran kharcha", "temporary alimony", "अंतरिम भरण पोषण", "मुकदमे का खर्च"]
+    },
+    {
+      "section_number": "25",
+      "title": "Permanent alimony and maintenance.",
+      "text": "Section 25 empowers the court to award permanent alimony and maintenance in matrimonial proceedings.",
+      "plain_language_summary": "The court may order ongoing or lump-sum maintenance after matrimonial relief.",
+      "subdomain": "permanent_alimony",
+      "keywords": ["permanent alimony", "maintenance", "lump sum", "monthly support"],
+      "synonyms": ["permanent maintenance", "divorce ke baad kharcha", "स्थायी गुजारा भत्ता", "भरण पोषण"]
+    },
+    {
+      "section_number": "26",
+      "title": "Custody of children.",
+      "text": "Section 26 enables the court to make orders concerning custody, maintenance and education of minor children.",
+      "plain_language_summary": "The matrimonial court can decide interim and final arrangements for minor children's custody, support and education.",
+      "subdomain": "child_custody",
+      "keywords": ["child custody", "minor child", "visitation", "child maintenance", "education"],
+      "synonyms": ["bacche ki custody", "visitation rights", "बच्चे की कस्टडी", "मुलाकात का अधिकार"]
+    }
+  ]
+}

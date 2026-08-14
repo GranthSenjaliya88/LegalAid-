@@ -1,0 +1,48 @@
+{
+  "act": {
+    "name": "Hindu Adoptions and Maintenance Act, 1956",
+    "short_name": "HAMA 1956",
+    "year": 1956,
+    "domain": "family",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/12840",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/12840",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1956-12-21",
+    "status": "CURRENT",
+    "description": "Central law governing Hindu adoption and maintenance of spouses, children and aged parents.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "6",
+      "title": "Requisites of a valid adoption.",
+      "text": "Section 6 lists the statutory requirements for a valid adoption under the Act.",
+      "plain_language_summary": "An adoption is valid only when the adopting person, giving person, child and procedure satisfy the Act.",
+      "subdomain": "adoption_validity",
+      "keywords": ["valid adoption", "adoption requirements", "adopt child", "Hindu adoption"],
+      "synonyms": ["baccha adopt karna", "adoption rules", "बच्चा गोद लेना", "वैध दत्तक"]
+    },
+    {
+      "section_number": "18",
+      "title": "Maintenance of wife.",
+      "text": "Section 18 recognizes a Hindu wife's right to maintenance from her husband subject to the statutory conditions.",
+      "plain_language_summary": "A Hindu wife may claim maintenance from her husband in circumstances covered by the Act.",
+      "subdomain": "spousal_maintenance",
+      "keywords": ["wife maintenance", "spousal support", "separate residence", "maintenance claim"],
+      "synonyms": ["patni ka kharcha", "wife support", "पत्नी का भरण पोषण", "गुजारा भत्ता"]
+    },
+    {
+      "section_number": "20",
+      "title": "Maintenance of children and aged parents.",
+      "text": "Section 20 governs maintenance obligations toward children and aged or infirm parents.",
+      "plain_language_summary": "A person may have a statutory duty to maintain children and aged or infirm parents.",
+      "subdomain": "family_maintenance",
+      "keywords": ["child maintenance", "aged parents", "parent support", "family maintenance"],
+      "synonyms": ["parents ka kharcha", "child support", "माता पिता का भरण पोषण", "बच्चे का खर्च"]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "act": {
+    "name": "Special Marriage Act, 1954",
+    "short_name": "SMA 1954",
+    "year": 1954,
+    "domain": "family",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1387",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1387",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1955-01-01",
+    "status": "CURRENT",
+    "description": "Central law for civil marriage, registration, matrimonial relief, divorce and related procedure.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "4",
+      "title": "Conditions relating to solemnization of special marriages.",
+      "text": "Section 4 states the statutory conditions for solemnizing a marriage under the Special Marriage Act.",
+      "plain_language_summary": "Sets the eligibility conditions for a civil marriage under the Act.",
+      "subdomain": "civil_marriage",
+      "keywords": ["civil marriage", "interfaith marriage", "marriage conditions", "court marriage"],
+      "synonyms": ["court marriage", "inter religion marriage", "special marriage", "कोर्ट मैरिज", "अंतरधार्मिक विवाह"]
+    },
+    {
+      "section_number": "27",
+      "title": "Divorce.",
+      "text": "Section 27 sets out grounds for divorce in marriages solemnized under the Special Marriage Act.",
+      "plain_language_summary": "Lists grounds for divorce in a civil or interfaith marriage registered under this Act.",
+      "subdomain": "divorce",
+      "keywords": ["divorce", "civil marriage divorce", "special marriage divorce", "cruelty", "desertion"],
+      "synonyms": ["court marriage divorce", "interfaith divorce", "तलाक", "विशेष विवाह तलाक"]
+    },
+    {
+      "section_number": "28",
+      "title": "Divorce by mutual consent.",
+      "text": "Section 28 provides for divorce by mutual consent under the Special Marriage Act.",
+      "plain_language_summary": "Spouses married under this Act may jointly seek divorce when the statutory conditions are met.",
+      "subdomain": "mutual_consent_divorce",
+      "keywords": ["mutual consent", "joint petition", "civil marriage divorce"],
+      "synonyms": ["dono divorce chahte", "amicable divorce", "आपसी सहमति से तलाक"]
+    },
+    {
+      "section_number": "36",
+      "title": "Alimony pendente lite.",
+      "text": "Section 36 provides for interim alimony during proceedings under the Act.",
+      "plain_language_summary": "Provides temporary financial support during pending matrimonial proceedings.",
+      "subdomain": "interim_maintenance",
+      "keywords": ["interim alimony", "temporary maintenance", "pending divorce"],
+      "synonyms": ["case ke dauran maintenance", "अंतरिम गुजारा भत्ता"]
+    },
+    {
+      "section_number": "37",
+      "title": "Permanent alimony and maintenance.",
+      "text": "Section 37 provides for permanent alimony and maintenance after matrimonial relief.",
+      "plain_language_summary": "Allows the court to grant long-term or lump-sum maintenance in appropriate cases.",
+      "subdomain": "permanent_alimony",
+      "keywords": ["permanent alimony", "maintenance", "financial support"],
+      "synonyms": ["divorce ke baad maintenance", "स्थायी गुजारा भत्ता"]
+    }
+  ]
+}

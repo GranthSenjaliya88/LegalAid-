@@ -7,6 +7,7 @@ Applies a strict confidence threshold — does NOT invent legal sections.
 import re
 import json
 import sqlite3
+import unicodedata
 from typing import Dict, Any, List, Optional
 from app.db.database import get_connection
 from app.schemas.legal import RetrievalMatch, RetrievalResponseData
@@ -21,7 +22,16 @@ STOP_WORDS = {
     "dispute", "issue", "problem", "case", "matter", "legal", "outer", "space",
     "how", "what", "can", "get", "i", "want", "file", "against",
     "resolution", "remedy", "immediate", "claim", "opposite", "party",
-    "without", "under", "where", "which", "new", "old", "instead", "section"
+    "without", "under", "where", "which", "new", "old", "instead", "section",
+    # Common Hindi/Hinglish function words. Removing these keeps statutory
+    # concepts from being diluted in multilingual confidence scoring.
+    "क्या", "कैसे", "कहां", "कहाँ", "कब", "कौन", "किन", "का", "की", "के",
+    "को", "से", "में", "और", "लिए", "अपने", "मुझे", "मेरी", "मेरा", "यह",
+    "वह", "है", "हैं", "हो", "होता", "होती", "करना", "करने", "करता", "करती",
+    "सकता", "सकती", "सकते", "मिल", "गया", "गयी", "गई",
+    "kya", "kaise", "kahan", "kab", "kaun", "ka", "ki", "ke", "ko", "se",
+    "me", "mein", "aur", "liye", "hai", "hain", "ho", "hota", "hoti", "karna",
+    "kare", "kar", "sakta", "sakti", "sakte", "milega", "mili", "gaya", "gayi",
 }
 
 LOCATION_WORDS = {
@@ -34,7 +44,19 @@ LOCATION_WORDS = {
 
 def _lexical_tokens(value: str) -> set[str]:
     tokens: set[str] = set()
-    for raw in re.findall(r"\b[\w-]+\b", value.lower()):
+    current: list[str] = []
+    raw_tokens: list[str] = []
+    for char in value.lower():
+        category = unicodedata.category(char)
+        if char == "_" or category[0] in {"L", "M", "N"}:
+            current.append(char)
+        elif current:
+            raw_tokens.append("".join(current))
+            current = []
+    if current:
+        raw_tokens.append("".join(current))
+
+    for raw in raw_tokens:
         if len(raw) <= 2:
             continue
         tokens.add(raw)
@@ -45,7 +67,7 @@ def _lexical_tokens(value: str) -> set[str]:
 
 def _normalize_hindi_hinglish(query: str, conn: sqlite3.Connection) -> List[str]:
     """Phase 11: Map Hindi / Hinglish phrases to normalized English legal terms using legal_concepts table."""
-    normalized_terms = []
+    matched_concepts: list[tuple[int, list[str]]] = []
     q_lower = query.lower()
 
     try:
@@ -55,13 +77,20 @@ def _normalize_hindi_hinglish(query: str, conn: sqlite3.Connection) -> List[str]
             hi = json.loads(r["hindi_synonyms_json"] or "[]")
             hing = json.loads(r["hinglish_synonyms_json"] or "[]")
 
-            all_syn = [s.lower() for s in eng + hi + hing]
-            if any(syn in q_lower for syn in all_syn):
-                normalized_terms.extend(eng)
+            all_syn = [s.lower() for s in eng + hi + hing if s]
+            matched = [syn for syn in all_syn if syn in q_lower]
+            if matched:
+                # Longer matched phrases are more specific and must reach FTS
+                # before broad concepts such as "divorce" or "Lok Adalat".
+                specificity = max(len(_lexical_tokens(syn)) for syn in matched)
+                matched_concepts.append((specificity, eng))
     except Exception:
         pass
 
-    return list(set(normalized_terms))
+    normalized_terms: list[str] = []
+    for _, english_terms in sorted(matched_concepts, key=lambda item: item[0], reverse=True):
+        normalized_terms.extend(english_terms)
+    return list(dict.fromkeys(normalized_terms))
 
 
 def sanitize_fts_query(query: str) -> str:
@@ -82,7 +111,7 @@ def sanitize_fts_query(query: str) -> str:
         if clean_word and clean_word.upper() not in reserved_fts_ops:
             words.append(f'"{clean_word}"')
             
-    return " OR ".join(words[:15]) if words else ""
+    return " OR ".join(words[:24]) if words else ""
 
 
 def search_corpus(
@@ -115,30 +144,34 @@ def search_corpus(
     try:
         concept_terms = _normalize_hindi_hinglish(combined_query, conn)
         expanded_words = expand_user_query(combined_query, domain=domain or "")
-        all_words = list(dict.fromkeys(expanded_words + concept_terms))
+        # Put normalized legal concepts first so long Hindi/Hinglish prompts do
+        # not push the legally meaningful English terms beyond the FTS limit.
+        all_words = list(dict.fromkeys(concept_terms + expanded_words))
         clean_words = [w for w in all_words if w.lower() not in STOP_WORDS]
 
         if not clean_words:
             clean_words = [domain] if domain else ["section"]
 
-        fts_query = sanitize_fts_query(" ".join(clean_words[:15]))
+        fts_query = sanitize_fts_query(" ".join(clean_words[:24]))
         if not fts_query:
             fts_query = '"section"'
             
         user_state = facts.get("state")
         user_city = facts.get("city")
         candidate_limit = max(100, limit * 10)
+        retrieval_facts = dict(facts)
+        retrieval_facts["_normalized_concepts"] = concept_terms
 
         matches = _query_fts(
             conn, fts_query=fts_query, query_words=clean_words, domain=domain,
-            state=user_state, facts=facts, limit=candidate_limit,
+            state=user_state, facts=retrieval_facts, limit=candidate_limit,
         )
 
         if not matches and domain and domain != "general":
             # Broaden search without strict domain filter if 0 results
             matches = _query_fts(
                 conn, fts_query=fts_query, query_words=clean_words, domain=None,
-                state=user_state, facts=facts, limit=candidate_limit,
+                state=user_state, facts=retrieval_facts, limit=candidate_limit,
             )
 
         # Fallback to parameterized LIKE search if FTS returned zero matches
@@ -186,11 +219,13 @@ def search_corpus(
             central_match = bool(m.state == "All")
             
             jurisdiction_bonus = 0.12 if exact_state_match else (0.03 if central_match else 0.0)
-            fused_score = min(
+            hybrid_score = min(
                 1.0,
                 round(m.confidence * 0.75 + vec_sim * 0.25 + jurisdiction_bonus + city_match * 0.08, 4),
             )
-            m.confidence = fused_score
+            # Vector similarity may be sparse for Hindi. A hybrid signal must
+            # not erase an already valid lexical/metadata confidence score.
+            m.confidence = max(m.confidence, hybrid_score)
 
         # Sort matches by city match, state match, current law status, then fused confidence
         matches.sort(
@@ -391,6 +426,10 @@ def _query_fts(
         title_ratio = len(original_tokens & title_tokens) / max(1, len(original_tokens))
         metadata_hits = sum(1 for word in substantive_query_words if word.lower() in metadata_text)
         metadata_ratio = metadata_hits / max(1, len(substantive_query_words))
+        normalized_concepts = [
+            str(term).lower() for term in facts.get("_normalized_concepts", []) if term
+        ]
+        concept_hits = sum(1 for term in normalized_concepts if term in metadata_text)
         title_positions = [
             index for index, word in enumerate(substantive_query_words)
             if word.lower() in title_tokens
@@ -402,7 +441,13 @@ def _query_fts(
 
         if domain == "general" or not domain:
             required_original_hits = min(2, len(original_tokens))
-            if keyword_ratio < 0.40 or original_hits < required_original_hits or original_ratio < 0.50:
+            strict_original_match = (
+                keyword_ratio >= 0.40
+                and original_hits >= required_original_hits
+                and original_ratio >= 0.50
+            )
+            normalized_concept_match = concept_hits >= 2 and original_hits >= required_original_hits
+            if not strict_original_match and not normalized_concept_match:
                 continue
 
         state_bonus = 0.15 if state and state != "All" and r["state"] and r["state"].lower() == state.lower() else 0.0
@@ -414,6 +459,7 @@ def _query_fts(
                 round(
                     keyword_ratio * 0.25 + original_ratio * 0.20 + title_ratio * 0.10
                     + metadata_ratio * 0.20 + title_priority * 0.15
+                    + min(0.15, concept_hits * 0.03)
                     + state_bonus + current_law_bonus + 0.15,
                     4,
                 ),

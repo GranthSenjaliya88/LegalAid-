@@ -1,0 +1,61 @@
+[
+  {"id":"EXP-HMA-001","language":"en","domain":"family","query":"My spouse and I both agree to divorce. Can we file a mutual consent divorce petition?","expected_act":"Hindu Marriage Act","expected_section":"13B"},
+  {"id":"EXP-HMA-002","language":"hi","domain":"family","query":"तलाक का मुकदमा चल रहा है और मेरी आय नहीं है, क्या मुझे अंतरिम भरण पोषण मिल सकता है?","expected_act":"Hindu Marriage Act","expected_section":"24"},
+  {"id":"EXP-HMA-003","language":"hinglish","domain":"family","query":"Divorce ke baad bacche ki custody aur visitation ka order kaise milega?","expected_act":"Hindu Marriage Act","expected_section":"26"},
+
+  {"id":"EXP-SMA-001","language":"en","domain":"family","query":"We belong to different religions and want a civil marriage without conversion. What conditions apply?","expected_act":"Special Marriage Act","expected_section":"4"},
+  {"id":"EXP-SMA-002","language":"hi","domain":"family","query":"विशेष विवाह कानून में दोनों पति पत्नी आपसी सहमति से तलाक कैसे ले सकते हैं?","expected_act":"Special Marriage Act","expected_section":"28"},
+  {"id":"EXP-SMA-003","language":"hinglish","domain":"family","query":"Special marriage divorce case me wife ke paas income nahi hai, temporary alimony kaise milegi?","expected_act":"Special Marriage Act","expected_section":"36"},
+
+  {"id":"EXP-HSA-001","language":"en","domain":"property","query":"Does a daughter have the same coparcenary rights as a son in Hindu ancestral property?","expected_act":"Hindu Succession Act","expected_section":"6"},
+  {"id":"EXP-HSA-002","language":"hi","domain":"property","query":"हिंदू पुरुष बिना वसीयत मर गया तो उसकी संपत्ति किन वारिसों को मिलेगी?","expected_act":"Hindu Succession Act","expected_section":"8"},
+  {"id":"EXP-HSA-003","language":"hinglish","domain":"property","query":"Hindu woman bina will ke death ho jaye to uski property ka succession kaise hoga?","expected_act":"Hindu Succession Act","expected_section":"15"},
+
+  {"id":"EXP-HAMA-001","language":"en","domain":"family","query":"What legal requirements must be met for a valid Hindu adoption?","expected_act":"Hindu Adoptions and Maintenance Act","expected_section":"6"},
+  {"id":"EXP-HAMA-002","language":"hi","domain":"family","query":"हिंदू पत्नी अपने पति से भरण पोषण कब मांग सकती है?","expected_act":"Hindu Adoptions and Maintenance Act","expected_section":"18"},
+  {"id":"EXP-HAMA-003","language":"hinglish","domain":"family","query":"Kya Hindu children ko apne aged parents ka maintenance dena hota hai?","expected_act":"Hindu Adoptions and Maintenance Act","expected_section":"20"},
+
+  {"id":"EXP-FCA-001","language":"en","domain":"family","query":"Which marriage, maintenance and child custody disputes can a Family Court hear?","expected_act":"Family Courts Act","expected_section":"7"},
+  {"id":"EXP-FCA-002","language":"hi","domain":"family","query":"क्या परिवार न्यायालय पहले पति पत्नी के बीच समझौता कराने की कोशिश करता है?","expected_act":"Family Courts Act","expected_section":"9"},
+  {"id":"EXP-FCA-003","language":"hinglish","domain":"family","query":"Family Court case me advocate rakhna automatic right hai ya court permission chahiye?","expected_act":"Family Courts Act","expected_section":"13"},
+
+  {"id":"EXP-POCSO-001","language":"en","domain":"children_rights","query":"I know about a sexual offence against a child. Is reporting it to police mandatory?","expected_act":"Protection of Children from Sexual Offences Act","expected_section":"19"},
+  {"id":"EXP-POCSO-002","language":"hi","domain":"children_rights","query":"यौन अपराध के मामले में बच्चे का बयान पुलिस को किस तरह दर्ज करना चाहिए?","expected_act":"Protection of Children from Sexual Offences Act","expected_section":"24"},
+  {"id":"EXP-POCSO-003","language":"hinglish","domain":"children_rights","query":"POCSO case me child ko lawyer ki help lene ka right hai kya?","expected_act":"Protection of Children from Sexual Offences Act","expected_section":"40"},
+
+  {"id":"EXP-JJ-001","language":"en","domain":"children_rights","query":"How quickly must the Juvenile Justice Board complete an inquiry for a child accused of an offence?","expected_act":"Juvenile Justice (Care and Protection of Children) Act","expected_section":"14"},
+  {"id":"EXP-JJ-002","language":"hi","domain":"children_rights","query":"बाल कल्याण समिति का गठन कैसे होता है और वह बच्चों की मदद कैसे करती है?","expected_act":"Juvenile Justice (Care and Protection of Children) Act","expected_section":"27"},
+  {"id":"EXP-JJ-003","language":"hinglish","domain":"children_rights","query":"Kya news me juvenile accused ya child victim ka naam aur photo publish kar sakte hain?","expected_act":"Juvenile Justice (Care and Protection of Children) Act","expected_section":"74"},
+
+  {"id":"EXP-RTE-001","language":"en","domain":"education","query":"Is every child aged six to fourteen entitled to free compulsory elementary education?","expected_act":"Right of Children to Free and Compulsory Education Act","expected_section":"3"},
+  {"id":"EXP-RTE-002","language":"hi","domain":"education","query":"निजी स्कूल में कमजोर वर्ग के बच्चों के लिए आरटीई प्रवेश का प्रावधान क्या है?","expected_act":"Right of Children to Free and Compulsory Education Act","expected_section":"12"},
+  {"id":"EXP-RTE-003","language":"hinglish","domain":"education","query":"Teacher ne school me child ko maara, physical punishment ki complaint kahan hogi?","expected_act":"Right of Children to Free and Compulsory Education Act","expected_section":"17"},
+
+  {"id":"EXP-RERA-001","language":"en","domain":"property","query":"The builder has delayed possession of my flat. Can a homebuyer claim refund and interest?","expected_act":"Real Estate (Regulation and Development) Act","expected_section":"18"},
+  {"id":"EXP-RERA-002","language":"hi","domain":"property","query":"घर खरीदार को परियोजना की जानकारी और निर्माण की प्रगति जानने के क्या अधिकार हैं?","expected_act":"Real Estate (Regulation and Development) Act","expected_section":"19"},
+  {"id":"EXP-RERA-003","language":"hinglish","domain":"property","query":"Builder ke against RERA Authority me complaint kaise file karun?","expected_act":"Real Estate (Regulation and Development) Act","expected_section":"31"},
+
+  {"id":"EXP-MBA-001","language":"en","domain":"employment_benefits","query":"How much paid maternity benefit can an eligible employee claim?","expected_act":"Maternity Benefit Act","expected_section":"5"},
+  {"id":"EXP-MBA-002","language":"hi","domain":"employment_benefits","query":"कार्यस्थल पर क्रेच सुविधा और बच्चे को देखने जाने का अधिकार कब मिलता है?","expected_act":"Maternity Benefit Act","expected_section":"11A"},
+  {"id":"EXP-MBA-003","language":"hinglish","domain":"employment_benefits","query":"Company ne pregnancy aur maternity absence ki wajah se job se nikal diya, kya protection hai?","expected_act":"Maternity Benefit Act","expected_section":"12"},
+
+  {"id":"EXP-GRA-001","language":"en","domain":"employment_benefits","query":"When does gratuity become payable after continuous service, retirement or resignation?","expected_act":"Payment of Gratuity Act","expected_section":"4"},
+  {"id":"EXP-GRA-002","language":"hi","domain":"employment_benefits","query":"नियोक्ता ग्रेच्युटी नहीं दे रहा है, दावा निर्धारित करने के लिए आवेदन कैसे करें?","expected_act":"Payment of Gratuity Act","expected_section":"7"},
+  {"id":"EXP-GRA-003","language":"hinglish","domain":"employment_benefits","query":"Company se unpaid gratuity ko controlling authority ke through recover kaise kare?","expected_act":"Payment of Gratuity Act","expected_section":"8"},
+
+  {"id":"EXP-SRA-001","language":"en","domain":"civil","query":"The seller refuses to complete a property agreement. Can the court order specific performance of the contract?","expected_act":"Specific Relief Act","expected_section":"10"},
+  {"id":"EXP-SRA-002","language":"hi","domain":"civil","query":"मेरे अधिकार में लगातार दखल रोकने के लिए स्थायी निषेधाज्ञा कब मिल सकती है?","expected_act":"Specific Relief Act","expected_section":"38"},
+  {"id":"EXP-SRA-003","language":"hinglish","domain":"civil","query":"Wrong construction hatwane ke liye court se mandatory injunction mil sakta hai?","expected_act":"Specific Relief Act","expected_section":"39"},
+
+  {"id":"EXP-LIM-001","language":"en","domain":"procedural","query":"My appeal was filed late for sufficient cause. Can the court condone the delay?","expected_act":"Limitation Act","expected_section":"5"},
+  {"id":"EXP-LIM-002","language":"hi","domain":"procedural","query":"मैंने सद्भावना से गलत अदालत में मुकदमा चलाया, क्या वह समय सीमा से बाहर रखा जाएगा?","expected_act":"Limitation Act","expected_section":"14"},
+  {"id":"EXP-LIM-003","language":"hinglish","domain":"procedural","query":"Debt ka written acknowledgment milne par limitation period dobara kab start hota hai?","expected_act":"Limitation Act","expected_section":"18"},
+
+  {"id":"EXP-CPC-001","language":"en","domain":"procedural","query":"Where should I file a civil suit based on where the defendant lives or the cause of action arose?","expected_act":"Code of Civil Procedure","expected_section":"20"},
+  {"id":"EXP-CPC-002","language":"hi","domain":"procedural","query":"सरकार के खिलाफ दीवानी मुकदमा करने से पहले कितने समय का नोटिस देना होता है?","expected_act":"Code of Civil Procedure","expected_section":"80"},
+  {"id":"EXP-CPC-003","language":"hinglish","domain":"procedural","query":"Civil dispute ko court mediation ya Lok Adalat me refer kar sakta hai kya?","expected_act":"Code of Civil Procedure","expected_section":"89"},
+
+  {"id":"EXP-LSA-001","language":"en","domain":"general","query":"Who is legally entitled to receive free legal services and a free lawyer?","expected_act":"Legal Services Authorities Act","expected_section":"12"},
+  {"id":"EXP-LSA-002","language":"hi","domain":"general","query":"लोक अदालत समझौते के लिए किन मामलों को अपने सामने ले सकती है?","expected_act":"Legal Services Authorities Act","expected_section":"20"},
+  {"id":"EXP-LSA-003","language":"hinglish","domain":"general","query":"Lok Adalat ka award final hota hai aur civil court decree jaisa enforce hota hai kya?","expected_act":"Legal Services Authorities Act","expected_section":"21"}
+]

@@ -1,0 +1,57 @@
+{
+  "act": {
+    "name": "Right of Children to Free and Compulsory Education Act, 2009",
+    "short_name": "RTE Act 2009",
+    "year": 2009,
+    "domain": "education",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2086",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2086",
+    "source_authority": "Ministry of Education, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2010-04-01",
+    "status": "CURRENT",
+    "description": "Central law providing free and compulsory elementary education and protecting children in schools.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "3",
+      "title": "Right of child to free and compulsory education.",
+      "text": "Section 3 recognizes the right of every child in the covered age group to free and compulsory elementary education.",
+      "plain_language_summary": "Children aged six to fourteen have the statutory right to free and compulsory elementary education.",
+      "subdomain": "free_education",
+      "keywords": ["free education", "compulsory education", "school admission", "child age 6 to 14"],
+      "synonyms": ["free school", "school admission denied", "muft padhai", "निःशुल्क शिक्षा", "स्कूल प्रवेश"]
+    },
+    {
+      "section_number": "12",
+      "title": "Extent of school’s responsibility for free and compulsory education.",
+      "text": "Section 12 defines the responsibility of specified schools to provide free and compulsory education.",
+      "plain_language_summary": "Sets school obligations, including the statutory admission responsibility applicable to specified schools.",
+      "subdomain": "school_admission_responsibility",
+      "keywords": ["school responsibility", "admission", "weaker section", "disadvantaged group", "25 percent"],
+      "synonyms": ["RTE quota", "private school admission", "25 percent seat", "आरटीई प्रवेश", "कमजोर वर्ग"]
+    },
+    {
+      "section_number": "17",
+      "title": "Prohibition of physical punishment and mental harassment to child.",
+      "text": "Section 17 prohibits physical punishment and mental harassment of a child.",
+      "plain_language_summary": "Schools cannot subject a child to physical punishment or mental harassment.",
+      "subdomain": "school_punishment",
+      "keywords": ["physical punishment", "mental harassment", "teacher beat child", "school abuse"],
+      "synonyms": ["teacher ne maara", "school corporal punishment", "शारीरिक दंड", "मानसिक उत्पीड़न"]
+    },
+    {
+      "section_number": "32",
+      "title": "Redressal of grievances.",
+      "text": "Section 32 provides a grievance-redress mechanism for a child's right under the Act.",
+      "plain_language_summary": "A complaint about violation of a child's RTE rights can be made through the statutory grievance process.",
+      "subdomain": "education_grievance",
+      "keywords": ["RTE complaint", "education grievance", "school rights violation", "complaint authority"],
+      "synonyms": ["school complaint", "RTE grievance", "शिक्षा शिकायत", "आरटीई शिकायत"]
+    }
+  ]
+}

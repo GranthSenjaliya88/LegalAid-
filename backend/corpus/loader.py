@@ -189,11 +189,17 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
             skipped += 1
             continue
 
-        keywords_json = json.dumps(sec.get("keywords", []))
-        synonyms_json = json.dumps(sec.get("synonyms", []))
+        # Store multilingual metadata as real Unicode so SQLite FTS5 can match
+        # Hindi terms. Escaped ``\\uXXXX`` JSON text is not searchable as Hindi.
+        keywords_json = json.dumps(sec.get("keywords", []), ensure_ascii=False)
+        synonyms_json = json.dumps(sec.get("synonyms", []), ensure_ascii=False)
 
         existing_sec = conn.execute(
-            "SELECT id, content_hash, text, source_url, verification_status FROM sections WHERE act_id=? AND section_number=?",
+            """
+            SELECT id, content_hash, text, source_url, verification_status,
+                   title, plain_language_summary, subdomain, keywords, synonyms
+            FROM sections WHERE act_id=? AND section_number=?
+            """,
             (act_id, sec_num),
         ).fetchone()
 
@@ -201,7 +207,17 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
 
         if existing_sec:
             existing_hash = existing_sec["content_hash"] if isinstance(existing_sec, sqlite3.Row) else existing_sec[1]
-            if existing_hash == sec_content_hash:
+            if isinstance(existing_sec, sqlite3.Row):
+                stored_metadata = (
+                    existing_sec["title"], existing_sec["plain_language_summary"],
+                    existing_sec["subdomain"], existing_sec["keywords"], existing_sec["synonyms"],
+                )
+            else:
+                stored_metadata = tuple(existing_sec[5:10])
+            metadata_matches = stored_metadata == (
+                sec.get("title"), summary, subdomain, keywords_json, synonyms_json,
+            )
+            if existing_hash == sec_content_hash and (not force or metadata_matches):
                 skipped += 1
                 continue
             if force:

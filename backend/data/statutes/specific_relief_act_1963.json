@@ -1,0 +1,66 @@
+{
+  "act": {
+    "name": "Specific Relief Act, 1963",
+    "short_name": "SRA 1963",
+    "year": 1963,
+    "domain": "civil",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1583",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1583",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1964-03-01",
+    "status": "CURRENT",
+    "description": "Central civil law governing possession, specific performance, declarations, cancellation and injunctions.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "10",
+      "title": "Cases in which specific performance of contract enforceable.",
+      "text": "Section 10 governs enforcement of specific performance of contracts subject to the Act.",
+      "plain_language_summary": "A court may require performance of a contract in cases governed by the Act, subject to statutory limits.",
+      "subdomain": "specific_performance",
+      "keywords": ["specific performance", "enforce contract", "contract not performed", "court order performance"],
+      "synonyms": ["agreement pura nahi kiya", "contract enforce", "अनुबंध लागू कराना", "विशिष्ट पालन"]
+    },
+    {
+      "section_number": "20",
+      "title": "Substituted performance of contract",
+      "text": "Section 20 provides for substituted performance after the required notice and on the conditions stated by the Act.",
+      "plain_language_summary": "After proper notice, an aggrieved party may arrange performance through another person and seek eligible costs.",
+      "subdomain": "substituted_performance",
+      "keywords": ["substituted performance", "third party performance", "contract breach notice", "recover expenses"],
+      "synonyms": ["dusre se kaam karaya", "replacement contractor", "प्रतिस्थापित पालन"]
+    },
+    {
+      "section_number": "34",
+      "title": "Discretion of court as to declaration of status or right.",
+      "text": "Section 34 permits declaratory relief concerning legal character or a right to property in appropriate cases.",
+      "plain_language_summary": "A person may seek a court declaration of legal status or property rights when the statutory conditions are met.",
+      "subdomain": "declaratory_relief",
+      "keywords": ["declaration of rights", "legal status", "property right declaration", "civil suit"],
+      "synonyms": ["court declaration", "property title declaration", "अधिकार की घोषणा", "घोषणात्मक वाद"]
+    },
+    {
+      "section_number": "38",
+      "title": "Perpetual injunction when granted.",
+      "text": "Section 38 states when a court may grant a perpetual injunction to prevent breach of an obligation.",
+      "plain_language_summary": "A final injunction may stop an ongoing or threatened violation of a legal obligation in eligible cases.",
+      "subdomain": "permanent_injunction",
+      "keywords": ["permanent injunction", "stop interference", "prevent breach", "property injunction"],
+      "synonyms": ["stay order permanent", "rok lagwana", "स्थायी निषेधाज्ञा", "दखल रोकना"]
+    },
+    {
+      "section_number": "39",
+      "title": "Mandatory injunctions.",
+      "text": "Section 39 states when a court may grant a mandatory injunction requiring specified acts to prevent breach.",
+      "plain_language_summary": "A court may order a person to perform a necessary act to prevent or correct a breach in eligible cases.",
+      "subdomain": "mandatory_injunction",
+      "keywords": ["mandatory injunction", "court order to act", "restore property", "remove obstruction"],
+      "synonyms": ["court se kaam karwane ka order", "अनिवार्य निषेधाज्ञा", "अतिक्रमण हटाना"]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "act": {
+    "name": "Real Estate (Regulation and Development) Act, 2016",
+    "short_name": "RERA 2016",
+    "year": 2016,
+    "domain": "property",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2158",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2158",
+    "source_authority": "Ministry of Housing and Urban Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2016-05-01",
+    "status": "CURRENT",
+    "description": "Central law protecting homebuyers and regulating promoters, real-estate projects, complaints and compensation.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "11",
+      "title": "Functions and duties of promoter.",
+      "text": "Section 11 sets out the statutory functions and duties of a real-estate promoter.",
+      "plain_language_summary": "A promoter must meet disclosure, update, completion and other duties under RERA.",
+      "subdomain": "promoter_duties",
+      "keywords": ["builder duties", "promoter obligations", "project disclosure", "RERA registration"],
+      "synonyms": ["builder responsibility", "developer duty", "बिल्डर की जिम्मेदारी", "प्रमोटर कर्तव्य"]
+    },
+    {
+      "section_number": "18",
+      "title": "Return of amount and compensation.",
+      "text": "Section 18 governs return of amount, interest and compensation where the promoter fails in circumstances covered by the Act.",
+      "plain_language_summary": "A homebuyer may claim refund, interest or compensation for specified promoter failures, including delay in possession.",
+      "subdomain": "delayed_possession_refund",
+      "keywords": ["builder delay", "possession delayed", "homebuyer refund", "interest compensation", "project not completed"],
+      "synonyms": ["flat possession late", "builder refund", "ghar nahi mila", "कब्जा मिलने में देरी", "बिल्डर से रिफंड"]
+    },
+    {
+      "section_number": "19",
+      "title": "Rights and duties of allottees.",
+      "text": "Section 19 states the statutory rights and duties of real-estate allottees.",
+      "plain_language_summary": "Homebuyers have rights to project information, possession and documents, along with payment duties.",
+      "subdomain": "homebuyer_rights",
+      "keywords": ["homebuyer rights", "allottee rights", "possession", "project documents"],
+      "synonyms": ["flat buyer rights", "allottee", "घर खरीदार अधिकार", "आवंटी अधिकार"]
+    },
+    {
+      "section_number": "31",
+      "title": "Filing of complaints with the Authority or the adjudicating officer.",
+      "text": "Section 31 permits an aggrieved person to file a complaint with the RERA Authority or adjudicating officer.",
+      "plain_language_summary": "An aggrieved homebuyer or other eligible person may file a RERA complaint using the prescribed process.",
+      "subdomain": "rera_complaint",
+      "keywords": ["file RERA complaint", "RERA Authority", "adjudicating officer", "homebuyer complaint"],
+      "synonyms": ["builder ke against complaint", "RERA case", "रेरा शिकायत", "बिल्डर के खिलाफ शिकायत"]
+    }
+  ]
+}
