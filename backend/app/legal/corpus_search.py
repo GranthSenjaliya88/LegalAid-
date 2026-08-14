@@ -102,7 +102,9 @@ def sanitize_fts_query(query: str) -> str:
     if not query:
         return ""
 
-    cleaned = re.sub(r'[\"\':\*\(\)\{\}\[\]\^~]', ' ', query)
+    # Strip all punctuation/operators while preserving Unicode word characters
+    # and the Indic blocks used by Hindi and other supported Indian languages.
+    cleaned = re.sub(r'[^\w\u0900-\u0D7F]+', ' ', query, flags=re.UNICODE)
     
     reserved_fts_ops = {"AND", "OR", "NOT", "NEAR"}
     words = []
@@ -631,6 +633,10 @@ def _query_like_fallback(
 
 def search_bm25(db, query: str, limit: int = 20):
     from sqlalchemy import text
+    safe_query = sanitize_fts_query(query)
+    if not safe_query:
+        return []
+
     sql = text(
         """
         SELECT
@@ -646,7 +652,7 @@ def search_bm25(db, query: str, limit: int = 20):
     return db.execute(
         sql,
         {
-            "query": query,
+            "query": safe_query,
             "limit": limit,
         },
     ).mappings().all()

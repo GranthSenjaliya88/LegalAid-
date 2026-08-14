@@ -91,6 +91,22 @@ def test_retrieval_debug_endpoint():
     assert "final_results" in data["data"]
 
 
+def test_retrieval_debug_accepts_natural_language_punctuation():
+    payload = {
+        "query": "The public information officer did not answer my RTI request. How can I appeal?",
+        "state": "Delhi",
+        "domain": "public_services",
+    }
+
+    response = client.post("/api/admin/retrieval-debug", json=payload)
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["success"] is True
+    assert data["data"]["bm25_results_count"] > 0
+    assert data["data"]["final_results_count"] > 0
+
+
 def test_case_delete_privacy_and_cascade(db_session: Session):
     """Verify deleting a case purges facts, documents, traces, and claim audit logs atomically."""
     # Create test case
