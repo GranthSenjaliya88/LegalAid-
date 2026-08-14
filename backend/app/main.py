@@ -4,6 +4,14 @@ Implements standardized request correlation IDs, CORS protection, and error enve
 """
 
 import uuid
+import sys
+import os
+from pathlib import Path
+
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
+
 from fastapi import FastAPI, Request, HTTPException, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -48,11 +56,21 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS Middleware setup — strict origins (Part 30).
+# CORS Middleware setup — safe for specific origins and production deployments
+_cors_origins = settings.CORS_ORIGINS
+_allow_creds = True
+_origin_regex = None
+
+if "*" in _cors_origins or not _cors_origins:
+    _cors_origins = ["*"]
+    _allow_creds = False
+    _origin_regex = r"https?://.*"
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=True,
+    allow_origins=_cors_origins if not _origin_regex else [],
+    allow_origin_regex=_origin_regex,
+    allow_credentials=_allow_creds,
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization", "X-Request-ID"],
 )

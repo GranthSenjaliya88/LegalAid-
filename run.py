@@ -1,9 +1,9 @@
-"""run.py — Start the LegalAId API server."""
+"""Root run.py — Server launcher for deployment environments running from repo root."""
 import os
 import sys
 from pathlib import Path
 
-BACKEND_DIR = Path(__file__).resolve().parent
+BACKEND_DIR = Path(__file__).resolve().parent / "backend"
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
