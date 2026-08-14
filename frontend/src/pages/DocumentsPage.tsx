@@ -27,7 +27,7 @@ export function DocumentsPage() {
           title="No documents yet"
           description="After you analyze a case, you can generate a legal notice or complaint draft. It will show up here."
           action={
-            <Button asChild>
+            <Button asChild variant="gold">
               <Link to="/">Start a legal question</Link>
             </Button>
           }

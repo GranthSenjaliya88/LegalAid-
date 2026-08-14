@@ -55,7 +55,7 @@ export function CasesPage() {
           title="No cases yet"
           description="When you describe a legal problem, it will appear here so you can return to it anytime."
           action={
-            <Button asChild>
+            <Button asChild variant="gold">
               <Link to="/">Start a legal question</Link>
             </Button>
           }
