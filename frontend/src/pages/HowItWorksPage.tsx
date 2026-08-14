@@ -1,7 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Reveal } from "@/components/common/Reveal";
-import { DisclaimerBanner } from "@/components/common/DisclaimerBanner";
 
 /** Process steps — UI copy describing how the assistant works (not legal content). */
 const STEPS: { title: string; body: string }[] = [
@@ -84,8 +83,6 @@ export function HowItWorksPage() {
           says so.
         </p>
       </Reveal>
-
-      <DisclaimerBanner />
     </div>
   );
 }

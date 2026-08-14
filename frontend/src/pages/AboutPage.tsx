@@ -2,7 +2,6 @@ import { Scale, ShieldCheck, HeartHandshake, Languages } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Reveal } from "@/components/common/Reveal";
-import { DisclaimerBanner } from "@/components/common/DisclaimerBanner";
 import { Card, CardContent } from "@/components/ui/card";
 
 const PRINCIPLES: { icon: LucideIcon; title: string; body: string }[] = [
@@ -67,8 +66,6 @@ export function AboutPage() {
           specific situation, please consult a qualified legal professional.
         </p>
       </Reveal>
-
-      <DisclaimerBanner />
     </div>
   );
 }
