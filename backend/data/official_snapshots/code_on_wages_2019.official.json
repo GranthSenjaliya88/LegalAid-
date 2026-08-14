@@ -10,13 +10,13 @@
     "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15793",
     "source_authority": "Ministry of Labour and Employment, Government of India",
     "version": "1.0",
-    "enforcement_date": "2020-12-30",
+    "enforcement_date": "2025-11-21",
     "status": "CURRENT",
     "supersedes": "Payment of Wages Act, 1936 / Minimum Wages Act, 1948 / Payment of Bonus Act, 1965",
     "description": "An Act to consolidate and amend the laws relating to wages and bonus and matters connected therewith. Subsumes the Payment of Wages Act 1936 and Minimum Wages Act 1948.",
     "last_verified_at": "2026-08-14",
     "verification_status": "VERIFIED",
-    "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+    "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
     "content_hash": "f02f424347a836b9f2f1a6e6a39177d18e61c6296cb02dfd3cc4bedfc4bc6cde"
   },
   "sections": [
@@ -40,7 +40,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "commencement",
         "extent",
@@ -68,7 +68,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "definitions"
       ]
@@ -93,7 +93,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "discrimination",
         "gender",
@@ -121,7 +121,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "decision",
         "disputes",
@@ -153,7 +153,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "minimum",
         "payment",
@@ -181,7 +181,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "fixation",
         "minimum",
@@ -208,7 +208,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "components",
         "minimum",
@@ -235,7 +235,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "fixing",
         "minimum",
@@ -264,7 +264,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "central",
         "floor",
@@ -293,7 +293,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "employee",
         "less",
@@ -324,7 +324,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "classes",
         "more",
@@ -352,7 +352,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "minimum",
         "piece",
@@ -382,7 +382,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "fixing",
         "hours",
@@ -411,7 +411,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "overtime",
         "wages",
@@ -438,7 +438,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "mode",
         "payment",
@@ -465,7 +465,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "fixation",
         "period",
@@ -510,7 +510,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00"
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00"
     },
     {
       "section_number": "18",
@@ -546,7 +546,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00"
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00"
     },
     {
       "section_number": "19",
@@ -568,7 +568,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "fines"
       ]
@@ -593,7 +593,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "absence",
         "deductions",
@@ -621,7 +621,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "damage",
         "deductions",
@@ -648,7 +648,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "deductions",
         "rendered",
@@ -675,7 +675,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "advances",
         "deductions",
@@ -702,7 +702,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "deductions",
         "loans",
@@ -729,7 +729,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "apply",
         "chapter",
@@ -757,7 +757,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "bonus",
         "eligibility"
@@ -783,7 +783,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "bonus",
         "cases",
@@ -812,7 +812,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "computation",
         "days",
@@ -840,7 +840,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "bonus",
         "disqualification"
@@ -866,7 +866,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "branches",
         "departments",
@@ -895,7 +895,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "allocable",
         "bonus",
@@ -923,7 +923,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "computation",
         "gross",
@@ -950,7 +950,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "available",
         "computation",
@@ -977,7 +977,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "deductible",
         "from",
@@ -1006,7 +1006,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "calculation",
         "direct",
@@ -1034,7 +1034,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "allocable",
         "surplus"
@@ -1060,7 +1060,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "adjustment",
         "against",
@@ -1093,7 +1093,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "amounts",
         "bonus",
@@ -1123,7 +1123,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "bonus",
         "limit",
@@ -1151,7 +1151,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "application",
         "cases",
@@ -1183,7 +1183,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "chapter",
         "non-applicability",
@@ -1210,7 +1210,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "advisory",
         "board",
@@ -1239,7 +1239,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "dues",
         "payment",
@@ -1267,7 +1267,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "case",
         "death",
@@ -1312,7 +1312,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00"
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00"
     },
     {
       "section_number": "46",
@@ -1334,7 +1334,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "code",
         "disputes",
@@ -1363,7 +1363,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "about",
         "account",
@@ -1397,7 +1397,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "account",
         "audit",
@@ -1427,7 +1427,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "appeal"
       ]
@@ -1452,7 +1452,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "notices",
         "records",
@@ -1479,7 +1479,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "appointment",
         "inspector-cum-facilitators",
@@ -1507,7 +1507,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "cognizance",
         "offences"
@@ -1533,7 +1533,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "appropriate",
         "cases",
@@ -1565,7 +1565,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "offences",
         "penalties"
@@ -1591,7 +1591,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "companies",
         "offences"
@@ -1617,7 +1617,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "composition",
         "offences"
@@ -1643,7 +1643,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "suits"
       ]
@@ -1668,7 +1668,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "action",
         "faith",
@@ -1697,7 +1697,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "burden",
         "proof"
@@ -1723,7 +1723,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "contracting"
       ]
@@ -1748,7 +1748,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "agreements",
         "code",
@@ -1779,7 +1779,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "delegation",
         "powers"
@@ -1805,7 +1805,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "cases",
         "certain",
@@ -1835,7 +1835,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "against",
         "assets",
@@ -1866,7 +1866,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "central",
         "directions",
@@ -1895,7 +1895,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "saving"
       ]
@@ -1920,7 +1920,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "appropriate",
         "government",
@@ -1949,7 +1949,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "difficulties",
         "power",
@@ -1976,7 +1976,7 @@
       "last_verified": "2026-08-14",
       "last_verified_at": "2026-08-14",
       "verification_status": "VERIFIED",
-      "source_retrieved_at": "2026-08-14T07:10:41.153677+00:00",
+      "source_retrieved_at": "2026-08-14T12:20:43.970524+00:00",
       "keywords": [
         "repeal",
         "savings"

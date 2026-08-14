@@ -1,0 +1,50 @@
+{
+  "act": {
+    "name": "Air (Prevention and Control of Pollution) Act, 1981",
+    "short_name": "Air Pollution Act 1981",
+    "year": 1981,
+    "domain": "environment",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1389",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1389",
+    "source_authority": "Ministry of Environment, Forest and Climate Change, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1981-05-16",
+    "status": "CURRENT",
+    "description": "Central law preventing, controlling and abating air pollution through boards, consents, directions and penalties.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "21",
+    "title": "Restrictions on use of certain industrial plants.",
+    "text": "Section 21 concerns consent requirements for certain industrial plants in air-pollution-control areas; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Specified industrial plants in a pollution-control area require State Board consent under the Act.",
+    "subdomain": "industrial_air_consent",
+    "keywords": ["air pollution", "industrial consent", "emissions", "pollution control board"],
+    "synonyms": ["factory smoke complaint", "air consent", "वायु प्रदूषण", "फैक्ट्री का धुआं"]
+  },
+  {
+    "section_number": "21A",
+    "title": "Power to issue guidelines.",
+    "text": "(1) Notwithstanding anything contained in this Act, the Central Government in consultation with the Central Board, may, by notification in the Official Gazette, issue guidelines on the matters relating to the grant, refusal or cancellation of consent by any State Board to establish or operate any industrial plant in an air pollution control area, including the mechanism for time bound disposal of the application made under section 21 or validity period of such consent.\n(2) Every State Board, in discharge of its functions for the purposes of grant, refusal or cancellation of consent under section 21 shall act in accordance with the guidelines issued under sub-section (1).",
+    "plain_language_summary": "The Central Government may issue binding guidelines for State Board consent decisions, timelines and validity periods.",
+    "subdomain": "air_consent_guidelines",
+    "source_url": "https://www.indiacode.nic.in/bitstream/123456789/1389/4/a1981-14%20.pdf",
+    "official_source_url": "https://www.indiacode.nic.in/bitstream/123456789/1389/4/a1981-14%20.pdf",
+    "keywords": ["consent guidelines", "State Pollution Control Board", "consent timeline", "industrial plant"],
+    "synonyms": ["air consent guideline", "pollution NOC", "प्रदूषण सहमति", "अनुमति दिशानिर्देश"]
+  },
+  {
+    "section_number": "39D",
+    "title": "Offences for failure to comply with provisions of section 21 and for failure to pay penalty.",
+    "text": "(1) Whoever fails to comply with the provisions of section 21, shall, in respect of each such failure, be punishable with imprisonment for a term which shall not be less than one year and six months but which may extend to six years and with fine, and in case the failure continues, with an additional fine which may extend to fifty thousand rupees for every day during which such failure continues after the conviction for the first such failure.\n(2) If the failure referred to in sub-section (1) continues beyond a period of one year after the date of conviction, the offender shall be punishable with imprisonment for a term which shall not be less than two years but which may extend to seven years and with fine.\n(3) Where any person fails to pay the penalty or the additional penalty, as the case may be, imposed under the provisions of this Act within ninety days of such imposition, he shall be punishable with imprisonment for a term which may extend to three years, or with fine which may extend to twice the amount of the penalty or additional penalty so imposed or with both.\n(4) Where any offence under sub-section (1) or sub-section (2) or sub-section (3) has been committed by a company, every person who, at the time the offence was committed, was directly in charge of, and was responsible to, the company for the conduct of the business of the company, as well as the company, shall be deemed to be guilty of such offence and he shall be liable to be proceeded against and punished accordingly: Provided that nothing contained in this sub-section shall render any such person liable to any punishment provided in sub-section (1) or sub-section (2) or sub-section (3), if he proves that the offence was committed without his knowledge or that he exercised all due diligence to prevent the commission of such offence.\n(5) Notwithstanding anything contained in sub-section (4), where an offence has been committed by a company and it is proved that the offence has been committed with the consent or connivance of, or is attributable to any neglect on the part of, any director, manager, secretary or other officer of the company, such director, manager, secretary or other officer shall also be deemed to be guilty of that offence and shall be liable to be proceeded against and punished accordingly. Explanation.—For the purposes of this section,— (a) company includes body corporate, firm, trust, society and any other association of individuals; (b) director includes director of the company, partner of the firm, members of the society or trust or member of any association of individuals, as the case may be.",
+    "plain_language_summary": "Non-compliance with industrial-plant consent requirements and non-payment of imposed penalties can trigger imprisonment, fines and company-officer liability.",
+    "subdomain": "air_pollution_offences",
+    "source_url": "https://www.indiacode.nic.in/bitstream/123456789/1389/4/a1981-14%20.pdf",
+    "official_source_url": "https://www.indiacode.nic.in/bitstream/123456789/1389/4/a1981-14%20.pdf",
+    "keywords": ["air pollution offence", "consent violation", "penalty not paid", "company liability"],
+    "synonyms": ["pollution consent violation", "air act punishment", "वायु प्रदूषण अपराध", "जुर्माना नहीं भरा"]
+  }]
+}

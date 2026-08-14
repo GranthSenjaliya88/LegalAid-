@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Medical Termination of Pregnancy Act, 1971",
+    "short_name": "MTP Act 1971",
+    "year": 1971,
+    "domain": "healthcare",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1593",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1593",
+    "source_authority": "Ministry of Health and Family Welfare, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1972-04-01",
+    "status": "CURRENT",
+    "description": "Central law governing lawful medical termination of pregnancy, approved places and privacy safeguards.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "3",
+    "title": "When pregnancies may be terminated by registered medical practitioners.",
+    "text": "Section 3 sets the statutory circumstances and medical-opinion requirements for termination of pregnancy; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Pregnancy may be terminated by a registered medical practitioner when the statutory conditions and applicable gestational requirements are met.",
+    "subdomain": "lawful_pregnancy_termination",
+    "keywords": ["MTP", "abortion law", "pregnancy termination", "registered medical practitioner"],
+    "synonyms": ["pregnancy terminate law", "garbhpaat kanoon", "गर्भसमापन", "गर्भपात कानून"]
+  }]
+}

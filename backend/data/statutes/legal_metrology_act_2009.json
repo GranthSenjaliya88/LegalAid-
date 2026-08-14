@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Legal Metrology Act, 2009",
+    "short_name": "Legal Metrology Act 2009",
+    "year": 2009,
+    "domain": "consumer",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2102",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2102",
+    "source_authority": "Department of Consumer Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2011-03-01",
+    "status": "CURRENT",
+    "description": "Central law regulating weights, measures and goods sold by weight, measure or number.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "18",
+    "title": "Declarations on pre-packaged commodities.",
+    "text": "Section 18 concerns prescribed declarations on pre-packaged commodities; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Packaged goods must carry prescribed quantity and other declarations and comply with legal-metrology requirements.",
+    "subdomain": "packaged_goods_labelling",
+    "keywords": ["packaged commodity", "MRP", "weight shortage", "label declaration"],
+    "synonyms": ["packet weight kam", "MRP label", "पैकेट का वजन", "माप तौल शिकायत"]
+  }]
+}

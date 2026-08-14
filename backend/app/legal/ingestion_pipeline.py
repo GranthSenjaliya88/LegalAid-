@@ -305,11 +305,13 @@ def ingest_legal_concepts(conn: sqlite3.Connection, json_file: Optional[Path] = 
 
     records = json.loads(json_file.read_text(encoding="utf-8"))
     inserted = 0
+    canonical_keys: list[str] = []
 
     for c in records:
         concept_key = c.get("concept_key", c.get("concept_name", "")).strip()
         if not concept_key:
             continue
+        canonical_keys.append(concept_key)
 
         existing = conn.execute("SELECT id FROM legal_concepts WHERE concept_key = ?", (concept_key,)).fetchone()
         eng_json = json.dumps(c.get("english_synonyms", []), ensure_ascii=False)
@@ -336,6 +338,15 @@ def ingest_legal_concepts(conn: sqlite3.Connection, json_file: Optional[Path] = 
                 """,
                 (c.get("domain", "general"), eng_json, hi_json, hing_json, acts_json, concept_key),
             )
+
+    # The root concepts file is the canonical dictionary. Remove concepts that
+    # were renamed or split so stale broad mappings cannot reduce precision.
+    if json_file.resolve() == (DATA_DIR / "concepts.json").resolve() and canonical_keys:
+        placeholders = ",".join("?" for _ in canonical_keys)
+        conn.execute(
+            f"DELETE FROM legal_concepts WHERE concept_key NOT IN ({placeholders})",
+            canonical_keys,
+        )
 
     conn.commit()
     return inserted

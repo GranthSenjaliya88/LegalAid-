@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Indian Easements Act, 1882",
+    "short_name": "Easements Act 1882",
+    "year": 1882,
+    "domain": "property",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2349",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2349",
+    "source_authority": "Legislative Department, Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1882-07-01",
+    "status": "CURRENT",
+    "description": "Central law governing easements, rights of way, necessity, prescription and licences.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "15",
+    "title": "Acquisition by prescription.",
+    "text": "Section 15 concerns acquisition of easement rights by prescription; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Explains when long, open and uninterrupted use may mature into an easementary right.",
+    "subdomain": "prescriptive_easement",
+    "keywords": ["right of way", "easement by prescription", "access path", "twenty years"],
+    "synonyms": ["rasta ka haq", "purana rasta band", "रास्ते का अधिकार", "सुखाचार"]
+  }]
+}

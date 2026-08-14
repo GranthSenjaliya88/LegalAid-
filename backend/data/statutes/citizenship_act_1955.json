@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Citizenship Act, 1955",
+    "short_name": "Citizenship Act 1955",
+    "year": 1955,
+    "domain": "constitutional",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1522",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1522",
+    "source_authority": "Ministry of Home Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1955-12-30",
+    "status": "CURRENT",
+    "description": "Central law governing acquisition, registration, naturalisation, overseas citizenship and termination of Indian citizenship.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "5",
+    "title": "Citizenship by registration.",
+    "text": "Section 5 concerns categories and conditions for acquiring Indian citizenship by registration; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Eligible applicants in the statutory categories may seek Indian citizenship by registration subject to prescribed conditions and procedure.",
+    "subdomain": "citizenship_registration",
+    "keywords": ["citizenship registration", "Indian citizenship", "citizenship application", "registration"],
+    "synonyms": ["Indian citizenship apply", "nagrikta registration", "भारतीय नागरिकता", "नागरिकता आवेदन"]
+  }]
+}

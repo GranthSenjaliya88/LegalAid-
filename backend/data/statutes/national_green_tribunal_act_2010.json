@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "National Green Tribunal Act, 2010",
+    "short_name": "NGT Act 2010",
+    "year": 2010,
+    "domain": "environment",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2025",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2025",
+    "source_authority": "Ministry of Environment, Forest and Climate Change, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2010-10-18",
+    "status": "CURRENT",
+    "description": "Central law establishing the National Green Tribunal for environmental disputes, relief, compensation and restitution.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "14",
+    "title": "Tribunal to settle disputes.",
+    "text": "Section 14 concerns the National Green Tribunal's jurisdiction over substantial environmental questions under scheduled enactments; consult the linked official text for the complete provision.",
+    "plain_language_summary": "The NGT decides qualifying civil disputes involving substantial environmental questions arising under scheduled laws.",
+    "subdomain": "ngt_jurisdiction",
+    "keywords": ["NGT complaint", "environmental dispute", "green tribunal", "pollution case"],
+    "synonyms": ["NGT me case", "environment complaint", "हरित अधिकरण", "पर्यावरण मामला"]
+  }]
+}

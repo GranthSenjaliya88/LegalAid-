@@ -88,8 +88,15 @@ def _normalize_hindi_hinglish(query: str, conn: sqlite3.Connection) -> List[str]
         pass
 
     normalized_terms: list[str] = []
-    for _, english_terms in sorted(matched_concepts, key=lambda item: item[0], reverse=True):
-        normalized_terms.extend(english_terms)
+    # A specific multi-word match should not be diluted by unrelated concepts
+    # that happen to share one broad word such as "confidentiality".
+    if matched_concepts:
+        best_specificity = max(item[0] for item in matched_concepts)
+        for specificity, english_terms in sorted(
+            matched_concepts, key=lambda item: item[0], reverse=True
+        ):
+            if specificity == best_specificity:
+                normalized_terms.extend(english_terms)
     return list(dict.fromkeys(normalized_terms))
 
 
@@ -164,8 +171,12 @@ def search_corpus(
         retrieval_facts = dict(facts)
         retrieval_facts["_normalized_concepts"] = concept_terms
 
+        # Current maternity and gratuity provisions are chapters of the
+        # Social Security Code and are stored under its canonical labor domain.
+        search_domain = "labor" if domain == "employment_benefits" else domain
+
         matches = _query_fts(
-            conn, fts_query=fts_query, query_words=clean_words, domain=domain,
+            conn, fts_query=fts_query, query_words=clean_words, domain=search_domain,
             state=user_state, facts=retrieval_facts, limit=candidate_limit,
         )
 
@@ -179,7 +190,7 @@ def search_corpus(
         # Fallback to parameterized LIKE search if FTS returned zero matches
         if not matches:
             matches = _query_like_fallback(
-                conn, query_words=clean_words, domain=domain, state=user_state,
+                conn, query_words=clean_words, domain=search_domain, state=user_state,
                 original_query=combined_query, limit=candidate_limit,
             )
 
@@ -449,7 +460,9 @@ def _query_fts(
                 and original_hits >= required_original_hits
                 and original_ratio >= 0.50
             )
-            normalized_concept_match = concept_hits >= 2 and original_hits >= required_original_hits
+            # A vetted multilingual concept with multiple metadata hits is
+            # sufficient even when the original prompt is entirely in Hindi.
+            normalized_concept_match = concept_hits >= 2
             if not strict_original_match and not normalized_concept_match:
                 continue
 

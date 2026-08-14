@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Bonded Labour System (Abolition) Act, 1976",
+    "short_name": "Bonded Labour Act 1976",
+    "year": 1976,
+    "domain": "human_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1491",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1491",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1975-10-25",
+    "status": "CURRENT",
+    "description": "Central law abolishing bonded labour, extinguishing bonded debt and providing enforcement and rehabilitation safeguards.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "4",
+    "title": "Abolition of bonded labour system.",
+    "text": "Section 4 abolishes the bonded labour system; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Bonded labour is abolished and a bonded labourer is freed from the obligation to render bonded labour.",
+    "subdomain": "bonded_labour_abolition",
+    "keywords": ["bonded labour", "forced labour", "debt bondage", "release"],
+    "synonyms": ["bandhua mazdoor", "karz ke badle kaam", "बंधुआ मजदूरी", "जबरन काम"]
+  }]
+}

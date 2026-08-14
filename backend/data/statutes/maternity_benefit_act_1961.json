@@ -11,8 +11,9 @@
     "source_authority": "Ministry of Labour and Employment, Government of India",
     "version": "1.0",
     "enforcement_date": "1963-11-01",
-    "status": "CURRENT",
-    "description": "Central law governing maternity leave, payment, nursing breaks, creche facilities and protection from dismissal.",
+    "status": "HISTORICAL",
+    "superseded_by": "Code on Social Security, 2020",
+    "description": "Historical maternity-benefit law retained for pre-21 November 2025 matters; superseded by the Code on Social Security, 2020.",
     "last_verified_at": "2026-08-14",
     "verification_status": "VERIFIED"
   },

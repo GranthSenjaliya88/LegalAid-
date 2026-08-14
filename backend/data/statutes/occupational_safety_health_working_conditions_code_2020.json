@@ -1,0 +1,29 @@
+{
+  "act": {
+    "name": "Occupational Safety, Health and Working Conditions Code, 2020",
+    "short_name": "OSHWC Code 2020",
+    "year": 2020,
+    "domain": "labor",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/22041",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/22041",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2025-11-21",
+    "status": "CURRENT",
+    "supersedes": "Factories Act, 1948 / Contract Labour (Regulation and Abolition) Act, 1970 and other enactments listed in section 143",
+    "description": "Current central code consolidating occupational safety, workplace health, working conditions, contract labour and inter-State migrant worker protections.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "23",
+    "title": "Responsibility of employer for maintaining health, safety and working conditions.",
+    "text": "Section 23 concerns employer responsibility for workplace health, safety and working conditions; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Employers must maintain the workplace health, safety and working conditions required by the Code.",
+    "subdomain": "workplace_safety",
+    "keywords": ["workplace safety", "employer duty", "occupational health", "working conditions"],
+    "synonyms": ["factory safety", "unsafe workplace", "कार्यस्थल सुरक्षा", "नियोक्ता की जिम्मेदारी"]
+  }]
+}

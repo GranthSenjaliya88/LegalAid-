@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Water (Prevention and Control of Pollution) Act, 1974",
+    "short_name": "Water Pollution Act 1974",
+    "year": 1974,
+    "domain": "environment",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/11183?view_type=browse",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/11183?view_type=browse",
+    "source_authority": "Government of India Act text hosted by India Code",
+    "version": "1.0",
+    "enforcement_date": "1974-03-23",
+    "status": "CURRENT",
+    "description": "Central law preventing and controlling water pollution, including consent, directions, adjudication, penalties and appeals.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "24",
+    "title": "Prohibition on use of stream or well for disposal of polluting matter, etc.",
+    "text": "Section 24 concerns prohibited disposal of polluting matter into streams, wells, sewers or land; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Prohibits specified polluting discharges into water bodies and related outlets, subject to the Act.",
+    "subdomain": "water_pollution",
+    "keywords": ["water pollution", "illegal discharge", "sewage", "industrial effluent"],
+    "synonyms": ["nadi me gandagi", "factory water pollution", "जल प्रदूषण", "गंदा पानी छोड़ना"]
+  }]
+}

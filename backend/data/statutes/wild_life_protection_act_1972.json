@@ -1,0 +1,27 @@
+{
+  "act": {
+    "name": "Wild Life (Protection) Act, 1972",
+    "short_name": "Wild Life Act 1972",
+    "year": 1972,
+    "domain": "environment",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1726",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1726",
+    "source_authority": "Ministry of Environment, Forest and Climate Change, Government of India",
+    "version": "1.0",
+    "status": "CURRENT",
+    "description": "Central law protecting wild animals, birds and plants and governing protected areas, trade and wildlife offences.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "9",
+    "title": "Prohibition of hunting.",
+    "text": "Section 9 prohibits hunting of protected wild animals except as permitted by the Act; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Hunting protected wild animals is prohibited except in the limited circumstances authorised by the Act.",
+    "subdomain": "wildlife_hunting",
+    "keywords": ["wildlife hunting", "poaching", "protected animal", "wildlife offence"],
+    "synonyms": ["janwar ka shikar", "poaching complaint", "वन्यजीव शिकार", "संरक्षित जानवर"]
+  }]
+}

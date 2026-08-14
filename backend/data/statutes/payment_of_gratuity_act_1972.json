@@ -11,8 +11,9 @@
     "source_authority": "Ministry of Labour and Employment, Government of India",
     "version": "1.0",
     "enforcement_date": "1972-09-16",
-    "status": "CURRENT",
-    "description": "Central law governing employee gratuity entitlement, determination, recovery and protection.",
+    "status": "HISTORICAL",
+    "superseded_by": "Code on Social Security, 2020",
+    "description": "Historical gratuity law retained for pre-21 November 2025 matters; superseded by the Code on Social Security, 2020.",
     "last_verified_at": "2026-08-14",
     "verification_status": "VERIFIED"
   },

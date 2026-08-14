@@ -75,6 +75,184 @@ class AIClient:
 
         # Expanded-corpus domains are evaluated before broad legacy buckets.
         if _has_kw([
+            "hiv", "aids", "hiv test", "hiv status", "antiretroviral",
+            "एचआईवी", "एड्स", "एचआईवी जांच", "एचआईवी स्थिति",
+        ]):
+            domain = "healthcare"
+            subdomain = "hiv_consent_confidentiality_and_discrimination"
+            urgency = "high"
+        elif _has_kw([
+            "medical termination of pregnancy", "termination of pregnancy", "mtp act",
+            "abortion", "pregnancy termination", "गर्भपात", "गर्भावस्था समाप्ति",
+        ]):
+            domain = "healthcare"
+            subdomain = "medical_termination_of_pregnancy"
+            urgency = "high"
+        elif _has_kw([
+            "disaster management", "disaster relief", "disaster compensation", "ndma",
+            "flood relief", "earthquake relief", "आपदा प्रबंधन", "आपदा राहत", "बाढ़ राहत",
+        ]):
+            domain = "public_services"
+            subdomain = "disaster_relief_and_management"
+            urgency = "high"
+        elif _has_kw([
+            "birth certificate", "death certificate", "birth registration", "death registration",
+            "delayed registration of birth", "passport application", "passport refused",
+            "passport impounded", "passport revoked", "पासपोर्ट", "जन्म प्रमाणपत्र",
+            "मृत्यु प्रमाणपत्र", "जन्म पंजीकरण", "मृत्यु पंजीकरण",
+        ]):
+            domain = "public_services"
+            subdomain = "civil_registration_or_passport"
+            urgency = "medium"
+        elif _has_kw([
+            "citizenship by birth", "citizenship by descent", "citizenship registration",
+            "naturalisation", "naturalization", "renounce citizenship", "deprivation of citizenship",
+            "नागरिकता", "जन्म से नागरिकता", "नागरिकता त्याग",
+        ]):
+            domain = "constitutional"
+            subdomain = "citizenship_status"
+            urgency = "medium"
+        elif _has_kw([
+            "bonded labour", "bonded labor", "bonded debt", "forced labour", "forced labor",
+            "debt bondage", "बंधुआ मजदूर", "बंधुआ श्रम", "जबरन मजदूरी",
+        ]):
+            domain = "human_rights"
+            subdomain = "bonded_labour_abolition"
+            urgency = "high"
+        elif _has_kw([
+            "child labour", "child labor", "adolescent labour", "adolescent labor",
+            "hazardous occupation for children", "बाल श्रम", "बाल मजदूरी", "किशोर श्रम",
+        ]):
+            domain = "children_rights"
+            subdomain = "child_and_adolescent_labour"
+            urgency = "high"
+        elif _has_kw([
+            "msme delayed payment", "msme payment", "msme facilitation council", "msmed",
+            "micro enterprise payment", "small enterprise payment", "सूक्ष्म उद्यम भुगतान",
+            "लघु उद्यम भुगतान", "एमएसएमई भुगतान",
+        ]):
+            domain = "livelihood"
+            subdomain = "msme_delayed_payment"
+            urgency = "medium"
+        elif _has_kw([
+            "legal metrology", "packaged commodity", "prepackaged commodity", "non-standard package",
+            "incorrect weight", "short weight", "weights and measures", "नाप तौल", "कम वजन",
+            "पैकेट पर घोषणा", "पैकेज्ड वस्तु",
+        ]):
+            domain = "consumer"
+            subdomain = "weights_measures_and_packaged_goods"
+            urgency = "medium"
+        elif _has_kw([
+            "unsafe food", "adulterated food", "misbranded food", "food safety officer",
+            "food business operator", "fssai", "असुरक्षित भोजन", "मिलावटी खाना",
+            "गलत ब्रांड वाला खाद्य", "खाद्य सुरक्षा अधिकारी",
+        ]):
+            domain = "consumer"
+            subdomain = "food_safety"
+            urgency = "high"
+        elif _has_kw([
+            "occupational safety", "workplace safety", "working conditions code", "oshwc",
+            "contract labour", "contract labor", "principal employer", "safety committee",
+            "कार्यस्थल सुरक्षा", "व्यावसायिक सुरक्षा", "ठेका मजदूर", "प्रधान नियोक्ता",
+        ]):
+            domain = "labor"
+            subdomain = "occupational_safety_or_contract_labour"
+            urgency = "high"
+        elif _has_kw([
+            "arbitration interim measure", "arbitration temporary relief",
+            "मध्यस्थता समझौता होने पर अदालत से अंतरिम उपाय", "अंतरिम मध्यस्थता उपाय",
+        ]):
+            domain = "contract"
+            subdomain = "arbitration"
+            urgency = "medium"
+        elif _has_kw([
+            "mediation agreement", "pre-litigation mediation", "mediated settlement",
+            "mediation act", "mediator conflict", "mediation confidentiality",
+            "मध्यस्थता समझौता", "मध्यस्थता निपटारा", "मुकदमे से पहले मध्यस्थता",
+        ]):
+            domain = "procedural"
+            subdomain = "mediation_and_settlement"
+            urgency = "medium"
+        elif _has_kw([
+            "partnership firm", "partnership at will", "partner liability", "minor partner",
+            "dissolution of firm", "partnership accounts", "साझेदारी फर्म", "साझेदार की देनदारी",
+            "फर्म का विघटन",
+        ]):
+            domain = "contract"
+            subdomain = "partnership_rights_and_liabilities"
+            urgency = "medium"
+        elif _has_kw([
+            "sale of goods", "agreement to sell", "implied condition", "breach of warranty",
+            "unpaid seller", "goods not fit", "goods quality", "माल की बिक्री",
+            "माल की गुणवत्ता", "वारंटी का उल्लंघन",
+        ]):
+            domain = "contract"
+            subdomain = "sale_of_goods"
+            urgency = "medium"
+        elif _has_kw([
+            "easement", "right of way", "access path", "easement of necessity",
+            "disturbance of easement", "रास्ते का अधिकार", "सुखाधिकार", "आवश्यकता का रास्ता",
+        ]):
+            domain = "property"
+            subdomain = "easement_and_right_of_way"
+            urgency = "medium"
+        elif _has_kw([
+            "bribe", "bribery", "corrupt public servant", "undue advantage",
+            "prevention of corruption", "रिश्वत", "भ्रष्टाचार", "लोक सेवक को रिश्वत",
+        ]):
+            domain = "criminal"
+            subdomain = "corruption_and_bribery"
+            urgency = "high"
+        elif _has_kw([
+            "ndps", "narcotic drug", "psychotropic substance", "drug trafficking",
+            "commercial quantity", "नशीली दवा", "मादक पदार्थ", "ड्रग तस्करी",
+        ]):
+            domain = "criminal"
+            subdomain = "narcotic_drug_offence"
+            urgency = "high"
+        elif _has_kw([
+            "money laundering", "money-laundering", "proceeds of crime", "pmla",
+            "attachment of property", "धन शोधन", "अपराध की आय", "संपत्ति कुर्की",
+        ]):
+            domain = "criminal"
+            subdomain = "money_laundering"
+            urgency = "high"
+        elif _has_kw([
+            "consumer commission", "consumer complaint", "e-daakhil", "edaakhil",
+            "misleading advertisement", "service station damaged", "consumer jurisdiction",
+        ]):
+            domain = "consumer"
+            subdomain = "consumer_complaint_or_unfair_trade_practice"
+            urgency = "medium"
+        elif _has_kw([
+            "digital signature forged", "forged digital signature", "forged electronic signature",
+            "electronic signature identity theft",
+        ]):
+            domain = "cyber"
+            subdomain = "digital_identity_forgery"
+            urgency = "high"
+        elif _has_kw([
+            "criminal breach of trust", "cheating by personation", "pretending to be government officer",
+            "impersonating government officer", "fake government officer",
+        ]):
+            domain = "criminal"
+            subdomain = "breach_of_trust_or_personation"
+            urgency = "high"
+        elif _has_kw([
+            "unauthorized service charge", "unauthorised service charge", "bank deducted",
+            "wrong bank charge", "bank service charge",
+        ]):
+            domain = "banking"
+            subdomain = "unauthorized_bank_charge"
+            urgency = "medium"
+        elif _has_kw([
+            "lessor did not disclose", "lessor property defect", "transfer of property act lease",
+            "tpa lease defect", "lessor duty",
+        ]):
+            domain = "property"
+            subdomain = "lessor_and_lessee_rights"
+            urgency = "medium"
+        elif _has_kw([
             "mental healthcare", "mental health", "psychiatric hospital", "mental illness",
             "advance directive", "nominated representative", "attempted suicide", "suicide attempt",
             "मानसिक स्वास्थ्य", "मानसिक रोग", "आत्महत्या का प्रयास", "मनोचिकित्सक अस्पताल",
@@ -127,7 +305,11 @@ class AIClient:
             "air pollution", "water pollution", "environmental pollution", "hazardous substance",
             "factory pollution", "toxic waste", "environment protection act", "protect environment",
             "protect and improve the environment", "improve environment", "environment act",
-            "पर्यावरण प्रदूषण", "कारखाना प्रदूषण", "खतरनाक पदार्थ", "जहरीला कचरा",
+            "wildlife protection", "illegal hunting", "national green tribunal", "ngt appeal",
+            "environmental compensation", "public liability insurance", "hazardous accident",
+            "पर्यावरण प्रदूषण", "जल प्रदूषण", "वायु प्रदूषण", "प्रदूषण नियंत्रण बोर्ड",
+            "कारखाना प्रदूषण", "खतरनाक पदार्थ", "जहरीला कचरा",
+            "वन्यजीव संरक्षण", "अवैध शिकार", "राष्ट्रीय हरित अधिकरण", "पर्यावरण मुआवजा",
         ]):
             domain = "environment"
             subdomain = "pollution_control"

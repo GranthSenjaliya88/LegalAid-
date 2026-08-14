@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Prevention of Money-Laundering Act, 2002",
+    "short_name": "PMLA 2002",
+    "year": 2002,
+    "domain": "criminal",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2036",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2036",
+    "source_authority": "Department of Revenue, Ministry of Finance, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2005-07-01",
+    "status": "CURRENT",
+    "description": "Central law preventing money laundering and governing attachment, adjudication, confiscation, investigation and reporting obligations.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "3",
+    "title": "Offence of money-laundering.",
+    "text": "Section 3 defines the offence of money laundering in relation to proceeds of crime; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Specified involvement with proceeds of crime, including concealment, possession, acquisition, use or projecting them as untainted, can constitute money laundering.",
+    "subdomain": "money_laundering_offence",
+    "keywords": ["money laundering", "proceeds of crime", "ED case", "PMLA"],
+    "synonyms": ["black money case", "ED notice", "मनी लॉन्ड्रिंग", "अपराध की आय"]
+  }]
+}

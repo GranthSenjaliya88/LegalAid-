@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Child and Adolescent Labour (Prohibition and Regulation) Act, 1986",
+    "short_name": "Child Labour Act 1986",
+    "year": 1986,
+    "domain": "children_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1848",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1848",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1993-05-26",
+    "status": "CURRENT",
+    "description": "Central law prohibiting child employment and hazardous adolescent employment and providing enforcement and rehabilitation measures.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "3",
+    "title": "Prohibition of employment of children in any occupation and process.",
+    "text": "Section 3 prohibits employment of children subject to the provision's limited exceptions; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Employment of children is prohibited across occupations and processes, subject to narrow statutory exceptions.",
+    "subdomain": "child_labour_prohibition",
+    "keywords": ["child labour", "child employment", "minor worker", "prohibited work"],
+    "synonyms": ["bachche se kaam", "minor labour", "बाल मजदूरी", "बच्चे से काम कराना"]
+  }]
+}

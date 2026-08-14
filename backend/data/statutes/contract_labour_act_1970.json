@@ -1,0 +1,33 @@
+{
+  "act": {
+    "name": "Contract Labour (Regulation and Abolition) Act, 1970",
+    "short_name": "Contract Labour Act 1970",
+    "year": 1970,
+    "domain": "labor",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/18556?sam_handle=123456789%2F2505&view_type=search",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/18556?sam_handle=123456789%2F2505&view_type=search",
+    "source_authority": "Government of India Act text hosted by India Code",
+    "version": "1.0",
+    "enforcement_date": "1971-02-10",
+    "status": "HISTORICAL",
+    "superseded_by": "Occupational Safety, Health and Working Conditions Code, 2020",
+    "description": "Historical contract-labour law retained for pre-21 November 2025 matters; superseded by the OSHWC Code, 2020.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "21",
+    "title": "Responsibility for payment of wages (historical).",
+    "text": "Historical section 21 concerned responsibility for paying contract-labour wages; consult the linked official text for the complete former provision.",
+    "plain_language_summary": "Historical wage-payment responsibility for contract labour before the OSHWC Code commenced.",
+    "subdomain": "historical_contract_labour_wages",
+    "status": "HISTORICAL",
+    "repealed": true,
+    "effective_to": "2025-11-20",
+    "superseded_by": "Occupational Safety, Health and Working Conditions Code, 2020",
+    "keywords": ["contract labour wages", "principal employer", "historical law"],
+    "synonyms": ["contract worker salary", "ठेका मजदूर वेतन"]
+  }]
+}

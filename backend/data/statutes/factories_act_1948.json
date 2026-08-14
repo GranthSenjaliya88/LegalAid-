@@ -1,0 +1,33 @@
+{
+  "act": {
+    "name": "Factories Act, 1948",
+    "short_name": "Factories Act 1948",
+    "year": 1948,
+    "domain": "labor",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/13657",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/13657",
+    "source_authority": "Ministry of Labour and Employment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1949-04-01",
+    "status": "HISTORICAL",
+    "superseded_by": "Occupational Safety, Health and Working Conditions Code, 2020",
+    "description": "Historical factory-safety law retained for pre-21 November 2025 matters; superseded by the OSHWC Code, 2020.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "59",
+    "title": "Extra wages for overtime (historical).",
+    "text": "Historical section 59 concerned overtime wages under the Factories Act, 1948; consult the linked official text for the complete former provision.",
+    "plain_language_summary": "Historical overtime provision for factory workers before the OSHWC Code commenced.",
+    "subdomain": "historical_factory_overtime",
+    "status": "HISTORICAL",
+    "repealed": true,
+    "effective_to": "2025-11-20",
+    "superseded_by": "OSHWC Code 2020 section 27",
+    "keywords": ["historical factory overtime", "double wages", "Factories Act"],
+    "synonyms": ["purana factory overtime law", "पुराना कारखाना ओवरटाइम कानून"]
+  }]
+}

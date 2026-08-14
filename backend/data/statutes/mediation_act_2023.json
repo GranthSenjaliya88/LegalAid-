@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Mediation Act, 2023",
+    "short_name": "Mediation Act 2023",
+    "year": 2023,
+    "domain": "procedural",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/19637",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/19637",
+    "source_authority": "Department of Legal Affairs, Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2023-10-09",
+    "status": "CURRENT",
+    "description": "Central law governing pre-litigation, court-referred, online and community mediation and enforcement of mediated settlement agreements.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "5",
+    "title": "Pre-litigation mediation.",
+    "text": "Section 5 concerns voluntary pre-litigation mediation under the Mediation Act, 2023; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Parties may try mediation before filing civil or commercial proceedings, subject to the Act.",
+    "subdomain": "pre_litigation_mediation",
+    "keywords": ["pre-litigation mediation", "settlement", "mediator", "dispute resolution"],
+    "synonyms": ["court se pehle mediation", "samjhauta", "मध्यस्थता", "मुकदमे से पहले समझौता"]
+  }]
+}

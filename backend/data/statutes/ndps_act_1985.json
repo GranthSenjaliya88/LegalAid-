@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Narcotic Drugs and Psychotropic Substances Act, 1985",
+    "short_name": "NDPS Act 1985",
+    "year": 1985,
+    "domain": "criminal",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1791",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1791",
+    "source_authority": "Department of Revenue, Ministry of Finance, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1985-11-14",
+    "status": "CURRENT",
+    "description": "Central criminal law regulating narcotic drugs and psychotropic substances, offences, search, bail, treatment and forfeiture.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "37",
+    "title": "Offences to be cognizable and non-bailable.",
+    "text": "Section 37 concerns cognizability, non-bailability and statutory bail restrictions for specified NDPS offences; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Specified NDPS offences have special, stringent bail conditions in addition to ordinary criminal-procedure requirements.",
+    "subdomain": "ndps_bail",
+    "keywords": ["NDPS bail", "drug case", "non-bailable", "commercial quantity"],
+    "synonyms": ["drug case bail", "nasha case", "एनडीपीएस जमानत", "नशीले पदार्थ का मामला"]
+  }]
+}

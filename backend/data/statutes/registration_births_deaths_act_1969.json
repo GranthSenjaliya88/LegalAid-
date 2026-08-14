@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Registration of Births and Deaths Act, 1969",
+    "short_name": "Births and Deaths Act 1969",
+    "year": 1969,
+    "domain": "public_services",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1682",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1682",
+    "source_authority": "Ministry of Home Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1970-10-01",
+    "status": "CURRENT",
+    "description": "Central law governing registration, certificates, delayed registration and correction of birth and death records.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "13",
+    "title": "Delayed registration of births and deaths.",
+    "text": "Section 13 concerns delayed registration of a birth or death after the ordinary reporting period; consult the linked official text for the complete provision.",
+    "plain_language_summary": "A delayed birth or death registration can be completed using the statutory permission, documents and fee applicable to the delay.",
+    "subdomain": "delayed_birth_death_registration",
+    "keywords": ["late birth certificate", "delayed registration", "death certificate", "registrar"],
+    "synonyms": ["birth certificate late", "janam certificate nahi bana", "देर से जन्म पंजीकरण", "मृत्यु प्रमाणपत्र"]
+  }]
+}

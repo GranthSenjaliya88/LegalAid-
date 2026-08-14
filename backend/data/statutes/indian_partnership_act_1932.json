@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Indian Partnership Act, 1932",
+    "short_name": "Partnership Act 1932",
+    "year": 1932,
+    "domain": "contract",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2394",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2394",
+    "source_authority": "Ministry of Corporate Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1932-10-01",
+    "status": "CURRENT",
+    "description": "Central law governing partnership firms, partner duties and liabilities, registration and dissolution.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "25",
+    "title": "Liability of a partner for acts of the firm.",
+    "text": "Section 25 concerns a partner's liability for acts of the firm; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Partners can be jointly and severally liable for acts of the firm done while they are partners.",
+    "subdomain": "partner_liability",
+    "keywords": ["partner liability", "firm debt", "joint and several liability", "partnership"],
+    "synonyms": ["partner ka karz", "firm liability", "साझेदार की जिम्मेदारी", "फर्म का कर्ज"]
+  }]
+}

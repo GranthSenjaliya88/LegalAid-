@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Human Immunodeficiency Virus and Acquired Immune Deficiency Syndrome (Prevention and Control) Act, 2017",
+    "short_name": "HIV AIDS Act 2017",
+    "year": 2017,
+    "domain": "healthcare",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2254",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2254",
+    "source_authority": "Ministry of Health and Family Welfare, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2018-09-17",
+    "status": "CURRENT",
+    "description": "Rights-based central law prohibiting HIV-related discrimination and protecting consent, confidentiality, treatment and grievance rights.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "3",
+    "title": "Prohibition of discrimination.",
+    "text": "Section 3 prohibits specified discrimination against protected persons; consult the linked official text for the complete provision.",
+    "plain_language_summary": "A person living with or affected by HIV is protected from specified discrimination in employment, education, healthcare, housing and services.",
+    "subdomain": "hiv_discrimination",
+    "keywords": ["HIV discrimination", "AIDS rights", "health confidentiality", "equal treatment"],
+    "synonyms": ["HIV ke karan bhedbhav", "AIDS patient rights", "एचआईवी भेदभाव", "गोपनीयता"]
+  }]
+}

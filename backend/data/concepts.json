@@ -109,7 +109,7 @@
     "english_synonyms": ["maternity leave", "paid maternity benefit", "nursing breaks", "creche facility", "pregnancy dismissal"],
     "hindi_synonyms": ["मातृत्व अवकाश", "मातृत्व लाभ", "स्तनपान अवकाश", "कार्यस्थल क्रेच", "गर्भावस्था में नौकरी से निकाला"],
     "hinglish_synonyms": ["pregnancy leave", "maternity salary", "feeding break", "office daycare", "pregnancy me job se nikala"],
-    "related_acts": ["Maternity Benefit Act, 1961"]
+    "related_acts": ["Code on Social Security, 2020", "Maternity Benefit Act, 1961 (historical)"]
   },
   {
     "concept_key": "gratuity_claim",
@@ -117,7 +117,7 @@
     "english_synonyms": ["gratuity", "unpaid gratuity", "five years service", "gratuity recovery", "retirement benefit"],
     "hindi_synonyms": ["ग्रेच्युटी", "ग्रेच्युटी नहीं मिली", "पांच साल सेवा", "ग्रेच्युटी वसूली"],
     "hinglish_synonyms": ["gratuity nahi mili", "company gratuity nahi de rahi", "5 years job benefit", "gratuity kaise claim kare"],
-    "related_acts": ["Payment of Gratuity Act, 1972"]
+    "related_acts": ["Code on Social Security, 2020", "Payment of Gratuity Act, 1972 (historical)"]
   },
   {
     "concept_key": "civil_injunction_and_specific_relief",
@@ -186,7 +186,7 @@
   {
     "concept_key": "lok_adalat_case_referral",
     "domain": "general",
-    "english_synonyms": ["Lok Adalat case referral", "cognizance by Lok Adalat", "pending case settlement", "pre litigation dispute", "case suitable for compromise"],
+    "english_synonyms": ["Cognizance of cases by Lok Adalats", "Lok Adalat case referral", "pending case settlement", "pre litigation dispute", "case suitable for compromise"],
     "hindi_synonyms": ["लोक अदालत समझौते के लिए", "लोक अदालत में मामला भेजना", "मुकदमे से पहले विवाद", "समझौते योग्य मामला"],
     "hinglish_synonyms": ["case lok adalat bhejna", "lok adalat me kaunsa case", "pending case settlement", "pre litigation samjhauta"],
     "related_acts": ["Legal Services Authorities Act, 1987"]
@@ -326,5 +326,197 @@
     "hindi_synonyms": ["आधार नंबर", "आधार प्रमाणीकरण", "आधार के बिना सब्सिडी", "पहचान जानकारी", "आधार डेटा साझा करना"],
     "hinglish_synonyms": ["Aadhaar authentication fail", "Aadhaar bina benefit", "Aadhaar data share", "biometric privacy"],
     "related_acts": ["Aadhaar Act, 2016"]
+  },
+  {
+    "concept_key": "mediation_and_settlement",
+    "domain": "procedural",
+    "english_synonyms": ["mediation", "pre-litigation mediation", "mediated settlement", "online mediation", "community mediation"],
+    "hindi_synonyms": ["मध्यस्थता", "मुकदमे से पहले समझौता", "मध्यस्थता समझौता", "ऑनलाइन मध्यस्थता"],
+    "hinglish_synonyms": ["court se pehle mediation", "mediator se samjhauta", "online mediation", "case settle karna"],
+    "related_acts": ["Mediation Act, 2023"]
+  },
+  {
+    "concept_key": "sale_of_goods_quality_and_remedies",
+    "domain": "contract",
+    "english_synonyms": ["sale of goods", "fitness for purpose", "merchantable quality", "condition and warranty", "unpaid seller"],
+    "hindi_synonyms": ["माल की बिक्री", "उद्देश्य के योग्य सामान", "दोषपूर्ण सामान", "विक्रेता को भुगतान नहीं"],
+    "hinglish_synonyms": ["goods fit nahi", "seller ko payment nahi", "condition warranty", "kharab maal"],
+    "related_acts": ["Sale of Goods Act, 1930"]
+  },
+  {
+    "concept_key": "partnership_firm_rights",
+    "domain": "contract",
+    "english_synonyms": ["partnership firm", "partner liability", "firm registration", "retiring partner", "dissolution of firm"],
+    "hindi_synonyms": ["साझेदारी फर्म", "साझेदार की जिम्मेदारी", "फर्म पंजीकरण", "फर्म का विघटन"],
+    "hinglish_synonyms": ["partner ka karz", "firm register karna", "partner retire", "partnership dissolve"],
+    "related_acts": ["Indian Partnership Act, 1932"]
+  },
+  {
+    "concept_key": "easement_and_right_of_way",
+    "domain": "property",
+    "english_synonyms": ["easement", "right of way", "easement of necessity", "prescriptive easement", "property access path"],
+    "hindi_synonyms": ["सुखाचार", "रास्ते का अधिकार", "आवश्यक रास्ता", "पुराना रास्ता"],
+    "hinglish_synonyms": ["rasta ka haq", "access road band", "purana rasta", "property right of way"],
+    "related_acts": ["Indian Easements Act, 1882"]
+  },
+  {
+    "concept_key": "msme_delayed_payment",
+    "domain": "livelihood",
+    "english_synonyms": ["MSME delayed payment", "unpaid MSME invoice", "Facilitation Council", "buyer payment delay", "compound interest MSME"],
+    "hindi_synonyms": ["एमएसएमई बकाया भुगतान", "लघु उद्यम का बिल", "सुविधा परिषद", "खरीदार ने भुगतान नहीं किया"],
+    "hinglish_synonyms": ["MSME payment nahi mila", "invoice unpaid", "MSEFC complaint", "buyer paise nahi de raha"],
+    "related_acts": ["Micro, Small and Medium Enterprises Development Act, 2006"]
+  },
+  {
+    "concept_key": "weights_measures_and_packaged_goods",
+    "domain": "consumer",
+    "english_synonyms": ["short weight", "wrong measurement", "packaged commodity", "MRP declaration", "legal metrology complaint"],
+    "hindi_synonyms": ["कम वजन", "गलत माप", "पैक किया सामान", "एमआरपी घोषणा", "माप तौल शिकायत"],
+    "hinglish_synonyms": ["packet weight kam", "wrong weighing scale", "MRP missing", "nap tol complaint"],
+    "related_acts": ["Legal Metrology Act, 2009"]
+  },
+  {
+    "concept_key": "occupational_safety_and_contract_labour",
+    "domain": "labor",
+    "english_synonyms": ["workplace safety", "occupational health", "contract labour", "inter-State migrant worker", "working hours", "overtime wages"],
+    "hindi_synonyms": ["कार्यस्थल सुरक्षा", "व्यावसायिक स्वास्थ्य", "ठेका मजदूर", "प्रवासी श्रमिक", "ओवरटाइम वेतन"],
+    "hinglish_synonyms": ["unsafe workplace", "contract worker rights", "migrant worker help", "overtime payment"],
+    "related_acts": ["Occupational Safety, Health and Working Conditions Code, 2020"]
+  },
+  {
+    "concept_key": "bonded_and_forced_labour",
+    "domain": "human_rights",
+    "english_synonyms": ["bonded labour", "debt bondage", "forced labour", "bonded debt", "bonded worker release"],
+    "hindi_synonyms": ["बंधुआ मजदूरी", "कर्ज के बदले काम", "जबरन श्रम", "बंधुआ कर्ज", "मजदूर की रिहाई"],
+    "hinglish_synonyms": ["bandhua mazdoor", "karz ke badle kaam", "forced work", "bonded labour complaint"],
+    "related_acts": ["Bonded Labour System (Abolition) Act, 1976"]
+  },
+  {
+    "concept_key": "child_and_adolescent_labour",
+    "domain": "children_rights",
+    "english_synonyms": ["child labour", "minor employed", "adolescent hazardous work", "child labour rescue", "rehabilitation fund"],
+    "hindi_synonyms": ["बाल मजदूरी", "नाबालिग से काम", "किशोर का खतरनाक काम", "बाल मजदूर बचाव", "पुनर्वास कोष"],
+    "hinglish_synonyms": ["bachche se kaam", "minor worker", "child labour report", "hazardous job adolescent"],
+    "related_acts": ["Child and Adolescent Labour (Prohibition and Regulation) Act, 1986"]
+  },
+  {
+    "concept_key": "hiv_consent_confidentiality_and_discrimination",
+    "domain": "healthcare",
+    "english_synonyms": ["Confidentiality of data", "data", "HIV discrimination", "HIV test consent", "HIV status confidentiality", "antiretroviral treatment", "HIV Ombudsman"],
+    "hindi_synonyms": ["एचआईवी भेदभाव", "एचआईवी जांच की सहमति", "एचआईवी स्थिति की गोपनीयता", "एचआईवी उपचार", "लोकपाल"],
+    "hinglish_synonyms": ["HIV ke karan bhedbhav", "HIV test bina consent", "status disclose kar diya", "AIDS patient rights"],
+    "related_acts": ["Human Immunodeficiency Virus and Acquired Immune Deficiency Syndrome (Prevention and Control) Act, 2017"]
+  },
+  {
+    "concept_key": "personal_data_consent",
+    "domain": "digital_online",
+    "english_synonyms": ["Consent", "personal data without consent", "DPDP consent", "valid consent", "withdraw consent", "consent notice"],
+    "hindi_synonyms": ["व्यक्तिगत डेटा की सहमति", "बिना सहमति डेटा", "डेटा सहमति वापस लेना", "सहमति सूचना"],
+    "hinglish_synonyms": ["data bina consent", "app ne data le liya", "DPDP consent", "consent withdraw"],
+    "related_acts": ["Digital Personal Data Protection Act, 2023"]
+  },
+  {
+    "concept_key": "medical_termination_of_pregnancy",
+    "domain": "healthcare",
+    "english_synonyms": ["medical termination of pregnancy", "abortion law", "pregnancy termination", "MTP privacy", "registered medical practitioner"],
+    "hindi_synonyms": ["गर्भ का चिकित्सकीय समापन", "गर्भपात कानून", "गर्भसमापन", "महिला की गोपनीयता", "पंजीकृत चिकित्सक"],
+    "hinglish_synonyms": ["pregnancy terminate law", "garbhpaat kanoon", "MTP privacy", "abortion legal conditions"],
+    "related_acts": ["Medical Termination of Pregnancy Act, 1971"]
+  },
+  {
+    "concept_key": "disaster_relief_and_management",
+    "domain": "public_services",
+    "english_synonyms": ["disaster relief", "minimum relief standards", "disaster compensation", "evacuation order", "disaster authority"],
+    "hindi_synonyms": ["आपदा राहत", "न्यूनतम राहत मानक", "आपदा मुआवजा", "निकासी आदेश", "आपदा प्राधिकरण"],
+    "hinglish_synonyms": ["aapda madad", "disaster compensation", "relief camp rights", "evacuation help"],
+    "related_acts": ["Disaster Management Act, 2005"]
+  },
+  {
+    "concept_key": "water_pollution_complaints",
+    "domain": "environment",
+    "english_synonyms": ["water pollution", "industrial effluent", "polluting stream", "water pollution consent", "Water Pollution Control Board"],
+    "hindi_synonyms": ["जल प्रदूषण", "औद्योगिक गंदा पानी", "नदी में प्रदूषण", "जल प्रदूषण सहमति"],
+    "hinglish_synonyms": ["nadi me gandagi", "industrial discharge", "water pollution complaint", "water NOC"],
+    "related_acts": ["Water (Prevention and Control of Pollution) Act, 1974"]
+  },
+  {
+    "concept_key": "air_pollution_complaints",
+    "domain": "environment",
+    "english_synonyms": ["application to court for restraining persons from causing air pollution", "air pollution", "factory smoke", "air pollution control area", "emission standard", "Air Pollution Control Board"],
+    "hindi_synonyms": ["वायु प्रदूषण", "फैक्ट्री का धुआं", "वायु प्रदूषण नियंत्रण", "उत्सर्जन मानक"],
+    "hinglish_synonyms": ["factory smoke complaint", "air pollution complaint", "emission NOC", "dhua pollution"],
+    "related_acts": ["Air (Prevention and Control of Pollution) Act, 1981"]
+  },
+  {
+    "concept_key": "wildlife_protection_and_offences",
+    "domain": "environment",
+    "english_synonyms": ["wildlife offence", "poaching", "protected animal", "prohibition of hunting", "wildlife sanctuary"],
+    "hindi_synonyms": ["वन्यजीव अपराध", "अवैध शिकार", "संरक्षित जानवर", "शिकार पर रोक", "वन्यजीव अभयारण्य"],
+    "hinglish_synonyms": ["janwar ka shikar", "poaching report", "protected animal case", "wildlife complaint"],
+    "related_acts": ["Wild Life (Protection) Act, 1972"]
+  },
+  {
+    "concept_key": "green_tribunal_relief_and_appeals",
+    "domain": "environment",
+    "english_synonyms": ["relief compensation restitution", "National Green Tribunal", "NGT complaint", "environmental compensation", "green tribunal appeal"],
+    "hindi_synonyms": ["राष्ट्रीय हरित अधिकरण", "एनजीटी शिकायत", "पर्यावरण मुआवजा", "हरित अधिकरण", "पर्यावरण पुनर्स्थापन"],
+    "hinglish_synonyms": ["NGT me case", "green tribunal appeal", "environment compensation", "NGT relief"],
+    "related_acts": ["National Green Tribunal Act, 2010"]
+  },
+  {
+    "concept_key": "unsafe_food_and_food_business",
+    "domain": "consumer",
+    "english_synonyms": ["unsafe food", "contaminated food", "food poisoning", "FSSAI complaint", "food business operator", "misbranded food"],
+    "hindi_synonyms": ["असुरक्षित भोजन", "मिलावटी खाना", "खाद्य विषाक्तता", "एफएसएसएआई शिकायत", "गलत लेबल वाला भोजन"],
+    "hinglish_synonyms": ["khana kharab", "food poisoning complaint", "milavati food", "FSSAI case"],
+    "related_acts": ["Food Safety and Standards Act, 2006"]
+  },
+  {
+    "concept_key": "birth_and_death_registration",
+    "domain": "public_services",
+    "english_synonyms": ["late birth certificate", "delayed birth registration", "death certificate correction", "birth and death register", "registration certificate"],
+    "hindi_synonyms": ["देर से जन्म प्रमाणपत्र", "विलंबित जन्म पंजीकरण", "मृत्यु प्रमाणपत्र सुधार", "जन्म मृत्यु रजिस्टर"],
+    "hinglish_synonyms": ["birth certificate late", "late birth registration", "death certificate correction", "birth register search"],
+    "related_acts": ["Registration of Births and Deaths Act, 1969"]
+  },
+  {
+    "concept_key": "passport_services",
+    "domain": "public_services",
+    "english_synonyms": ["passport application", "passport refused", "passport impounded", "passport revoked", "travel document"],
+    "hindi_synonyms": ["पासपोर्ट आवेदन", "पासपोर्ट अस्वीकार", "पासपोर्ट जब्त", "पासपोर्ट रद्द", "यात्रा दस्तावेज"],
+    "hinglish_synonyms": ["passport reject", "passport impound", "passport revoke", "travel document apply"],
+    "related_acts": ["Passports Act, 1967"]
+  },
+  {
+    "concept_key": "citizenship_status",
+    "domain": "constitutional",
+    "english_synonyms": ["citizenship by birth", "citizenship by descent", "citizenship registration", "naturalisation", "renunciation of citizenship", "OCI card"],
+    "hindi_synonyms": ["जन्म से नागरिकता", "वंश से नागरिकता", "नागरिकता पंजीकरण", "देशीकरण", "नागरिकता त्याग", "ओसीआई कार्ड"],
+    "hinglish_synonyms": ["Indian citizenship apply", "citizenship by birth", "citizenship renounce", "OCI registration"],
+    "related_acts": ["Citizenship Act, 1955"]
+  },
+  {
+    "concept_key": "corruption_and_bribery",
+    "domain": "criminal",
+    "english_synonyms": ["bribe demand", "public servant bribery", "undue advantage", "corruption complaint", "sanction for prosecution"],
+    "hindi_synonyms": ["रिश्वत की मांग", "लोक सेवक को रिश्वत", "अनुचित लाभ", "भ्रष्टाचार शिकायत", "अभियोजन मंजूरी"],
+    "hinglish_synonyms": ["rishwat mangi", "government officer bribe", "corruption case", "public servant paisa maang raha"],
+    "related_acts": ["Prevention of Corruption Act, 1988"]
+  },
+  {
+    "concept_key": "ndps_offences_and_bail",
+    "domain": "criminal",
+    "english_synonyms": ["NDPS bail", "drug possession", "commercial quantity", "narcotic drug", "psychotropic substance"],
+    "hindi_synonyms": ["एनडीपीएस जमानत", "नशीले पदार्थ रखना", "वाणिज्यिक मात्रा", "मादक पदार्थ अपराध"],
+    "hinglish_synonyms": ["drug case bail", "nasha case", "NDPS quantity", "narcotic case"],
+    "related_acts": ["Narcotic Drugs and Psychotropic Substances Act, 1985"]
+  },
+  {
+    "concept_key": "money_laundering_and_attachment",
+    "domain": "criminal",
+    "english_synonyms": ["property attachment", "money laundering", "proceeds of crime", "ED attachment", "PMLA offence"],
+    "hindi_synonyms": ["धन शोधन", "मनी लॉन्ड्रिंग", "अपराध की आय", "संपत्ति कुर्की", "ईडी कुर्की"],
+    "hinglish_synonyms": ["ED notice", "black money case", "property attach PMLA", "money laundering case"],
+    "related_acts": ["Prevention of Money-Laundering Act, 2002"]
   }
 ]

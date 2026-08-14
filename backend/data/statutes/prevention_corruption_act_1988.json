@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Prevention of Corruption Act, 1988",
+    "short_name": "Prevention of Corruption Act 1988",
+    "year": 1988,
+    "domain": "criminal",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1558",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1558",
+    "source_authority": "Department of Personnel and Training, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1988-09-09",
+    "status": "CURRENT",
+    "description": "Central criminal law addressing bribery, public-servant corruption, investigation, attachment and prosecution safeguards.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "7",
+    "title": "Offence relating to public servant being bribed.",
+    "text": "Section 7 concerns a public servant obtaining, accepting or attempting to obtain an undue advantage in the circumstances specified by the Act; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Accepting or seeking an undue advantage connected with improper public duty is a corruption offence under the statutory conditions.",
+    "subdomain": "public_servant_bribery",
+    "keywords": ["bribe demand", "public servant", "undue advantage", "corruption complaint"],
+    "synonyms": ["rishwat mangi", "government officer bribe", "रिश्वत", "भ्रष्टाचार शिकायत"]
+  }]
+}

@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Disaster Management Act, 2005",
+    "short_name": "Disaster Management Act 2005",
+    "year": 2005,
+    "domain": "public_services",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2045",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2045",
+    "source_authority": "Ministry of Home Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2006-07-28",
+    "status": "CURRENT",
+    "description": "Central law governing disaster-management authorities, planning, relief standards, response powers and offences.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "12",
+    "title": "Guidelines for minimum standards of relief.",
+    "text": "Section 12 concerns guidelines for minimum standards of disaster relief; consult the linked official text for the complete provision.",
+    "plain_language_summary": "The National Authority recommends minimum relief standards covering shelter, food, water, medical care and special assistance.",
+    "subdomain": "disaster_relief",
+    "keywords": ["disaster relief", "minimum relief", "shelter", "compensation"],
+    "synonyms": ["aapda madad", "disaster compensation", "आपदा राहत", "राहत सहायता"]
+  }]
+}

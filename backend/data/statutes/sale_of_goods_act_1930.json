@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Sale of Goods Act, 1930",
+    "short_name": "Sale of Goods Act 1930",
+    "year": 1930,
+    "domain": "contract",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2390",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2390",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1930-07-01",
+    "status": "CURRENT",
+    "description": "Central law governing contracts for sale of goods, conditions, warranties, delivery, payment and remedies.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "16",
+    "title": "Implied conditions as to quality or fitness.",
+    "text": "Section 16 concerns implied conditions about the quality or fitness of goods; consult the linked official text for the complete provision.",
+    "plain_language_summary": "Explains when a sale contract carries an implied condition that goods be fit for purpose or of merchantable quality.",
+    "subdomain": "goods_quality",
+    "keywords": ["fitness for purpose", "merchantable quality", "defective goods", "implied condition"],
+    "synonyms": ["kharab saman", "goods fit nahi", "दोषपूर्ण सामान", "गुणवत्ता की शर्त"]
+  }]
+}

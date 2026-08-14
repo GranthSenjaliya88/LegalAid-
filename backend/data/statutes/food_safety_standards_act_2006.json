@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Food Safety and Standards Act, 2006",
+    "short_name": "Food Safety Act 2006",
+    "year": 2006,
+    "domain": "consumer",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2027",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2027",
+    "source_authority": "Ministry of Health and Family Welfare, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2008-05-28",
+    "status": "CURRENT",
+    "description": "Central law regulating food safety, food-business responsibilities, enforcement, unsafe food and penalties.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "26",
+    "title": "Responsibilities of the food business operator.",
+    "text": "Section 26 concerns food-business-operator responsibility to ensure compliance and safe food; consult the linked official text for the complete provision.",
+    "plain_language_summary": "A food business operator must ensure that food under its control complies with the Act and applicable requirements.",
+    "subdomain": "unsafe_food",
+    "keywords": ["unsafe food", "food business operator", "FSSAI complaint", "contaminated food"],
+    "synonyms": ["khana kharab", "food poisoning complaint", "खराब खाना", "मिलावटी भोजन"]
+  }]
+}

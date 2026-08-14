@@ -1,0 +1,28 @@
+{
+  "act": {
+    "name": "Micro, Small and Medium Enterprises Development Act, 2006",
+    "short_name": "MSMED Act 2006",
+    "year": 2006,
+    "domain": "livelihood",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2013",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2013",
+    "source_authority": "Ministry of Micro, Small and Medium Enterprises, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2006-10-02",
+    "status": "CURRENT",
+    "description": "Central law promoting MSMEs and governing delayed payments and Facilitation Council remedies for micro and small enterprises.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [{
+    "section_number": "15",
+    "title": "Liability of buyer to make payment.",
+    "text": "Section 15 concerns the buyer's time-bound payment obligation to a micro or small enterprise supplier; consult the linked official text for the complete provision.",
+    "plain_language_summary": "A buyer must pay an eligible micro or small enterprise within the statutory or agreed period.",
+    "subdomain": "msme_delayed_payment",
+    "keywords": ["MSME payment", "delayed payment", "small business invoice", "buyer liability"],
+    "synonyms": ["MSME payment nahi mila", "invoice unpaid", "लघु उद्यम भुगतान", "बकाया बिल"]
+  }]
+}
