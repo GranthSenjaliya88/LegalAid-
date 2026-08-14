@@ -21,7 +21,7 @@ STOP_WORDS = {
     "dispute", "issue", "problem", "case", "matter", "legal", "outer", "space",
     "how", "what", "can", "get", "i", "want", "file", "against",
     "resolution", "remedy", "immediate", "claim", "opposite", "party",
-    "without", "under", "where", "which"
+    "without", "under", "where", "which", "new", "old", "instead", "section"
 }
 
 LOCATION_WORDS = {
@@ -30,6 +30,17 @@ LOCATION_WORDS = {
     "gurugram", "noida", "punjab", "gujarat", "kolkata", "west bengal", "india",
     "state", "district", "city"
 }
+
+
+def _lexical_tokens(value: str) -> set[str]:
+    tokens: set[str] = set()
+    for raw in re.findall(r"\b[\w-]+\b", value.lower()):
+        if len(raw) <= 2:
+            continue
+        tokens.add(raw)
+        if len(raw) > 4 and raw.endswith("s"):
+            tokens.add(raw[:-1])
+    return tokens
 
 
 def _normalize_hindi_hinglish(query: str, conn: sqlite3.Connection) -> List[str]:
@@ -93,13 +104,18 @@ def search_corpus(
 
     combined_query = " ".join(query_parts).strip()
     if not combined_query:
-        combined_query = domain or "legal provision"
+        return RetrievalResponseData(
+            status="insufficient_confidence",
+            matches=[],
+            state_verified=False,
+            state_note="No incident or legal question was provided for corpus retrieval.",
+        )
 
     conn = get_connection()
     try:
         concept_terms = _normalize_hindi_hinglish(combined_query, conn)
         expanded_words = expand_user_query(combined_query, domain=domain or "")
-        all_words = list(set(expanded_words + concept_terms))
+        all_words = list(dict.fromkeys(expanded_words + concept_terms))
         clean_words = [w for w in all_words if w.lower() not in STOP_WORDS]
 
         if not clean_words:
@@ -111,19 +127,32 @@ def search_corpus(
             
         user_state = facts.get("state")
         user_city = facts.get("city")
+        candidate_limit = max(100, limit * 10)
 
-        matches = _query_fts(conn, fts_query=fts_query, query_words=clean_words, domain=domain, state=user_state, facts=facts, limit=limit)
+        matches = _query_fts(
+            conn, fts_query=fts_query, query_words=clean_words, domain=domain,
+            state=user_state, facts=facts, limit=candidate_limit,
+        )
 
         if not matches and domain and domain != "general":
             # Broaden search without strict domain filter if 0 results
-            matches = _query_fts(conn, fts_query=fts_query, query_words=clean_words, domain=None, state=user_state, facts=facts, limit=limit)
+            matches = _query_fts(
+                conn, fts_query=fts_query, query_words=clean_words, domain=None,
+                state=user_state, facts=facts, limit=candidate_limit,
+            )
 
         # Fallback to parameterized LIKE search if FTS returned zero matches
         if not matches:
-            matches = _query_like_fallback(conn, query_words=clean_words, domain=domain, state=user_state, limit=limit)
+            matches = _query_like_fallback(
+                conn, query_words=clean_words, domain=domain, state=user_state,
+                original_query=combined_query, limit=candidate_limit,
+            )
 
         if not matches and domain and domain != "general":
-            matches = _query_like_fallback(conn, query_words=clean_words, domain=None, state=user_state, limit=limit)
+            matches = _query_like_fallback(
+                conn, query_words=clean_words, domain=None, state=user_state,
+                original_query=combined_query, limit=candidate_limit,
+            )
 
         if not matches:
             return RetrievalResponseData(
@@ -136,7 +165,13 @@ def search_corpus(
         # Hybrid TF-IDF Vector Reranking
         from app.legal.vector_retriever import rank_sections_by_vector
         section_dicts = [
-            {"id": idx, "title": m.title or "", "text": m.relevant_text or "", "domain": m.domain or "", "keywords": m.source_reference or ""}
+            {
+                "id": idx,
+                "title": " ".join([m.title or ""] * 3),
+                "text": f"{m.plain_language_summary or ''} {(m.relevant_text or '')[:800]}",
+                "domain": m.domain or "",
+                "keywords": m.source_reference or "",
+            }
             for idx, m in enumerate(matches)
         ]
         vector_scores = dict(rank_sections_by_vector(combined_query, section_dicts))
@@ -145,22 +180,32 @@ def search_corpus(
         for idx, m in enumerate(matches):
             vec_sim = vector_scores.get(idx, 0.0)
             city_match = 1 if user_city and m.state and user_city.lower() in m.state.lower() else 0
-            state_match = 1 if user_state and m.state and (m.state.lower() == user_state.lower() or m.state == "All") else 0
+            exact_state_match = bool(
+                user_state and user_state != "All" and m.state and m.state.lower() == user_state.lower()
+            )
+            central_match = bool(m.state == "All")
             
-            # Combine BM25 base confidence + Vector sim + Jurisdiction rank (preserves BM25 baseline)
-            fused_score = min(1.0, max(m.confidence, round(m.confidence * 0.70 + vec_sim * 0.25 + city_match * 0.10, 2)))
+            jurisdiction_bonus = 0.12 if exact_state_match else (0.03 if central_match else 0.0)
+            fused_score = min(
+                1.0,
+                round(m.confidence * 0.75 + vec_sim * 0.25 + jurisdiction_bonus + city_match * 0.08, 4),
+            )
             m.confidence = fused_score
 
         # Sort matches by city match, state match, current law status, then fused confidence
         matches.sort(
             key=lambda m: (
                 1 if (user_city and m.state and user_city.lower() in m.state.lower()) else 0,
-                1 if (not user_state or user_state == "All" or (m.state and (m.state.lower() == user_state.lower() or m.state == "All"))) else 0,
+                2 if (user_state and user_state != "All" and m.state and m.state.lower() == user_state.lower()) else (
+                    1 if (not user_state or user_state == "All" or m.state == "All") else 0
+                ),
                 1 if (m.status or "").upper() in {"CURRENT", "ACTIVE"} else 0,
                 m.confidence
             ),
             reverse=True
         )
+
+        matches = matches[:limit]
 
         max_score = matches[0].confidence
         if max_score < CONFIDENCE_THRESHOLD:
@@ -248,6 +293,8 @@ def _query_fts(
         JOIN acts a ON a.id = s.act_id
         WHERE sections_fts MATCH ?
           AND s.is_active = 1
+          AND UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
+          AND COALESCE(NULLIF(s.official_source_url, ''), NULLIF(a.official_source_url, ''), NULLIF(s.source_url, '')) IS NOT NULL
           AND (s.status IS NULL OR s.status = 'CURRENT' OR s.status = 'active')
           AND (s.repealed IS NULL OR s.repealed = 0)
           {domain_clause}
@@ -296,6 +343,8 @@ def _query_fts(
             JOIN acts a ON a.id = s.act_id
             WHERE sections_fts MATCH ?
               AND s.is_active = 1
+              AND UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
+              AND COALESCE(NULLIF(s.official_source_url, ''), NULLIF(a.official_source_url, ''), NULLIF(s.source_url, '')) IS NOT NULL
               AND (s.status IS NULL OR s.status = 'CURRENT' OR s.status = 'active')
               AND (s.repealed IS NULL OR s.repealed = 0)
               {domain_clause}
@@ -309,12 +358,17 @@ def _query_fts(
 
     matches: List[RetrievalMatch] = []
     substantive_query_words = [w for w in query_words if w.lower() not in LOCATION_WORDS and w.lower() not in STOP_WORDS]
+    original_tokens = {
+        word for word in _lexical_tokens(str(facts.get("incident") or ""))
+        if word not in LOCATION_WORDS and word not in STOP_WORDS
+    }
 
     for r in rows:
         full_section_text = (
             r["text"] + " " + (r["title"] or "") + " " + (r["plain_language_summary"] or "") +
             " " + (r["subdomain"] or "") + " " + (r["act_name"] or "") + " " + (r["act_short_name"] or "") +
-            " " + (r["keywords"] or "") + " " + (r["synonyms"] or "")
+            " " + (r["keywords"] or "") + " " + (r["synonyms"] or "") +
+            " " + (r["historical_reference"] or "")
         ).lower()
 
         substantive_hits = sum(1 for w in substantive_query_words if w.lower() in full_section_text)
@@ -323,14 +377,48 @@ def _query_fts(
             continue
 
         keyword_ratio = substantive_hits / max(1, len(substantive_query_words))
+        section_tokens = _lexical_tokens(full_section_text)
+        title_tokens = _lexical_tokens(r["title"] or "")
+        metadata_text = " ".join(
+            str(r[key] or "")
+            for key in (
+                "title", "plain_language_summary", "keywords", "synonyms",
+                "historical_reference", "act_short_name",
+            )
+        ).lower()
+        original_hits = len(original_tokens & section_tokens)
+        original_ratio = original_hits / max(1, len(original_tokens))
+        title_ratio = len(original_tokens & title_tokens) / max(1, len(original_tokens))
+        metadata_hits = sum(1 for word in substantive_query_words if word.lower() in metadata_text)
+        metadata_ratio = metadata_hits / max(1, len(substantive_query_words))
+        title_positions = [
+            index for index, word in enumerate(substantive_query_words)
+            if word.lower() in title_tokens
+        ]
+        title_priority = (
+            1.0 - min(title_positions) / max(1, len(substantive_query_words))
+            if title_positions else 0.0
+        )
 
         if domain == "general" or not domain:
-            if keyword_ratio < 0.40:
+            required_original_hits = min(2, len(original_tokens))
+            if keyword_ratio < 0.40 or original_hits < required_original_hits or original_ratio < 0.50:
                 continue
 
-        state_bonus = 0.25 if state and r["state"] and r["state"].lower() == state.lower() else 0.0
-        current_law_bonus = 0.15 if (r["status"] or "").upper() in {"CURRENT", "ACTIVE"} else -0.20
-        confidence = min(1.0, max(0.1, round(keyword_ratio * 0.50 + state_bonus + current_law_bonus + 0.30, 2)))
+        state_bonus = 0.15 if state and state != "All" and r["state"] and r["state"].lower() == state.lower() else 0.0
+        current_law_bonus = 0.10 if (r["status"] or "").upper() in {"CURRENT", "ACTIVE"} else -0.20
+        confidence = min(
+            1.0,
+            max(
+                0.1,
+                round(
+                    keyword_ratio * 0.25 + original_ratio * 0.20 + title_ratio * 0.10
+                    + metadata_ratio * 0.20 + title_priority * 0.15
+                    + state_bonus + current_law_bonus + 0.15,
+                    4,
+                ),
+            ),
+        )
 
         if confidence < CONFIDENCE_THRESHOLD:
             continue
@@ -369,6 +457,7 @@ def _query_like_fallback(
     query_words: List[str],
     domain: Optional[str],
     state: Optional[str],
+    original_query: str = "",
     limit: int = 10
 ) -> List[RetrievalMatch]:
     """Safe parameterized SQL LIKE search fallback against sections and acts tables."""
@@ -420,6 +509,10 @@ def _query_like_fallback(
         FROM sections s
         JOIN acts a ON a.id = s.act_id
         WHERE s.is_active = 1
+          AND UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
+          AND COALESCE(NULLIF(s.official_source_url, ''), NULLIF(a.official_source_url, ''), NULLIF(s.source_url, '')) IS NOT NULL
+          AND (s.status IS NULL OR UPPER(s.status) IN ('CURRENT', 'ACTIVE'))
+          AND (s.repealed IS NULL OR s.repealed = 0)
           AND ({where_clause})
           {domain_clause}
         ORDER BY (CASE WHEN (s.status = 'CURRENT' OR s.status = 'active' OR a.status = 'CURRENT') THEN 0 ELSE 1 END) ASC, s.id ASC
@@ -433,6 +526,10 @@ def _query_like_fallback(
 
     matches: List[RetrievalMatch] = []
     substantive_query_words = [w for w in query_words if w.lower() not in LOCATION_WORDS and w.lower() not in STOP_WORDS]
+    original_tokens = {
+        word for word in _lexical_tokens(original_query)
+        if word not in LOCATION_WORDS and word not in STOP_WORDS
+    }
 
     for r in rows:
         full_section_text = (
@@ -447,7 +544,11 @@ def _query_like_fallback(
 
         keyword_ratio = substantive_hits / max(1, len(substantive_query_words))
         if domain == "general" or not domain:
-            if keyword_ratio < 0.40:
+            section_tokens = _lexical_tokens(full_section_text)
+            original_hits = len(original_tokens & section_tokens)
+            original_ratio = original_hits / max(1, len(original_tokens))
+            required_original_hits = min(2, len(original_tokens))
+            if keyword_ratio < 0.40 or original_hits < required_original_hits or original_ratio < 0.50:
                 continue
 
         confidence = 0.65 if substantive_hits > 0 else 0.0

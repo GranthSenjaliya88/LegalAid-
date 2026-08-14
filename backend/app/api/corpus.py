@@ -44,7 +44,7 @@ def list_acts(
             """
             SELECT a.*, COUNT(s.id) AS section_count
             FROM   acts a
-            LEFT   JOIN sections s ON s.act_id = a.id AND s.is_active = 1
+            LEFT   JOIN sections s ON s.act_id = a.id AND s.is_active = 1 AND UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
             WHERE  a.is_active = 1 AND a.domain = ?
             GROUP  BY a.id
             ORDER  BY a.year
@@ -56,7 +56,7 @@ def list_acts(
             """
             SELECT a.*, COUNT(s.id) AS section_count
             FROM   acts a
-            LEFT   JOIN sections s ON s.act_id = a.id AND s.is_active = 1
+            LEFT   JOIN sections s ON s.act_id = a.id AND s.is_active = 1 AND UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
             WHERE  a.is_active = 1
             GROUP  BY a.id
             ORDER  BY a.year
@@ -92,7 +92,7 @@ def list_sections(
     limit: int = Query(50, ge=1, le=200),
     conn: sqlite3.Connection = Depends(db),
 ):
-    conditions = ["s.is_active = 1"]
+    conditions = ["s.is_active = 1", "UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'"]
     params: list = []
     if act_id:
         conditions.append("s.act_id = ?")
@@ -123,6 +123,7 @@ def get_section(section_id: int, conn: sqlite3.Connection = Depends(db)):
         FROM   sections s
         JOIN   acts a ON a.id = s.act_id
         WHERE  s.id = ? AND s.is_active = 1
+          AND  UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
         """,
         (section_id,),
     ).fetchone()
@@ -160,6 +161,7 @@ def search_sections(
             JOIN   sections s ON s.id = sections_fts.rowid
             JOIN   acts     a ON a.id = s.act_id
             WHERE  sections_fts MATCH ? AND s.domain = ? AND s.is_active = 1
+              AND  UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
             ORDER  BY score
             LIMIT  ?
             """,
@@ -175,6 +177,7 @@ def search_sections(
             JOIN   sections s ON s.id = sections_fts.rowid
             JOIN   acts     a ON a.id = s.act_id
             WHERE  sections_fts MATCH ? AND s.is_active = 1
+              AND  UPPER(COALESCE(s.verification_status, '')) = 'VERIFIED'
             ORDER  BY score
             LIMIT  ?
             """,

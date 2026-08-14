@@ -64,9 +64,12 @@ def health_ready():
         try:
             fts_cnt = conn.execute("SELECT COUNT(*) FROM sections_fts").fetchone()[0]
             sec_cnt = conn.execute("SELECT COUNT(*) FROM sections WHERE is_active=1").fetchone()[0]
+            verified_cnt = conn.execute(
+                "SELECT COUNT(*) FROM sections WHERE is_active=1 AND UPPER(COALESCE(verification_status,''))='VERIFIED'"
+            ).fetchone()[0]
             if fts_cnt == sec_cnt and sec_cnt > 0:
                 checks["fts"] = "ok"
-                checks["legal_corpus"] = "ok"
+                checks["legal_corpus"] = "ok" if verified_cnt > 0 else "no_verified_sections"
             elif sec_cnt > 0:
                 checks["fts"] = "out_of_sync"
                 checks["legal_corpus"] = "ok"

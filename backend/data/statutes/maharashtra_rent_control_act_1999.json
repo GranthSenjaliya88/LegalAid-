@@ -5,9 +5,10 @@
     "year": 1999,
     "domain": "tenant",
     "jurisdiction": "State",
+    "state": "Maharashtra",
     "source_name": "Maharashtra State Law Department / India Code",
-    "source_url": "https://www.indiacode.nic.in/handle/123456789/16541",
-    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/16541",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/15817",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15817",
     "source_authority": "Government of Maharashtra",
     "version": "1.0",
     "enforcement_date": "2000-03-31",
@@ -19,7 +20,7 @@
   "sections": [
     {
       "section_number": "15",
-      "title": "No recovery of possession so long as tenant pays standard rent and landlord notice requirement",
+      "title": "No ejectment ordinarily to be made if tenant pays or is ready and willing to pay standard rent and permitted increases.",
       "chapter": "Chapter IV - Recovery of Possession",
       "text": "(1) A landlord shall not be entitled to the recovery of possession of any premises so long as the tenant pays, or is ready and willing to pay, the amount of the standard rent and permitted increases, if any, and observes and performs the other conditions of the tenancy.\n(2) No suit for recovery of possession shall be instituted by a landlord against a tenant, on the ground of non-payment of rent, until the expiration of ninety days next after notice in writing of the demand of the rent has been served upon the tenant.",
       "plain_language_summary": "In Maharashtra, landlords cannot evict tenants who pay rent, and must give a 90-day written notice before filing an eviction suit for unpaid rent.",
@@ -29,7 +30,7 @@
       "state": "Maharashtra",
       "effective_from": "2000-03-31",
       "status": "CURRENT",
-      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/16541",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15817",
       "source_authority": "Government of Maharashtra",
       "keywords": ["Maharashtra tenancy", "Mumbai rent control", "90 days notice", "leave and license", "eviction protection"],
       "synonyms": ["mumbai rent dispute", "pune landlord", "maharashtra deposit refund"]

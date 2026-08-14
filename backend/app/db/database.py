@@ -180,6 +180,8 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
         ("superseded_by", "VARCHAR(255)"),
         ("last_verified_at", "VARCHAR(20)"),
         ("verification_status", "VARCHAR(30) DEFAULT 'VERIFIED'"),
+        ("content_hash", "VARCHAR(64)"),
+        ("source_retrieved_at", "VARCHAR(50)"),
         ("source_id", "INTEGER"),
         ("is_active", "INTEGER DEFAULT 1"),
     ]
@@ -220,6 +222,9 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
         ("last_verified", "VARCHAR(50)"),
         ("last_verified_at", "VARCHAR(50)"),
         ("verification_status", "VARCHAR(30) DEFAULT 'VERIFIED'"),
+        ("content_hash", "VARCHAR(64)"),
+        ("source_retrieved_at", "VARCHAR(50)"),
+        ("footnotes", "TEXT"),
         ("source_id", "INTEGER"),
         ("dataset_name", "VARCHAR(100)"),
         ("dataset_record_id", "VARCHAR(100)"),
@@ -261,6 +266,59 @@ def _apply_migrations(raw_conn: sqlite3.Connection) -> None:
             for col_name, col_type in new_cols:
                 if col_name not in cols_set:
                     raw_conn.execute(f"ALTER TABLE {table_name} ADD COLUMN {col_name} {col_type};")
+
+    raw_conn.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS ingestion_runs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            source_name TEXT NOT NULL,
+            started_at TEXT NOT NULL,
+            completed_at TEXT,
+            status TEXT NOT NULL DEFAULT 'RUNNING',
+            acts_discovered INTEGER NOT NULL DEFAULT 0,
+            sections_discovered INTEGER NOT NULL DEFAULT 0,
+            sections_inserted INTEGER NOT NULL DEFAULT 0,
+            sections_updated INTEGER NOT NULL DEFAULT 0,
+            sections_unchanged INTEGER NOT NULL DEFAULT 0,
+            sections_rejected INTEGER NOT NULL DEFAULT 0,
+            error TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS ingestion_rejections (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            run_id INTEGER,
+            source_url TEXT,
+            record_key TEXT,
+            reason TEXT NOT NULL,
+            payload_json TEXT,
+            created_at TEXT NOT NULL,
+            FOREIGN KEY(run_id) REFERENCES ingestion_runs(id)
+        );
+
+        CREATE TABLE IF NOT EXISTS section_versions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            section_id INTEGER NOT NULL,
+            content_hash TEXT NOT NULL,
+            full_text TEXT NOT NULL,
+            source_url TEXT,
+            retrieved_at TEXT NOT NULL,
+            verification_status TEXT NOT NULL,
+            FOREIGN KEY(section_id) REFERENCES sections(id),
+            UNIQUE(section_id, content_hash)
+        );
+
+        CREATE INDEX IF NOT EXISTS ix_sections_lookup
+            ON sections(act_id, section_number, is_active);
+        CREATE INDEX IF NOT EXISTS ix_sections_legal_filter
+            ON sections(domain, state, status, verification_status, is_active);
+        CREATE INDEX IF NOT EXISTS ix_sections_content_hash
+            ON sections(content_hash);
+        CREATE INDEX IF NOT EXISTS ix_acts_legal_filter
+            ON acts(domain, state, status, verification_status, is_active);
+        CREATE INDEX IF NOT EXISTS ix_ingestion_runs_started
+            ON ingestion_runs(started_at DESC);
+        """
+    )
 
     raw_conn.commit()
 

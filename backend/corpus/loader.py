@@ -6,9 +6,12 @@ Support enhanced legal fields: subdomain, jurisdiction, state, status, source me
 """
 
 import json
+import hashlib
 import sqlite3
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import NamedTuple
+from urllib.parse import urlparse
 
 ALLOWED_DOMAINS = {
     "consumer", "labor", "tenant", "cyber", "criminal", "civil", "contract", "family",
@@ -18,6 +21,27 @@ ALLOWED_DOMAINS = {
 }
 
 STATUTES_DIR = Path(__file__).parent.parent / "data" / "statutes"
+
+OFFICIAL_SOURCE_SUFFIXES = (
+    "gov.in",
+    "nic.in",
+    "indiacode.nic.in",
+    "rbi.org.in",
+    "sci.gov.in",
+)
+
+
+def _content_hash(value: object) -> str:
+    payload = value if isinstance(value, str) else json.dumps(value, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(payload.strip().encode("utf-8")).hexdigest()
+
+
+def _is_official_source(url: str) -> bool:
+    try:
+        host = (urlparse(url).hostname or "").lower()
+    except ValueError:
+        return False
+    return bool(host) and any(host == suffix or host.endswith(f".{suffix}") for suffix in OFFICIAL_SOURCE_SUFFIXES)
 
 
 class LoadResult(NamedTuple):
@@ -65,8 +89,14 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
     repealed_by = act_data.get("repealed_by", "")
     supersedes = act_data.get("supersedes", "")
     superseded_by = act_data.get("superseded_by", "")
-    last_verified_at = act_data.get("last_verified_at", "2026-08-12")
-    verification_status = act_data.get("verification_status", "VERIFIED")
+    last_verified_at = act_data.get("last_verified_at", "")
+    verification_status = act_data.get("verification_status", "PENDING").upper()
+    act_content_hash = act_data.get("content_hash") or _content_hash(act_data)
+    source_retrieved_at = act_data.get("source_retrieved_at") or datetime.now(timezone.utc).isoformat()
+
+    if verification_status == "VERIFIED" and (not _is_official_source(official_source_url) or not last_verified_at):
+        errors.append("VERIFIED act requires an official government source URL and last_verified_at")
+        return LoadResult(json_path.name, act_data.get("name", "?"), 0, 0, 0, errors)
 
     commencement_status = act_data.get("commencement_status", "FULLY_COMMENCED")
 
@@ -77,13 +107,15 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
                 """
                 UPDATE acts SET name=?, long_name=?, long_title=?, year=?, jurisdiction=?, domain=?, source_name=?, source_url=?,
                                 official_source_url=?, source_authority=?, version=?, description=?, enforcement_date=?,
-                                status=?, commencement_status=?, repealed_by=?, supersedes=?, superseded_by=?, last_verified_at=?, verification_status=?
+                                status=?, commencement_status=?, repealed_by=?, supersedes=?, superseded_by=?, last_verified_at=?, verification_status=?,
+                                content_hash=?, source_retrieved_at=?
                 WHERE id=?
                 """,
                 (
                     act_data["name"], long_title, long_title, act_data["year"], jurisdiction, act_data["domain"],
                     source_name, source_url, official_source_url, source_authority, version, act_data.get("description"),
                     enforcement_date, act_status, commencement_status, repealed_by, supersedes, superseded_by, last_verified_at, verification_status,
+                    act_content_hash, source_retrieved_at,
                     act_id,
                 ),
             )
@@ -92,14 +124,15 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
             """
             INSERT INTO acts(name, long_name, long_title, short_name, year, jurisdiction, domain, source_name, source_url,
                              official_source_url, source_authority, version, description, enforcement_date, status,
-                             commencement_status, repealed_by, supersedes, superseded_by, last_verified_at, verification_status)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                             commencement_status, repealed_by, supersedes, superseded_by, last_verified_at, verification_status,
+                             content_hash, source_retrieved_at)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             """,
             (
                 act_data["name"], long_title, long_title, act_data["short_name"], act_data["year"], jurisdiction,
                 act_data["domain"], source_name, source_url, official_source_url, source_authority, version,
                 act_data.get("description"), enforcement_date, act_status, commencement_status, repealed_by, supersedes, superseded_by,
-                last_verified_at, verification_status
+                last_verified_at, verification_status, act_content_hash, source_retrieved_at
             ),
         )
         act_id = cur.lastrowid
@@ -143,29 +176,59 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
         sec_off_src_url = sec.get("official_source_url", official_source_url or sec_src_url)
         sec_src_type = sec.get("source_type", "Official Gazette / India Code")
         sec_src_authority = sec.get("source_authority", source_authority)
-        last_verified = sec.get("last_verified", sec.get("last_verified_at", "2026-08-12"))
+        last_verified = sec.get("last_verified", sec.get("last_verified_at", last_verified_at))
         last_verified_at_str = sec.get("last_verified_at", last_verified)
-        sec_ver_status = sec.get("verification_status", "VERIFIED")
+        sec_ver_status = sec.get("verification_status", verification_status).upper()
+        sec_content_hash = sec.get("content_hash") or _content_hash(text)
+        sec_retrieved_at = sec.get("source_retrieved_at") or source_retrieved_at
+        footnotes = sec.get("footnotes", "")
+
+        if sec_ver_status == "VERIFIED" and (not _is_official_source(sec_off_src_url) or not last_verified_at_str):
+            errors.append(f"Section {sec_num} marked VERIFIED without official provenance — skipped")
+            skipped += 1
+            continue
 
         keywords_json = json.dumps(sec.get("keywords", []))
         synonyms_json = json.dumps(sec.get("synonyms", []))
 
         existing_sec = conn.execute(
-            "SELECT id FROM sections WHERE act_id=? AND section_number=?",
+            "SELECT id, content_hash, text, source_url, verification_status FROM sections WHERE act_id=? AND section_number=?",
             (act_id, sec_num),
         ).fetchone()
 
         sec_commencement_status = sec.get("commencement_status", "FULLY_COMMENCED")
 
         if existing_sec:
+            existing_hash = existing_sec["content_hash"] if isinstance(existing_sec, sqlite3.Row) else existing_sec[1]
+            if existing_hash == sec_content_hash:
+                skipped += 1
+                continue
             if force:
+                previous_text = existing_sec["text"] if isinstance(existing_sec, sqlite3.Row) else existing_sec[2]
+                if previous_text:
+                    conn.execute(
+                        """
+                        INSERT OR IGNORE INTO section_versions(
+                            section_id, content_hash, full_text, source_url, retrieved_at, verification_status
+                        ) VALUES (?,?,?,?,?,?)
+                        """,
+                        (
+                            existing_sec["id"] if isinstance(existing_sec, sqlite3.Row) else existing_sec[0],
+                            existing_hash or _content_hash(previous_text),
+                            previous_text,
+                            existing_sec["source_url"] if isinstance(existing_sec, sqlite3.Row) else existing_sec[3],
+                            sec_retrieved_at,
+                            (existing_sec["verification_status"] if isinstance(existing_sec, sqlite3.Row) else existing_sec[4]) or "PENDING",
+                        ),
+                    )
                 conn.execute(
                     """
                     UPDATE sections
                     SET title=?, chapter=?, subsection=?, clause=?, text=?, plain_language_summary=?, domain=?, subdomain=?, jurisdiction=?, state=?,
                         effective_from=?, effective_until=?, effective_to=?, enforcement_date=?, status=?, commencement_status=?, repealed=?, repealed_by=?, supersedes=?,
                         superseded_by=?, historical_reference=?, source_name=?, source_url=?, official_source_url=?, source_type=?, source_authority=?,
-                        last_verified=?, last_verified_at=?, verification_status=?, keywords=?, synonyms=?, full_text=?
+                        last_verified=?, last_verified_at=?, verification_status=?, keywords=?, synonyms=?, full_text=?,
+                        content_hash=?, source_retrieved_at=?, footnotes=?
                     WHERE id=?
                     """,
                     (
@@ -173,6 +236,7 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
                         eff_from, eff_until, eff_to, sec_enforce_date, sec_status, sec_commencement_status, sec_repealed, sec_repealed_by, sec_supersedes,
                         sec_superseded_by, hist_ref, sec_src_name, sec_src_url, sec_off_src_url, sec_src_type, sec_src_authority,
                         last_verified, last_verified_at_str, sec_ver_status, keywords_json, synonyms_json, text,
+                        sec_content_hash, sec_retrieved_at, footnotes,
                         existing_sec[0]
                     ),
                 )
@@ -182,14 +246,14 @@ def load_file(conn: sqlite3.Connection, json_path: Path, force: bool = False) ->
         else:
             conn.execute(
                 """
-                INSERT INTO sections(act_id, section_number, title, chapter, subsection, clause, text, full_text, plain_language_summary, domain, subdomain, jurisdiction, state, effective_from, effective_until, effective_to, enforcement_date, status, commencement_status, repealed, repealed_by, supersedes, superseded_by, historical_reference, source_name, source_url, official_source_url, source_type, source_authority, last_verified, last_verified_at, verification_status, keywords, synonyms)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                INSERT INTO sections(act_id, section_number, title, chapter, subsection, clause, text, full_text, plain_language_summary, domain, subdomain, jurisdiction, state, effective_from, effective_until, effective_to, enforcement_date, status, commencement_status, repealed, repealed_by, supersedes, superseded_by, historical_reference, source_name, source_url, official_source_url, source_type, source_authority, last_verified, last_verified_at, verification_status, keywords, synonyms, content_hash, source_retrieved_at, footnotes)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """,
                 (
                     act_id, sec_num, sec.get("title"), chapter, subsection, clause, text, text, summary, domain, subdomain, sec_jurisdiction, sec_state,
                     eff_from, eff_until, eff_to, sec_enforce_date, sec_status, sec_commencement_status, sec_repealed, sec_repealed_by, sec_supersedes, sec_superseded_by,
                     hist_ref, sec_src_name, sec_src_url, sec_off_src_url, sec_src_type, sec_src_authority, last_verified, last_verified_at_str,
-                    sec_ver_status, keywords_json, synonyms_json
+                    sec_ver_status, keywords_json, synonyms_json, sec_content_hash, sec_retrieved_at, footnotes
                 ),
             )
             inserted += 1

@@ -7,7 +7,7 @@ Does NOT generate or hallucinate new section numbers.
 """
 
 import re
-from typing import List, Dict, Set
+from typing import List, Dict
 
 SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     # Salary / Labour / Employment
@@ -25,8 +25,11 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
 
     # Consumer / Defective Goods / Services
     "phone": ["defective goods", "defect", "consumer", "warranty", "replacement", "refund"],
+    "mobile": ["defective goods", "defect", "consumer", "warranty", "replacement", "refund"],
     "defective": ["defect", "defective goods", "quality shortcoming", "warranty", "replacement"],
     "refund": ["refusal to refund", "unfair trade practice", "deficiency in service", "e-commerce"],
+    "delivered": ["deficiency in service", "non-delivery", "refund"],
+    "delivery": ["deficiency in service", "non-delivery", "refund"],
     "seller": ["unfair trade practice", "product liability", "e-commerce rules", "e-daakhil"],
 
     # Cyber / Banking / Fraud
@@ -34,9 +37,12 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "transfer": ["unauthorized transfer", "phishing", "cyber fraud", "66D", "rbi ombudsman"],
     "cheque": ["cheque bounce", "dishonour of cheque", "section 138", "30 days notice"],
     "otp": ["identity theft", "password theft", "section 66C", "cyber fraud"],
+    "gateway": ["rbi ombudsman", "failed transaction", "bank complaint", "payment failure"],
+    "forged": ["identity theft", "electronic signature", "section 66C"],
 
     # Criminal / Intimidation / Property Damage
     "threat": ["criminal intimidation", "threatened", "alarm", "injury", "section 351"],
+    "blackmail": ["extortion", "threat", "money", "section 308"],
     "damage": ["mischief", "property damage", "destruction", "wrongful loss", "section 324"],
     "stolen": ["theft", "movable property", "without consent", "section 303"],
     "fraud": ["cheating", "deception", "misrepresentation", "section 318", "dhokhadhadi"],
@@ -48,6 +54,8 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "dhokhadhadi": ["cheating", "fraud", "deception", "section 318"],
     "tod": ["mischief", "property damage", "vandalism"],
     "nikal": ["eviction", "unlawful eviction", "rent authority"],
+    "electricity": ["essential supply", "withholding service", "cut off supply"],
+    "comments": ["sexual harassment", "unwelcome remarks", "workplace harassment"],
 }
 
 
@@ -56,35 +64,43 @@ def expand_user_query(query_text: str, domain: str = "") -> List[str]:
     Takes user prompt text and returns expanded legal keywords.
     """
     clean_text = re.sub(r"[^\w\s]", " ", query_text.lower())
-    tokens = set(clean_text.split())
+    tokens = list(dict.fromkeys(clean_text.split()))
 
-    expanded_terms: Set[str] = set()
+    expanded_terms: List[str] = []
+
+    def add_term(term: str) -> None:
+        if term and term not in expanded_terms:
+            expanded_terms.append(term)
 
     for token in tokens:
         if len(token) > 2:
-            expanded_terms.add(token)
+            add_term(token)
             if token in SYNONYM_DICTIONARY:
                 for syn in SYNONYM_DICTIONARY[token]:
-                    expanded_terms.add(syn)
+                    add_term(syn)
 
     # Domain specific anchor keywords
     if domain == "labor":
-        expanded_terms.update(["wages", "salary", "retrenchment", "final settlement"])
+        domain_terms = ["wages", "salary", "retrenchment", "final settlement"]
     elif domain == "tenant":
-        expanded_terms.update(["security deposit", "eviction", "rent control", "tenancy"])
+        domain_terms = ["security deposit", "eviction", "rent control", "tenancy"]
     elif domain == "consumer":
-        expanded_terms.update(["defect", "deficiency", "unfair trade practice", "refund"])
+        domain_terms = ["defect", "deficiency", "unfair trade practice", "refund"]
     elif domain == "cyber" or domain == "banking":
-        expanded_terms.update(["unauthorized transaction", "cyber fraud", "rbi ombudsman"])
+        domain_terms = ["unauthorized transaction", "cyber fraud", "rbi ombudsman"]
     elif domain == "criminal":
-        expanded_terms.update(["cheating", "theft", "criminal intimidation", "mischief"])
+        domain_terms = ["cheating", "theft", "criminal intimidation", "mischief"]
+    else:
+        domain_terms = []
+    for term in domain_terms:
+        add_term(term)
 
     # Tokenize all expanded terms into clean single-word tokens for FTS5
-    final_tokens: Set[str] = set()
+    final_tokens: List[str] = []
     for term in expanded_terms:
         for sub_w in term.split():
             clean_sub = re.sub(r"[^\w]", "", sub_w.lower())
-            if len(clean_sub) > 2:
-                final_tokens.add(clean_sub)
+            if len(clean_sub) > 2 and clean_sub not in final_tokens:
+                final_tokens.append(clean_sub)
 
-    return list(final_tokens)
+    return final_tokens

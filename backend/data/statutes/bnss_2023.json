@@ -6,8 +6,8 @@
     "domain": "procedural",
     "jurisdiction": "India",
     "source_name": "Official Gazette of India / India Code",
-    "source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
-    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/20099",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20099",
     "source_authority": "Ministry of Law and Justice, Government of India",
     "version": "1.0",
     "enforcement_date": "2024-07-01",
@@ -31,7 +31,7 @@
       "effective_from": "2024-07-01",
       "status": "CURRENT",
       "historical_reference": "CrPC Section 154",
-      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20099",
       "source_authority": "Ministry of Law and Justice",
       "keywords": ["FIR", "Zero FIR", "cognizable offence", "police report", "free copy", "superintendent of police"],
       "synonyms": ["first information report", "police complaint", "thana report", "fir copy"]
@@ -49,7 +49,7 @@
       "effective_from": "2024-07-01",
       "status": "CURRENT",
       "historical_reference": "CrPC Section 156",
-      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20063",
+      "official_source_url": "https://www.indiacode.nic.in/handle/123456789/20099",
       "source_authority": "Ministry of Law and Justice",
       "keywords": ["investigation", "magistrate direction", "police power", "cognizable case"],
       "synonyms": ["police investigation", "magistrate complaint", "156(3) application"]

@@ -40,7 +40,8 @@ def database_health():
             "acts", "sections", "sources", "rules", "regulations",
             "notifications", "procedures", "authorities", "judgments",
             "legal_concepts", "historical_mappings", "knowledge_graph_edges",
-            "cases", "case_facts", "documents", "claim_audit_logs", "execution_traces", "raw_sources"
+            "cases", "case_facts", "documents", "claim_audit_logs", "execution_traces", "raw_sources",
+            "ingestion_runs", "ingestion_rejections", "section_versions"
         ]
         
         row_counts = {}
@@ -178,6 +179,32 @@ def corpus_dashboard(db: Session = Depends(get_db)):
         total_procedures = _safe_count("procedures")
         total_concepts = _safe_count("legal_concepts")
         total_sources = _safe_count("sources")
+        verified_sections = conn.execute(
+            "SELECT COUNT(*) FROM sections WHERE is_active=1 AND UPPER(COALESCE(verification_status,''))='VERIFIED'"
+        ).fetchone()[0]
+        official_source_sections = conn.execute(
+            "SELECT COUNT(*) FROM sections WHERE is_active=1 AND COALESCE(official_source_url, source_url, '') <> ''"
+        ).fetchone()[0]
+        hashed_sections = conn.execute(
+            "SELECT COUNT(*) FROM sections WHERE is_active=1 AND COALESCE(content_hash, '') <> ''"
+        ).fetchone()[0]
+        duplicate_section_groups = conn.execute(
+            """
+            SELECT COUNT(*) FROM (
+                SELECT act_id, section_number
+                FROM sections WHERE is_active=1
+                GROUP BY act_id, section_number HAVING COUNT(*) > 1
+            )
+            """
+        ).fetchone()[0]
+        latest_ingestion = conn.execute(
+            """
+            SELECT id, source_name, started_at, completed_at, status, acts_discovered,
+                   sections_discovered, sections_inserted, sections_updated,
+                   sections_unchanged, sections_rejected
+            FROM ingestion_runs ORDER BY id DESC LIMIT 1
+            """
+        ).fetchone()
 
         fts_count = _safe_count("sections_fts")
         vector_health = vector_retriever.get_index_health(db_section_count=total_sections)
@@ -200,6 +227,16 @@ def corpus_dashboard(db: Session = Depends(get_db)):
                 "total_procedures": total_procedures,
                 "total_concepts": total_concepts,
                 "total_sources": total_sources,
+                "provenance_quality": {
+                    "verified_sections": verified_sections,
+                    "verified_coverage": round(verified_sections / max(1, total_sections), 4),
+                    "official_source_sections": official_source_sections,
+                    "official_source_coverage": round(official_source_sections / max(1, total_sections), 4),
+                    "hashed_sections": hashed_sections,
+                    "hash_coverage": round(hashed_sections / max(1, total_sections), 4),
+                    "duplicate_section_groups": duplicate_section_groups,
+                },
+                "latest_ingestion": dict(latest_ingestion) if latest_ingestion else None,
                 "current_sections": current_sections,
                 "historical_sections": historical_sections,
                 "index_health": {

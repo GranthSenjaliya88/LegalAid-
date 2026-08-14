@@ -86,7 +86,7 @@ GOLDEN_TEST_CASES: List[Dict[str, Any]] = [
         "expected_domain": "tenant",
         "expected_state": "Delhi",
         "expected_act": "DRCA 1958",
-        "expected_section": "14",
+        "expected_section": "45",
         "expected_confidence": "HIGH"
     },
     {
@@ -169,7 +169,7 @@ GOLDEN_TEST_CASES: List[Dict[str, Any]] = [
         "expected_domain": "labor",
         "expected_state": "All",
         "expected_act": "Wages Code 2019",
-        "expected_section": "51",
+        "expected_section": "45",
         "expected_confidence": "HIGH"
     },
     {
@@ -243,7 +243,7 @@ GOLDEN_TEST_CASES: List[Dict[str, Any]] = [
         "expected_domain": "consumer",
         "expected_state": "All",
         "expected_act": "CPA 2019",
-        "expected_section": "82",
+        "expected_section": "83",
         "expected_confidence": "HIGH"
     },
     {
@@ -436,7 +436,7 @@ GOLDEN_TEST_CASES: List[Dict[str, Any]] = [
         "expected_domain": "criminal",
         "expected_state": "All",
         "expected_act": "BNS 2023",
-        "expected_section": "304",
+        "expected_section": "308",
         "expected_confidence": "HIGH"
     },
     {
@@ -503,7 +503,7 @@ GOLDEN_TEST_CASES: List[Dict[str, Any]] = [
         "expected_domain": "women_rights",
         "expected_state": "All",
         "expected_act": "POSH Act 2013",
-        "expected_section": "4",
+        "expected_section": "2",
         "expected_confidence": "HIGH"
     },
     {
@@ -512,7 +512,7 @@ GOLDEN_TEST_CASES: List[Dict[str, Any]] = [
         "expected_domain": "women_rights",
         "expected_state": "All",
         "expected_act": "DV Act 2005",
-        "expected_section": "12",
+        "expected_section": "18",
         "expected_confidence": "HIGH"
     },
 

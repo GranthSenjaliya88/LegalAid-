@@ -81,6 +81,7 @@ backend/data/*.db.bak
 backend/data/backups/
 backend/data/vector_store/
 backend/data/faiss_index.bin
+backend/data/official_snapshots/
 
 # --- Temporary & Local Backup Directories ---
 cleanup_backup/
