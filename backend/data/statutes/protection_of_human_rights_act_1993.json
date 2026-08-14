@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Protection of Human Rights Act, 1993",
+    "short_name": "Protection of Human Rights Act 1993",
+    "year": 1993,
+    "domain": "human_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/15709",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/15709",
+    "source_authority": "Ministry of Home Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1993-09-28",
+    "status": "CURRENT",
+    "description": "Central law establishing national and state human-rights commissions, inquiry powers and human-rights courts.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "18",
+      "title": "Steps during and after inquiry.",
+      "text": "Section 18 specifies steps the Commission may take during and after a human-rights inquiry.",
+      "plain_language_summary": "After finding a violation, the Commission may recommend compensation or action, approach the courts, grant immediate interim relief, and provide the inquiry report.",
+      "subdomain": "human_rights_inquiry_remedies",
+      "keywords": ["after inquiry", "commission action", "compensation", "interim relief", "human rights"],
+      "synonyms": ["NHRC inquiry result", "human rights remedy", "मानवाधिकार जांच के बाद", "आयोग के कदम", "NHRC action"]
+    }
+  ]
+}

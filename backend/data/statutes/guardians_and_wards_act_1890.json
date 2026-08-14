@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Guardians and Wards Act, 1890",
+    "short_name": "Guardians and Wards Act 1890",
+    "year": 1890,
+    "domain": "family",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2318",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2318",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1890-07-01",
+    "status": "CURRENT",
+    "description": "Central law governing court appointment and supervision of guardians for a minor's person or property.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "17",
+      "title": "Matters to be considered by the Court in appointing guardian.",
+      "text": "Section 17 lists matters the court considers when appointing a guardian, guided by the welfare of the minor.",
+      "plain_language_summary": "The court considers the minor's welfare, age, sex, religion, proposed guardian's character and capacity, wishes of a deceased parent and the child's intelligent preference.",
+      "subdomain": "guardian_appointment",
+      "keywords": ["appointing guardian", "welfare of minor", "child preference", "guardian capacity"],
+      "synonyms": ["guardian selection factors", "minor welfare", "अभिभावक नियुक्ति", "बच्चे का कल्याण", "minor ka guardian"]
+    }
+  ]
+}

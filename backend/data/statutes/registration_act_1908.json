@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Registration Act, 1908",
+    "short_name": "Registration Act 1908",
+    "year": 1908,
+    "domain": "property",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/12907",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/12907",
+    "source_authority": "Department of Land Resources, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1909-01-01",
+    "status": "CURRENT",
+    "description": "Central law governing compulsory and optional registration of documents, presentation, refusal, appeals and legal effect.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "23",
+      "title": "Time for presenting documents.",
+      "text": "Section 23 states the general time for presenting a document for registration.",
+      "plain_language_summary": "Except for a will and subject to statutory exceptions, a document must generally be presented for registration within four months of execution.",
+      "subdomain": "registration_deadline",
+      "keywords": ["registration time", "presenting documents", "four months", "execution date"],
+      "synonyms": ["property registration deadline", "document registration time", "रजिस्ट्री की समय सीमा", "दस्तावेज पंजीकरण समय", "registry deadline"]
+    }
+  ]
+}

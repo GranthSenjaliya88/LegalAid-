@@ -57,5 +57,69 @@
 
   {"id":"EXP-LSA-001","language":"en","domain":"general","query":"Who is legally entitled to receive free legal services and a free lawyer?","expected_act":"Legal Services Authorities Act","expected_section":"12"},
   {"id":"EXP-LSA-002","language":"hi","domain":"general","query":"लोक अदालत समझौते के लिए किन मामलों को अपने सामने ले सकती है?","expected_act":"Legal Services Authorities Act","expected_section":"20"},
-  {"id":"EXP-LSA-003","language":"hinglish","domain":"general","query":"Lok Adalat ka award final hota hai aur civil court decree jaisa enforce hota hai kya?","expected_act":"Legal Services Authorities Act","expected_section":"21"}
+  {"id":"EXP-LSA-003","language":"hinglish","domain":"general","query":"Lok Adalat ka award final hota hai aur civil court decree jaisa enforce hota hai kya?","expected_act":"Legal Services Authorities Act","expected_section":"21"},
+
+  {"id":"EXP-ARB-001","language":"en","domain":"contract","query":"What makes an arbitration agreement legally valid between the parties?","expected_act":"Arbitration and Conciliation Act","expected_section":"7"},
+  {"id":"EXP-ARB-002","language":"hi","domain":"contract","query":"मध्यस्थता समझौता होने पर अदालत से अंतरिम उपाय कब मांगा जा सकता है?","expected_act":"Arbitration and Conciliation Act","expected_section":"9"},
+  {"id":"EXP-ARB-003","language":"hinglish","domain":"contract","query":"Arbitrator ka award galat hai, set aside award ke liye court application ka provision kya hai?","expected_act":"Arbitration and Conciliation Act","expected_section":"34"},
+
+  {"id":"EXP-RTI-001","language":"en","domain":"public_services","query":"How do I submit an RTI application request for obtaining information from a public authority?","expected_act":"Right to Information Act","expected_section":"6"},
+  {"id":"EXP-RTI-002","language":"hi","domain":"public_services","query":"लोक सूचना अधिकारी को आरटीआई आवेदन मिलने के बाद सूचना देने की समय सीमा क्या है?","expected_act":"Right to Information Act","expected_section":"7"},
+  {"id":"EXP-RTI-003","language":"hinglish","domain":"public_services","query":"PIO ne jawab nahi diya, RTI appeal ka legal provision kya hai?","expected_act":"Right to Information Act","expected_section":"19"},
+
+  {"id":"EXP-MHC-001","language":"en","domain":"healthcare","query":"Does a person with mental illness have a right to access mental healthcare and treatment?","expected_act":"Mental Healthcare Act","expected_section":"18"},
+  {"id":"EXP-MHC-002","language":"hi","domain":"healthcare","query":"मानसिक रोगी के अधिकार में समानता और भेदभाव से सुरक्षा का क्या प्रावधान है?","expected_act":"Mental Healthcare Act","expected_section":"21"},
+  {"id":"EXP-MHC-003","language":"hinglish","domain":"healthcare","query":"Suicide attempt help ke case me severe stress ki legal presumption kya hai?","expected_act":"Mental Healthcare Act","expected_section":"115"},
+
+  {"id":"EXP-TPA-001","language":"en","domain":"human_rights","query":"What conduct is prohibited as transgender discrimination under the law?","expected_act":"Transgender Persons","expected_section":"3"},
+  {"id":"EXP-TPA-002","language":"hi","domain":"human_rights","query":"ट्रांसजेंडर व्यक्ति के साथ रोजगार में भेदभाव रोकने का क्या प्रावधान है?","expected_act":"Transgender Persons","expected_section":"9"},
+  {"id":"EXP-TPA-003","language":"hinglish","domain":"human_rights","query":"Transgender ke saath discrimination aur abuse karne par offences and penalties kya hain?","expected_act":"Transgender Persons","expected_section":"18"},
+
+  {"id":"EXP-PCM-001","language":"en","domain":"children_rights","query":"Can a person who was a child at marriage ask the court to annul that child marriage?","expected_act":"Prohibition of Child Marriage Act","expected_section":"3"},
+  {"id":"EXP-PCM-002","language":"hi","domain":"children_rights","query":"किन परिस्थितियों में नाबालिग की शादी पूरी तरह शून्य मानी जाती है?","expected_act":"Prohibition of Child Marriage Act","expected_section":"12"},
+  {"id":"EXP-PCM-003","language":"hinglish","domain":"children_rights","query":"Minor ki shaadi hone wali hai, court se child marriage rokne ka injunction mil sakta hai?","expected_act":"Prohibition of Child Marriage Act","expected_section":"13"},
+
+  {"id":"EXP-DOW-001","language":"en","domain":"women_rights","query":"What is the penalty for giving or taking dowry at a marriage?","expected_act":"Dowry Prohibition Act","expected_section":"3"},
+  {"id":"EXP-DOW-002","language":"hi","domain":"women_rights","query":"दहेज मांग करने पर कानून में क्या सजा है?","expected_act":"Dowry Prohibition Act","expected_section":"4"},
+  {"id":"EXP-DOW-003","language":"hinglish","domain":"women_rights","query":"Wife ka dahej kisi aur ne rakha hai, dowry property uske benefit ke liye kaise transfer hogi?","expected_act":"Dowry Prohibition Act","expected_section":"6"},
+
+  {"id":"EXP-GWA-001","language":"en","domain":"family","query":"When can a court make a guardianship order for the person or property of a minor?","expected_act":"Guardians and Wards Act","expected_section":"7"},
+  {"id":"EXP-GWA-002","language":"hi","domain":"family","query":"नाबालिग का अभिभावक नियुक्त करते समय अदालत बच्चे के कल्याण के कौन से विषय देखती है?","expected_act":"Guardians and Wards Act","expected_section":"17"},
+  {"id":"EXP-GWA-003","language":"hinglish","domain":"family","query":"Guardian ko ward ki custody wapas lene ka legal right kab milta hai?","expected_act":"Guardians and Wards Act","expected_section":"25"},
+
+  {"id":"EXP-MWM-001","language":"en","domain":"women_rights","query":"Is instant triple talaq legally void and illegal?","expected_act":"Muslim Women (Protection of Rights on Marriage) Act","expected_section":"3"},
+  {"id":"EXP-MWM-002","language":"hi","domain":"women_rights","query":"तीन तलाक के बाद मुस्लिम महिला गुजारा भत्ता कैसे मांग सकती है?","expected_act":"Muslim Women (Protection of Rights on Marriage) Act","expected_section":"5"},
+  {"id":"EXP-MWM-003","language":"hinglish","domain":"women_rights","query":"Triple talaq ke baad minor children ki custody Muslim wife ko kaise mil sakti hai?","expected_act":"Muslim Women (Protection of Rights on Marriage) Act","expected_section":"6"},
+
+  {"id":"EXP-IBC-001","language":"en","domain":"insolvency","query":"How can a financial creditor initiate corporate insolvency resolution against a corporate debtor?","expected_act":"Insolvency and Bankruptcy Code","expected_section":"7"},
+  {"id":"EXP-IBC-002","language":"hi","domain":"insolvency","query":"कॉर्पोरेट दिवाला प्रक्रिया शुरू होने पर रोक अवधि यानी moratorium का क्या प्रभाव है?","expected_act":"Insolvency and Bankruptcy Code","expected_section":"14"},
+  {"id":"EXP-IBC-003","language":"hinglish","domain":"insolvency","query":"IBC me resolution plan approval hone ke baad plan kis par binding hota hai?","expected_act":"Insolvency and Bankruptcy Code","expected_section":"31"},
+
+  {"id":"EXP-ELE-001","language":"en","domain":"consumer","query":"What is the electricity distribution licensee's duty to supply a new connection on request?","expected_act":"Electricity Act","expected_section":"43"},
+  {"id":"EXP-ELE-002","language":"hi","domain":"consumer","query":"बिजली बिल नहीं चुकाने पर बिजली आपूर्ति काटने से पहले क्या प्रक्रिया है?","expected_act":"Electricity Act","expected_section":"56"},
+  {"id":"EXP-ELE-003","language":"hinglish","domain":"consumer","query":"Bijli chori allegation ke liye Electricity Act me theft of electricity ka provision kya hai?","expected_act":"Electricity Act","expected_section":"135"},
+
+  {"id":"EXP-REG-001","language":"en","domain":"property","query":"Which property documents require compulsory registration under the law?","expected_act":"Registration Act","expected_section":"17"},
+  {"id":"EXP-REG-002","language":"hi","domain":"property","query":"संपत्ति दस्तावेज पंजीकरण के लिए रजिस्ट्री की समय सीमा क्या है?","expected_act":"Registration Act","expected_section":"23"},
+  {"id":"EXP-REG-003","language":"hinglish","domain":"property","query":"Unregistered deed valid hai ya effect of non-registration kya hota hai?","expected_act":"Registration Act","expected_section":"49"},
+
+  {"id":"EXP-NFS-001","language":"en","domain":"public_services","query":"What is an eligible household's right to subsidised foodgrains under food security law?","expected_act":"National Food Security Act","expected_section":"3"},
+  {"id":"EXP-NFS-002","language":"hi","domain":"public_services","query":"राशन नहीं मिला तो खाद्य सुरक्षा भत्ता पाने का क्या अधिकार है?","expected_act":"National Food Security Act","expected_section":"8"},
+  {"id":"EXP-NFS-003","language":"hinglish","domain":"public_services","query":"Ration complaint officer ya District Grievance Redressal Officer ka provision kya hai?","expected_act":"National Food Security Act","expected_section":"15"},
+
+  {"id":"EXP-SVA-001","language":"en","domain":"livelihood","query":"Must authorities survey street vendors and protect them from eviction before the survey is complete?","expected_act":"Street Vendors","expected_section":"3"},
+  {"id":"EXP-SVA-002","language":"hi","domain":"livelihood","query":"रेहड़ी पटरी विक्रेता के विक्रय प्रमाणपत्र के आधार पर काम करने के क्या अधिकार हैं?","expected_act":"Street Vendors","expected_section":"12"},
+  {"id":"EXP-SVA-003","language":"hinglish","domain":"livelihood","query":"Street vendor certificate dispute ke liye vendor grievance redressal ka provision kya hai?","expected_act":"Street Vendors","expected_section":"20"},
+
+  {"id":"EXP-HRA-001","language":"en","domain":"human_rights","query":"What functions can the National Human Rights Commission perform on a human rights complaint?","expected_act":"Protection of Human Rights Act","expected_section":"12"},
+  {"id":"EXP-HRA-002","language":"hi","domain":"human_rights","query":"मानवाधिकार जांच पूरी होने पर मानव अधिकार आयोग कौन से कदम उठा सकता है?","expected_act":"Protection of Human Rights Act","expected_section":"18"},
+  {"id":"EXP-HRA-003","language":"hinglish","domain":"human_rights","query":"State Human Rights Commission ya SHRC ka constitution kis provision me hai?","expected_act":"Protection of Human Rights Act","expected_section":"21"},
+
+  {"id":"EXP-EPA-001","language":"en","domain":"environment","query":"What measures can the Central Government take to protect and improve the environment?","expected_act":"Environment (Protection) Act","expected_section":"3"},
+  {"id":"EXP-EPA-002","language":"hi","domain":"environment","query":"पर्यावरण प्रदूषण रोकने के लिए सरकार कारखाने को कौन से निर्देश दे सकती है?","expected_act":"Environment (Protection) Act","expected_section":"5"},
+  {"id":"EXP-EPA-003","language":"hinglish","domain":"environment","query":"Factory pollution complaint me Environment Act violation ki penalty kya hai?","expected_act":"Environment (Protection) Act","expected_section":"15"},
+
+  {"id":"EXP-AAD-001","language":"en","domain":"public_services","query":"Who is entitled to obtain an Aadhaar number and what enrolment information is required?","expected_act":"Aadhaar","expected_section":"3"},
+  {"id":"EXP-AAD-002","language":"hi","domain":"public_services","query":"आधार के बिना सब्सिडी या सेवा लेने के लिए पहचान का वैकल्पिक साधन देना जरूरी है क्या?","expected_act":"Aadhaar","expected_section":"7"},
+  {"id":"EXP-AAD-003","language":"hinglish","domain":"public_services","query":"Aadhaar data share karne par restriction aur identity information privacy ka rule kya hai?","expected_act":"Aadhaar","expected_section":"29"}
 ]

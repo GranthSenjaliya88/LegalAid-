@@ -417,6 +417,69 @@ def _write_snapshot(path: Path, payload: dict) -> None:
     temporary.replace(path)
 
 
+def _verified_fallback_sections(
+    conn: sqlite3.Connection,
+    spec: ActImportSpec,
+    snapshot_path: Path,
+    rejected: list[tuple[SectionLink, str]],
+) -> list[dict]:
+    """Preserve previously verified text when India Code transiently rejects a fetch.
+
+    India Code occasionally rate-limits individual ``SectionPageContent`` calls.
+    A refresh must never replace a complete official snapshot with a partial one,
+    so rejected provision numbers are recovered first from the prior snapshot and
+    then from the verified database row populated by an earlier successful run.
+    """
+    previous: dict[str, dict] = {}
+    if snapshot_path.exists():
+        try:
+            payload = json.loads(snapshot_path.read_text(encoding="utf-8"))
+            if (payload.get("act") or {}).get("short_name") == spec.short_name:
+                previous = {
+                    str(item.get("section_number")): item
+                    for item in payload.get("sections", [])
+                    if item.get("section_number")
+                }
+        except (OSError, json.JSONDecodeError):
+            previous = {}
+
+    def usable(item: Optional[dict]) -> bool:
+        if not item or str(item.get("verification_status", "")).upper() != "VERIFIED":
+            return False
+        official_url = str(item.get("official_source_url") or item.get("source_url") or "")
+        return _official_url(official_url) and len(str(item.get("text") or "").strip()) >= 10
+
+    preserved: list[dict] = []
+    for link, _reason in rejected:
+        section_number = str(link.section_number)
+        item = previous.get(section_number)
+        if not usable(item):
+            row = conn.execute(
+                """
+                SELECT s.*
+                FROM sections s
+                JOIN acts a ON a.id = s.act_id
+                WHERE a.short_name = ? AND s.section_number = ?
+                  AND s.verification_status = 'VERIFIED'
+                """,
+                (spec.short_name, section_number),
+            ).fetchone()
+            if row:
+                item = dict(row)
+                item.pop("id", None)
+                item.pop("act_id", None)
+                for key in ("keywords", "synonyms"):
+                    value = item.get(key)
+                    if isinstance(value, str):
+                        try:
+                            item[key] = json.loads(value)
+                        except json.JSONDecodeError:
+                            item[key] = [value] if value else []
+        if usable(item):
+            preserved.append(dict(item))
+    return preserved
+
+
 def _record_rejection(
     conn: sqlite3.Connection,
     run_id: int,
@@ -463,6 +526,9 @@ def ingest_official_sources(
                 for link, reason in rejected:
                     _record_rejection(conn, run_id, link.url, f"{spec.short_name}:{link.section_number}", reason)
 
+                snapshot_path = snapshot_dir / f"{spec.curated_path.stem}.official.json"
+                fetched.extend(_verified_fallback_sections(conn, spec, snapshot_path, rejected))
+
                 curated_data = json.loads(spec.curated_path.read_text(encoding="utf-8"))
                 curated_sections = {
                     str(item.get("section_number")): item for item in curated_data.get("sections", [])
@@ -492,7 +558,6 @@ def ingest_official_sources(
                         "content_hash": _sha256("\n".join(item["content_hash"] for item in sections)),
                     }
                 )
-                snapshot_path = snapshot_dir / f"{spec.curated_path.stem}.official.json"
                 _write_snapshot(snapshot_path, {"act": act, "sections": sections})
                 result = load_file(conn, snapshot_path, force=True)
                 summary.sections_inserted += result.sections_inserted

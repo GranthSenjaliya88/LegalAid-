@@ -1,4 +1,6 @@
 from corpus.official_importer import (
+    ActImportSpec,
+    SectionLink,
     _page_title,
     _title_similarity,
     _merge_curated_metadata,
@@ -6,7 +8,11 @@ from corpus.official_importer import (
     extract_numbered_subsection,
     html_to_text,
     parse_section_links,
+    _verified_fallback_sections,
 )
+
+import json
+import sqlite3
 
 
 def test_parse_indiacode_unescaped_section_parameters():
@@ -80,3 +86,42 @@ def test_curated_definition_uses_exact_official_subsection_text():
     )
     assert derived[0]["section_number"] == "2(10)"
     assert derived[0]["text"] == "(10) defect means a fault;"
+
+
+def test_verified_fallback_preserves_snapshot_section_after_transient_rejection(tmp_path):
+    curated = tmp_path / "sample.json"
+    curated.write_text("{}", encoding="utf-8")
+    snapshot = tmp_path / "sample.official.json"
+    snapshot.write_text(
+        json.dumps(
+            {
+                "act": {"short_name": "Sample Act"},
+                "sections": [
+                    {
+                        "section_number": "7",
+                        "title": "Protected provision",
+                        "text": "Previously downloaded official statutory text.",
+                        "official_source_url": "https://www.indiacode.nic.in/show-data?sectionId=7",
+                        "verification_status": "VERIFIED",
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    spec = ActImportSpec(
+        curated_path=curated,
+        act={"short_name": "Sample Act", "domain": "general"},
+        page_url="https://www.indiacode.nic.in/handle/example",
+    )
+    rejected = [
+        (
+            SectionLink("7", "7", 7, "ACT", "https://www.indiacode.nic.in/show-data?sectionId=7", "Protected provision"),
+            "403 Forbidden",
+        )
+    ]
+
+    preserved = _verified_fallback_sections(sqlite3.connect(":memory:"), spec, snapshot, rejected)
+
+    assert [item["section_number"] for item in preserved] == ["7"]
+    assert preserved[0]["verification_status"] == "VERIFIED"

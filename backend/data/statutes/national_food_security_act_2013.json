@@ -1,0 +1,20 @@
+{
+  "act": {
+    "name": "National Food Security Act, 2013",
+    "short_name": "NFSA 2013",
+    "year": 2013,
+    "domain": "public_services",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2113",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2113",
+    "source_authority": "Ministry of Consumer Affairs, Food and Public Distribution, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2013-07-05",
+    "status": "CURRENT",
+    "description": "Central law establishing subsidised foodgrain and nutritional entitlements with grievance and food-security allowance remedies.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": []
+}

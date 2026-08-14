@@ -21,14 +21,14 @@ def _load_cases() -> list[dict]:
 def test_expanded_dataset_has_broad_multilingual_coverage():
     cases = _load_cases()
 
-    assert len(cases) >= 45
+    assert len(cases) >= 90
     assert len({case["id"] for case in cases}) == len(cases)
     assert {case["language"] for case in cases} == {"en", "hi", "hinglish"}
-    assert len({case["expected_act"] for case in cases}) >= 15
-    assert len({case["domain"] for case in cases}) >= 8
+    assert len({case["expected_act"] for case in cases}) >= 30
+    assert len({case["domain"] for case in cases}) >= 14
 
     language_counts = Counter(case["language"] for case in cases)
-    assert min(language_counts.values()) >= 15
+    assert min(language_counts.values()) >= 30
 
 
 def test_expanded_dataset_classify_retrieve_recall_and_official_provenance():

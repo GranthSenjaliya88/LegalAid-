@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Muslim Women (Protection of Rights on Marriage) Act, 2019",
+    "short_name": "Muslim Women Marriage Rights Act 2019",
+    "year": 2019,
+    "domain": "women_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/11564",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/11564",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2018-09-19",
+    "status": "CURRENT",
+    "description": "Central law declaring instant triple talaq void and protecting affected Muslim women's allowance and custody rights.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "5",
+      "title": "Subsistence allowance.",
+      "text": "Section 5 entitles an affected married Muslim woman to a subsistence allowance determined by the Magistrate.",
+      "plain_language_summary": "A Muslim woman affected by prohibited instant talaq may seek a Magistrate-determined subsistence allowance for herself and dependent children.",
+      "subdomain": "talaq_allowance",
+      "keywords": ["subsistence allowance", "Muslim woman", "dependent children", "Magistrate"],
+      "synonyms": ["triple talaq allowance", "wife allowance", "मुस्लिम महिला गुजारा भत्ता", "तीन तलाक के बाद भत्ता", "talaq ke baad allowance"]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Mental Healthcare Act, 2017",
+    "short_name": "Mental Healthcare Act 2017",
+    "year": 2017,
+    "domain": "healthcare",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2249",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2249",
+    "source_authority": "Ministry of Health and Family Welfare, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2018-05-29",
+    "status": "CURRENT",
+    "description": "Rights-based central law covering access to mental healthcare, treatment safeguards, confidentiality and review mechanisms.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "21",
+      "title": "Right to equality and non-discrimination.",
+      "text": "Section 21 protects equality and prohibits discrimination in mental healthcare and related services.",
+      "plain_language_summary": "A person with mental illness is entitled to equal treatment and statutory protection from discriminatory healthcare and insurance practices.",
+      "subdomain": "mental_health_non_discrimination",
+      "keywords": ["equality", "non-discrimination", "mental illness", "healthcare rights"],
+      "synonyms": ["mental health discrimination", "patient equality", "मानसिक रोगी समानता", "भेदभाव से सुरक्षा", "mental patient bhedbhav"]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016",
+    "short_name": "Aadhaar Act 2016",
+    "year": 2016,
+    "domain": "public_services",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2160",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2160",
+    "source_authority": "Ministry of Electronics and Information Technology, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2016-09-12",
+    "status": "CURRENT",
+    "description": "Central law governing Aadhaar enrolment, authentication, subsidy delivery and identity-information security safeguards.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "7",
+      "title": "Proof of Aadhaar number necessary for receipt of certain subsidies, benefits and services, etc.",
+      "text": "Section 7 governs Aadhaar proof or authentication for specified subsidies, benefits and services and the alternative means required pending assignment.",
+      "plain_language_summary": "For specified state-funded benefits, Aadhaar proof or authentication may be required, but a person not yet assigned a number must be offered alternate and viable identification means while applying for enrolment.",
+      "subdomain": "aadhaar_benefits",
+      "keywords": ["Aadhaar proof", "subsidy", "benefit", "service", "alternative identification"],
+      "synonyms": ["benefit without Aadhaar", "alternative identity proof", "आधार के बिना सब्सिडी", "वैकल्पिक पहचान", "Aadhaar bina benefit"]
+    }
+  ]
+}

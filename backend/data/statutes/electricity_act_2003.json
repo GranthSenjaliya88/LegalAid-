@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Electricity Act, 2003",
+    "short_name": "Electricity Act 2003",
+    "year": 2003,
+    "domain": "consumer",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2058",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2058",
+    "source_authority": "Ministry of Power, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2003-06-10",
+    "status": "CURRENT",
+    "description": "Central law regulating electricity supply, consumer standards, disconnection, unauthorised use and theft.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "56",
+      "title": "Disconnection of supply in default of payment.",
+      "text": "Section 56 governs disconnection of electricity supply for payment default and the required notice.",
+      "plain_language_summary": "A licensee may disconnect for unpaid electricity charges only through the statutory written-notice process, subject to the section's conditions.",
+      "subdomain": "electricity_disconnection",
+      "keywords": ["disconnection", "supply", "payment default", "written notice", "electricity bill"],
+      "synonyms": ["power cut for nonpayment", "unpaid electricity bill", "बिजली बिल बकाया", "बिजली काटने का नोटिस", "bijli kaat di"]
+    }
+  ]
+}

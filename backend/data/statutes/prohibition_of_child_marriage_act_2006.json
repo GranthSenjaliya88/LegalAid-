@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Prohibition of Child Marriage Act, 2006",
+    "short_name": "Child Marriage Act 2006",
+    "year": 2006,
+    "domain": "children_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2055",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2055",
+    "source_authority": "Ministry of Women and Child Development, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2007-11-01",
+    "status": "CURRENT",
+    "description": "Central law preventing child marriage and providing annulment, maintenance, custody, injunction and enforcement remedies.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "12",
+      "title": "Marriage of a minor child to be void in certain circumstances.",
+      "text": "Section 12 makes a minor child's marriage void in the specified coercive or exploitative circumstances.",
+      "plain_language_summary": "A minor's marriage is void where the child was taken or enticed from a guardian, compelled by force, or sold or trafficked for marriage.",
+      "subdomain": "void_child_marriage",
+      "keywords": ["void child marriage", "minor marriage", "force", "trafficking"],
+      "synonyms": ["marriage completely void", "forced minor marriage", "बाल विवाह शून्य", "नाबालिग की शादी अमान्य", "minor ki shaadi void"]
+    }
+  ]
+}

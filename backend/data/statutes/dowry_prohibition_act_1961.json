@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Dowry Prohibition Act, 1961",
+    "short_name": "Dowry Prohibition Act 1961",
+    "year": 1961,
+    "domain": "women_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1679",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1679",
+    "source_authority": "Ministry of Women and Child Development, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1961-07-01",
+    "status": "CURRENT",
+    "description": "Central law prohibiting giving, taking and demanding dowry and protecting dowry received for a woman's benefit.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "4",
+      "title": "Penalty for demanding dowry.",
+      "text": "Section 4 provides punishment for directly or indirectly demanding dowry.",
+      "plain_language_summary": "A direct or indirect dowry demand from the parties to a marriage or their relatives is punishable.",
+      "subdomain": "dowry_demand",
+      "keywords": ["dowry demand", "penalty", "marriage", "relative"],
+      "synonyms": ["demanding dowry", "dahej demand", "दहेज मांग", "दहेज मांगने की सजा", "shaadi me paisa manga"]
+    }
+  ]
+}

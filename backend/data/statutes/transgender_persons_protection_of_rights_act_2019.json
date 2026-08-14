@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Transgender Persons (Protection of Rights) Act, 2019",
+    "short_name": "Transgender Persons Act 2019",
+    "year": 2019,
+    "domain": "human_rights",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/13091",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/13091",
+    "source_authority": "Ministry of Social Justice and Empowerment, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2019-12-05",
+    "status": "CURRENT",
+    "description": "Central law prohibiting discrimination against transgender persons and protecting identity, education, employment and healthcare rights.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "9",
+      "title": "Non-discrimination in employment.",
+      "text": "Section 9 prohibits employment discrimination against a transgender person.",
+      "plain_language_summary": "An establishment may not discriminate against a transgender person in recruitment, promotion or other employment matters.",
+      "subdomain": "transgender_employment",
+      "keywords": ["transgender employment", "job discrimination", "recruitment", "promotion"],
+      "synonyms": ["employment non-discrimination", "transgender job rights", "ट्रांसजेंडर रोजगार भेदभाव", "नौकरी में भेदभाव", "job me bhedbhav"]
+    }
+  ]
+}

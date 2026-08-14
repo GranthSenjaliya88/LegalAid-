@@ -75,9 +75,91 @@ class AIClient:
 
         # Expanded-corpus domains are evaluated before broad legacy buckets.
         if _has_kw([
+            "mental healthcare", "mental health", "psychiatric hospital", "mental illness",
+            "advance directive", "nominated representative", "attempted suicide", "suicide attempt",
+            "मानसिक स्वास्थ्य", "मानसिक रोग", "आत्महत्या का प्रयास", "मनोचिकित्सक अस्पताल",
+        ]):
+            domain = "healthcare"
+            subdomain = "mental_healthcare_rights"
+            urgency = "high" if _has_kw(["suicide", "crisis", "detained", "restraint"]) else "medium"
+        elif _has_kw([
+            "right to information", "rti application", "rti request", "public information officer",
+            "rti appeal", "pio", "pio refused", "information commission", "ration card", "ration complaint",
+            "district grievance redressal officer", "food security", "subsidised foodgrain",
+            "food security allowance", "aadhaar service", "aadhaar authentication", "aadhaar number",
+            "aadhaar data", "aadhaar without", "without aadhaar",
+            "सूचना का अधिकार", "आरटीआई", "लोक सूचना अधिकारी", "राशन", "खाद्य सुरक्षा",
+            "आधार प्रमाणीकरण", "आधार सेवा", "आधार के बिना", "आधार नंबर", "आधार डेटा",
+        ]):
+            domain = "public_services"
+            subdomain = "information_or_entitlement"
+            urgency = "medium"
+        elif _has_kw([
+            "transgender", "gender identity", "human rights commission", "nhrc", "shrc",
+            "human rights violation", "discrimination because of gender identity",
+            "ट्रांसजेंडर", "लैंगिक पहचान", "मानवाधिकार", "मानव अधिकार आयोग",
+        ]):
+            domain = "human_rights"
+            subdomain = "equality_and_dignity"
+            urgency = "high"
+        elif _has_kw([
+            "triple talaq", "instant talaq", "talaq-e-biddat", "तीन तलाक",
+            "मुस्लिम महिला गुजारा भत्ता",
+        ]):
+            domain = "women_rights"
+            subdomain = "instant_talaq_rights"
+            urgency = "high"
+        elif _has_kw([
+            "dowry", "dahej", "दहेज", "wife dowry", "dowry property",
+        ]):
+            domain = "women_rights"
+            subdomain = "dowry_prohibition"
+            urgency = "high"
+        elif _has_kw([
+            "street vendor", "hawker", "certificate of vending", "town vending committee",
+            "vendor evicted", "vending zone",
+            "रेहड़ी", "पटरी विक्रेता", "फेरीवाला", "विक्रय प्रमाणपत्र",
+        ]):
+            domain = "livelihood"
+            subdomain = "street_vending"
+            urgency = "medium"
+        elif _has_kw([
+            "air pollution", "water pollution", "environmental pollution", "hazardous substance",
+            "factory pollution", "toxic waste", "environment protection act", "protect environment",
+            "protect and improve the environment", "improve environment", "environment act",
+            "पर्यावरण प्रदूषण", "कारखाना प्रदूषण", "खतरनाक पदार्थ", "जहरीला कचरा",
+        ]):
+            domain = "environment"
+            subdomain = "pollution_control"
+            urgency = "high"
+        elif _has_kw([
+            "insolvency", "bankruptcy", "corporate debtor", "operational creditor",
+            "financial creditor", "resolution professional", "moratorium", "ibc",
+            "दिवाला", "वित्तीय लेनदार", "परिचालन लेनदार", "समाधान योजना",
+        ]):
+            domain = "insolvency"
+            subdomain = "corporate_insolvency"
+            urgency = "medium"
+        elif _has_kw([
+            "arbitration agreement", "arbitral award", "set aside award", "arbitrator",
+            "arbitration proceeding", "मध्यस्थता समझौता", "मध्यस्थ निर्णय", "अवार्ड रद्द",
+        ]):
+            domain = "contract"
+            subdomain = "arbitration"
+            urgency = "medium"
+        elif _has_kw([
+            "compulsory registration", "property registration", "register deed", "unregistered deed",
+            "registration act", "document registration", "संपत्ति पंजीकरण", "अनिवार्य पंजीकरण",
+            "दस्तावेज पंजीकरण", "अपंजीकृत विलेख", "रजिस्ट्री की समय सीमा",
+        ]):
+            domain = "property"
+            subdomain = "document_registration"
+            urgency = "medium"
+        elif _has_kw([
             "pocso", "child sexual", "sexual offence against a child", "juvenile",
             "juvenile justice", "child welfare committee", "juvenile justice board",
-            "child in conflict with law", "minor accused", "child identity",
+            "child in conflict with law", "minor accused", "child identity", "child marriage",
+            "बाल विवाह", "नाबालिग की शादी",
             "बाल यौन", "बच्चे का बयान", "बाल कल्याण समिति", "किशोर न्याय",
             "नाबालिग आरोपी", "बच्चे की पहचान",
         ]):
@@ -113,6 +195,8 @@ class AIClient:
         elif _has_kw([
             "divorce", "mutual consent", "matrimonial", "alimony", "child custody",
             "visitation", "family court", "civil marriage", "adoption", "wife maintenance",
+            "guardianship", "guardian", "ward custody", "guardian of minor", "triple talaq", "instant talaq",
+            "नाबालिग का अभिभावक", "संरक्षक नियुक्ति", "तीन तलाक",
             "aged parents", "spousal maintenance", "तलाक", "आपसी सहमति", "विवाह",
             "परिवार न्यायालय", "बच्चे की कस्टडी", "गोद", "पत्नी का भरण पोषण",
             "भरण पोषण",
@@ -150,10 +234,14 @@ class AIClient:
             else:
                 subdomain = "security_deposit"
                 urgency = "medium"
-        elif _has_kw(["salary", "wage", "employer", "employee", "fired", "gratuity", "pf", "maternity", "retrenchment", "severance", "vesan", "ветан", "वेतन", "नौकरी", "fnf", "settlement"]):
+        elif _has_kw(["salary", "wage", "employer", "employee", "fired", "gratuity", "pf", "maternity", "retrenchment", "severance", "workplace injury", "work accident", "employee compensation", "workers compensation", "vesan", "ветान", "वेतन", "नौकरी", "fnf", "settlement"]):
             domain = "labor"
             subdomain = "unpaid_wages"
             urgency = "medium"
+        elif _has_kw(["electricity connection", "electricity distribution", "electricity supply", "electricity bill", "electricity act", "power supply", "power cut", "disconnection for nonpayment", "electricity theft", "unauthorised electricity use", "bijli chori", "bijli connection", "बिजली कनेक्शन", "बिजली बिल", "बिजली आपूर्ति", "बिजली काट", "बिजली चोरी"]):
+            domain = "consumer"
+            subdomain = "electricity_service"
+            urgency = "high" if _has_kw(["disconnection", "power cut"]) else "medium"
         elif _has_kw(["refund", "warranty", "defective", "flipkart", "amazon", "product", "mrp", "e-commerce", "defect", "deficiency", "cpa", "रिफंड", "वारंटी", "seller", "replacement"]):
             domain = "consumer"
             subdomain = "product_defect"
@@ -174,7 +262,7 @@ class AIClient:
             domain = "banking"
             subdomain = "cheque_bounce"
             urgency = "high"
-        elif _has_kw(["posh", "sexual harassment", "domestic violence", "husband", "in laws", "abuse", "woman", "women", "ncw"]):
+        elif _has_kw(["posh", "sexual harassment", "domestic violence", "husband", "in laws", "abuse", "woman", "women", "ncw", "dowry", "dahej", "दहेज", "तीन तलाक"]):
             domain = "women_rights"
             subdomain = "women_safety"
             urgency = "high"

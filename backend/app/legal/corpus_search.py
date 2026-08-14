@@ -288,7 +288,8 @@ def _query_fts(
         "consumer", "labor", "tenant", "cyber", "criminal", "civil", "contract", "family",
         "women_rights", "children_rights", "banking", "traffic", "property", "employment_benefits",
         "constitutional", "procedural", "evidence", "sc_st_protection", "disability_rights",
-        "senior_citizens", "education", "digital_online"
+        "senior_citizens", "education", "digital_online", "healthcare", "human_rights",
+        "public_services", "livelihood", "environment", "insolvency"
     }:
         domain_clause = " AND s.domain = ? "
         params.append(domain)
@@ -525,7 +526,8 @@ def _query_like_fallback(
         "consumer", "labor", "tenant", "cyber", "criminal", "civil", "contract", "family",
         "women_rights", "children_rights", "banking", "traffic", "property", "employment_benefits",
         "constitutional", "procedural", "evidence", "sc_st_protection", "disability_rights",
-        "senior_citizens", "education", "digital_online"
+        "senior_citizens", "education", "digital_online", "healthcare", "human_rights",
+        "public_services", "livelihood", "environment", "insolvency"
     }:
         domain_clause = " AND s.domain = ? "
         params.append(domain)

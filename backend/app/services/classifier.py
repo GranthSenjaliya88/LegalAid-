@@ -18,7 +18,8 @@ def classify_case_service(text: str) -> ClassifyResponseData:
         "consumer", "labor", "tenant", "cyber", "criminal", "civil", "contract", "family",
         "women_rights", "children_rights", "banking", "traffic", "property", "employment_benefits",
         "constitutional", "procedural", "evidence", "sc_st_protection", "disability_rights",
-        "senior_citizens", "education", "digital_online", "general"
+        "senior_citizens", "education", "digital_online", "healthcare", "human_rights",
+        "public_services", "livelihood", "environment", "insolvency", "general"
     }
 
     domain = str(ai_result.get("domain", "general")).lower()

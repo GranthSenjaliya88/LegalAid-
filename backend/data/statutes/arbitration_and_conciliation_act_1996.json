@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Arbitration and Conciliation Act, 1996",
+    "short_name": "Arbitration Act 1996",
+    "year": 1996,
+    "domain": "contract",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1978",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1978",
+    "source_authority": "Ministry of Law and Justice, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1996-08-22",
+    "status": "CURRENT",
+    "description": "Central law governing arbitration agreements, proceedings, interim relief and enforcement of arbitral awards.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "9",
+      "title": "Interim measures, etc., by Court.",
+      "text": "Section 9 provides for applications to court for interim measures connected with arbitration.",
+      "plain_language_summary": "A party may seek specified interim protection from a court before or during arbitration and in the period allowed after an award.",
+      "subdomain": "arbitration_interim_relief",
+      "keywords": ["interim measures", "court protection", "arbitration", "interim relief"],
+      "synonyms": ["court interim relief", "arbitration protection", "मध्यस्थता अंतरिम उपाय", "अदालत से अंतरिम राहत", "interim madad"]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Street Vendors (Protection of Livelihood and Regulation of Street Vending) Act, 2014",
+    "short_name": "Street Vendors Act 2014",
+    "year": 2014,
+    "domain": "livelihood",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2124",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2124",
+    "source_authority": "Ministry of Housing and Urban Affairs, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2014-06-03",
+    "status": "CURRENT",
+    "description": "Central law protecting street-vendor livelihoods through surveys, vending certificates, relocation safeguards and grievance redress.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "12",
+      "title": "Rights of street vendor.",
+      "text": "Section 12 states the right of a street vendor holding a vending certificate to carry on vending under its conditions.",
+      "plain_language_summary": "A certificate holder may vend in the specified vending zone in accordance with the certificate's terms and applicable rules or scheme.",
+      "subdomain": "vendor_rights",
+      "keywords": ["street vendor rights", "certificate of vending", "vending zone", "right to vend"],
+      "synonyms": ["vendor certificate rights", "hawker right", "रेहड़ी पटरी विक्रेता अधिकार", "विक्रय प्रमाणपत्र", "rehdi lagane ka right"]
+    }
+  ]
+}

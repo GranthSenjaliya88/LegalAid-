@@ -1,0 +1,30 @@
+{
+  "act": {
+    "name": "Right to Information Act, 2005",
+    "short_name": "RTI Act 2005",
+    "year": 2005,
+    "domain": "public_services",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2065",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2065",
+    "source_authority": "Department of Personnel and Training, Government of India",
+    "version": "1.0",
+    "enforcement_date": "2005-10-12",
+    "status": "CURRENT",
+    "description": "Central law enabling citizens to request information from public authorities and appeal refusals or delay.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "7",
+      "title": "Disposal of request.",
+      "text": "Section 7 governs the time and manner in which an information request is decided.",
+      "plain_language_summary": "The public information officer must decide an RTI request within the statutory period and communicate fees, the decision, or reasons for refusal.",
+      "subdomain": "rti_response_time",
+      "keywords": ["RTI response", "disposal of request", "time limit", "information officer"],
+      "synonyms": ["PIO reply deadline", "RTI time limit", "आरटीआई जवाब समय सीमा", "सूचना देने की समय सीमा", "RTI ka jawab"]
+    }
+  ]
+}

@@ -198,5 +198,133 @@
     "hindi_synonyms": ["पत्नी अपने पति से भरण पोषण", "पत्नी का भरण पोषण", "पत्नी का गुजारा भत्ता"],
     "hinglish_synonyms": ["patni ka kharcha", "wife maintenance claim", "pati se maintenance", "wife support"],
     "related_acts": ["Hindu Adoptions and Maintenance Act, 1956"]
+  },
+  {
+    "concept_key": "arbitration_and_award_challenge",
+    "domain": "contract",
+    "english_synonyms": ["arbitration agreement", "interim measure", "arbitral award", "set aside award", "award enforcement"],
+    "hindi_synonyms": ["मध्यस्थता समझौता", "अंतरिम उपाय", "मध्यस्थ निर्णय", "निर्णय रद्द करना", "अवार्ड लागू करना"],
+    "hinglish_synonyms": ["arbitration agreement", "arbitrator ka award", "award cancel karna", "court interim relief"],
+    "related_acts": ["Arbitration and Conciliation Act, 1996"]
+  },
+  {
+    "concept_key": "right_to_information_request",
+    "domain": "public_services",
+    "english_synonyms": ["right to information", "RTI application", "public information officer", "information request", "RTI appeal", "information delay"],
+    "hindi_synonyms": ["सूचना का अधिकार", "आरटीआई आवेदन", "लोक सूचना अधिकारी", "सूचना मांगना", "आरटीआई अपील"],
+    "hinglish_synonyms": ["RTI kaise file kare", "sarkari jankari", "PIO ne jawab nahi diya", "RTI appeal"],
+    "related_acts": ["Right to Information Act, 2005"]
+  },
+  {
+    "concept_key": "mental_healthcare_patient_rights",
+    "domain": "healthcare",
+    "english_synonyms": ["mental healthcare", "mental health patient rights", "community living", "non-discrimination", "confidentiality", "suicide attempt"],
+    "hindi_synonyms": ["मानसिक स्वास्थ्य सेवा", "मानसिक रोगी के अधिकार", "समानता", "गोपनीयता", "आत्महत्या का प्रयास"],
+    "hinglish_synonyms": ["mental health treatment right", "patient ko discriminate kiya", "mental records private", "suicide attempt help"],
+    "related_acts": ["Mental Healthcare Act, 2017"]
+  },
+  {
+    "concept_key": "transgender_non_discrimination",
+    "domain": "human_rights",
+    "english_synonyms": ["transgender discrimination", "gender identity discrimination", "transgender employment", "transgender rights", "denial of service"],
+    "hindi_synonyms": ["ट्रांसजेंडर भेदभाव", "लैंगिक पहचान", "रोजगार में भेदभाव", "ट्रांसजेंडर अधिकार"],
+    "hinglish_synonyms": ["transgender ke saath discrimination", "gender identity right", "job me bhedbhav", "service deny ki"],
+    "related_acts": ["Transgender Persons (Protection of Rights) Act, 2019"]
+  },
+  {
+    "concept_key": "child_marriage_prevention",
+    "domain": "children_rights",
+    "english_synonyms": ["child marriage", "minor marriage", "annul child marriage", "forced child marriage", "injunction against marriage"],
+    "hindi_synonyms": ["बाल विवाह", "नाबालिग की शादी", "बाल विवाह रद्द", "जबरन बाल विवाह", "शादी रोकने का आदेश"],
+    "hinglish_synonyms": ["minor ki shaadi", "child marriage rokna", "bachpan ki shaadi cancel", "court se shaadi rokna"],
+    "related_acts": ["Prohibition of Child Marriage Act, 2006"]
+  },
+  {
+    "concept_key": "dowry_demand_and_property",
+    "domain": "women_rights",
+    "english_synonyms": ["dowry demand", "giving dowry", "taking dowry", "dowry property", "wife dowry benefit"],
+    "hindi_synonyms": ["दहेज मांग", "दहेज देना", "दहेज लेना", "पत्नी का दहेज", "दहेज संपत्ति"],
+    "hinglish_synonyms": ["dahej maang rahe", "dowry demand", "wife ka dahej", "shaadi me paisa manga"],
+    "related_acts": ["Dowry Prohibition Act, 1961"]
+  },
+  {
+    "concept_key": "minor_guardianship_and_custody",
+    "domain": "family",
+    "english_synonyms": ["guardian of minor", "guardianship order", "welfare of minor", "custody of ward", "guardian property"],
+    "hindi_synonyms": ["नाबालिग का अभिभावक", "संरक्षक नियुक्ति", "बच्चे का कल्याण", "नाबालिग की अभिरक्षा"],
+    "hinglish_synonyms": ["minor ka guardian", "guardianship order", "bacche ki welfare", "ward ki custody"],
+    "related_acts": ["Guardians and Wards Act, 1890"]
+  },
+  {
+    "concept_key": "instant_triple_talaq_rights",
+    "domain": "women_rights",
+    "english_synonyms": ["instant triple talaq", "talaq void", "Muslim woman subsistence allowance", "minor child custody after talaq"],
+    "hindi_synonyms": ["तीन तलाक", "तलाक अमान्य", "मुस्लिम महिला गुजारा भत्ता", "बच्चों की अभिरक्षा"],
+    "hinglish_synonyms": ["triple talaq diya", "talaq void", "Muslim wife allowance", "talaq ke baad child custody"],
+    "related_acts": ["Muslim Women (Protection of Rights on Marriage) Act, 2019"]
+  },
+  {
+    "concept_key": "corporate_insolvency_resolution",
+    "domain": "insolvency",
+    "english_synonyms": ["corporate insolvency", "financial creditor application", "operational creditor", "moratorium", "resolution plan"],
+    "hindi_synonyms": ["कॉर्पोरेट दिवाला", "वित्तीय लेनदार", "परिचालन लेनदार", "रोक अवधि", "समाधान योजना"],
+    "hinglish_synonyms": ["company insolvent", "creditor IBC case", "moratorium laga", "resolution plan approval"],
+    "related_acts": ["Insolvency and Bankruptcy Code, 2016"]
+  },
+  {
+    "concept_key": "electricity_supply_and_disconnection",
+    "domain": "consumer",
+    "english_synonyms": ["electricity connection", "duty to supply", "wrong electricity bill", "supply disconnection", "electricity theft"],
+    "hindi_synonyms": ["बिजली कनेक्शन", "बिजली आपूर्ति", "गलत बिजली बिल", "बिजली काटना", "बिजली चोरी"],
+    "hinglish_synonyms": ["bijli connection nahi diya", "light kaat di", "electricity bill default", "bijli chori allegation"],
+    "related_acts": ["Electricity Act, 2003"]
+  },
+  {
+    "concept_key": "document_registration",
+    "domain": "property",
+    "english_synonyms": ["compulsory registration", "register property document", "registration deadline", "unregistered deed", "effect of non-registration"],
+    "hindi_synonyms": ["अनिवार्य पंजीकरण", "संपत्ति दस्तावेज पंजीकरण", "रजिस्ट्री की समय सीमा", "अपंजीकृत विलेख"],
+    "hinglish_synonyms": ["property registry", "document register karna", "registry deadline", "unregistered deed valid"],
+    "related_acts": ["Registration Act, 1908"]
+  },
+  {
+    "concept_key": "food_security_entitlement",
+    "domain": "public_services",
+    "english_synonyms": ["food security", "subsidised foodgrains", "ration entitlement", "food security allowance", "ration grievance"],
+    "hindi_synonyms": ["खाद्य सुरक्षा", "सब्सिडी वाला अनाज", "राशन का अधिकार", "खाद्य सुरक्षा भत्ता", "राशन शिकायत"],
+    "hinglish_synonyms": ["ration nahi mila", "sasta anaj right", "food allowance", "ration complaint officer"],
+    "related_acts": ["National Food Security Act, 2013"]
+  },
+  {
+    "concept_key": "street_vendor_livelihood",
+    "domain": "livelihood",
+    "english_synonyms": ["street vendor", "hawker", "certificate of vending", "vendor eviction", "vending zone", "vendor grievance"],
+    "hindi_synonyms": ["रेहड़ी पटरी विक्रेता", "फेरीवाला", "विक्रय प्रमाणपत्र", "विक्रेता बेदखली", "वेंडिंग क्षेत्र"],
+    "hinglish_synonyms": ["rehdi hata di", "street vendor certificate", "hawker eviction", "vending zone complaint"],
+    "related_acts": ["Street Vendors (Protection of Livelihood and Regulation of Street Vending) Act, 2014"]
+  },
+  {
+    "concept_key": "human_rights_commission_complaint",
+    "domain": "human_rights",
+    "english_synonyms": ["human rights complaint", "NHRC complaint", "State Human Rights Commission", "human rights inquiry", "rights commission"],
+    "hindi_synonyms": ["मानवाधिकार शिकायत", "राष्ट्रीय मानवाधिकार आयोग", "राज्य मानवाधिकार आयोग", "मानवाधिकार जांच"],
+    "hinglish_synonyms": ["NHRC complaint", "human rights violation", "rights commission inquiry", "SHRC help"],
+    "related_acts": ["Protection of Human Rights Act, 1993"]
+  },
+  {
+    "concept_key": "environmental_pollution_control",
+    "domain": "environment",
+    "english_synonyms": ["environmental pollution", "factory pollution", "hazardous substance", "environment directions", "pollution penalty"],
+    "hindi_synonyms": ["पर्यावरण प्रदूषण", "कारखाना प्रदूषण", "खतरनाक पदार्थ", "पर्यावरण निर्देश", "प्रदूषण दंड"],
+    "hinglish_synonyms": ["factory pollution complaint", "zehrila waste", "environment direction", "pollution penalty"],
+    "related_acts": ["Environment (Protection) Act, 1986"]
+  },
+  {
+    "concept_key": "aadhaar_authentication_and_privacy",
+    "domain": "public_services",
+    "english_synonyms": ["Aadhaar number", "Aadhaar authentication", "subsidy without Aadhaar", "identity information", "Aadhaar data sharing"],
+    "hindi_synonyms": ["आधार नंबर", "आधार प्रमाणीकरण", "आधार के बिना सब्सिडी", "पहचान जानकारी", "आधार डेटा साझा करना"],
+    "hinglish_synonyms": ["Aadhaar authentication fail", "Aadhaar bina benefit", "Aadhaar data share", "biometric privacy"],
+    "related_acts": ["Aadhaar Act, 2016"]
   }
 ]

@@ -1,0 +1,39 @@
+{
+  "act": {
+    "name": "Environment (Protection) Act, 1986",
+    "short_name": "Environment Protection Act 1986",
+    "year": 1986,
+    "domain": "environment",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/1876",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/1876",
+    "source_authority": "Ministry of Environment, Forest and Climate Change, Government of India",
+    "version": "1.0",
+    "enforcement_date": "1986-11-19",
+    "status": "CURRENT",
+    "description": "Umbrella central law empowering environmental protection measures, standards, directions, accident safeguards and penalties.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_number": "5",
+      "title": "Power to give directions.",
+      "text": "Section 5 empowers the Central Government to issue written environmental directions, including closure or regulation and stoppage of services.",
+      "plain_language_summary": "The Central Government may issue binding written directions, including closure or regulation of an industry and stoppage or regulation of electricity, water or other services.",
+      "subdomain": "environmental_directions",
+      "keywords": ["government directions", "closure", "industry regulation", "environment", "stop services"],
+      "synonyms": ["pollution control direction", "factory closure direction", "पर्यावरण निर्देश", "कारखाना बंद करने का निर्देश", "pollution rokne ka order"]
+    },
+    {
+      "section_number": "15",
+      "title": "Penalty for contravention of the provisions of the Act and the rules, orders and directions.",
+      "text": "Section 15 establishes penalties for contravening the Act or its rules, orders and directions.",
+      "plain_language_summary": "Contravention of environmental statutory requirements, rules, orders or directions attracts the penalties prescribed by this section.",
+      "subdomain": "environmental_penalty",
+      "keywords": ["penalty", "contravention", "environment violation", "rules", "orders"],
+      "synonyms": ["pollution penalty", "environment offence punishment", "पर्यावरण उल्लंघन दंड", "प्रदूषण की सजा", "factory pollution penalty"]
+    }
+  ]
+}

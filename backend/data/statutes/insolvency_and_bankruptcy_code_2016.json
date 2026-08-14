@@ -1,0 +1,20 @@
+{
+  "act": {
+    "name": "Insolvency and Bankruptcy Code, 2016",
+    "short_name": "IBC 2016",
+    "year": 2016,
+    "domain": "insolvency",
+    "jurisdiction": "India",
+    "source_name": "India Code",
+    "source_url": "https://www.indiacode.nic.in/handle/123456789/2154",
+    "official_source_url": "https://www.indiacode.nic.in/handle/123456789/2154",
+    "source_authority": "Ministry of Corporate Affairs, Government of India",
+    "version": "1.0",
+    "status": "CURRENT",
+    "commencement_status": "PARTIALLY_COMMENCED",
+    "description": "Central code consolidating time-bound insolvency resolution and liquidation processes for companies, partnerships and individuals.",
+    "last_verified_at": "2026-08-14",
+    "verification_status": "VERIFIED"
+  },
+  "sections": []
+}

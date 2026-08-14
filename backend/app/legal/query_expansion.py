@@ -18,6 +18,7 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "gratuity": ["continuous service", "5 years service", "gratuity payment", "resignation gratuity"],
     "maternity": ["maternity leave", "26 weeks paid leave", "pregnancy benefit"],
     "pregnancy": ["maternity benefit", "maternity leave", "nursing breaks", "creche facility"],
+    "injury": ["employees compensation", "workplace accident", "employer liability", "disablement"],
 
     # Family / Marriage / Succession
     "divorce": ["dissolution of marriage", "mutual consent divorce", "alimony", "maintenance"],
@@ -29,6 +30,9 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "talaq": ["divorce", "dissolution of marriage", "maintenance", "family court"],
     "bacche": ["child custody", "minor child", "visitation", "child maintenance"],
     "virasat": ["inheritance", "succession", "legal heir", "intestate property"],
+    "dowry": ["dowry demand", "dowry prohibition", "woman property", "marriage payment"],
+    "talaq": ["instant triple talaq", "Muslim woman", "subsistence allowance", "custody"],
+    "guardianship": ["guardian of minor", "welfare of minor", "child custody", "guardian property"],
 
     # Child Protection / Education
     "pocso": ["child sexual offence", "mandatory reporting", "child statement", "special court"],
@@ -49,6 +53,8 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "delay": ["condonation of delay", "limitation period", "late appeal", "sufficient cause"],
     "mediation": ["alternative dispute resolution", "settlement", "CPC section 89", "conciliation"],
     "government": ["government notice", "CPC section 80", "civil suit against government"],
+    "arbitration": ["arbitration agreement", "interim measure", "arbitral award", "set aside award"],
+    "insolvency": ["corporate insolvency", "operational creditor", "financial creditor", "moratorium"],
 
     # Access to Justice
     "lawyer": ["free legal aid", "legal services eligibility", "legal representation"],
@@ -93,6 +99,13 @@ SYNONYM_DICTIONARY: Dict[str, List[str]] = {
     "tod": ["mischief", "property damage", "vandalism"],
     "nikal": ["eviction", "unlawful eviction", "rent authority"],
     "electricity": ["essential supply", "withholding service", "cut off supply"],
+    "rti": ["right to information", "public information officer", "information request", "first appeal"],
+    "information": ["right to information", "public authority", "information request", "RTI appeal"],
+    "ration": ["food security", "subsidised foodgrains", "food security allowance", "ration entitlement"],
+    "aadhaar": ["identity information", "authentication", "biometric information", "data sharing"],
+    "vendor": ["street vendor", "certificate of vending", "protection from eviction", "Town Vending Committee"],
+    "mental": ["mental healthcare", "community living", "confidentiality", "advance directive"],
+    "pollution": ["environmental pollution", "emission standard", "hazardous substance", "government directions"],
     "comments": ["sexual harassment", "unwelcome remarks", "workplace harassment"],
     "muft": ["free legal aid", "free lawyer", "legal services authority"],
     "vakil": ["lawyer", "free legal aid", "legal representation"],
@@ -114,6 +127,12 @@ DOMAIN_ANCHORS: Dict[str, List[str]] = {
     "civil": ["specific relief", "injunction", "declaration", "contract enforcement"],
     "contract": ["agreement", "specific performance", "contract enforcement", "breach"],
     "procedural": ["civil procedure", "limitation", "jurisdiction", "appeal", "mediation"],
+    "healthcare": ["mental healthcare", "patient rights", "community living", "confidentiality"],
+    "human_rights": ["human rights", "non-discrimination", "equality", "rights commission"],
+    "public_services": ["right to information", "public authority", "food security", "government service"],
+    "livelihood": ["street vendor", "certificate of vending", "livelihood protection", "eviction"],
+    "environment": ["environment protection", "pollution", "hazardous substance", "emission standard"],
+    "insolvency": ["corporate insolvency", "creditor", "moratorium", "resolution plan"],
     "general": ["legal services", "free legal aid", "Lok Adalat", "access to justice"],
 }
 
