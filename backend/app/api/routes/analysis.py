@@ -3,17 +3,21 @@ Analysis Pipeline Routes (Phases 5, 6, 7, 8, 9, 11).
 Handles Classification, Database Retrieval, Clarification, Rights Explanation, Citation Verification, and Backend Orchestration.
 """
 
+import re
+import json
 from typing import Dict, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.db.repositories import CaseRepository
+from app.db.models import ClaimAuditLog, ExecutionTrace
 from app.services.classifier import classify_case_service
 from app.services.retriever import retrieve_legal_sections
 from app.services.clarifier import evaluate_clarification, update_facts_from_answers
 from app.services.explainer import explain_rights_service
 from app.services.citation_verifier import verify_generated_output
 from app.schemas.analysis import ClarifyRequestData
+from app.legal.claim_citation import verify_claims_against_retrieved_corpus
 
 from app.services.evidence_mapper import generate_evidence_checklist
 from app.services.action_roadmap import generate_action_roadmap
@@ -391,6 +395,7 @@ def analyze_case_orchestration_route(case_id: str, db: Session = Depends(get_db)
     Unified end-to-end backend orchestration pipeline (Phase 11).
     Orchestrates Classification -> Fact Extraction -> Clarification -> Retrieval -> Explanation -> Evidence -> Action Roadmap.
     Returns deterministic status: complete | needs_clarification | insufficient_information | error.
+    Also persists claim audit logs and execution traces for full pipeline traceability.
     """
     case = CaseRepository.get_case(db, case_id)
     if not case:
@@ -398,6 +403,37 @@ def analyze_case_orchestration_route(case_id: str, db: Session = Depends(get_db)
             status_code=status.HTTP_404_NOT_FOUND,
             detail={"code": "CASE_NOT_FOUND", "message": f"Case '{case_id}' not found."}
         )
+
+    # 0. Nonsense / unintelligible input guard.
+    # A meaningful legal query must have at least 3 words and contain at least one
+    # recognisable alphabetic word (length >= 3).  Pure gibberish like "xyzqwerty999"
+    # should return insufficient_information rather than trigger clarification.
+    original_text = case.original_text or ""
+    meaningful_words = [w for w in re.split(r"\s+", original_text.strip()) if re.search(r"[a-zA-Z\u0900-\u097F]{3,}", w)]
+    if len(meaningful_words) < 3 and not case.facts:
+        # Persist an execution trace so this refusal is traceable
+        _persist_execution_trace(
+            db, case_id,
+            user_input=original_text,
+            language=case.language,
+            stage="insufficient_information",
+            payload={"reason": "Unintelligible or too-short input", "word_count": len(meaningful_words)}
+        )
+        return {
+            "success": True,
+            "data": {
+                "status": "insufficient_information",
+                "case_id": case.id,
+                "domain": None,
+                "subdomain": None,
+                "facts": {},
+                "clarification": None,
+                "explain": None,
+                "evidence": None,
+                "roadmap": None,
+                "message": "We couldn't identify a legal situation from the provided text. Please describe your legal problem in more detail."
+            }
+        }
 
     # 1. Classification & Fact Extraction (if not yet performed)
     if not case.facts or case.status == "received":
@@ -424,6 +460,13 @@ def analyze_case_orchestration_route(case_id: str, db: Session = Depends(get_db)
 
     # If critical information is missing and case hasn't been clarified yet, pause for clarification
     if clarify_res.needs_clarification and clarify_res.questions and case.status not in ("clarified", "explained"):
+        _persist_execution_trace(
+            db, case_id,
+            user_input=original_text,
+            language=case.language,
+            stage="needs_clarification",
+            payload={"questions": clarify_res.questions, "missing_facts": clarify_res.missing_facts}
+        )
         return {
             "success": True,
             "data": {
@@ -474,6 +517,26 @@ def analyze_case_orchestration_route(case_id: str, db: Session = Depends(get_db)
 
     CaseRepository.update_case_domain_and_status(db, case_id, case.domain or "general", "explained")
 
+    # 8. Persist claim audit logs — every claim gets its own row in claim_audit_logs.
+    #    The explainer already verified claims internally; we surface those records here.
+    _persist_claim_audit_logs(db, case_id, retrieval_res.matches, explain_res)
+
+    # 9. Persist a full execution trace for audit and debugging.
+    _persist_execution_trace(
+        db, case_id,
+        user_input=original_text,
+        language=case.language,
+        stage=status_str,
+        payload={
+            "domain": case.domain,
+            "subdomain": case.subdomain,
+            "facts": facts_dict,
+            "retrieved_count": len(retrieval_res.matches),
+            "confidence": explain_res.confidence,
+            "rights_count": len(explain_res.rights),
+        }
+    )
+
     return {
         "success": True,
         "data": {
@@ -489,3 +552,71 @@ def analyze_case_orchestration_route(case_id: str, db: Session = Depends(get_db)
             "message": "Case analysis completed successfully." if status_str == "complete" else "No matching statutory provisions found with sufficient confidence."
         }
     }
+
+
+# ---------------------------------------------------------------------------
+# Private helpers for audit persistence
+# ---------------------------------------------------------------------------
+
+def _persist_claim_audit_logs(db: Session, case_id: str, matches, explain_res) -> None:
+    """Persist per-claim audit rows derived from the explanation result.
+
+    Extracts claims from rights items, verifies them against retrieved matches,
+    and writes one ClaimAuditLog row per claim.  Safe to call even when there
+    are zero matches or zero rights — it simply writes nothing in that case.
+    """
+    try:
+        claim_texts = [
+            item.explanation
+            for item in (explain_res.rights or [])
+            if item.explanation
+        ]
+        if not claim_texts:
+            return
+
+        claim_result = verify_claims_against_retrieved_corpus(claim_texts, matches)
+        for item in claim_result.claims:
+            log = ClaimAuditLog(
+                case_id=case_id,
+                claim_id=item.claim_id,
+                claim_text=item.claim_text[:2000],  # guard against very long text
+                source_act=item.source_act,
+                source_section=item.source_section,
+                source_url=item.source_url,
+                support_level=item.support_level,
+                verification_status=item.verification_status,
+            )
+            db.add(log)
+        db.commit()
+    except Exception as exc:
+        # Audit persistence must never crash the user-facing pipeline.
+        db.rollback()
+        from app.core.logging import logger
+        logger.warning("[audit] Failed to persist claim audit logs for case %s: %s", case_id, exc)
+
+
+def _persist_execution_trace(
+    db: Session,
+    case_id: str,
+    user_input: str,
+    language: str,
+    stage: str,
+    payload: Dict[str, Any],
+) -> None:
+    """Persist a single execution trace record for this pipeline run."""
+    try:
+        trace = ExecutionTrace(
+            case_id=case_id,
+            stage=stage,
+            payload=json.dumps({
+                "user_input": user_input[:500],  # avoid huge blobs
+                "language": language,
+                **payload
+            }, default=str),
+        )
+        db.add(trace)
+        db.commit()
+    except Exception as exc:
+        db.rollback()
+        from app.core.logging import logger
+        logger.warning("[trace] Failed to persist execution trace for case %s: %s", case_id, exc)

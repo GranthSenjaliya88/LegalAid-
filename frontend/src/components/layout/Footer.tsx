@@ -19,9 +19,6 @@ export function Footer() {
             <Link to="/privacy" className="transition-colors hover:text-ink">
               Privacy &amp; Safety
             </Link>
-            <Link to="/resources" className="transition-colors hover:text-ink">
-              Legal resources
-            </Link>
           </nav>
         </div>
       </div>

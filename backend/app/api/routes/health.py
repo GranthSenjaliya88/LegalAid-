@@ -81,11 +81,8 @@ def health_ready():
         v_health = vector_retriever.get_index_health(db_section_count=sec_cnt if 'sec_cnt' in locals() else 0)
         checks["vector_index"] = v_health["vector_state"]
 
-        # 4. Probe AI configuration status
-        if settings.api_key.strip():
-            checks["ai"] = "configured"
-        else:
-            checks["ai"] = "unconfigured"
+        # 4. Probe AI local engine status
+        checks["ai"] = "ready"
 
     except Exception:
         checks["database"] = "error"

@@ -20,13 +20,11 @@ class Settings(BaseSettings):
     FAISS_INDEX_PATH: str = Field(default="./data/faiss_index.bin")
     LOG_LEVEL: str = Field(default="INFO")
 
-    AI_API_KEY: str = Field(default="")
-    GEMINI_API_KEY: str = Field(default="")
-    AI_MODEL: str = Field(default="gemini-2.0-flash")
+    AI_ENGINE: str = Field(default="local")
 
     SECRET_KEY: str = Field(default="dev_secret_key_change_me_in_production")
     
-    CORS_ORIGINS: List[str] = Field(
+    CORS_ORIGINS: Union[List[str], str] = Field(
         default=[
             "http://localhost:5173",
             "http://127.0.0.1:5173",
@@ -36,9 +34,20 @@ class Settings(BaseSettings):
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod
     def _split_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
-        """Allow CORS_ORIGINS to be given as a comma-separated env string."""
+        """Allow CORS_ORIGINS to be given as a comma-separated env string or JSON list."""
         if isinstance(v, str):
-            return [origin.strip() for origin in v.split(",") if origin.strip()]
+            v_str = v.strip()
+            if v_str.startswith("[") and v_str.endswith("]"):
+                try:
+                    import json
+                    parsed = json.loads(v_str)
+                    if isinstance(parsed, list):
+                        return [str(origin).strip() for origin in parsed if str(origin).strip()]
+                except Exception:
+                    pass
+            return [origin.strip() for origin in v_str.split(",") if origin.strip()]
+        if isinstance(v, list):
+            return [str(origin).strip() for origin in v if str(origin).strip()]
         return v
 
     @property
@@ -53,7 +62,7 @@ class Settings(BaseSettings):
 
     @property
     def api_key(self) -> str:
-        return self.AI_API_KEY or self.GEMINI_API_KEY or ""
+        return ""
 
     def validate_config(self) -> Dict[str, Any]:
         """
@@ -70,17 +79,16 @@ class Settings(BaseSettings):
         eval_dir = data_dir / "evaluation"
         eval_dir.mkdir(parents=True, exist_ok=True)
 
-        has_ai = bool(self.api_key.strip())
-        
         return {
             "valid": True,
             "environment": self.ENVIRONMENT,
             "database_url": self.DATABASE_URL.split("@")[-1] if "@" in self.DATABASE_URL else self.DATABASE_URL,
-            "ai_configured": has_ai,
-            "ai_model": self.AI_MODEL if has_ai else "disabled",
+            "ai_configured": True,
+            "ai_engine": self.AI_ENGINE,
             "embedding_model": self.EMBEDDING_MODEL,
             "cors_origins_count": len(self.CORS_ORIGINS)
         }
 
 
 settings = Settings()
+

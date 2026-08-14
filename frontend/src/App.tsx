@@ -7,7 +7,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { AppShell } from "@/components/layout/AppShell";
 import { HomePage } from "@/pages/HomePage";
 import { CaseWorkspacePage } from "@/pages/CaseWorkspacePage";
-import { ResourcesPage } from "@/pages/ResourcesPage";
 import { CasesPage } from "@/pages/CasesPage";
 import { DocumentsPage } from "@/pages/DocumentsPage";
 import { DocumentEditorPage } from "@/pages/DocumentEditorPage";
@@ -48,7 +47,6 @@ export function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/case/:id" element={<CaseWorkspacePage />} />
-              <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/admin/corpus-dashboard" element={<CorpusDashboardPage />} />
               <Route path="/cases" element={<CasesPage />} />
               <Route path="/documents" element={<DocumentsPage />} />

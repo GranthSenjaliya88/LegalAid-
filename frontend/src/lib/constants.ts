@@ -7,7 +7,6 @@ import {
   Gavel,
   Scale,
   Sparkles,
-  BookOpen,
   FolderClosed,
   FileText,
   Compass,
@@ -113,7 +112,6 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Legal Assistant", labelHi: "कानूनी सहायक", icon: Sparkles, end: true },
-  { to: "/resources", label: "Legal Resources", labelHi: "कानूनी संसाधन", icon: BookOpen },
   { to: "/cases", label: "My Cases", labelHi: "मेरे मामले", icon: FolderClosed },
   { to: "/documents", label: "My Documents", labelHi: "मेरे दस्तावेज़", icon: FileText },
   { to: "/how-it-works", label: "How It Works", labelHi: "यह कैसे काम करता है", icon: Compass },

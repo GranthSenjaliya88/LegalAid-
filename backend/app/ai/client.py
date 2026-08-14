@@ -1,86 +1,36 @@
 """
-Centralized AI Client for LegalAId.
-All LLM calls go through this service.
-Includes timeout, error handling, retry limits, safe logging, and prompt injection defense.
+Local Legal Reasoning Engine for LegalAId.
+All classification, clarification, explanation, and drafting logic runs 100% locally
+without any external API calls, cloud dependencies, or network latency.
+Includes input sanitization, deterministic statutory mapping, and template-based legal generation.
 """
 
-import os
 import re
 import json
 from typing import Dict, Any, Optional, List
-from app.core.config import settings
 from app.core.logging import logger
 from app.core.security import sanitize_for_prompt
-from app.ai.prompts import (
-    CLASSIFIER_PROMPT,
-    CLARIFICATION_PROMPT,
-    EXPLAINER_PROMPT,
-    DOCUMENT_TEMPLATE_PROMPT,
-)
-from app.ai.response_parser import parse_json_response
 
 
 class AIClient:
-    """Centralized LLM client interfacing with Gemini Flash."""
+    """Local legal reasoning client operating entirely offline."""
 
     def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None):
-        self.api_key = api_key or settings.api_key
-        self.model = model or settings.AI_MODEL
-        self._genai_client = None
-
-        if self.api_key:
-            try:
-                from google import genai
-                self._genai_client = genai.Client(api_key=self.api_key)
-            except Exception as exc:
-                logger.warning("Could not initialize google-genai client: %s", exc)
+        self.api_key = ""
+        self.model = "local-engine"
 
     @property
     def is_available(self) -> bool:
-        return self._genai_client is not None
-
-    def _call_llm(self, prompt: str, temperature: float = 0.1) -> Optional[Dict[str, Any]]:
-        """Execute LLM call with structured JSON response config and error handling."""
-        if not self.is_available:
-            return None
-
-        from google.genai import types
-
-        try:
-            response = self._genai_client.models.generate_content(
-                model=self.model,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=temperature,
-                    response_mime_type="application/json",
-                ),
-            )
-            raw = response.text if response and response.text else ""
-            return parse_json_response(raw)
-        except Exception as exc:
-            logger.warning("LLM API call failed: %s", exc)
-            return None
+        """Local engine is always available without external API dependencies."""
+        return True
 
     def classify_case(self, text: str) -> Dict[str, Any]:
-        """Classify domain and extract initial facts."""
+        """Classify domain and extract initial facts using local deterministic analysis."""
         safe_text = sanitize_for_prompt(text)
-        prompt = f"{CLASSIFIER_PROMPT}\n\nUSER INPUT DATA:\n{safe_text}"
-        
-        result = self._call_llm(prompt)
-        if result and "domain" in result:
-            return result
-
-        # Heuristic fallback if LLM is unavailable or fails
-        return self._heuristic_classify(text)
+        return self._heuristic_classify(safe_text)
 
     def generate_clarifying_questions(self, facts: Dict[str, Any]) -> Dict[str, Any]:
-        """Identify missing facts and generate up to 3 clarifying questions."""
-        prompt = f"{CLARIFICATION_PROMPT}\n\nCURRENT CASE FACTS:\n{json.dumps(facts)}"
-        result = self._call_llm(prompt)
-        if result and "needs_clarification" in result:
-            return result
-
-        # Heuristic fallback
+        """Identify missing facts and generate targeted clarifying questions locally."""
         return self._heuristic_clarify(facts)
 
     def explain_retrieved_law(
@@ -89,19 +39,7 @@ class AIClient:
         case_facts: Dict[str, Any],
         language: str = "en"
     ) -> Dict[str, Any]:
-        """Generate rights explanation strictly grounded on retrieved sections."""
-        prompt = EXPLAINER_PROMPT.format(
-            retrieved_sections=json.dumps(retrieved_sections, indent=2),
-            case_facts=json.dumps(case_facts, indent=2),
-        )
-        if language == "hi":
-            prompt += "\nNote: Generate text explanations in simple Hindi while preserving section numbers and Act titles in English."
-
-        result = self._call_llm(prompt)
-        if result and "summary" in result and "rights" in result:
-            return result
-
-        # Heuristic fallback grounded in retrieved sections
+        """Generate rights explanation strictly grounded on retrieved statutory sections."""
         return self._heuristic_explain(retrieved_sections, case_facts, language)
 
     def fill_document_template(
@@ -110,21 +48,11 @@ class AIClient:
         verified_sections: List[Dict[str, Any]],
         case_facts: Dict[str, Any]
     ) -> Dict[str, Any]:
-        """Fill structured document template fields."""
-        prompt = DOCUMENT_TEMPLATE_PROMPT.format(
-            doc_type=doc_type,
-            verified_sections=json.dumps(verified_sections, indent=2),
-            case_facts=json.dumps(case_facts, indent=2)
-        )
-        result = self._call_llm(prompt)
-        if result and "sections" in result:
-            return result
-
-        # Heuristic fallback template fill
+        """Fill structured document template fields locally using case facts and verified citations."""
         return self._heuristic_fill_document(doc_type, verified_sections, case_facts)
 
     # -------------------------------------------------------------------------
-    # Heuristic Fallbacks (Ensure app works completely even when offline / no API key)
+    # Local Deterministic Legal Engines
     # -------------------------------------------------------------------------
 
     def _heuristic_classify(self, text: str) -> Dict[str, Any]:
@@ -386,3 +314,4 @@ class AIClient:
 
 # Global AI client singleton instance
 ai_client = AIClient()
+

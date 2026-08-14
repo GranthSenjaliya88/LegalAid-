@@ -31,8 +31,8 @@ class PrivacyFilter(logging.Filter):
             return True
         if not isinstance(msg, str):
             return True
-        if "AI_API_KEY" in msg or "GEMINI_API_KEY" in msg:
-            record.msg, record.args = "[LOG REDACTED: API KEY MENTIONED]", None
+        if any(k in msg for k in ["API_KEY", "SECRET_KEY"]):
+            record.msg, record.args = "[LOG REDACTED: SENSITIVE KEY MENTIONED]", None
             return True
         redacted = self._KEYED.sub(
             lambda m: f"{m.group(1)}: [REDACTED]", msg

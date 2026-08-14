@@ -18,6 +18,9 @@ export type FlowStatus = "idle" | "running" | "awaiting_clarification" | "insuff
 export type FlowPhase = "classify" | "clarify" | "explain" | "enrich" | null;
 export type VerifyStatus = "idle" | "loading" | "done" | "error";
 
+/** Maximum wall-clock time (ms) to wait for the full analysis pipeline before forcing an error state. */
+const ANALYSIS_TIMEOUT_MS = 90_000;
+
 export interface AnalysisState {
   status: FlowStatus;
   phase: FlowPhase;
@@ -82,108 +85,139 @@ export function useCaseAnalysis(caseId: string | undefined) {
 
   const analyzeOrchestration = useCallback(
     async (id: string, signal: AbortSignal) => {
-      try {
-        if (import.meta.env.DEV) {
-          console.log(`[LegalAId Pipeline] Starting orchestration for case: ${id}`);
-        }
-        patch({ status: "running", phase: "classify", error: undefined });
+      // Safety timeout: force error state if pipeline takes too long.
+      // This guarantees the UI is never permanently stuck on "Working on your case...".
+      let timeoutId: ReturnType<typeof setTimeout> | null = null;
+      const timeoutPromise = new Promise<never>((_, reject) => {
+        timeoutId = setTimeout(() => {
+          if (!signal.aborted) {
+            reject(new Error(`Analysis timed out after ${ANALYSIS_TIMEOUT_MS / 1000}s. Please retry.`));
+          }
+        }, ANALYSIS_TIMEOUT_MS);
+      });
 
-        // Call unified backend orchestration
-        let res: AnalyzeResponse;
+      const runPipeline = async () => {
         try {
-          res = await analysisService.analyze(id, signal);
-        } catch (backendErr) {
-          if (isAbort(backendErr) || signal.aborted) return;
-          // Fallback to step-by-step calls if analyze endpoint is unavailable
           if (import.meta.env.DEV) {
-            console.warn("[LegalAId Pipeline] Backend analyze endpoint failed, falling back to sequential calls:", backendErr);
+            console.log(`[LegalAId Pipeline] Starting orchestration for case: ${id}`);
           }
-          const classify = await analysisService.classify(id, signal);
-          patch({ classify, facts: classify.facts, phase: "clarify" });
+          patch({ status: "running", phase: "classify", error: undefined });
 
-          let clarify: ClarifyResponse | undefined;
+          // Call unified backend orchestration
+          let res: AnalyzeResponse;
           try {
-            clarify = await analysisService.clarify(id, signal);
-          } catch {
-            clarify = undefined;
-          }
-          if (clarify) patch({ clarify });
+            res = await analysisService.analyze(id, signal);
+          } catch (backendErr) {
+            if (isAbort(backendErr) || signal.aborted) return;
+            // Fallback to step-by-step calls if analyze endpoint is unavailable
+            if (import.meta.env.DEV) {
+              console.warn("[LegalAId Pipeline] Backend analyze endpoint failed, falling back to sequential calls:", backendErr);
+            }
+            const classify = await analysisService.classify(id, signal);
+            patch({ classify, facts: classify.facts, phase: "clarify" });
 
-          if (clarify?.needs_clarification && clarify.questions.length > 0) {
-            patch({ status: "awaiting_clarification", phase: null });
+            let clarify: ClarifyResponse | undefined;
+            try {
+              clarify = await analysisService.clarify(id, signal);
+            } catch {
+              clarify = undefined;
+            }
+            if (clarify) patch({ clarify });
+
+            if (clarify?.needs_clarification && clarify.questions.length > 0) {
+              patch({ status: "awaiting_clarification", phase: null });
+              return;
+            }
+
+            patch({ phase: "explain" });
+            const explain = await analysisService.explain(id, signal);
+            patch({ explain, phase: "enrich" });
+
+            const [evidence, roadmap] = await Promise.all([
+              analysisService.evidence(id, signal),
+              analysisService.roadmap(id, signal),
+            ]);
+            patch({ evidence, roadmap, phase: null, status: "done" });
             return;
           }
 
-          patch({ phase: "explain" });
-          const explain = await analysisService.explain(id, signal);
-          patch({ explain, phase: "enrich" });
+          if (signal.aborted || activeCaseIdRef.current !== id) return;
 
-          const [evidence, roadmap] = await Promise.all([
-            analysisService.evidence(id, signal),
-            analysisService.roadmap(id, signal),
-          ]);
-          patch({ evidence, roadmap, phase: null, status: "done" });
-          return;
-        }
-
-        if (signal.aborted || activeCaseIdRef.current !== id) return;
-
-        // Apply facts from backend
-        if (res.facts) {
-          patch({ facts: res.facts });
-        }
-
-        if (res.status === "needs_clarification" && res.clarification && res.clarification.questions?.length > 0) {
-          if (import.meta.env.DEV) {
-            console.log(`[LegalAId Pipeline] Clarification REQUIRED (${res.clarification.questions.length} questions)`);
+          // Apply facts from backend
+          if (res.facts) {
+            patch({ facts: res.facts });
           }
-          patch({
-            status: "awaiting_clarification",
-            phase: null,
-            clarify: res.clarification,
-            facts: res.facts ?? undefined,
-          });
-          return;
-        }
 
-        if (res.status === "insufficient_information") {
-          if (import.meta.env.DEV) {
-            console.log("[LegalAId Pipeline] INSUFFICIENT_INFORMATION returned");
+          if (res.status === "needs_clarification" && res.clarification && res.clarification.questions?.length > 0) {
+            if (import.meta.env.DEV) {
+              console.log(`[LegalAId Pipeline] Clarification REQUIRED (${res.clarification.questions.length} questions)`);
+            }
+            patch({
+              status: "awaiting_clarification",
+              phase: null,
+              clarify: res.clarification,
+              facts: res.facts ?? undefined,
+            });
+            return;
           }
+
+          if (res.status === "insufficient_information") {
+            if (import.meta.env.DEV) {
+              console.log("[LegalAId Pipeline] INSUFFICIENT_INFORMATION returned");
+            }
+            patch({
+              status: "insufficient_information",
+              phase: null,
+              explain: res.explain ?? undefined,
+              evidence: res.evidence ?? undefined,
+              roadmap: res.roadmap ?? undefined,
+              facts: res.facts ?? undefined,
+            });
+            return;
+          }
+
+          if (import.meta.env.DEV) {
+            console.log("[LegalAId Pipeline] Case analysis completed: PASS");
+            console.log(`[LegalAId Pipeline] Sources: ${res.explain?.relevant_law?.length ?? 0}, Rights: ${res.explain?.rights?.length ?? 0}`);
+          }
+
           patch({
-            status: "insufficient_information",
+            status: "done",
             phase: null,
             explain: res.explain ?? undefined,
             evidence: res.evidence ?? undefined,
             roadmap: res.roadmap ?? undefined,
             facts: res.facts ?? undefined,
           });
-          return;
+        } catch (err) {
+          if (isAbort(err) || signal.aborted) return;
+          if (import.meta.env.DEV) {
+            console.error("[LegalAId Pipeline ERROR]", err);
+          }
+          patch({
+            status: "error",
+            phase: null,
+            error: { phase: "analyze", message: messageOf(err) },
+          });
         }
+      };
 
-        if (import.meta.env.DEV) {
-          console.log("[LegalAId Pipeline] Case analysis completed: PASS");
-          console.log(`[LegalAId Pipeline] Sources: ${res.explain?.relevant_law?.length ?? 0}, Rights: ${res.explain?.rights?.length ?? 0}`);
+      try {
+        await Promise.race([runPipeline(), timeoutPromise]);
+      } catch (timeoutErr) {
+        // Only fires if the timeout rejected first
+        if (!signal.aborted) {
+          if (import.meta.env.DEV) {
+            console.error("[LegalAId Pipeline TIMEOUT]", timeoutErr);
+          }
+          patch({
+            status: "error",
+            phase: null,
+            error: { phase: "analyze", message: messageOf(timeoutErr) },
+          });
         }
-
-        patch({
-          status: "done",
-          phase: null,
-          explain: res.explain ?? undefined,
-          evidence: res.evidence ?? undefined,
-          roadmap: res.roadmap ?? undefined,
-          facts: res.facts ?? undefined,
-        });
-      } catch (err) {
-        if (isAbort(err) || signal.aborted) return;
-        if (import.meta.env.DEV) {
-          console.error("[LegalAId Pipeline ERROR]", err);
-        }
-        patch({
-          status: "error",
-          phase: null,
-          error: { phase: "analyze", message: messageOf(err) },
-        });
+      } finally {
+        if (timeoutId !== null) clearTimeout(timeoutId);
       }
     },
     [patch],
