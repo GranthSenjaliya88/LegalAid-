@@ -5,8 +5,14 @@ Tracks index versioning, dimension, and synchronization status.
 """
 
 from typing import List, Dict, Any, Optional
-from datetime import datetime
-import numpy as np
+from datetime import datetime, timezone
+
+try:
+    import numpy as np
+    NUMPY_AVAILABLE = True
+except ImportError:
+    np = None
+    NUMPY_AVAILABLE = False
 
 try:
     from sentence_transformers import SentenceTransformer
@@ -30,24 +36,35 @@ class EmbeddingService:
         self.dimension = 384
         self.model = SentenceTransformer(model_name) if (SENTENCE_TRANSFORMERS_AVAILABLE and SentenceTransformer) else None
 
-    def embed(self, texts: list[str]) -> np.ndarray:
-        if self.model is not None:
+    def embed(self, texts: list[str]) -> Any:
+        if self.model is not None and NUMPY_AVAILABLE and np:
             vectors = self.model.encode(
                 texts,
                 normalize_embeddings=True,
             )
             return np.asarray(vectors, dtype=np.float32)
         
-        # Hash vector fallback if sentence-transformers is offline
-        vecs = np.zeros((len(texts), self.dimension), dtype=np.float32)
-        for i, txt in enumerate(texts):
-            h = abs(hash(txt))
-            idx = h % self.dimension
-            vecs[i, idx] = 1.0
-        return vecs
+        if NUMPY_AVAILABLE and np:
+            # Hash vector fallback if sentence-transformers is offline
+            vecs = np.zeros((len(texts), self.dimension), dtype=np.float32)
+            for i, txt in enumerate(texts):
+                h = abs(hash(txt))
+                idx = h % self.dimension
+                vecs[i, idx] = 1.0
+            return vecs
 
-    def embed_query(self, query: str) -> np.ndarray:
-        return self.embed([query])[0]
+        # Pure python fallback list
+        fallback = []
+        for txt in texts:
+            row = [0.0] * self.dimension
+            h = abs(hash(txt)) % self.dimension
+            row[h] = 1.0
+            fallback.append(row)
+        return fallback
+
+    def embed_query(self, query: str) -> Any:
+        res = self.embed([query])
+        return res[0] if len(res) > 0 else [0.0] * self.dimension
 
 
 class FaissRetriever:
@@ -56,7 +73,7 @@ class FaissRetriever:
         self.dimension = dimension
         self.index = faiss.IndexFlatIP(dimension) if (FAISS_AVAILABLE and faiss) else None
         self.record_ids: list[int] = []
-        self.stored_embeddings: list[np.ndarray] = []
+        self.stored_embeddings: list = []
         
         # Vector index version metadata
         self.corpus_version = "1.0.0"
@@ -66,6 +83,10 @@ class FaissRetriever:
         self.indexed_at = datetime.utcnow().isoformat()
 
     def add(self, embeddings, record_ids):
+        if not NUMPY_AVAILABLE or not np:
+            self.record_ids.extend(record_ids)
+            self.indexed_at = datetime.now(timezone.utc).isoformat()
+            return
         embeddings = np.asarray(
             embeddings,
             dtype=np.float32,
@@ -75,9 +96,12 @@ class FaissRetriever:
         else:
             self.stored_embeddings.extend(embeddings)
         self.record_ids.extend(record_ids)
-        self.indexed_at = datetime.utcnow().isoformat()
+        self.indexed_at = datetime.now(timezone.utc).isoformat()
 
     def search(self, query_embedding, k=10):
+        if not NUMPY_AVAILABLE or not np:
+            return []
+
         query_embedding = np.asarray(
             [query_embedding],
             dtype=np.float32,

@@ -5,7 +5,11 @@ Decouples business logic from specific database search implementations (SQLite F
 
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
-import numpy as np
+
+try:
+    import numpy as np
+except ImportError:
+    np = None
 
 
 class LegalSearchEngine(ABC):
@@ -17,7 +21,7 @@ class LegalSearchEngine(ABC):
         pass
 
     @abstractmethod
-    def search_vector(self, query_vector: np.ndarray, limit: int = 20) -> List[Dict[str, Any]]:
+    def search_vector(self, query_vector: Any, limit: int = 20) -> List[Dict[str, Any]]:
         """Perform dense vector similarity search."""
         pass
 

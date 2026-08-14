@@ -5,7 +5,6 @@ step-by-step retrieval debugging, and quality metrics.
 """
 
 import sqlite3
-import numpy as np
 from typing import Dict, Any, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
@@ -107,7 +106,13 @@ def retrieval_debug(body: RetrievalDebugRequest, db: Session = Depends(get_db)):
     bm25_list = [dict(r) for r in bm25_res]
 
     # 2. Dense Vector Search
-    vector_res = vector_retriever.search(query_embedding=np.zeros(384, dtype=np.float32), k=20) if hasattr(vector_retriever, "search") else []
+    query_vec = [0.0] * 384
+    vector_res = []
+    try:
+        if hasattr(vector_retriever, "search"):
+            vector_res = vector_retriever.search(query_embedding=query_vec, k=20)
+    except Exception:
+        vector_res = []
 
     # 3. RRF Fusion
     rrf_res = reciprocal_rank_fusion(bm25_list, vector_res, k=60)
