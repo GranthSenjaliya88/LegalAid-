@@ -16,6 +16,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { apiClient } from "@/services/apiClient";
 
 interface DashboardData {
   total_acts: number;
@@ -94,20 +95,23 @@ export function CorpusDashboardPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "index" | "eval">("overview");
 
   useEffect(() => {
-    fetch("/api/admin/corpus-dashboard")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load corpus dashboard metrics.");
-        return res.json();
+    let cancelled = false;
+
+    apiClient
+      .get<DashboardData>("/api/admin/corpus-dashboard")
+      .then((dashboard) => {
+        if (!cancelled) setData(dashboard);
       })
-      .then((resData) => {
-        if (resData.success) {
-          setData(resData.data);
-        } else {
-          setError("Failed to parse API response");
-        }
+      .catch((err: Error) => {
+        if (!cancelled) setError(err.message);
       })
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (loading) {

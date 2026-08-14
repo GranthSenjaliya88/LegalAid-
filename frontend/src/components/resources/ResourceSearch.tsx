@@ -1,17 +1,10 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { LegalSourceCard, LegalSource } from "./LegalSourceCard";
+import { apiClient } from "@/services/apiClient";
 
 async function searchLegal(q: string) {
-  const response = await fetch(
-    `/api/legal/search?q=${encodeURIComponent(q)}`
-  );
-
-  if (!response.ok) {
-    throw new Error("Unable to search legal sources.");
-  }
-
-  return response.json();
+  return apiClient.get<Record<string, any>>("/api/legal/search", { q });
 }
 
 export function ResourceSearch() {
